@@ -4,7 +4,7 @@
 var Question = Backbone.Model.extend({
     defaults: {
         copy: '',
-        choices: [],
+        options: [],
         required: false
     }
 });
