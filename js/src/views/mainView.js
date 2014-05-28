@@ -10,5 +10,4 @@ var MainView = Backbone.View.extend({
 });
 
 
-
 module.exports = MainView;

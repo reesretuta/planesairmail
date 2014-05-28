@@ -46,7 +46,17 @@ gulp.task('browserify', function() {
 
 // Concatenate and minify js
 gulp.task('minify', function() {
-    gulp.src([jsLibFolder + '/underscore-min.js', jsLibFolder + '/jquery-1.11.1.min.js', jsLibFolder + '/*.js', jsBuildFolder + '/app.js'])
+
+    // order of source files is important,
+    // underscore & jquery must be included before backbone.js or other libraries
+    var minifySrcFiles = [
+        jsLibFolder + '/underscore-min.js',
+        jsLibFolder + '/jquery-1.11.1.min.js',
+        jsLibFolder + '/*.js',
+        jsBuildFolder + '/app.js'
+    ];
+
+    gulp.src(minifySrcFiles)
         .pipe(concat('all.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest(jsBuildFolder));
