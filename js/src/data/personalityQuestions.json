@@ -1,6 +1,7 @@
 {
     "questions": [
         {
+            "name": "which-plane",
             "copy": "Which plane would you like to send a message to?",
             "options": [
                 {
@@ -27,6 +28,7 @@
             "required": true
         },
         {
+            "name": "favorite-disney-movie",
             "copy": "What is your favorite Disney movie?",
             "options": [
                 {
@@ -53,6 +55,7 @@
             "required": false
         },
         {
+            "name": "favorite-color",
             "copy": "What’s your favorite color?",
             "options": [
                 {

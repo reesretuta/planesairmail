@@ -1,0 +1,14 @@
+<div class="question">
+    <div class="copy">
+        {{copy}}
+    </div>
+
+    <div class="options">
+        {{#each options}}
+        <div class="option">
+            <input type="radio" name="{{../name}}" value="{{value}}" id="{{value}}" />
+            <label for="{{value}}">{{text}}</label>
+        </div>
+        {{/each}}
+    </div>
+</div>
