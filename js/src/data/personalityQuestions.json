@@ -56,7 +56,7 @@
         },
         {
             "name": "favorite-color",
-            "copy": "What’s your favorite color?",
+            "copy": "What's your favorite color?",
             "options": [
                 {
                     "text": "Red",

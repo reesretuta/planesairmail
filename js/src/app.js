@@ -2,16 +2,22 @@
 
 
 
+var MainView = require('./views/mainView');
 
-$(function() {
 
 
-//    var MainView = require('./views/mainView');
-//
-//    var mainView = new MainView();
-//
-//    console.log('yes');
+// =================================================================== //
+/* ******************************* App ******************************* */
+// =================================================================== //
 
-});
+var app = {};
+
+
+app.MainView = new MainView();
+
+
+
+
+module.exports = app;
 
 

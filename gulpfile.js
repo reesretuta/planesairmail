@@ -31,7 +31,7 @@ gulp.task('browserify', function() {
     "use strict";
 
     // Single entry point to browserify
-    gulp.src(jsSrcFolder + '/app.js')
+    gulp.src(jsSrcFolder + '/main.js')
         .pipe(browserify({
             insertGlobals: true,
             debug: true,
@@ -75,7 +75,7 @@ gulp.task('sass', function() {
 gulp.task('watch', function () {
     gulp.watch(jsSrc, ['browserify']);
 
-    gulp.watch([jsBuildFolder + '/app.js', jsLibFolder + '/*.js'], ['minify']);
+    gulp.watch([jsBuildFolder + '/main.js', jsLibFolder + '/*.js'], ['minify']);
 
     gulp.watch(sassSrc, ['sass']);
 });
