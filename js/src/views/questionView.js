@@ -10,9 +10,7 @@ var QuestionView = PageView.extend({
 
     // Functions
     initialize: function(options) {
-        this.model = options.model;
 
-        console.log(this.el.getAttribute('options'));
     },
     render: function() {
         if(this.el.innerHTML === '')

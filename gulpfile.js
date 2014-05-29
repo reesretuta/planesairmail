@@ -33,7 +33,6 @@ gulp.task('browserify', function() {
     // Single entry point to browserify
     gulp.src(jsSrcFolder + '/main.js')
         .pipe(browserify({
-            insertGlobals: true,
             debug: true,
             transform: ['hbsfy']
         }))
@@ -53,7 +52,7 @@ gulp.task('minify', function() {
         jsLibFolder + '/underscore-min.js',
         jsLibFolder + '/jquery-1.11.1.min.js',
         jsLibFolder + '/*.js',
-        jsBuildFolder + '/app.js'
+        jsBuildFolder + '/main.js'
     ];
 
     gulp.src(minifySrcFiles)
