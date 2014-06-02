@@ -12,8 +12,8 @@ var QuestionView = Backbone.View.extend({
     },
     // Functions
     initialize: function(options) {
-        this.name = this.model.attributes.name;
-        this.value = undefined;
+        "use strict";
+
     },
 
     // ============================================================ //
@@ -48,7 +48,9 @@ var QuestionView = Backbone.View.extend({
     onRadioChange: function(e) {
         "use strict";
 
-        this.value = e.currentTarget.getAttribute('value');
+        this.model.set({value: e.currentTarget.getAttribute('value')});
+
+        console.log(this.model);
     }
 });
 
