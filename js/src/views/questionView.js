@@ -49,8 +49,6 @@ var QuestionView = Backbone.View.extend({
         "use strict";
 
         this.model.set({value: e.currentTarget.getAttribute('value')});
-
-        console.log(this.model);
     }
 });
 
