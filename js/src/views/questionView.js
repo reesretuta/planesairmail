@@ -7,9 +7,13 @@ var QuestionView = Backbone.View.extend({
     className: 'question page',
     template: template,
 
+    events: {
+        'click input[type=radio]': 'onRadioChange'
+    },
     // Functions
     initialize: function(options) {
-
+        this.name = this.model.attributes.name;
+        this.value = undefined;
     },
 
     // ============================================================ //
@@ -35,6 +39,16 @@ var QuestionView = Backbone.View.extend({
         "use strict";
 
         this.$el.removeClass('active');
+    },
+
+
+    // ============================================================ //
+    /* ********************* Event Listeners ********************** */
+    // ============================================================ //
+    onRadioChange: function(e) {
+        "use strict";
+
+        this.value = e.currentTarget.getAttribute('value');
     }
 });
 

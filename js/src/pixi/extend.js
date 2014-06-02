@@ -8,9 +8,11 @@ function extend(base, sub) {
     // Thanks to @ccnokes
     var origProto = sub.prototype;
     sub.prototype = Object.create(base.prototype);
+
     for (var key in origProto)  {
         sub.prototype[key] = origProto[key];
     }
+
     // Remember the constructor property was set wrong, let's fix it
     sub.prototype.constructor = sub;
     // In ECMAScript5+ (all modern browsers), you can make the constructor property
