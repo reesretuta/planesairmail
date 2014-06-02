@@ -4,23 +4,6 @@ var allQuestions = require('../collections/allQuestions');
 var QuestionView = require('./questionView');
 
 
-function generateQuestionViews() {
-    var views = [];
-
-    _.forEach(allQuestions.models, function(questionModel) {
-        "use strict";
-
-        var view = new QuestionView({model: questionModel});
-
-        views.push(view);
-    });
-
-
-    return views;
-}
-
-
-
 var MainView = Backbone.View.extend({
     el: '#content',
     events: {
@@ -44,7 +27,6 @@ var MainView = Backbone.View.extend({
             this.pages.push(view);
         }, this);
 
-//        this.pages[this.activePageIndex]
     },
 
     // ============================================================ //
