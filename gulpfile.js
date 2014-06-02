@@ -19,7 +19,7 @@ var jsSrc = jsSrcFolder + '/**/*.js';
 
 var sassSrcFolder = './css/scss';
 var cssFolder = './css';
-var sassSrc = sassSrcFolder + '/main.scss';
+var sassSrc = [sassSrcFolder + '/*.scss', sassSrcFolder + '/**/*.scss'];
 
 
 // =================================================================== //

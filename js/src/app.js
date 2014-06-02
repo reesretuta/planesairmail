@@ -17,6 +17,12 @@ app.MainView = new MainView();
 
 
 
+app.render = function() {
+    "use strict";
+
+    this.MainView.render();
+};
+
 
 module.exports = app;
 
