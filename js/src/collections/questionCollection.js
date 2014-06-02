@@ -4,11 +4,11 @@
 var Question = require('../models/question');
 
 
-var QuestionList = Backbone.Collection.extend({
+var QuestionCollection = Backbone.Collection.extend({
     model: Question
 });
 
 
 
 
-module.exports = QuestionList;
+module.exports = QuestionCollection;
