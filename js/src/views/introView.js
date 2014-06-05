@@ -1,6 +1,6 @@
 
+var scenesManager = require('../pixi/scenesManager');
 var template = require('../templates/intro.hbs');
-
 
 var IntroView = Backbone.View.extend({
     id: 'intro-view',
@@ -16,6 +16,8 @@ var IntroView = Backbone.View.extend({
 
         this.initJqueryVariables();
         this.initAnimationTimelineHide();
+
+        this.scene = scenesManager.createScene('intro');
     },
     initJqueryVariables: function() {
         "use strict";
@@ -44,11 +46,11 @@ var IntroView = Backbone.View.extend({
     initAnimationTimelineHide: function() {
         "use strict";
 
-        /********************* Static Variables *****************/
+        /****************** Static Variables **************/
         var animationTime = 1.6;
         var easing = 'Cubic.easeInOut';
 
-        /************************ Timeline **********************/
+        /********************* Timeline *******************/
         var timeline = new TimelineMax({
             paused: true,
             onComplete: this.setInactive,

@@ -17,7 +17,6 @@
     $videoWidth: 760px;
     $videoHeight: 430px;
 
-
     div.viewport {
         position: absolute;
         left: 0;
@@ -26,6 +25,8 @@
         width: 100%;
 
         overflow: hidden;
+
+        z-index: 2;
 
         &.top {
             top: 0;
@@ -75,6 +76,36 @@
 
                 padding-left: $videoWidth/2;
             }
+        }
+    }
+
+    div.video-ctn {
+        width: $videoWidth;
+
+        position: absolute;
+        margin: auto;
+
+        z-index: 1;
+
+        top: 50%;
+        left: 0;
+        right: 0;
+
+        transform: translateY(-50%);
+
+        > div.empty-space {
+            padding-bottom: percentage($videoHeight/$videoWidth);
+        }
+
+        > video {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            height: 100%;
+            width: 100%;
+
+            display: none;
         }
     }
 }

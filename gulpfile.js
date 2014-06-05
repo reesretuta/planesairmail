@@ -15,7 +15,7 @@ var prefix = require('gulp-autoprefixer');
 var jsSrcFolder = './js/src';
 var jsLibFolder = './js/lib';
 var jsBuildFolder = './js/build';
-var jsSrc = jsSrcFolder + '/**/*.js';
+var jsSrc = [jsSrcFolder + '/**/*.js', jsSrcFolder + '/**/*.hbs'];
 
 var sassSrcFolder = './css/scss';
 var cssFolder = './css';

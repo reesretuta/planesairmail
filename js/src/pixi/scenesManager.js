@@ -6,15 +6,14 @@ var ScenesManager = {
     currentScene: null,
     renderer: null,
 
-
-
-    create: function(width, height) {
+    create: function(width, height, $parentDiv) {
         "use strict";
         if(ScenesManager.renderer) return this;
 
-        ScenesManager.renderer = PIXI.autoDetectRenderer(width, height);
+        ScenesManager.renderer = PIXI.autoDetectRenderer(width, height, null, true, true);
 
-        document.body.appendChild(ScenesManager.renderer.view);
+        ScenesManager.renderer.view.setAttribute('id', 'pixi-view');
+        $parentDiv.append(ScenesManager.renderer.view);
         requestAnimFrame(ScenesManager.loop);
 
         return this;

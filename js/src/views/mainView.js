@@ -1,9 +1,12 @@
 
+var scenesManager = require('../pixi/scenesManager');
+// ~~~~~~~~~~~~~~~~~~~~~~~~ Collections ~~~~~~~~~~~~~~~~~~~~~~~~
 var allQuestions = require('../collections/allQuestions');
 
-
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Views ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var IntroView = require('./introView');
 var QuestionView = require('./questionView');
+
 
 
 var MainView = Backbone.View.extend({
@@ -15,11 +18,14 @@ var MainView = Backbone.View.extend({
         this.pages = [];
         this.activePageIndex = 0;
 
+        this.initJqueryVariables();
+
+        //create canvas element
+        scenesManager.create(760, 430, this.$el);
+
+        // create views
         this.introView = new IntroView();
-
         this.initPages();
-
-        this.$pagesContainer = this.$el.find('div.pages-ctn');
     },
 
     initPages: function() {
@@ -32,10 +38,15 @@ var MainView = Backbone.View.extend({
         }, this);
 
     },
+    initJqueryVariables: function() {
+        "use strict";
 
-    // ============================================================ //
-    /* ******************** Render Functions ********************** */
-    // ============================================================ //
+        this.$pagesContainer = this.$el.find('div.pages-ctn');
+    },
+
+    // ==================================================================== //
+    /* ************************* Render Functions ************************* */
+    // ==================================================================== //
     render: function() {
         this.$el.prepend(this.introView.render().el);
 
@@ -44,12 +55,12 @@ var MainView = Backbone.View.extend({
 
         //this.pages[this.activePageIndex].show();
 
-        var self = this;
-        setTimeout(function() {
-            "use strict";
-            self.introView.hide();
-
-        }, 2000);
+//        var self = this;
+//        setTimeout(function() {
+//            "use strict";
+//            self.introView.hide();
+//
+//        }, 2000);
     },
     addPagesToDom: function() {
         "use strict";
@@ -59,9 +70,9 @@ var MainView = Backbone.View.extend({
         }, this);
     },
 
-    // ============================================================ //
-    /* ********************* Event Listeners ********************** */
-    // ============================================================ //
+    // ==================================================================== //
+    /* ************************* Event Listeners ************************** */
+    // ==================================================================== //
     onNext: function(e) {
         "use strict";
         e.preventDefault();
