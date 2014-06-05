@@ -20,12 +20,10 @@ var IntroView = Backbone.View.extend({
     initJqueryVariables: function() {
         "use strict";
 
-        var $borders = this.$el.find('div.border');
+        var $viewPorts = this.$el.find('div.viewport');
 
-        this.$leftBorder = $borders.filter('.left');
-        this.$rightBorder = $borders.filter('.right');
-        this.$topBorder = $borders.filter('.top');
-        this.$bottomBorder = $borders.filter('.bottom');
+        this.$viewPortTop = $viewPorts.filter('.top');
+        this.$viewPortBottom = $viewPorts.filter('.bottom');
     },
 
     // ============================================================ //
@@ -59,19 +57,11 @@ var IntroView = Backbone.View.extend({
 
         timeline.add(this.preAnimation.bind(this), 0);
 
-        timeline.add(TweenLite.to(this.$leftBorder, animationTime, {
-            width: 0,
-            ease: easing
-        }), 0);
-        timeline.add(TweenLite.to(this.$rightBorder, animationTime, {
-            width: 0,
-            ease: easing
-        }), 0);
-        timeline.add(TweenLite.to(this.$topBorder, animationTime, {
+        timeline.add(TweenLite.to(this.$viewPortTop, animationTime, {
             height: 0,
             ease: easing
         }), 0);
-        timeline.add(TweenLite.to(this.$bottomBorder, animationTime, {
+        timeline.add(TweenLite.to(this.$viewPortBottom, animationTime, {
             height: 0,
             ease: easing
         }), 0);
@@ -81,24 +71,6 @@ var IntroView = Backbone.View.extend({
     preAnimation: function() {
         "use strict";
 
-        this.$leftBorder.css({
-            width: this.$leftBorder.width(),
-            paddingRight: 0
-        });
-        this.$rightBorder.css({
-            width: this.$rightBorder.width(),
-            paddingLeft: 0
-        });
-
-        this.$topBorder.css({
-            height: this.$topBorder.height(),
-            paddingBottom: 0
-        });
-
-        this.$bottomBorder.css({
-            height: this.$bottomBorder.height(),
-            paddingTop: 0
-        });
     },
     setActive: function() {
         "use strict";

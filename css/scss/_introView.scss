@@ -17,49 +17,64 @@
     $videoWidth: 760px;
     $videoHeight: 430px;
 
-    //video viewport size is 760px wide and 430px tall
-    div.border {
-        position: absolute;
 
-        > div {
-            background-color: black;
-        }
+    div.viewport {
+        position: absolute;
+        left: 0;
+
+        height: 50%;
+        width: 100%;
+
+        overflow: hidden;
 
         &.top {
-            height: 50%;
-            width: 100%;
-
             top: 0;
-            left: 0;
 
-            padding-bottom: $videoHeight/2;
+            div.background-color {
+                bottom: 0;
+
+            }
         }
         &.bottom {
-            height: 50%;
-            width: 100%;
-
             bottom: 0;
-            left: 0;
 
-            padding-top: $videoHeight/2;
+            div.background-color {
+                top: 0;
+            }
         }
-        &.right {
+
+        div.background-color {
+            position: absolute;
             height: 100%;
-            width: 50%;
 
-            top: 0;
-            right: 0;
+            > div {
+                background-color: black;
+            }
 
-            padding-left: $videoWidth/2;
-        }
-        &.left {
-            height: 100%;
-            width: 50%;
+            &.top {
+                width: 100%;
+                left: 0;
 
-            top: 0;
-            left: 0;
+                padding-bottom: $videoHeight/2;
+            }
+            &.bottom {
+                width: 100%;
+                left: 0;
 
-            padding-right: $videoWidth/2;
+                padding-top: $videoHeight/2;
+            }
+            &.left {
+                width: 50%;
+                left: 0;
+
+                padding-right: $videoWidth/2;
+            }
+            &.right {
+                width: 50%;
+                right: 0;
+
+                padding-left: $videoWidth/2;
+            }
         }
     }
 }
