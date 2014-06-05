@@ -1,0 +1,65 @@
+
+
+#intro-view {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 50;
+
+    &.inactive {
+        display: none;
+    }
+
+    $videoWidth: 760px;
+    $videoHeight: 430px;
+
+    //video viewport size is 760px wide and 430px tall
+    div.border {
+        position: absolute;
+
+        > div {
+            background-color: black;
+        }
+
+        &.top {
+            height: 50%;
+            width: 100%;
+
+            top: 0;
+            left: 0;
+
+            padding-bottom: $videoHeight/2;
+        }
+        &.bottom {
+            height: 50%;
+            width: 100%;
+
+            bottom: 0;
+            left: 0;
+
+            padding-top: $videoHeight/2;
+        }
+        &.right {
+            height: 100%;
+            width: 50%;
+
+            top: 0;
+            right: 0;
+
+            padding-left: $videoWidth/2;
+        }
+        &.left {
+            height: 100%;
+            width: 50%;
+
+            top: 0;
+            left: 0;
+
+            padding-right: $videoWidth/2;
+        }
+    }
+}

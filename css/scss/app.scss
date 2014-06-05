@@ -10,22 +10,36 @@ html, body {
 
     margin: 0;
     padding: 0;
+
+    overflow: hidden;
 }
 
-#content {
+
+
+.full-relative {
     height: 100%;
     width: 100%;
 
     position: relative;
+}
+.full-absolute {
+    height: 100%;
+    width: 100%;
 
-
-    .pages-ctn {
-        height: 100%;
-        width: 100%;
-
-        position: relative;
-    }
+    position: absolute;
 }
 
+body {
+    background: url('../assets/img/background.png') no-repeat center center;
+    background-size: cover;
+}
 
+// ============================================================ //
+/* ************************* Imports ************************** */
+// ============================================================ //
+
+
+@import '_header';
+@import '_content';
+@import '_introView';
 @import '_page';

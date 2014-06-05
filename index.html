@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Airmail Test</title>
+    <title>Planes Airmail</title>
     <link rel="stylesheet" type="text/css" href="css/app.css" />
 </head>
 <body>
+    <div id="header">
+        <div class="logo"></div>
+        <div class="in-theaters"></div>
+    </div>
 
-    <div id="content">
-        <a href="#" class="next">next</a>
-        <div class="pages-ctn">
+    <div id="content" class="full-relative">
+
+        <div class="pages-ctn full-relative">
 
         </div>
+        <a href="#" class="next">next</a>
     </div>
 
 </body>
 
 
+<!----------------------------- Backbone Libraries ----------------------->
 <script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src="js/lib/jquery-1.11.1.min.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>
+
+<!---------------------------- Animation Libraries ----------------------->
 <script src="js/lib/pixi.js"></script>
 
+<script src="js/lib/TweenLite.min.js"></script>
+<script src="js/lib/TimelineMax.min.js"></script>
+<script src="js/lib/CSSPlugin.min.js"></script>
+<script src="js/lib/EasePack.min.js"></script>
+
+
+<!-------------------------------- App Javascript ------------------------>
 <script src="js/build/main.js"></script>
 
 </html>

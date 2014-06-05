@@ -14,6 +14,8 @@ var QuestionView = Backbone.View.extend({
     initialize: function(options) {
         "use strict";
 
+        this.render();
+
     },
 
     // ============================================================ //

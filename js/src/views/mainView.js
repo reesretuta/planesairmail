@@ -1,6 +1,8 @@
 
 var allQuestions = require('../collections/allQuestions');
 
+
+var IntroView = require('./introView');
 var QuestionView = require('./questionView');
 
 
@@ -12,6 +14,8 @@ var MainView = Backbone.View.extend({
     initialize: function() {
         this.pages = [];
         this.activePageIndex = 0;
+
+        this.introView = new IntroView();
 
         this.initPages();
 
@@ -33,10 +37,19 @@ var MainView = Backbone.View.extend({
     /* ******************** Render Functions ********************** */
     // ============================================================ //
     render: function() {
+        this.$el.prepend(this.introView.render().el);
 
         this.addPagesToDom();
 
-        this.pages[this.activePageIndex].show();
+
+        //this.pages[this.activePageIndex].show();
+
+        var self = this;
+        setTimeout(function() {
+            "use strict";
+            self.introView.hide();
+
+        }, 2000);
     },
     addPagesToDom: function() {
         "use strict";
