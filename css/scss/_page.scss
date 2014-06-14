@@ -20,12 +20,85 @@ div.page {
 
 
 
-
-
+$blue: rgba(179, 209, 233, 0.35);
 
 
 
 
 div.page.name {
+
+
+    .input-wrapper {
+        height: 95px;
+        width: 100%;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        margin: auto;
+
+    }
+
+    div.title {
+        position: absolute;
+        bottom: 100%;
+
+        width: 100%;
+
+        text-align: center;
+
+        font-size: 36px;
+        line-height: 36px;
+
+        margin-bottom: 53px;
+
+        color: white;
+
+        -webkit-font-smoothing: antialiased;
+
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.2), -1px -1px 2px rgba(0,0,0,0.2);
+    }
+
+    input[type="text"] {
+        border: 0px solid;
+
+        padding: 0;
+        margin: 0;
+
+        height: 100%;
+        width: 100%;
+
+        background-color: $blue;
+
+        border-radius: 15px;
+
+        font-size: 20px;
+        text-align: center;
+
+        box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+
+        &:focus {
+            outline: 0;
+        }
+
+        $placeholderColor: #FFFFFF;
+        &::-webkit-input-placeholder { /* WebKit browsers */
+            color: $placeholderColor;
+        }
+        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: $placeholderColor;
+            opacity: 1;
+        }
+        &::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: $placeholderColor;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: $placeholderColor;
+        }
+    }
 
 }

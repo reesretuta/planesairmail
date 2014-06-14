@@ -30,9 +30,6 @@ var NameView = (function() {
         },
         show: function() {
 
-            console.log('show');
-            console.log(this.$el);
-
             this.$el.addClass('active');
         },
         hide: function() {
