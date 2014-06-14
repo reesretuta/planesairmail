@@ -5,6 +5,7 @@ var allQuestions = require('../collections/allQuestions');
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Views ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var IntroView = require('./introView');
+var NameView = require('./nameView');
 var QuestionView = require('./questionView');
 
 
@@ -20,23 +21,23 @@ var MainView = Backbone.View.extend({
 
         this.initJqueryVariables();
 
+
         //create canvas element
-        scenesManager.create(760, 430, this.$el);
+        //scenesManager.create($(window).width(), $(window).height(), this.$el);
 
         // create views
-        this.introView = new IntroView();
+        this.introView = new IntroView({parent: this.$el});
         this.initPages();
     },
 
     initPages: function() {
         "use strict";
 
-        _.forEach(allQuestions.models, function(questionModel) {
-            var view = new QuestionView({model: questionModel});
+        this.pages.push(new NameView({parent: this.$pagesContainer}));
 
-            this.pages.push(view);
-        }, this);
-
+        this.pages = this.pages.concat(_.map(allQuestions.models, function(questionModel) {
+            return new QuestionView({model: questionModel, parent: this.$pagesContainer});
+        }, this));
     },
     initJqueryVariables: function() {
         "use strict";
@@ -48,26 +49,33 @@ var MainView = Backbone.View.extend({
     /* ************************* Render Functions ************************* */
     // ==================================================================== //
     render: function() {
-        this.$el.prepend(this.introView.render().el);
-
-        this.addPagesToDom();
-
-
-        //this.pages[this.activePageIndex].show();
-
-//        var self = this;
-//        setTimeout(function() {
-//            "use strict";
-//            self.introView.hide();
 //
-//        }, 2000);
+//        this.addPagesToDom();
+
+        this.pages[this.activePageIndex].show();
+
+
+
+        var self = this;
+        setTimeout(function() {
+            "use strict";
+
+            self.introView.hide();
+
+        }, 200);
     },
     addPagesToDom: function() {
         "use strict";
+        var elements = _.map(this.pages, function(view) {
+            return view.render().el;
+        });
 
-        _.forEach(this.pages, function(view) {
-            this.$pagesContainer.append(view.render().el);
-        }, this);
+
+        this.$pagesContainer[0].innerHTML = _.reduce(elements, function(html, el) {
+            return html + el.outerHTML;
+        }, '');
+
+
     },
 
     // ==================================================================== //

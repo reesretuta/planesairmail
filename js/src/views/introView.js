@@ -9,15 +9,17 @@ var IntroView = Backbone.View.extend({
     // ============================================================ //
     /* ****************** Initialization Stuff ******************** */
     // ============================================================ //
-    initialize: function() {
+    initialize: function(options) {
         "use strict";
 
         this.render();
 
+        options.parent.append(this.el);
+
         this.initJqueryVariables();
         this.initAnimationTimelineHide();
 
-        this.scene = scenesManager.createScene('intro');
+        //this.scene = scenesManager.createScene('intro');
     },
     initJqueryVariables: function() {
         "use strict";

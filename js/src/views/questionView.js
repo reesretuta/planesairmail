@@ -16,6 +16,7 @@ var QuestionView = Backbone.View.extend({
 
         this.render();
 
+        options.parent.append(this.el);
     },
 
     // ============================================================ //
