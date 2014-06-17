@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "Comp 2_00000",
+	"filename": "Comp 2_00000.png",
 	"frame": {"x":2,"y":2,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00001",
+	"filename": "Comp 2_00001.png",
 	"frame": {"x":604,"y":2,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00002",
+	"filename": "Comp 2_00002.png",
 	"frame": {"x":1206,"y":2,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +25,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00003",
+	"filename": "Comp 2_00003.png",
 	"frame": {"x":2,"y":345,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -33,7 +33,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00004",
+	"filename": "Comp 2_00004.png",
 	"frame": {"x":604,"y":345,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -41,7 +41,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00005",
+	"filename": "Comp 2_00005.png",
 	"frame": {"x":1206,"y":345,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -49,7 +49,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00006",
+	"filename": "Comp 2_00006.png",
 	"frame": {"x":2,"y":688,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +57,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00007",
+	"filename": "Comp 2_00007.png",
 	"frame": {"x":604,"y":688,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -65,7 +65,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00008",
+	"filename": "Comp 2_00008.png",
 	"frame": {"x":1206,"y":688,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -73,7 +73,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00009",
+	"filename": "Comp 2_00009.png",
 	"frame": {"x":2,"y":1031,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -81,7 +81,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00010",
+	"filename": "Comp 2_00010.png",
 	"frame": {"x":604,"y":1031,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -89,7 +89,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00011",
+	"filename": "Comp 2_00011.png",
 	"frame": {"x":1206,"y":1031,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -97,7 +97,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00012",
+	"filename": "Comp 2_00012.png",
 	"frame": {"x":2,"y":1374,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -105,7 +105,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00013",
+	"filename": "Comp 2_00013.png",
 	"frame": {"x":604,"y":1374,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -113,7 +113,7 @@
 	"sourceSize": {"w":600,"h":341}
 },
 {
-	"filename": "Comp 2_00014",
+	"filename": "Comp 2_00014.png",
 	"frame": {"x":1206,"y":1374,"w":600,"h":341},
 	"rotated": false,
 	"trimmed": false,
@@ -125,8 +125,8 @@
 	"version": "1.0",
 	"image": "dusty.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
+	"size": {"w":1808,"h":1717},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c756ac0b1932fcd62981b6c4b6d7b97d:e89dbe6bde9a43a75b1846aebf1ee157:6e949629f39c5293fbaebbe8b968e7d4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b6e5fe81bcbf76ff3a1bc0fa8d1ebe32:0aac33d9444786bee4bdd888f82fe96b:6e949629f39c5293fbaebbe8b968e7d4$"
 }
 }

@@ -1,55 +1,61 @@
 
-var Scene = require('./scene');
+(function() {
+    "use strict";
 
-var ScenesManager = {
-    scenes: {},
-    currentScene: null,
-    renderer: null,
 
-    create: function(width, height, $parentDiv) {
-        "use strict";
-        if(ScenesManager.renderer) return this;
 
-        ScenesManager.renderer = PIXI.autoDetectRenderer(width, height, null, true, true);
+    var Scene = require('./scene');
 
-        ScenesManager.renderer.view.setAttribute('id', 'pixi-view');
-        $parentDiv.append(ScenesManager.renderer.view);
-        requestAnimFrame(ScenesManager.loop);
+    var ScenesManager;
 
-        return this;
-    },
-    loop: function() {
-        "use strict";
-        requestAnimFrame(function () { ScenesManager.loop() });
+    ScenesManager = {
+        scenes: {},
+        currentScene: null,
+        renderer: null,
 
-        if (!ScenesManager.currentScene || ScenesManager.currentScene.isPaused()) return;
+        initialize: function (width, height, $parentDiv) {
 
-        ScenesManager.currentScene.update();
-        ScenesManager.renderer.render(ScenesManager.currentScene);
-    },
-    createScene: function(id) {
-        "use strict";
+            if (ScenesManager.renderer) return this;
 
-        if (ScenesManager.scenes[id]) return undefined;
+            ScenesManager.renderer = PIXI.autoDetectRenderer(width, height, null, true, true);
 
-        var scene = new Scene();
-        ScenesManager.scenes[id] = scene;
+            ScenesManager.renderer.view.setAttribute('id', 'pixi-view');
+            $parentDiv.append(ScenesManager.renderer.view);
+            requestAnimFrame(ScenesManager.loop);
 
-        return scene;
-    },
-    goToScene: function(id) {
-        "use strict";
-        if (ScenesManager.scenes[id]) {
-            if (ScenesManager.currentScene) ScenesManager.currentScene.pause();
+            return this;
+        },
+        loop: function () {
+            requestAnimFrame(function () { ScenesManager.loop() });
 
-            ScenesManager.currentScene = ScenesManager.scenes[id];
-            ScenesManager.currentScene.resume();
-            return true;
+            if (!ScenesManager.currentScene || ScenesManager.currentScene.isPaused()) return;
+
+            ScenesManager.currentScene.update();
+            ScenesManager.renderer.render(ScenesManager.currentScene);
+        },
+        createScene: function (id, SceneConstructor) {
+            if (ScenesManager.scenes[id]) return undefined;
+
+            SceneConstructor = SceneConstructor || Scene;   //default to scene
+
+            var scene = new SceneConstructor();
+            ScenesManager.scenes[id] = scene;
+
+            return scene;
+        },
+        goToScene: function (id) {
+
+            if (ScenesManager.scenes[id]) {
+                if (ScenesManager.currentScene) ScenesManager.currentScene.pause();
+
+                ScenesManager.currentScene = ScenesManager.scenes[id];
+                ScenesManager.currentScene.resume();
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
 
-};
+    };
 
 
 
@@ -57,4 +63,5 @@ var ScenesManager = {
 
 
 
-module.exports = ScenesManager;
+    module.exports = ScenesManager;
+})();

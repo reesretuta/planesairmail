@@ -22,8 +22,9 @@ var MainView = Backbone.View.extend({
         this.initJqueryVariables();
 
 
+
         //create canvas element
-        scenesManager.create($(window).width(), $(window).height(), this.$el);
+        scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
         // create views
         //this.introView = new IntroView({parent: this.$el});
