@@ -59,7 +59,7 @@
         dustyNoBlink.position.y = 0;
 
         dustyNoBlink.anchor.x = 0.5;
-        dustyNoBlink.anchor.y = 1;
+        dustyNoBlink.anchor.y = 0.5;
 
         dustyNoBlink.gotoAndStop(0);
 
@@ -109,7 +109,7 @@
 
 
 
-    // Extends Scene
+    // Extends Scene Class
     extend(Scene, EnterNameScene);
 
 

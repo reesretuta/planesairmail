@@ -44,6 +44,12 @@
     PIXI.DisplayObject.prototype.reposition = function() {
         this.position.y = this._$window.height() * this._windowY;
         this.position.x = this._$window.width() * this._windowX;
+
+        console.log(this);
+
+        _.each(this.children, function(displayObject) {
+            displayObject.reposition();
+        });
     };
 
 

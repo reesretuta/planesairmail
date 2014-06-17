@@ -16,6 +16,7 @@ var MainView = require('./views/mainView');
 var app = {};
 
 
+// after assets loaded & jquery loaded
 app.render = _.after(2, function() {
     "use strict";
 

@@ -196,4 +196,6 @@ div.page.name input[type="text"] {
   right: 0;
   bottom: 0;
   margin: auto;
-  z-index: 1; }
+  z-index: 1;
+  width: 100%;
+  height: 100%; }

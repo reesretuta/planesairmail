@@ -3,12 +3,11 @@
     "use strict";
 
 
-
     var Scene = require('./scene');
 
-    var ScenesManager;
+    var $window = $(window);
 
-    ScenesManager = {
+    var ScenesManager = {
         scenes: {},
         currentScene: null,
         renderer: null,
@@ -33,31 +32,46 @@
             ScenesManager.currentScene.update();
             ScenesManager.renderer.render(ScenesManager.currentScene);
         },
-        createScene: function (id, SceneConstructor) {
+        createScene: function(id, SceneConstructor) {
             if (ScenesManager.scenes[id]) return undefined;
 
-            SceneConstructor = SceneConstructor || Scene;   //default to scene
+            SceneConstructor = SceneConstructor || Scene;   //default to Scene base class
 
             var scene = new SceneConstructor();
             ScenesManager.scenes[id] = scene;
 
+
+
             return scene;
         },
-        goToScene: function (id) {
+        goToScene: function(id) {
 
             if (ScenesManager.scenes[id]) {
                 if (ScenesManager.currentScene) ScenesManager.currentScene.pause();
 
                 ScenesManager.currentScene = ScenesManager.scenes[id];
+
+                ScenesManager.currentScene.reposition();
                 ScenesManager.currentScene.resume();
+
                 return true;
             }
             return false;
-        }
+        },
+        onWindowResize: function() {
+            ScenesManager.currentScene.reposition();
 
+            var width = $window.width();
+            var height = $window.height();
+
+            ScenesManager.renderer.resize(width, height);
+        }
     };
 
 
+
+
+    $window.on('resize', ScenesManager.onWindowResize);
 
 
 
