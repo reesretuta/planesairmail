@@ -23,10 +23,10 @@ var MainView = Backbone.View.extend({
 
 
         //create canvas element
-        //scenesManager.create($(window).width(), $(window).height(), this.$el);
+        scenesManager.create($(window).width(), $(window).height(), this.$el);
 
         // create views
-        this.introView = new IntroView({parent: this.$el});
+        //this.introView = new IntroView({parent: this.$el});
         this.initPages();
     },
 
@@ -49,8 +49,6 @@ var MainView = Backbone.View.extend({
     /* ************************* Render Functions ************************* */
     // ==================================================================== //
     render: function() {
-//
-//        this.addPagesToDom();
 
         this.pages[this.activePageIndex].show();
 
@@ -60,7 +58,7 @@ var MainView = Backbone.View.extend({
         setTimeout(function() {
             "use strict";
 
-            self.introView.hide();
+            //self.introView.hide();
 
         }, 200);
     },

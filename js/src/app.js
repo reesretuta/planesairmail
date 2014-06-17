@@ -13,15 +13,51 @@ var MainView = require('./views/mainView');
 var app = {};
 
 
-app.MainView = new MainView();
-
-
-
-app.render = function() {
+app.render = _.after(2, function() {
     "use strict";
 
-    this.MainView.render();
-};
+    console.log('render');
+
+    app.MainView = new MainView();
+
+
+    app.MainView.render();
+});
+
+
+
+
+
+
+// =================================================================== //
+/* ************************** Asset Loading ************************** */
+// =================================================================== //
+
+
+// create an array of assets to load
+var assetsToLoader = ['./assets/spritesheets/dusty.json'];
+
+// create a new loader
+var loader = new PIXI.AssetLoader(assetsToLoader);
+
+// use callback
+loader.onComplete = app.render;
+
+//begin load
+loader.load();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = app;

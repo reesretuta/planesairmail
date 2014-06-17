@@ -12,9 +12,7 @@ var IntroView = Backbone.View.extend({
     initialize: function(options) {
         "use strict";
 
-        this.render();
-
-        options.parent.append(this.el);
+        options.parent.append(this.render().el);
 
         this.initJqueryVariables();
         this.initAnimationTimelineHide();

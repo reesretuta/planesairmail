@@ -1,10 +1,10 @@
 
 
 
-
+var app = require('./app');
 
 $(function() {
-    var app = require('./app');
+
 
 
 
