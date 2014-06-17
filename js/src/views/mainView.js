@@ -5,7 +5,7 @@ var allQuestions = require('../collections/allQuestions');
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Views ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var IntroView = require('./introView');
-var NameView = require('./nameView');
+var EnterNameView = require('./enterNameView');
 var QuestionView = require('./questionView');
 
 
@@ -34,7 +34,7 @@ var MainView = Backbone.View.extend({
     initPages: function() {
         "use strict";
 
-        this.pages.push(new NameView({parent: this.$pagesContainer}));
+        this.pages.push(new EnterNameView({parent: this.$pagesContainer}));
 
         this.pages = this.pages.concat(_.map(allQuestions.models, function(questionModel) {
             return new QuestionView({model: questionModel, parent: this.$pagesContainer});

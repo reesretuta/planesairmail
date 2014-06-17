@@ -55,7 +55,7 @@
 
         var dustyNoBlink = new PIXI.MovieClip(textures);
 
-        dustyNoBlink.position.x = 800;
+        dustyNoBlink.position.x = 0;
         dustyNoBlink.position.y = 0;
 
         dustyNoBlink.anchor.x = 0.5;
@@ -74,7 +74,14 @@
     /* ******************* Animation Functions ******************** */
     // ============================================================ //
 
+    EnterNameScene.prototype.updateDustyPosition = function(position) {
+        var dustyNoBlink = this.clips.dustyNoBlink;
 
+        dustyNoBlink.windowY = position.y;
+        dustyNoBlink.windowX = position.x;
+    };
+
+    // called on each animation frame
     EnterNameScene.prototype.update = function() {
         // call parent function
         Scene.prototype.update.call(this);

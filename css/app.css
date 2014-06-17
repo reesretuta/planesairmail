@@ -24,7 +24,8 @@ html, body {
 body {
   background: url('../assets/img/background.png') no-repeat center center;
   -webkit-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+  background-color: #000000; }
 
 /* ************************* Imports ************************** */
 #header {
@@ -58,6 +59,8 @@ body {
 
 #content {
   z-index: 2; }
+  #content .pages-ctn {
+    z-index: 2; }
 
 #intro-view {
   height: 100%;
@@ -192,4 +195,5 @@ div.page.name input[type="text"] {
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto; }
+  margin: auto;
+  z-index: 1; }

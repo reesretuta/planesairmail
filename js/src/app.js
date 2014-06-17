@@ -1,6 +1,9 @@
 
 
 
+// adds our custom modifications to the PIXI library
+require('./pixi/libModifications');
+
 
 var MainView = require('./views/mainView');
 
@@ -16,7 +19,6 @@ var app = {};
 app.render = _.after(2, function() {
     "use strict";
 
-    console.log('render');
 
     app.MainView = new MainView();
 

@@ -31,10 +31,14 @@
             options.parent.append(this.render().el);
 
             this.initScene();
+            this.initAnimationTimeline();
         },
         initScene: function () {
             this.scene = scenesManager.createScene('enterName', EnterNameScene);
 
+        },
+        initAnimationTimeline: function() {
+            this.timeline = this.getAnimationDustyIn();
         },
         render: function () {
             if (this.el.innerHTML === '')
@@ -44,15 +48,39 @@
         },
 
         // ============================================================ //
-        /* ******************* Animation Functions ******************** */
+        /* ***************** Run Animation Functions ****************** */
         // ============================================================ //
         startAnimation: function() {
             //this.scene.onUpdate(_.bind(this.onAnimationFrame, this));
+
+            this.timeline.play();
         },
         onAnimationFrame: function() {
+            //on pixi update
             //console.log(this);
         },
 
+        // ============================================================ //
+        /* ******************* Animation Timelines ******************** */
+        // ============================================================ //
+        getAnimationDustyIn: function() {
+            var animationTime = 0.6;
+            var position = {x: 0.75, y: 0};
+
+            var timeline = new TimelineMax({
+                paused: true
+            });
+
+            timeline.add(TweenLite.to(position, animationTime, {
+                y: 0.5,
+                ease: 'Cubic.easeInOut',
+                onUpdate: this.scene.updateDustyPosition,
+                onUpdateScope: this.scene,
+                onUpdateParams: [position]
+            }), 0);
+
+            return timeline;
+        },
 
 
         // ============================================================ //
@@ -63,7 +91,7 @@
 
             scenesManager.goToScene('enterName');
 
-            this.startAnimation();
+            setTimeout(_.bind(this.startAnimation, this), 1000);
         },
         hide: function () {
 

@@ -8,6 +8,8 @@ var Scene = function() {
     this.paused = false;
     this.updateCB = function(){};
 
+    this.$window = $(window);
+
     PIXI.Stage.apply(this, arguments);
 };
 
