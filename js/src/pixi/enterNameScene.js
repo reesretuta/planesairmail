@@ -10,28 +10,22 @@
     var extend = require('./extend');
     var Scene = require('./scene');
 
-
-
-    function getFileNames(fileStart, numDigits, ext) {
-        return _.map(_.range(15), function(num) {
-//            var numZeros = numDigits - num.toString().length;
-//            var zeros = new Array(numZeros + 1).join('0');
-//
-//            return fileStart + zeros + num + '.' + ext;
-            return num;
-        });
+    // ============================================================ //
+    /* ******************** Helper Functions ********************** */
+    // ============================================================ //
+    function getDustyIdleTextures() {
+        return PIXI.getTextures('dusty_idle_', 1, 11);
     }
 
-    function getDustyNoBlinkTextures() {
-        return _.map(getFileNames('Comp 2_', 5, 'png'), function(fileName) {
-            return PIXI.Texture.fromFrame(fileName);
-        });
-
+    function getDustyBlinkTextures() {
+        return PIXI.getTextures('dusty_blink_', 1, 17);
     }
 
 
 
-
+    // ============================================================ //
+    /* ******************** Enter Name Scene ********************** */
+    // ============================================================ //
 
     var EnterNameScene = function() {
         //parent constructor
@@ -53,7 +47,7 @@
     };
 
     EnterNameScene.prototype.initClipDustyNoBlink = function() {
-        var textures = getDustyNoBlinkTextures();
+        var textures = getDustyIdleTextures();
 
         var dustyNoBlink = new PIXI.MovieClip(textures);
 
@@ -70,6 +64,7 @@
         // add to stage
         this.addChild(dustyNoBlink);
     };
+
 
     // ============================================================ //
     /* ******************* Animation Functions ******************** */
@@ -93,7 +88,7 @@
     /* ****************** Individual Animations ******************* */
     // ============================================================ //
     EnterNameScene.prototype.getAnimationDustyIn = function() {
-        var animationTime = 1.4;
+        var animationTime = 1.8;
 
         var timeline = new TimelineMax({
             paused: true
@@ -110,7 +105,7 @@
     };
 
     EnterNameScene.prototype.getAnimationDustyHover = function() {
-        var animationTime = 0.7;
+        var animationTime = 1;
 
         var timeline = new TimelineMax({
             paused: true,

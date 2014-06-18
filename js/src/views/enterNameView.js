@@ -31,7 +31,7 @@
 
             this.initScene();
         },
-        initScene: function () {
+        initScene: function() {
             this.scene = scenesManager.createScene('enterName', EnterNameScene);
 
         },

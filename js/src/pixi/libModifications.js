@@ -8,7 +8,6 @@
 
 
 
-
     PIXI.DisplayObject.prototype._$window = $(window);
     PIXI.DisplayObject.prototype._windowX = 0;
     PIXI.DisplayObject.prototype._windowY = 0;
@@ -54,6 +53,29 @@
 
 
 
+
+
+
+
+
+
+    function getFileNames(filePrefix, rangeStart, rangeEnd) {
+        var trueEnd = rangeEnd-1;
+
+        return _.map(_.range(rangeStart, rangeEnd), function(num) {
+
+            var numZeros = trueEnd.toString().length - num.toString().length;
+            var zeros = new Array(numZeros + 1).join('0');
+
+            return filePrefix + zeros + num + '.png';
+        });
+    }
+
+    PIXI.getTextures = function(filePrefix, rangeStart, rangeEnd) {
+        return _.map(getFileNames(filePrefix, rangeStart, rangeEnd), function(fileName) {
+            return PIXI.Texture.fromFrame(fileName);
+        });
+    }
 
 
 

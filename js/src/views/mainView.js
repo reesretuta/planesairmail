@@ -22,7 +22,6 @@ var MainView = Backbone.View.extend({
         this.initJqueryVariables();
 
 
-
         //create canvas element
         scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
@@ -55,13 +54,12 @@ var MainView = Backbone.View.extend({
 
 
 
-        var self = this;
-        setTimeout(function() {
-            "use strict";
-
-            //self.introView.hide();
-
-        }, 200);
+//        var self = this;
+//        setTimeout(function() {
+//
+//            self.introView.hide();
+//
+//        }, 200);
     },
     addPagesToDom: function() {
         "use strict";

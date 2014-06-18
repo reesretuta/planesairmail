@@ -38,7 +38,7 @@ app.render = _.after(2, function() {
 
 
 // create an array of assets to load
-var assetsToLoader = ['./assets/spritesheets/dusty.json'];
+var assetsToLoader = ['./assets/spritesheets/dusty_idle.json', './assets/spritesheets/dusty_blink.json'];
 
 // create a new loader
 var loader = new PIXI.AssetLoader(assetsToLoader);

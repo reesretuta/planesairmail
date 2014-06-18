@@ -1,0 +1,92 @@
+{"frames": {
+
+"dusty_idle_01.png":
+{
+	"frame": {"x":604,"y":2,"w":600,"h":319},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":22,"w":600,"h":319},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_02.png":
+{
+	"frame": {"x":2,"y":2,"w":600,"h":319},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":22,"w":600,"h":319},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_03.png":
+{
+	"frame": {"x":2,"y":1276,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_04.png":
+{
+	"frame": {"x":604,"y":1274,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_05.png":
+{
+	"frame": {"x":2,"y":959,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_06.png":
+{
+	"frame": {"x":604,"y":957,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_07.png":
+{
+	"frame": {"x":2,"y":642,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_08.png":
+{
+	"frame": {"x":2,"y":323,"w":600,"h":317},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":24,"w":600,"h":317},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_09.png":
+{
+	"frame": {"x":604,"y":640,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+},
+"dusty_idle_10.png":
+{
+	"frame": {"x":604,"y":323,"w":600,"h":315},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":26,"w":600,"h":315},
+	"sourceSize": {"w":600,"h":341}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "dusty_idle.png",
+	"format": "RGBA8888",
+	"size": {"w":1206,"h":1593},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:54afe585daa47b9eebb1ccdd26fcf01f:54af9e973729e9237681f8e7bce62556:bb2641090b35a2b8e4f02fe407f27d7d$"
+}
+}
