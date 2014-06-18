@@ -1,14 +1,10 @@
 
-
-
-
-
-
 (function() {
     "use strict";
 
     var extend = require('./extend');
     var Scene = require('./scene');
+    var Character = require('./character');
 
     // ============================================================ //
     /* ******************** Helper Functions ********************** */
@@ -24,14 +20,14 @@
 
 
     // ============================================================ //
-    /* ******************** Enter Name Scene ********************** */
+    /* ************* Enter Name Pixi Animation Class ************** */
     // ============================================================ //
 
     var EnterNameScene = function() {
         //parent constructor
         Scene.apply(this, arguments);
 
-        this.clips = {};
+        this.characters = {};
 
         this.initializeMovieClips();
 
@@ -44,25 +40,35 @@
 
     EnterNameScene.prototype.initializeMovieClips = function() {
         this.initClipDustyNoBlink();
+
+
     };
 
     EnterNameScene.prototype.initClipDustyNoBlink = function() {
-        var textures = getDustyIdleTextures();
 
-        var dustyNoBlink = new PIXI.MovieClip(textures);
+        var dusty = new Character();
 
-        dustyNoBlink.windowX = 0.75;
-        dustyNoBlink.windowY = -1;
+        var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
+        var dustyBlinkAnimation = new PIXI.MovieClip(getDustyBlinkTextures());
 
-        dustyNoBlink.anchor.x = 0.5;
-        dustyNoBlink.anchor.y = 0.5;
+        dustyIdleAnimation.anchor = {x: 0.5, y: 0.5};
+        dustyBlinkAnimation.anchor = {x: 0.5, y: 0.5};
 
-        dustyNoBlink.gotoAndStop(0);
+        dusty.setIdleState(dustyIdleAnimation);
+        dusty.addState('blink', dustyBlinkAnimation);
 
-        this.clips.dustyNoBlink = dustyNoBlink;
+
+        dusty.windowX = 0.75;
+        dusty.windowY = -1;
+
+        this.characters.dusty = dusty;
+
+        setTimeout(function() {
+            dusty.goToState('blink');
+        }, 5000);
 
         // add to stage
-        this.addChild(dustyNoBlink);
+        this.addChild(dusty);
     };
 
 
@@ -94,7 +100,7 @@
             paused: true
         });
 
-        timeline.add(TweenLite.fromTo(this.clips.dustyNoBlink, animationTime, {
+        timeline.add(TweenLite.fromTo(this.characters.dusty, animationTime, {
             windowY: -0.2
         }, {
             windowY: 0.5,
@@ -112,11 +118,11 @@
             repeat: -1
         });
 
-        timeline.append(TweenLite.to(this.clips.dustyNoBlink, animationTime, {
+        timeline.append(TweenLite.to(this.characters.dusty, animationTime, {
             windowY: 0.48,
             ease: 'Sine.easeInOut'
         }));
-        timeline.append(TweenLite.to(this.clips.dustyNoBlink, animationTime, {
+        timeline.append(TweenLite.to(this.characters.dusty, animationTime, {
             windowY: 0.5,
             ease: 'Sine.easeInOut'
         }));
@@ -134,10 +140,15 @@
         // call parent function
         Scene.prototype.update.call(this);
 
-        //if clip isn't playing, start it
-        if(!this.clips.dustyNoBlink.playing) {
-            this.clips.dustyNoBlink.gotoAndPlay(0);
-        }
+        // update each character
+        _.each(this.characters, function(character) {
+            character.update();
+        });
+
+//        if clip isn't playing, start it
+//        if(!this.clips.dustyNoBlink.playing) {
+//            this.clips.dustyNoBlink.gotoAndPlay(0);
+//        }
     };
 
 

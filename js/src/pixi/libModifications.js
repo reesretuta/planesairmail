@@ -3,7 +3,6 @@
 
     /*
      * Custom Edits for the PIXI Library
-     * Created by: Alec McCormick
      */
 
 
@@ -58,13 +57,17 @@
 
 
 
-
+    // used to get individual textures of spritesheet json files
+    //
+    // Example call: getFileNames('animation_idle_', 1, 105);
+    // Returns: ['animation_idle_001.png', 'animation_idle_002.png', ... , 'animation_idle_104.png']
+    //
     function getFileNames(filePrefix, rangeStart, rangeEnd) {
-        var trueEnd = rangeEnd-1;
+        var numDigits = (rangeEnd-1).toString().length;
 
         return _.map(_.range(rangeStart, rangeEnd), function(num) {
 
-            var numZeros = trueEnd.toString().length - num.toString().length;
+            var numZeros = numDigits - num.toString().length;   //extra characters
             var zeros = new Array(numZeros + 1).join('0');
 
             return filePrefix + zeros + num + '.png';
@@ -72,9 +75,7 @@
     }
 
     PIXI.getTextures = function(filePrefix, rangeStart, rangeEnd) {
-        return _.map(getFileNames(filePrefix, rangeStart, rangeEnd), function(fileName) {
-            return PIXI.Texture.fromFrame(fileName);
-        });
+        return _.map(getFileNames(filePrefix, rangeStart, rangeEnd), PIXI.Texture.fromFrame);
     }
 
 
