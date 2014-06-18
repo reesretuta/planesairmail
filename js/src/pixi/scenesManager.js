@@ -40,8 +40,6 @@
             var scene = new SceneConstructor();
             ScenesManager.scenes[id] = scene;
 
-
-
             return scene;
         },
         goToScene: function(id) {
@@ -51,7 +49,11 @@
 
                 ScenesManager.currentScene = ScenesManager.scenes[id];
 
-                ScenesManager.currentScene.reposition();
+                // Trigger resize to make sure all child objects in the
+                // new scene are correctly positioned
+                ScenesManager.onWindowResize();
+
+                // Resume new scene
                 ScenesManager.currentScene.resume();
 
                 return true;
@@ -59,11 +61,10 @@
             return false;
         },
         onWindowResize: function() {
-            ScenesManager.currentScene.reposition();
-
             var width = $window.width();
             var height = $window.height();
 
+            ScenesManager.currentScene.reposition(width, height);
             ScenesManager.renderer.resize(width, height);
         }
     };

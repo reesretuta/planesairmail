@@ -41,14 +41,13 @@
 
     // This function should be called for each display object on window resize,
     // adjusting the pixel position to mirror the relative positions windowX and windowY
-    PIXI.DisplayObject.prototype.reposition = function() {
-        this.position.y = this._$window.height() * this._windowY;
-        this.position.x = this._$window.width() * this._windowX;
+    PIXI.DisplayObject.prototype.reposition = function(width, height) {
 
-        console.log(this);
+        this.position.x = width * this._windowX;
+        this.position.y = height * this._windowY;
 
         _.each(this.children, function(displayObject) {
-            displayObject.reposition();
+            displayObject.reposition(width, height);
         });
     };
 

@@ -40,6 +40,8 @@
         this.clips = {};
 
         this.initializeMovieClips();
+
+        this.initializeAnimationTimeline();
     };
 
     // ============================================================ //
@@ -55,8 +57,8 @@
 
         var dustyNoBlink = new PIXI.MovieClip(textures);
 
-        dustyNoBlink.position.x = 0;
-        dustyNoBlink.position.y = 0;
+        dustyNoBlink.windowX = 0.75;
+        dustyNoBlink.windowY = -1;
 
         dustyNoBlink.anchor.x = 0.5;
         dustyNoBlink.anchor.y = 0.5;
@@ -69,17 +71,68 @@
         this.addChild(dustyNoBlink);
     };
 
-
     // ============================================================ //
     /* ******************* Animation Functions ******************** */
     // ============================================================ //
+    EnterNameScene.prototype.initializeAnimationTimeline = function() {
+        var timeline = new TimelineMax({
+            paused: true
+        });
 
-    EnterNameScene.prototype.updateDustyPosition = function(position) {
-        var dustyNoBlink = this.clips.dustyNoBlink;
+        timeline.append(this.getAnimationDustyIn().play());
+        timeline.append(this.getAnimationDustyHover().play());
 
-        dustyNoBlink.windowY = position.y;
-        dustyNoBlink.windowX = position.x;
+        this.timeline = timeline;
     };
+
+    EnterNameScene.prototype.startAnimation = function() {
+        this.timeline.play();
+    };
+
+    // ============================================================ //
+    /* ****************** Individual Animations ******************* */
+    // ============================================================ //
+    EnterNameScene.prototype.getAnimationDustyIn = function() {
+        var animationTime = 1.4;
+
+        var timeline = new TimelineMax({
+            paused: true
+        });
+
+        timeline.add(TweenLite.fromTo(this.clips.dustyNoBlink, animationTime, {
+            windowY: -0.2
+        }, {
+            windowY: 0.5,
+            ease: 'Cubic.easeInOut'
+        }), 0);
+
+        return timeline;
+    };
+
+    EnterNameScene.prototype.getAnimationDustyHover = function() {
+        var animationTime = 0.7;
+
+        var timeline = new TimelineMax({
+            paused: true,
+            repeat: -1
+        });
+
+        timeline.append(TweenLite.to(this.clips.dustyNoBlink, animationTime, {
+            windowY: 0.48,
+            ease: 'Sine.easeInOut'
+        }));
+        timeline.append(TweenLite.to(this.clips.dustyNoBlink, animationTime, {
+            windowY: 0.5,
+            ease: 'Sine.easeInOut'
+        }));
+
+        return timeline;
+    };
+
+
+
+
+
 
     // called on each animation frame
     EnterNameScene.prototype.update = function() {
