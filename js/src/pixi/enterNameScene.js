@@ -54,14 +54,10 @@
         dusty.addState('blink', dustyBlinkAnimation);
 
 
-        dusty.windowX = 0.75;
+        dusty.windowX = 0.25;
         dusty.windowY = -1;
 
         this.characters.dusty = dusty;
-
-        setTimeout(function() {
-            dusty.goToState('blink');
-        }, 2000);
 
         // add to stage
         this.addChild(dusty);
@@ -84,6 +80,11 @@
 
     EnterNameScene.prototype.startAnimation = function() {
         this.timeline.play();
+
+        var dusty = this.characters.dusty;
+        setTimeout(function() {
+            dusty.goToState('blink');
+        }, 3000);
     };
 
 
@@ -104,16 +105,21 @@
     // ============================================================ //
     EnterNameScene.prototype.getAnimationDustyIn = function() {
         var animationTime = 1.8;
+        var easing = 'Cubic.easeInOut';
+        var dusty = this.characters.dusty;
 
         var timeline = new TimelineMax({
-            paused: true
+            paused: true,
+            onStart: function() {
+
+            }
         });
 
         timeline.add(TweenLite.fromTo(this.characters.dusty, animationTime, {
             windowY: -0.2
         }, {
             windowY: 0.5,
-            ease: 'Cubic.easeInOut'
+            ease: easing
         }), 0);
 
         return timeline;
@@ -121,6 +127,7 @@
 
     EnterNameScene.prototype.getAnimationDustyHover = function() {
         var animationTime = 1;
+        var easing = 'Quad.easeInOut';
 
         var timeline = new TimelineMax({
             paused: true,
@@ -128,12 +135,12 @@
         });
 
         timeline.append(TweenLite.to(this.characters.dusty, animationTime, {
-            windowY: 0.48,
-            ease: 'Sine.easeInOut'
+            bumpY: -15,
+            ease: easing
         }));
         timeline.append(TweenLite.to(this.characters.dusty, animationTime, {
-            windowY: 0.5,
-            ease: 'Sine.easeInOut'
+            bumpY: 0,
+            ease: easing
         }));
 
         return timeline;

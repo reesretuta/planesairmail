@@ -67,7 +67,11 @@
         /* ************************* Render Functions ************************* */
         // ==================================================================== //
         render: function() {
-            this.introView.start(); //start intro
+            var introView = this.introView;
+
+            setTimeout(function() {
+                introView.start(); //start intro
+            }, 200);
         },
         addPagesToDom: function() {
             "use strict";

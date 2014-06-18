@@ -10,6 +10,8 @@
     PIXI.DisplayObject.prototype._$window = $(window);
     PIXI.DisplayObject.prototype._windowX = 0;
     PIXI.DisplayObject.prototype._windowY = 0;
+    PIXI.DisplayObject.prototype._bumpX = 0;
+    PIXI.DisplayObject.prototype._bumpY = 0;
 
 
     // windowX and windowY are properties added to all Pixi display objects that
@@ -23,7 +25,7 @@
         set: function(value) {  // Value should be between 0 and 1
             this._windowX = value;
 
-            this.position.x = this._$window.width() * value;
+            this.position.x = (this._$window.width() * value) + this._bumpX;
         }
     });
     Object.defineProperty(PIXI.DisplayObject.prototype, 'windowY', {
@@ -33,21 +35,47 @@
         set: function(value) {  // Value should be between 0 and 1
             this._windowY = value;
 
-            this.position.y = this._$window.height() * value;
+            this.position.y = (this._$window.height() * value) + this._bumpY;
         }
     });
+
+
+    // bumpX and bumpY are properties on all display objects used for shifting the positioning by flat pixel values
+    // useful for stuff like hover animations while still moving around a character.
+    Object.defineProperty(PIXI.DisplayObject.prototype, 'bumpX', {
+        get: function() {
+            return this._bumpX;
+        },
+        set: function(value) {  // Value should be between 0 and 1
+            this._bumpX = value;
+
+            this.position.x = (this._$window.width() * this._windowX) + value;
+        }
+    });
+    Object.defineProperty(PIXI.DisplayObject.prototype, 'bumpY', {
+        get: function() {
+            return this._bumpY;
+        },
+        set: function(value) {  // Value should be between 0 and 1
+            this._bumpY = value;
+
+            this.position.y = (this._$window.height() * this._windowY) + value;
+        }
+    });
+
 
     // This function should be called for each display object on window resize,
     // adjusting the pixel position to mirror the relative positions windowX and windowY
     PIXI.DisplayObject.prototype.reposition = function(width, height) {
 
-        this.position.x = width * this._windowX;
-        this.position.y = height * this._windowY;
+        this.position.x = (width * this._windowX) + this._bumpX;
+        this.position.y = (height * this._windowY) + this._bumpY;
 
         _.each(this.children, function(displayObject) {
             displayObject.reposition(width, height);
         });
     };
+
 
 
 

@@ -14,9 +14,6 @@
 
 
 
-
-
-
     var EnterNameView = Backbone.View.extend({
         className: 'name page',
         template: template,
