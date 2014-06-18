@@ -63,7 +63,7 @@
             var width = $window.width();
             var height = $window.height();
 
-            ScenesManager.currentScene.reposition(width, height);
+            ScenesManager.currentScene._onWindowResize(width, height);
             ScenesManager.renderer.resize(width, height);
         }
     };

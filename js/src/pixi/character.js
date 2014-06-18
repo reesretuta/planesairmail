@@ -6,9 +6,10 @@
 
 
     // displayObject should be an instance of PIXI.Sprite or PIXI.MovieClip
-    var Character = function(movieClip) {
+    var Character = function(name, movieClip) {
         PIXI.DisplayObjectContainer.call(this); // Parent constructor
 
+        this.name = name;
         this.idle = null;
         this.states = {};
         this.onUpdateCallback = function() {};
@@ -16,19 +17,19 @@
         if(!_.isUndefined(movieClip)) {
             this.setIdleState(movieClip);
         }
-
-        this.nextStates = [];
     };
 
 
-    Character.prototype.setIdleState = function(movieClip) {
-        this.idle = movieClip;
+    Character.prototype.setIdleState = function(pixiSprite) {
+        this.idle = pixiSprite;
 
-        this.addChild(movieClip);   //add to display object container
+        if(pixiSprite instanceof PIXI.MovieClip) {
+            pixiSprite.visible = true;
+            pixiSprite.loop = true;
+            pixiSprite.gotoAndPlay(0);  //start clip
+        }
 
-        movieClip.visible = true;
-        movieClip.loop = true;
-        movieClip.gotoAndPlay(0);   //start clip
+        this.addChild(pixiSprite);   //add to display object container
     };
 
     //add movie clip to play when character changes to state
@@ -41,12 +42,19 @@
     // public API function. Waits until current state is finished before switching to next state.
     Character.prototype.goToState = function(state) {
 
-        this.nextStates.push(state);
+        if(_.isUndefined(this.states[state])) {
+            throw 'Error: Character ' + this.name + ' does not contain state: ' + state;
+        }
 
-        this.idle.onComplete = _.bind(this.swapState, this, state);
+        if(this.idle instanceof PIXI.MovieClip) {
+            this.idle.onComplete = _.bind(this.swapState, this, state);
 
-        // after current animation finishes go to this state next
-        this.idle.loop = false;
+            // after current animation finishes go to this state next
+            this.idle.loop = false;
+        } else {
+            this.swapState(state);
+            //switch immediately if character idle state is a single sprite
+        }
     };
 
     // changes state immediately
@@ -57,14 +65,16 @@
         var newState = this.states[state];
 
         newState.onComplete = function() {  //switch back to idle after run
-            idleState.gotoAndPlay(0);
+            if(idleState instanceof PIXI.MovieClip) {
+                idleState.loop = true;
+                idleState.gotoAndPlay(0);
+            }
 
             newState.visible = false;
             idleState.visible = true;
         };
 
         idleState.visible = false;
-        idleState.loop = true;
 
         newState.loop = false;
         newState.visible = true;

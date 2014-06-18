@@ -42,7 +42,7 @@
 
     EnterNameScene.prototype.initDusty = function() {
 
-        var dusty = new Character();
+        var dusty = new Character('Dusty');
 
         var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
         var dustyBlinkAnimation = new PIXI.MovieClip(getDustyBlinkTextures());
@@ -54,7 +54,7 @@
         dusty.addState('blink', dustyBlinkAnimation);
 
 
-        dusty.windowX = 0.25;
+        dusty.windowX = 0.15;
         dusty.windowY = -1;
 
         this.characters.dusty = dusty;
@@ -111,13 +111,14 @@
         var timeline = new TimelineMax({
             paused: true,
             onStart: function() {
+                var height = dusty.scale.y * dusty.getLocalBounds().height;
 
+                //set y so that dusty is just offscreen
+                dusty.windowY = -(height/2)/$(window).height();
             }
         });
 
-        timeline.add(TweenLite.fromTo(this.characters.dusty, animationTime, {
-            windowY: -0.2
-        }, {
+        timeline.add(TweenLite.to(dusty, animationTime, {
             windowY: 0.5,
             ease: easing
         }), 0);

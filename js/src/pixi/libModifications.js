@@ -6,13 +6,22 @@
      */
 
 
+    // =================================================================== //
+    /* ******************* Relative Position Functions ******************* */
+    // =================================================================== //
 
     PIXI.DisplayObject.prototype._$window = $(window);
+
     PIXI.DisplayObject.prototype._windowX = 0;
     PIXI.DisplayObject.prototype._windowY = 0;
-    PIXI.DisplayObject.prototype._bumpX = 0;
-    PIXI.DisplayObject.prototype._bumpY = 0;
 
+
+    PIXI.DisplayObject.prototype._setPositionX = function(windowWidth) {
+        this.position.x = (windowWidth * this._windowX) + this._bumpX;
+    };
+    PIXI.DisplayObject.prototype._setPositionY = function(windowHeight) {
+        this.position.y = (windowHeight * this._windowY) + this._bumpY;
+    };
 
     // windowX and windowY are properties added to all Pixi display objects that
     // should be used instead of position.x and position.y
@@ -25,7 +34,7 @@
         set: function(value) {  // Value should be between 0 and 1
             this._windowX = value;
 
-            this.position.x = (this._$window.width() * value) + this._bumpX;
+            this._setPositionX(this._$window.width());
         }
     });
     Object.defineProperty(PIXI.DisplayObject.prototype, 'windowY', {
@@ -35,13 +44,17 @@
         set: function(value) {  // Value should be between 0 and 1
             this._windowY = value;
 
-            this.position.y = (this._$window.height() * value) + this._bumpY;
+            this._setPositionY(this._$window.height());
         }
     });
 
 
-    // bumpX and bumpY are properties on all display objects used for shifting the positioning by flat pixel values
-    // useful for stuff like hover animations while still moving around a character.
+    PIXI.DisplayObject.prototype._bumpX = 0;
+    PIXI.DisplayObject.prototype._bumpY = 0;
+
+    // bumpX and bumpY are properties on all display objects used for
+    // shifting the positioning by flat pixel values. Useful for stuff
+    // like hover animations while still moving around a character.
     Object.defineProperty(PIXI.DisplayObject.prototype, 'bumpX', {
         get: function() {
             return this._bumpX;
@@ -63,26 +76,73 @@
         }
     });
 
+    // =================================================================== //
+    /* ************************* Scaling Functions *********************** */
+    // =================================================================== //
 
-    // This function should be called for each display object on window resize,
-    // adjusting the pixel position to mirror the relative positions windowX and windowY
-    PIXI.DisplayObject.prototype.reposition = function(width, height) {
 
-        this.position.x = (width * this._windowX) + this._bumpX;
-        this.position.y = (height * this._windowY) + this._bumpY;
+    // windowScale corresponds to window size
+    //   ex: windowScale = 0.25 means 1/4 size of window
+    // scaleMin and scaleMax correspond to natural size
+    //   ex: scaleMin = 0.5 means sprite will not shrink to more than half of the original size.
+    PIXI.DisplayObject.prototype._windowScale = -1;
+    PIXI.DisplayObject.prototype.scaleMin = 0;
+    PIXI.DisplayObject.prototype.scaleMax = Number.MAX_VALUE;
 
-        _.each(this.children, function(displayObject) {
-            displayObject.reposition(width, height);
-        });
+    // WindowScale: value between 0 & 1, or -1
+    // This defines what % of the window (height or width, whichever is smaller)
+    // the object will be. Example: a windowScale of 0.5 will size the displayObject
+    // to half the size of the window.
+    Object.defineProperty(PIXI.DisplayObject.prototype, 'windowScale', {
+        get: function() {
+            return this._windowScale;
+        },
+        set: function(value) {
+            this._windowScale = value;
+
+            this._setScale(this._$window.width(), this._$window.height());
+        }
+    });
+
+    PIXI.DisplayObject.prototype._setScale = function(windowWidth, windowHeight) {
+        var localBounds = this.getLocalBounds();
+
+        var scale = this._windowScale * Math.min(windowHeight/localBounds.height, windowWidth/localBounds.width);
+
+        //keep scale within our defined bounds
+        scale = Math.max(this.scaleMin, Math.min(scale, this.scaleMax));
+
+        this.scale = {x: scale, y: scale};
     };
 
 
 
 
+    // =================================================================== //
+    /* ********************* Window Resize Functions ********************* */
+    // =================================================================== //
+
+    // This function should be called for each display object on window resize,
+    // adjusting the pixel position to mirror the relative positions windowX and windowY
+    // and adjusting scale if it's set
+    PIXI.DisplayObject.prototype._onWindowResize = function(width, height) {
+        this._setPositionX(width);
+        this._setPositionY(height);
+
+        if(this._windowScale !== -1) {
+            this._setScale(width, height);
+        }
+
+        _.each(this.children, function(displayObject) {
+            displayObject._onWindowResize(width, height);
+        });
+    };
 
 
 
-
+    // =================================================================== //
+    /* ************** Spritesheet Texture Functions *************** */
+    // =================================================================== //
 
 
     // used to get individual textures of spritesheet json files
