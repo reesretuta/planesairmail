@@ -2,6 +2,8 @@ var gulp = require('gulp');
 
 var _ = require('lodash');
 
+var fs = require('fs');
+
 var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
@@ -78,6 +80,29 @@ gulp.task('watch', function () {
 
     gulp.watch(sassSrc, ['sass']);
 });
+
+
+gulp.task('assets', function() {
+    "use strict";
+
+    var dir = 'assets/introVideo';
+
+    fs.readdir(dir, function(err, files) {
+
+        var fullPathFiles = _.map(files, function(file) {
+            return dir + '/' + file;
+        });
+
+        fs.writeFile('./assets/assets.json', JSON.stringify(fullPathFiles), function (err) {
+            if (err) throw err;
+            console.log('It\'s saved!');
+        });
+    });
+
+});
+
+
+
 
 // Default
 gulp.task('default', ['browserify', 'sass', 'watch']);

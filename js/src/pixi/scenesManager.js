@@ -43,7 +43,6 @@
             return scene;
         },
         goToScene: function(id) {
-
             if (ScenesManager.scenes[id]) {
                 if (ScenesManager.currentScene) ScenesManager.currentScene.pause();
 

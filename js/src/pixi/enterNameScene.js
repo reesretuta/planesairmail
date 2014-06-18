@@ -18,7 +18,6 @@
     }
 
 
-
     // ============================================================ //
     /* ************* Enter Name Pixi Animation Class ************** */
     // ============================================================ //
@@ -29,8 +28,7 @@
 
         this.characters = {};
 
-        this.initializeMovieClips();
-
+        this.initializeCharacters();
         this.initializeAnimationTimeline();
     };
 
@@ -38,13 +36,11 @@
     /* ********************* Initialization *********************** */
     // ============================================================ //
 
-    EnterNameScene.prototype.initializeMovieClips = function() {
-        this.initClipDustyNoBlink();
-
-
+    EnterNameScene.prototype.initializeCharacters = function() {
+        this.initDusty();
     };
 
-    EnterNameScene.prototype.initClipDustyNoBlink = function() {
+    EnterNameScene.prototype.initDusty = function() {
 
         var dusty = new Character();
 
@@ -65,7 +61,7 @@
 
         setTimeout(function() {
             dusty.goToState('blink');
-        }, 5000);
+        }, 2000);
 
         // add to stage
         this.addChild(dusty);
@@ -89,6 +85,19 @@
     EnterNameScene.prototype.startAnimation = function() {
         this.timeline.play();
     };
+
+
+    // called on each animation frame
+    EnterNameScene.prototype.update = function() {
+        // call parent function
+        Scene.prototype.update.call(this);
+
+        // update each character
+        _.each(this.characters, function(character) {
+            character.update();
+        });
+    };
+
 
     // ============================================================ //
     /* ****************** Individual Animations ******************* */
@@ -128,27 +137,6 @@
         }));
 
         return timeline;
-    };
-
-
-
-
-
-
-    // called on each animation frame
-    EnterNameScene.prototype.update = function() {
-        // call parent function
-        Scene.prototype.update.call(this);
-
-        // update each character
-        _.each(this.characters, function(character) {
-            character.update();
-        });
-
-//        if clip isn't playing, start it
-//        if(!this.clips.dustyNoBlink.playing) {
-//            this.clips.dustyNoBlink.gotoAndPlay(0);
-//        }
     };
 
 

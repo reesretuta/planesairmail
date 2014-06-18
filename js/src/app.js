@@ -20,7 +20,6 @@ var app = {};
 app.render = _.after(2, function() {
     "use strict";
 
-
     app.MainView = new MainView();
 
 
@@ -36,9 +35,11 @@ app.render = _.after(2, function() {
 /* ************************** Asset Loading ************************** */
 // =================================================================== //
 
+var introVideoAssets = require('../../assets/assets.json');
+
 
 // create an array of assets to load
-var assetsToLoader = ['./assets/spritesheets/dusty_idle.json', './assets/spritesheets/dusty_blink.json'];
+var assetsToLoader = ['./assets/spritesheets/dusty_idle.json', './assets/spritesheets/dusty_blink.json'].concat(introVideoAssets);
 
 // create a new loader
 var loader = new PIXI.AssetLoader(assetsToLoader);

@@ -1,99 +1,115 @@
 
-var scenesManager = require('../pixi/scenesManager');
+(function() {
+    "use strict";
+
+
+    var scenesManager = require('../pixi/scenesManager');
 // ~~~~~~~~~~~~~~~~~~~~~~~~ Collections ~~~~~~~~~~~~~~~~~~~~~~~~
-var allQuestions = require('../collections/allQuestions');
+    var allQuestions = require('../collections/allQuestions');
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Views ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var IntroView = require('./introView');
-var EnterNameView = require('./enterNameView');
-var QuestionView = require('./questionView');
+    var IntroView = require('./introView');
+    var EnterNameView = require('./enterNameView');
+    var QuestionView = require('./questionView');
 
 
 
-var MainView = Backbone.View.extend({
-    el: '#content',
-    events: {
-        'click a.next': 'onNext'
-    },
-    initialize: function() {
-        this.pages = [];
-        this.activePageIndex = 0;
+    var MainView = Backbone.View.extend({
+        el: '#content',
+        events: {
+            'click a.next': 'onNext'
+        },
+        initialize: function() {
+            this.pages = [];
+            this.activePageIndex = -1;
 
-        this.initJqueryVariables();
+            this.initJqueryVariables();
 
+            //create canvas element
+            scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
-        //create canvas element
-        scenesManager.initialize($(window).width(), $(window).height(), this.$el);
+            // create views
+            this.initIntroView();
+            this.initPages();
+        },
 
-        // create views
-        //this.introView = new IntroView({parent: this.$el});
-        this.initPages();
-    },
+        initIntroView: function() {
+            var introView = new IntroView({parent: this.$el});
 
-    initPages: function() {
-        "use strict";
-
-        this.pages.push(new EnterNameView({parent: this.$pagesContainer}));
-
-        this.pages = this.pages.concat(_.map(allQuestions.models, function(questionModel) {
-            return new QuestionView({model: questionModel, parent: this.$pagesContainer});
-        }, this));
-    },
-    initJqueryVariables: function() {
-        "use strict";
-
-        this.$pagesContainer = this.$el.find('div.pages-ctn');
-    },
-
-    // ==================================================================== //
-    /* ************************* Render Functions ************************* */
-    // ==================================================================== //
-    render: function() {
-
-        this.pages[this.activePageIndex].show();
+            introView.onComplete(_.bind(this.showFirstPage, this));
 
 
+            this.introView = introView;
+        },
 
-//        var self = this;
-//        setTimeout(function() {
-//
-//            self.introView.hide();
-//
-//        }, 200);
-    },
-    addPagesToDom: function() {
-        "use strict";
-        var elements = _.map(this.pages, function(view) {
-            return view.render().el;
-        });
+        initPages: function() {
+            this.pages.push(new EnterNameView({parent: this.$pagesContainer}));
 
+            this.pages = this.pages.concat(_.map(allQuestions.models, function(questionModel) {
+                return new QuestionView({model: questionModel, parent: this.$pagesContainer});
+            }, this));
+        },
+        initJqueryVariables: function() {
+            this.$pagesContainer = this.$el.find('div.pages-ctn');
+        },
 
-        this.$pagesContainer[0].innerHTML = _.reduce(elements, function(html, el) {
-            return html + el.outerHTML;
-        }, '');
+        // ==================================================================== //
+        /* *********************** Change View Functions ********************** */
+        // ==================================================================== //
+        showFirstPage: function() {
+            this.pages[0].show();
+        },
+        nextPage: function() {
 
+        },
 
-    },
-
-    // ==================================================================== //
-    /* ************************* Event Listeners ************************** */
-    // ==================================================================== //
-    onNext: function(e) {
-        "use strict";
-        e.preventDefault();
-
-        if(this.activePageIndex >= (this.pages.length - 1)) return;
-
-        //hide active page
-        var activePage = this.pages[this.activePageIndex];
-        activePage.hide();
-
-        //show next page
-        this.activePageIndex++;
-        var nextPage = this.pages[this.activePageIndex];
-        nextPage.show();
-    }
-});
+        // ==================================================================== //
+        /* ************************* Render Functions ************************* */
+        // ==================================================================== //
+        render: function() {
+            this.introView.start(); //start intro
+        },
+        addPagesToDom: function() {
+            "use strict";
+            var elements = _.map(this.pages, function(view) {
+                return view.render().el;
+            });
 
 
-module.exports = MainView;
+            this.$pagesContainer[0].innerHTML = _.reduce(elements, function(html, el) {
+                return html + el.outerHTML;
+            }, '');
+
+
+        },
+
+        // ==================================================================== //
+        /* ************************* Event Listeners ************************** */
+        // ==================================================================== //
+        onNext: function(e) {
+            "use strict";
+            e.preventDefault();
+
+            if(this.activePageIndex >= (this.pages.length - 1)) return;
+
+            //hide active page
+            var activePage = this.pages[this.activePageIndex];
+            activePage.hide();
+
+            //show next page
+            this.activePageIndex++;
+            var nextPage = this.pages[this.activePageIndex];
+            nextPage.show();
+        }
+    });
+
+
+
+
+
+
+    module.exports = MainView;
+
+
+
+})();
