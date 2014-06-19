@@ -21,7 +21,7 @@
         },
         initialize: function() {
             this.pages = [];
-            this.activePageIndex = -1;
+            this.activePageIndex = 0;
 
             this.initJqueryVariables();
 
@@ -48,6 +48,8 @@
             this.pages = this.pages.concat(_.map(allQuestions.models, function(questionModel) {
                 return new QuestionView({model: questionModel, parent: this.$pagesContainer});
             }, this));
+
+            console.log(this.pages);
         },
         initJqueryVariables: function() {
             this.$pagesContainer = this.$el.find('div.pages-ctn');
@@ -72,19 +74,6 @@
             setTimeout(function() {
                 introView.start(); //start intro
             }, 200);
-        },
-        addPagesToDom: function() {
-            "use strict";
-            var elements = _.map(this.pages, function(view) {
-                return view.render().el;
-            });
-
-
-            this.$pagesContainer[0].innerHTML = _.reduce(elements, function(html, el) {
-                return html + el.outerHTML;
-            }, '');
-
-
         },
 
         // ==================================================================== //

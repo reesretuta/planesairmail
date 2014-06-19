@@ -130,25 +130,21 @@ body {
 
 div.page {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
   right: 0;
   margin: auto;
   width: 540px;
-  height: 100%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   display: none; }
   div.page.active {
     display: block; }
 
 div.page.name .input-wrapper {
   height: 95px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto; }
+  width: 100%; }
 div.page.name div.title {
   position: absolute;
   bottom: 100%;

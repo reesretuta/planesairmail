@@ -82,9 +82,10 @@
         this.timeline.play();
 
         var dusty = this.characters.dusty;
+
         setTimeout(function() {
             dusty.goToState('blink');
-        }, 3000);
+        }, 5000);
     };
 
 

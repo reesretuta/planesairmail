@@ -83,15 +83,15 @@
 
     // windowScale corresponds to window size
     //   ex: windowScale = 0.25 means 1/4 size of window
-    // scaleMin and scaleMax correspond to natural size
-    //   ex: scaleMin = 0.5 means sprite will not shrink to more than half of the original size.
+    // scaleMin and scaleMax correspond to natural sprite size
+    //   ex: scaleMin = 0.5 means sprite will not shrink to more than half of its original size.
     PIXI.DisplayObject.prototype._windowScale = -1;
     PIXI.DisplayObject.prototype.scaleMin = 0;
     PIXI.DisplayObject.prototype.scaleMax = Number.MAX_VALUE;
 
     // WindowScale: value between 0 & 1, or -1
     // This defines what % of the window (height or width, whichever is smaller)
-    // the object will be. Example: a windowScale of 0.5 will size the displayObject
+    // the object will be sized. Example: a windowScale of 0.5 will size the displayObject
     // to half the size of the window.
     Object.defineProperty(PIXI.DisplayObject.prototype, 'windowScale', {
         get: function() {

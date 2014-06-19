@@ -36,7 +36,9 @@
         introVideo.visible = false;
         introVideo.loop = false;
 
-        introVideo.animationSpeed = 0.55;
+        introVideo.scaleMin = 1;
+        introVideo.scaleMax = 2;
+        introVideo.windowScale = 0.7;
 
         this.addChild(introVideo);
 
