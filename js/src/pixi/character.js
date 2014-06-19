@@ -82,7 +82,7 @@
     };
 
     //add callback to run on character update
-    Character.onUpdate = function(callback) {
+    Character.prototype.onUpdate = function(callback) {
         this.onUpdateCallback = callback;
     };
 

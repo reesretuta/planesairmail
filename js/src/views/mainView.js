@@ -29,7 +29,7 @@
             scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
             // create views
-            this.initIntroView();
+//            this.initIntroView();
             this.initPages();
         },
 
@@ -49,7 +49,6 @@
                 return new QuestionView({model: questionModel, parent: this.$pagesContainer});
             }, this));
 
-            console.log(this.pages);
         },
         initJqueryVariables: function() {
             this.$pagesContainer = this.$el.find('div.pages-ctn');
@@ -69,11 +68,12 @@
         /* ************************* Render Functions ************************* */
         // ==================================================================== //
         render: function() {
-            var introView = this.introView;
-
-            setTimeout(function() {
-                introView.start(); //start intro
-            }, 200);
+//            var introView = this.introView;
+//
+//            setTimeout(function() {
+//                introView.start(); //start intro
+//            }, 200);
+            this.showFirstPage();
         },
 
         // ==================================================================== //
