@@ -2,11 +2,17 @@
     {{copy}}
 </div>
 
-<div class="options">
+<div class="options clearfix">
     {{#each options}}
         <div class="option">
-            <input type="radio" name="{{../name}}" value="{{value}}" id="{{value}}" />
-            <label for="{{value}}">{{text}}</label>
+            <div class="full-relative">
+                <input type="radio" name="{{../name}}" value="{{value}}" id="{{value}}" />
+                <label for="{{value}}" class="full-relative"></label>
+                <div class="background"></div>
+                <div class="text">{{text}}</div>
+            </div>
+
+
         </div>
     {{/each}}
 </div>

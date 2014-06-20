@@ -6,9 +6,11 @@ div.page {
     left: 0;
     right: 0;
 
+    z-index: 1;
+
     margin: auto;
 
-    width: 540px;
+    width: 609px;
 
     transform: translateY(-50%);
 
@@ -26,8 +28,6 @@ $blue: rgba(179, 209, 233, 0.35);
 
 
 div.page.name {
-
-
     .input-wrapper {
         height: 95px;
         width: 100%;
@@ -91,5 +91,113 @@ div.page.name {
             color: $placeholderColor;
         }
     }
+}
+
+
+
+
+
+div.page.question {
+    color: white;
+
+    div.copy {
+        text-align: center;
+
+        font-size: 31px;
+        margin-bottom: 35px;
+    }
+
+    div.options {
+        width: 100%;
+    }
+
+    div.option {
+        float: left;
+
+        height: 203px;
+        width: 203px;
+
+        padding: 40px;
+
+        input {
+            display: none;
+        }
+
+        label {
+            display: block;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        div.background {
+            width: percentage(450/166);
+            height: percentage(400/166);
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            z-index: 1;
+
+            transform: translate(-50%, -50%);
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
+
+        div.text {
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+
+            width: 100%;
+
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 18px;
+
+            padding-bottom: 4px;
+        }
+    }
+
+
+
+
 
 }
+
+
+
+
+
+#dusty ~ div.background {
+    background-image: url('../assets/img/icons/dusty.png');
+}
+
+#bladeranger ~ div.background {
+    background-image: url('../assets/img/icons/blade_ranger.png');
+}
+
+#cabbie ~ div.background {
+    background-image: url('../assets/img/icons/cabbie.png');
+}
+#dipper ~ div.background {
+    background-image: url('../assets/img/icons/dipper.png');
+}
+#windlifter ~ div.background {
+    background-image: url('../assets/img/icons/windlifter.png');
+}
+#team ~ div.background {
+    background-image: url('../assets/img/icons/the_team.png');
+}
+
+
+
+
+
+
+
+
+
+

@@ -3,15 +3,30 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-family: PAG Revolucion, PAGRevolucion, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2); }
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before, .clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after {
+  clear: both; }
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1; }
 
 .full-relative {
   height: 100%;
@@ -22,6 +37,16 @@ html, body {
   height: 100%;
   width: 100%;
   position: absolute; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: PAG Revolucion, PAGRevolucion, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2); }
 
 body {
   background: url('../assets/img/background.png') no-repeat center center;
@@ -79,6 +104,7 @@ body {
       position: absolute;
       top: 70%;
       left: 50%;
+      z-index: 2;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
@@ -162,8 +188,9 @@ div.page {
   top: 50%;
   left: 0;
   right: 0;
+  z-index: 1;
   margin: auto;
-  width: 540px;
+  width: 609px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -213,3 +240,64 @@ div.page.name input[type="text"] {
   div.page.name input[type="text"]:-ms-input-placeholder {
     /* Internet Explorer 10+ */
     color: #FFFFFF; }
+
+div.page.question {
+  color: white; }
+  div.page.question div.copy {
+    text-align: center;
+    font-size: 31px;
+    margin-bottom: 35px; }
+  div.page.question div.options {
+    width: 100%; }
+  div.page.question div.option {
+    float: left;
+    height: 203px;
+    width: 203px;
+    padding: 40px; }
+    div.page.question div.option input {
+      display: none; }
+    div.page.question div.option label {
+      display: block;
+      cursor: pointer;
+      z-index: 2; }
+    div.page.question div.option div.background {
+      width: 271.08434%;
+      height: 240.96386%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background-repeat: no-repeat;
+      background-position: center center;
+      -webkit-background-size: contain;
+      background-size: contain; }
+    div.page.question div.option div.text {
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 18px;
+      padding-bottom: 4px; }
+
+#dusty ~ div.background {
+  background-image: url('../assets/img/icons/dusty.png'); }
+
+#bladeranger ~ div.background {
+  background-image: url('../assets/img/icons/blade_ranger.png'); }
+
+#cabbie ~ div.background {
+  background-image: url('../assets/img/icons/cabbie.png'); }
+
+#dipper ~ div.background {
+  background-image: url('../assets/img/icons/dipper.png'); }
+
+#windlifter ~ div.background {
+  background-image: url('../assets/img/icons/windlifter.png'); }
+
+#team ~ div.background {
+  background-image: url('../assets/img/icons/the_team.png'); }

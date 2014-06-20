@@ -1,34 +1,40 @@
 {
     "questions": [
         {
-            "name": "which-plane",
-            "copy": "Which plane would you like to send a message to?",
+            "name": "character-select",
+            "class": "character-select",
+            "copy": "Who do you want to write to?",
             "options": [
                 {
-                    "text": "Dusty Crophopper",
+                    "text": "Dusty",
                     "value": "dusty"
                 },
                 {
-                    "text": "Sparky",
-                    "value": "sparky"
+                    "text": "Blade Ranger",
+                    "value": "bladeranger"
                 },
                 {
-                    "text": "Skipper Riley",
-                    "value": "skipper"
+                    "text": "Cabbie",
+                    "value": "cabbie"
                 },
                 {
-                    "text": "Chug",
-                    "value": "chug"
+                    "text": "Dipper",
+                    "value": "dipper"
                 },
                 {
-                    "text": "John F. Kennedy",
-                    "value": "jfk"
+                    "text": "Windlifter",
+                    "value": "windlifter"
+                },
+                {
+                    "text": "The Team",
+                    "value": "team"
                 }
             ],
             "required": true
         },
         {
             "name": "favorite-disney-movie",
+            "class": "favorite-disney-movie",
             "copy": "What is your favorite Disney movie?",
             "options": [
                 {
@@ -56,6 +62,7 @@
         },
         {
             "name": "favorite-color",
+            "class": "favorite-color",
             "copy": "What's your favorite color?",
             "options": [
                 {

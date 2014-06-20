@@ -84,14 +84,11 @@
         var blurFilter = new PIXI.BlurFilter();
         blurFilter.blur = 10;
 
-        console.log(blurFilter);
-
         dipper.filters = [blurFilter];
 
         this.addChild(dipper);
         this.characters.dipper = dipper;
     };
-
 
     // ============================================================ //
     /* ******************* Animation Functions ******************** */
@@ -176,6 +173,7 @@
 
         return timeline;
     };
+
     EnterNameScene.prototype.getAnimationDipperIn = function() {
         var animationTime = 2.0;
         var sweepStartTime = animationTime * 0.11;

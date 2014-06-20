@@ -1,6 +1,7 @@
 {
     "questions": [
         {
+            "class": "canned-questions",
             "options": [
                 {
                     "text": "What is your favorite thing about the Piston Peak Attack Team?",
@@ -22,6 +23,7 @@
             "required": false
         },
         {
+            "class": "canned-questions",
             "options": [
                 {
                     "text": "How do you fight forest fires?",

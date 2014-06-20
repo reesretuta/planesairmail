@@ -61,6 +61,8 @@
 
             scenesManager.goToScene('enterName');
 
+
+
             setTimeout(_.bind(this.startAnimation, this), 1000);
         },
         hide: function () {

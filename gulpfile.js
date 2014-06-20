@@ -4,6 +4,7 @@ var _ = require('lodash');
 
 var fs = require('fs');
 
+var gutil = require('gulp-util');
 var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
@@ -38,11 +39,12 @@ gulp.task('browserify', function() {
             debug: true,
             transform: ['hbsfy']
         }))
-        .on('error',function(e) {
-            console.log('error');
-            console.log(e.message);
+        .on('error', function(e) {
+            gutil.log(gutil.colors.red(e.message));
+            gutil.beep();
         })
         .pipe(gulp.dest(jsBuildFolder));
+
 });
 
 // Concatenate and minify js
@@ -65,8 +67,13 @@ gulp.task('minify', function() {
 
 // Compile Sass
 gulp.task('sass', function() {
+
     gulp.src(sassSrcFolder + '/app.scss')
         .pipe(sass())
+        .on('error', function(e) {
+            gutil.log(gutil.colors.red(e.message));
+            gutil.beep();
+        })
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
         .pipe(gulp.dest(cssFolder));
 });
@@ -80,6 +87,9 @@ gulp.task('watch', function () {
 
     gulp.watch(sassSrc, ['sass']);
 });
+
+
+
 
 
 gulp.task('assets', function() {

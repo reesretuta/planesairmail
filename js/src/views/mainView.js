@@ -11,7 +11,7 @@
     var IntroView = require('./introView');
     var EnterNameView = require('./enterNameView');
     var QuestionView = require('./questionView');
-
+    var SelectCharacterView = require('./selectCharacterView');
 
 
     var MainView = Backbone.View.extend({
@@ -43,12 +43,19 @@
         },
 
         initPages: function() {
-            this.pages.push(new EnterNameView({parent: this.$pagesContainer}));
 
-            this.pages = this.pages.concat(_.map(allQuestions.models, function(questionModel) {
+            var charModel = _.first(allQuestions.models);
+            var questionModels = _.rest(allQuestions.models);
+
+            var enterNameView = new EnterNameView({parent: this.$pagesContainer});
+            var selectCharView = new SelectCharacterView({model: charModel, parent: this.$pagesContainer});
+
+            var questionViews = _.map(questionModels, function(questionModel) {
                 return new QuestionView({model: questionModel, parent: this.$pagesContainer});
-            }, this));
+            }, this);
 
+
+            this.pages = [enterNameView, selectCharView].concat(questionViews);
         },
         initJqueryVariables: function() {
             this.$pagesContainer = this.$el.find('div.pages-ctn');
@@ -68,8 +75,8 @@
         /* ************************* Render Functions ************************* */
         // ==================================================================== //
         render: function() {
-//            var introView = this.introView;
-//
+            var introView = this.introView;
+
 //            setTimeout(function() {
 //                introView.start(); //start intro
 //            }, 200);

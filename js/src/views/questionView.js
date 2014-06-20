@@ -12,11 +12,11 @@ var QuestionView = Backbone.View.extend({
     },
     // Functions
     initialize: function(options) {
-        "use strict";
-
         this.render();
 
         options.parent.append(this.el);
+
+        this.$el.addClass(this.model.attributes.class);
     },
 
     // ============================================================ //
