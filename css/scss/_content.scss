@@ -13,15 +13,15 @@
         div.background {
             height: 100%;
 
-            $width: 105%;
+            $width: 100%;
+            $translateX: $width * -1/100;
 
             width: $width;
-            transform3d: translateX(-100%/$width);
+//            transform: translate3d($translateX, 0, 0);
 
             position: absolute;
             top: 0;
             left: 0;
-
 
 
             background: bottom center no-repeat;

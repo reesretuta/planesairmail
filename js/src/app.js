@@ -1,8 +1,13 @@
+
+
+
 // adds our custom modifications to the PIXI library
 require('./pixi/libModifications');
 
 
+
 var MainView = require('./views/mainView');
+var FooterView = require('./views/footerView');
 
 
 
@@ -21,11 +26,9 @@ var app = {};
 app.render = _.after(2, function() {
     "use strict";
 
-    app.MainView = new MainView();
+    app.mainView = new MainView();
 
-
-
-    app.MainView.start();
+    app.mainView.start();
 });
 
 
