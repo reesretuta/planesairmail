@@ -12,12 +12,14 @@
 
 
 
-
-
     var EnterNameView = Backbone.View.extend({
         className: 'name page',
         template: template,
-
+        events: {
+            'change input.name': 'onNameChange',
+            'keyup input.name': 'onNameChange',
+            'paste input.name': 'onNameChange'
+        },
         // ============================================================ //
         /* ********************** Initialization ********************** */
         // ============================================================ //
@@ -27,6 +29,10 @@
             options.parent.append(this.render().el);
 
             this.initScene();
+
+            this.model = new Backbone.Model({value: ''});
+
+            this.$nameInput = this.$el.find('input[type=text].name');
         },
         initScene: function() {
             this.scene = scenesManager.createScene('enterName', EnterNameScene);
@@ -46,12 +52,6 @@
 
             this.scene.startAnimation();
         },
-        onAnimationFrame: function() {
-            //on pixi update
-
-            //console.log(this);
-        },
-
 
         // ============================================================ //
         /* ************************ Show/Hide ************************* */
@@ -67,6 +67,12 @@
         },
         hide: function () {
             this.$el.removeClass('active');
+        },
+
+
+
+        onNameChange: function(e) {
+            this.model.set({value: this.$nameInput.val()});
         }
     });
 
