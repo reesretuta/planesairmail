@@ -144,9 +144,9 @@
         // ==================================================================== //
         shiftBackgroundLayers: function(x, y) {
 
-            var backgroundRatio = 1;
-            var middlegroundRatio = 1.8;
-            var foregroundRatio = 2.5;
+            var backgroundRatio = 0.75;
+            var middlegroundRatio = 1.5;
+            var foregroundRatio = 3;
 
             var backgroundLeft = -(x - 0.5) * backgroundRatio + '%';
             var middlegroundLeft = -(x - 0.5) * middlegroundRatio + '%';
@@ -175,7 +175,7 @@
         onMouseMove: function(e) {
             e.preventDefault();
 
-//            this.shiftBackgroundLayers(e.pageX/this.$window.width(), e.pageY/this.$window.height());
+            this.shiftBackgroundLayers(e.pageX/this.$window.width(), e.pageY/this.$window.height());
         }
     });
 

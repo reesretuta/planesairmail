@@ -171,7 +171,9 @@ body {
     z-index: 0; }
     #content div.backgrounds div.background {
       height: 100%;
-      width: 100%;
+      width: 106%;
+      -webkit-transform: translate3d(-1.06%, 0, 0);
+      transform: translate3d(-1.06%, 0, 0);
       position: absolute;
       top: 0;
       left: 0;

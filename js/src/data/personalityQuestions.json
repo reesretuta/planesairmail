@@ -103,27 +103,27 @@
             "options": [
                 {
                     "text": "Lorem 2",
-                    "value": "lorem"
+                    "value": "lorem2"
                 },
                 {
                     "text": "Ipsum 2",
-                    "value": "ipsum"
+                    "value": "ipsum2"
                 },
                 {
                     "text": "Dolor 2",
-                    "value": "dolor"
+                    "value": "dolor2"
                 },
                 {
                     "text": "Sit 2",
-                    "value": "sit"
+                    "value": "sit2"
                 },
                 {
                     "text": "Amet 2",
-                    "value": "amet"
+                    "value": "amet2"
                 },
                 {
                     "text": "Consectetur 2",
-                    "value": "consectetur"
+                    "value": "consectetur2"
                 }
             ],
             "required": false
