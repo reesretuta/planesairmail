@@ -35,7 +35,6 @@
             //create canvas element
             scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
-
             // create views
 //            this.initIntroView();
             this.initPages();
@@ -73,6 +72,9 @@
             this.$background = $backgrounds.filter('.back');
             this.$middleground = $backgrounds.filter('.middle');
             this.$foreground = $backgrounds.filter('.front');
+
+            this.$next = this.$pagesContainer.find('div.page-nav a.next');
+            this.$finishSend = this.$pagesContainer.find('div.page-nav a.finish-send');
         },
 
 
@@ -95,6 +97,14 @@
             nextPage.show();
 
             this.footer.setCounter(this.activePageIndex);
+
+            if(this.activePageIndex === this.pages.length-1) {
+                this.showFinishBtn();
+            }
+        },
+        showFinishBtn: function() {
+            this.$next.hide();
+            this.$finishSend.addClass('active');
         },
 
         // ==================================================================== //

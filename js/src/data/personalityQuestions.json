@@ -1,38 +1,6 @@
 {
     "questions": [
         {
-            "name": "character-select",
-            "class": "character-select",
-            "copy": "Who do you want to write to?",
-            "options": [
-                {
-                    "text": "Dusty",
-                    "value": "dusty"
-                },
-                {
-                    "text": "Blade Ranger",
-                    "value": "bladeranger"
-                },
-                {
-                    "text": "Cabbie",
-                    "value": "cabbie"
-                },
-                {
-                    "text": "Dipper",
-                    "value": "dipper"
-                },
-                {
-                    "text": "Windlifter",
-                    "value": "windlifter"
-                },
-                {
-                    "text": "The Team",
-                    "value": "team"
-                }
-            ],
-            "required": true
-        },
-        {
             "name": "favorite-disney-movie",
             "class": "favorite-disney-movie",
             "copy": "What is your favorite Disney movie?",
@@ -56,6 +24,10 @@
                 {
                     "text": "Breakin' 2: Electric Boogaloo",
                     "value": "breakin"
+                },
+                {
+                    "text": "Memento",
+                    "value": "memento"
                 }
             ],
             "required": false
@@ -70,20 +42,88 @@
                     "value": "red"
                 },
                 {
+                    "text": "Blue",
+                    "value": "blue"
+                },
+                {
+                    "text": "Orange",
+                    "value": "orange"
+                },
+                {
+                    "text": "Green",
+                    "value": "green"
+                },
+                {
                     "text": "Yellow",
                     "value": "yellow"
                 },
                 {
-                    "text": "Pink",
-                    "value": "pink"
+                    "text": "Purple",
+                    "value": "purple"
+                }
+            ],
+            "required": false
+        },
+        {
+            "name": "question4",
+            "class": "question4",
+            "copy": "Lorem Ipsum?",
+            "options": [
+                {
+                    "text": "Lorem",
+                    "value": "lorem"
                 },
                 {
-                    "text": "Grey",
-                    "value": "grey"
+                    "text": "Ipsum",
+                    "value": "ipsum"
                 },
                 {
-                    "text": "Gold",
-                    "value": "gold"
+                    "text": "Dolor",
+                    "value": "dolor"
+                },
+                {
+                    "text": "Sit",
+                    "value": "sit"
+                },
+                {
+                    "text": "Amet",
+                    "value": "amet"
+                },
+                {
+                    "text": "Consectetur",
+                    "value": "consectetur"
+                }
+            ],
+            "required": false
+        },
+        {
+            "name": "question5",
+            "class": "question5",
+            "copy": "Lorem Ipsum 2?",
+            "options": [
+                {
+                    "text": "Lorem 2",
+                    "value": "lorem"
+                },
+                {
+                    "text": "Ipsum 2",
+                    "value": "ipsum"
+                },
+                {
+                    "text": "Dolor 2",
+                    "value": "dolor"
+                },
+                {
+                    "text": "Sit 2",
+                    "value": "sit"
+                },
+                {
+                    "text": "Amet 2",
+                    "value": "amet"
+                },
+                {
+                    "text": "Consectetur 2",
+                    "value": "consectetur"
                 }
             ],
             "required": false

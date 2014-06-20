@@ -1,0 +1,32 @@
+{
+    "name": "character-select",
+    "class": "character-select",
+    "copy": "Who do you want to write to?",
+    "options": [
+        {
+            "text": "Dusty",
+            "value": "dusty"
+        },
+        {
+            "text": "Blade Ranger",
+            "value": "bladeranger"
+        },
+        {
+            "text": "Cabbie",
+            "value": "cabbie"
+        },
+        {
+            "text": "Dipper",
+            "value": "dipper"
+        },
+        {
+            "text": "Windlifter",
+            "value": "windlifter"
+        },
+        {
+            "text": "The Team",
+            "value": "team"
+        }
+    ],
+    "required": true
+}

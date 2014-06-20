@@ -1,14 +1,13 @@
 
 
 
+
 // adds our custom modifications to the PIXI library
 require('./pixi/libModifications');
 
 
 
 var MainView = require('./views/mainView');
-var FooterView = require('./views/footerView');
-
 
 
 // =================================================================== //

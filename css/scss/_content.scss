@@ -45,6 +45,8 @@
     div.pages-ctn {
         z-index: 2;
 
+        $red: #ea2424;
+
         div.page-nav {
             position: absolute;
             top: 70%;
@@ -53,23 +55,38 @@
             z-index: 11;
 
             transform: translateX(-50%);
+
+            a {
+                display: block;
+
+                color: $red;
+                text-decoration: none;
+
+                text-align: center;
+                font-size: 30px;
+            }
+
+            //next button
+            a.next {
+                background: url('../assets/img/button.png') center center no-repeat;
+
+                width: 200px;
+                height: 63px;
+                line-height: 63px;
+            }
+
+            a.finish-send {
+                display: none;
+
+                background: url('../assets/img/icons/send-btn.png') center center no-repeat;
+                width: 240px;
+                height: 53px;
+                line-height: 53px;
+
+                &.active {
+                    display: block;
+                }
+            }
         }
-        //next button
-        a.next {
-            display: block;
-
-            color: red;
-            text-decoration: none;
-
-            background: url('../assets/img/button.png') center center no-repeat;
-
-            width: 200px;
-            height: 63px;
-            line-height: 63px;
-
-            text-align: center;
-            font-size: 30px;
-        }
-
     }
 }

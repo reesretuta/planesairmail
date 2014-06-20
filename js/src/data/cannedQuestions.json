@@ -1,48 +1,54 @@
 {
-    "questions": [
+    "class": "canned",
+    "copy": "Now that we know more about you, it's your turn to ask fire ranger some questions",
+    "options": [
         {
-            "class": "canned-questions",
-            "options": [
-                {
-                    "text": "What is your favorite thing about the Piston Peak Attack Team?",
-                    "value": "favoriteThing"
-                },
-                {
-                    "text": "What was your hardest mission?",
-                    "value": "hardestMission"
-                },
-                {
-                    "text": "Who are your best friends on the PPAT?",
-                    "value": "bestFriends"
-                },
-                {
-                    "text": "What is your job at Piston Peak?",
-                    "value": "job"
-                }
-            ],
-            "required": false
+            "text": "What is your favorite thing about the Piston Peak Attack Team?",
+            "value": "favoriteThing"
         },
         {
-            "class": "canned-questions",
-            "options": [
-                {
-                    "text": "How do you fight forest fires?",
-                    "value": "fightFires"
-                },
-                {
-                    "text": "How do you prevent forest fires?",
-                    "value": "youPreventFires"
-                },
-                {
-                    "text": "How can I prevent forest fires?",
-                    "value": "IPreventFires"
-                },
-                {
-                    "text": "Fire fire fire forest fire forest?",
-                    "value": "fireForest"
-                }
-            ],
-            "required": false
+            "text": "What was your hardest mission?",
+            "value": "hardestMission"
+        },
+        {
+            "text": "Who are your best friends on the PPAT?",
+            "value": "bestFriends"
+        },
+        {
+            "text": "What is your job at Piston Peak?",
+            "value": "job"
+        },
+        {
+            "text": "How do you fight forest fires?",
+            "value": "fightFires"
+        },
+        {
+            "text": "How do you prevent forest fires?",
+            "value": "youPreventFires"
+        },
+        {
+            "text": "How can I prevent forest fires?",
+            "value": "IPreventFires"
+        },
+        {
+            "text": "Fire fire fire forest fire forest?",
+            "value": "fireForest"
+        },
+        {
+            "text": "Lorem Ipsum 1?",
+            "value": "loremipsum1"
+        },
+        {
+            "text": "Lorem Ipsum 2?",
+            "value": "loremipsum2"
+        },
+        {
+            "text": "Lorem Ipsum 3?",
+            "value": "loremipsum3"
+        },
+        {
+            "text": "Lorem Ipsum 4?",
+            "value": "loremipsum4"
         }
     ]
 }
