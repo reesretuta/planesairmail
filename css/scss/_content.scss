@@ -4,18 +4,59 @@
 #content {
     z-index: 2;
 
-    .pages-ctn {
+    div.backgrounds {
+        top: 0;
+        left: 0;
+
+        z-index: 0;
+
+        div.background {
+            height: 100%;
+
+            $width: 105%;
+
+            width: $width;
+            transform3d: translateX(-100%/$width);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+
+
+            background: bottom center no-repeat;
+            background-size: cover;
+
+            &.back {
+                z-index: 0;
+                background-image: url('../assets/img/site_bg.jpg');
+            }
+            &.middle {
+                z-index: 1;
+                background-image: url('../assets/img/midground.png');
+            }
+            &.front {
+                z-index: 2;
+                background-image: url('../assets/img/foreground_trees.png');
+            }
+        }
+    }
+
+    div.pages-ctn {
         z-index: 2;
 
-        a.next {
-            display: block;
-
+        div.page-nav {
             position: absolute;
             top: 70%;
             left: 50%;
-            z-index: 2;
+
+            z-index: 11;
 
             transform: translateX(-50%);
+        }
+        //next button
+        a.next {
+            display: block;
 
             color: red;
             text-decoration: none;

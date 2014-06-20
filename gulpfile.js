@@ -34,7 +34,7 @@ gulp.task('browserify', function() {
     "use strict";
 
     // Single entry point to browserify
-    gulp.src(jsSrcFolder + '/main.js')
+    gulp.src(jsSrcFolder + '/app.js')
         .pipe(browserify({
             debug: true,
             transform: ['hbsfy']
@@ -56,7 +56,7 @@ gulp.task('minify', function() {
         jsLibFolder + '/underscore-min.js',
         jsLibFolder + '/jquery-1.11.1.min.js',
         jsLibFolder + '/*.js',
-        jsBuildFolder + '/main.js'
+        jsBuildFolder + '/app.js'
     ];
 
     gulp.src(minifySrcFiles)
@@ -83,7 +83,7 @@ gulp.task('sass', function() {
 gulp.task('watch', function () {
     gulp.watch(jsSrc, ['browserify']);
 
-    gulp.watch([jsBuildFolder + '/main.js', jsLibFolder + '/*.js'], ['minify']);
+    gulp.watch([jsBuildFolder + '/app.js', jsLibFolder + '/*.js'], ['minify']);
 
     gulp.watch(sassSrc, ['sass']);
 });

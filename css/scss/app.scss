@@ -61,9 +61,6 @@ html, body {
 }
 
 body {
-    background: url('../assets/img/background.png') no-repeat center center;
-    background-size: cover;
-
     background-color: #000000;
 }
 
@@ -93,7 +90,7 @@ body {
 // ============================================================ //
 
 
-@import '_header';
+@import '_headerFooter';
 @import '_content';
 @import '_introView';
 @import '_page';
