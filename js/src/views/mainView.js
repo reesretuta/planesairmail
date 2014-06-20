@@ -13,6 +13,7 @@
     var EnterNameView = require('./enterNameView');
     var QuestionView = require('./questionView');
     var SelectCharacterView = require('./selectCharacterView');
+    var ResponseView = require('./responseView');
     var FooterView = require('./footerView');
 
 
@@ -20,6 +21,7 @@
         el: '#content',
         events: {
             'click a.next': 'onNext',
+            'click a.finish-send': 'onFinish',
             'mousemove': 'onMouseMove'
         },
 
@@ -40,6 +42,7 @@
             this.initPages();
 
             this.footer = new FooterView({numDots: this.pages.length});
+            this.responseView = new ResponseView();
         },
 
         initIntroView: function() {
@@ -69,6 +72,7 @@
             this.$pagesContainer = this.$el.find('div.pages-ctn');
 
             var $backgrounds = this.$el.find('div.backgrounds div.background');
+            this.$backgroundCtr = $backgrounds;
             this.$background = $backgrounds.filter('.back');
             this.$middleground = $backgrounds.filter('.middle');
             this.$foreground = $backgrounds.filter('.front');
@@ -105,6 +109,21 @@
         showFinishBtn: function() {
             this.$next.hide();
             this.$finishSend.addClass('active');
+        },
+
+        finishAndSend: function() {
+            this.footer.hideCounter();
+
+            this.$backgroundCtr.hide();
+            this.$pagesContainer.hide();
+
+            var pageModels = _.map(this.pages, function(page) {
+                return page.model;
+            });
+
+            this.responseView.setResponse(pageModels);
+
+            this.responseView.show();
         },
 
         // ==================================================================== //
@@ -147,6 +166,11 @@
             if(this.activePageIndex >= (this.pages.length - 1)) return;
 
             this.nextPage();
+        },
+        onFinish: function(e) {
+            e.preventDefault();
+
+            this.finishAndSend();
         },
         onMouseMove: function(e) {
             e.preventDefault();

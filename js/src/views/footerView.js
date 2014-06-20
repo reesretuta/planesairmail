@@ -122,6 +122,9 @@
             this.$dots.eq(i).addClass('active');
             this.$activeDot = this.$dots.eq(i);
         },
+        hideCounter: function() {
+            this.$counter.hide();
+        },
 
 
         // ==================================================================== //

@@ -8,10 +8,6 @@
     var scenesManager = require('../pixi/scenesManager');
     var EnterNameScene = require('../pixi/enterNameScene');
 
-
-
-
-
     var EnterNameView = Backbone.View.extend({
         className: 'name page',
         template: template,

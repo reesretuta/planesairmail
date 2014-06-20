@@ -448,3 +448,12 @@ div.question.character-select div.option div.background {
 
 #team ~ div.background {
   background-image: url('../assets/img/icons/the_team.png'); }
+
+#response {
+  display: none;
+  background-color: yellow;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  padding-top: 200px;
+  text-align: center; }
