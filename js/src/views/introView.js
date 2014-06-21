@@ -2,21 +2,17 @@
 (function() {
     "use strict";
 
-    var template = require('../templates/intro.hbs');
     var scenesManager = require('../pixi/scenesManager');
     var IntroScene = require('../pixi/introScene');
 
 
     var IntroView = Backbone.View.extend({
-        id: 'intro-view',
-        template: template,
+        el: '#intro-view',
 
         // ============================================================ //
         /* ****************** Initialization Stuff ******************** */
         // ============================================================ //
         initialize: function(options) {
-
-            options.parent.append(this.render().el);
 
             this.onCompleteCallback = function(){};
 
@@ -44,8 +40,7 @@
         /* ******************** Render Functions ********************** */
         // ============================================================ //
         render: function() {
-            if(this.el.innerHTML === '')
-                this.el.innerHTML = this.template();
+
 
             return this;
         },

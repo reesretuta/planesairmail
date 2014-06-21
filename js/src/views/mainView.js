@@ -38,7 +38,7 @@
             scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
             // create views
-//            this.initIntroView();
+            this.initIntroView();
             this.initPages();
 
             this.footer = new FooterView({numDots: this.pages.length});
@@ -46,7 +46,7 @@
         },
 
         initIntroView: function() {
-            var introView = new IntroView({parent: this.$el});
+            var introView = new IntroView();
 
             introView.onComplete(_.bind(this.showFirstPage, this));
 
@@ -57,7 +57,7 @@
             var charModel = _.first(allQuestions.models);
             var questionModels = _.rest(allQuestions.models);
 
-            var enterNameView = new EnterNameView({parent: this.$pagesContainer});
+            var enterNameView = new EnterNameView();
             var selectCharView = new SelectCharacterView({model: charModel, parent: this.$pagesContainer});
 
             var questionViews = _.map(questionModels, function(questionModel) {
@@ -87,6 +87,8 @@
         // ==================================================================== //
         showFirstPage: function() {
             this.pages[0].show();
+
+            this.$next.addClass('active');
         },
 
         nextPage: function() {
@@ -132,17 +134,17 @@
         start: function() {
             var introView = this.introView;
 
-//            setTimeout(function() {
-//                introView.start(); //start intro
-//            }, 200);
-            this.showFirstPage();
+            setTimeout(function() {
+                introView.start(); //start intro
+            }, 200);
+//            this.showFirstPage();
         },
 
 
         // ==================================================================== //
         /* *************************** Parallax Stuff ************************* */
         // ==================================================================== //
-        shiftBackgroundLayers: function(x, y) {
+        shiftBackgroundLayers: function(x) {
 
             var backgroundRatio = 0.75;
             var middlegroundRatio = 1.5;
@@ -175,7 +177,7 @@
         onMouseMove: function(e) {
             e.preventDefault();
 
-            this.shiftBackgroundLayers(e.pageX/this.$window.width(), e.pageY/this.$window.height());
+            this.shiftBackgroundLayers(e.pageX/this.$window.width());
         }
     });
 

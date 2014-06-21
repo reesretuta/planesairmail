@@ -12,23 +12,29 @@
                 <div class="in-theaters"></div>
             </div>
         </div>
+
         <div class="backgrounds full-absolute">
             <div class="background back"></div>
             <div class="background middle"></div>
             <div class="background front"></div>
         </div>
 
+
+        <?php include_once('includes/introHtml.php'); ?>
+
+
         <div class="pages-ctn full-relative">
             <div class="page-nav">
                 <a href="#" class="finish-send">Finish & send</a>
                 <a href="#" class="next">next</a>
             </div>
+
+            <?php include_once('includes/enterNameHtml.php'); ?>
         </div>
 
 
-        <div id="response" class="full-absolute">
+        <?php include_once('includes/responseHtml.php'); ?>
 
-        </div>
 
         <div id="footer">
             <div class="counter clearfix">

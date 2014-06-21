@@ -57,13 +57,17 @@
             transform: translateX(-50%);
 
             a {
-                display: block;
 
                 color: $red;
                 text-decoration: none;
 
                 text-align: center;
                 font-size: 30px;
+
+                display: none;
+                &.active {
+                    display: block;
+                }
             }
 
             //next button
@@ -82,10 +86,6 @@
                 width: 240px;
                 height: 53px;
                 line-height: 53px;
-
-                &.active {
-                    display: block;
-                }
             }
         }
     }

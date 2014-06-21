@@ -38,7 +38,7 @@
 
         introVideo.scaleMin = 1;
         introVideo.scaleMax = 2;
-        introVideo.windowScale = 0.7;
+        introVideo.windowScale = 0.6;
 
         this.addChild(introVideo);
 
