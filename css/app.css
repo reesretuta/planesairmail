@@ -213,7 +213,6 @@ body {
         height: 63px;
         line-height: 63px; }
       #content div.pages-ctn div.page-nav a.finish-send {
-        display: none;
         background: url('../assets/img/icons/send-btn.png') center center no-repeat;
         width: 240px;
         height: 53px;
@@ -237,16 +236,12 @@ body {
     z-index: 2; }
     #intro-view div.viewport.top {
       top: 0; }
-      #intro-view div.viewport.top div.background-color {
-        bottom: 0; }
       #intro-view div.viewport.top div.background-image {
         background-image: url('../assets/img/intro-top.png');
         background-position: bottom center;
         bottom: 0; }
     #intro-view div.viewport.bottom {
       bottom: 0; }
-      #intro-view div.viewport.bottom div.background-color {
-        top: 0; }
       #intro-view div.viewport.bottom div.background-image {
         background-image: url('../assets/img/intro-btm.png');
         background-position: top center;
@@ -265,100 +260,35 @@ body {
       margin: auto; }
       #intro-view div.viewport div.background-image > div.empty-space {
         padding-top: 33.53846%; }
-    #intro-view div.viewport div.background-color {
-      position: absolute;
-      height: 100%;
-      z-index: 1; }
-      #intro-view div.viewport div.background-color > div {
-        background-color: black; }
-      #intro-view div.viewport div.background-color.top {
-        width: 100%;
-        left: 0;
-        padding-bottom: 22%; }
-        #intro-view div.viewport div.background-color.top > div {
-          /* FF3.6+ */
-          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(80%, #000000), color-stop(100%, rgba(0, 0, 0, 0)));
-          /* Chrome,Safari4+ */
-          background: -webkit-linear-gradient(top, #000000 0%, #000000 80%, rgba(0, 0, 0, 0) 100%);
-          /* Chrome10+,Safari5.1+ */
-          /* Opera 11.10+ */
-          /* IE10+ */
-          background: -webkit-gradient(linear, left top, left bottom, from(#000000), color-stop(80%, #000000), to(rgba(0, 0, 0, 0)));
-          background: linear-gradient(to bottom, #000000 0%, #000000 80%, rgba(0, 0, 0, 0) 100%);
-          /* W3C */
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 );
-          /* IE6-9 */ }
-      #intro-view div.viewport div.background-color.bottom {
-        width: 100%;
-        left: 0;
-        padding-top: 22%; }
-        #intro-view div.viewport div.background-color.bottom > div {
-          /* FF3.6+ */
-          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(20%, #000000), color-stop(100%, #000000));
-          /* Chrome,Safari4+ */
-          background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 20%, #000000 100%);
-          /* Chrome10+,Safari5.1+ */
-          /* Opera 11.10+ */
-          /* IE10+ */
-          background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(20%, #000000), to(#000000));
-          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 20%, #000000 100%);
-          /* W3C */
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
-          /* IE6-9 */ }
-      #intro-view div.viewport div.background-color.left {
-        width: 50%;
-        left: 0;
-        padding-right: 34%; }
-        #intro-view div.viewport div.background-color.left > div {
-          /* FF3.6+ */
-          background: -webkit-gradient(linear, left top, right top, color-stop(0%, #000000), color-stop(71%, #000000), color-stop(100%, rgba(0, 0, 0, 0)));
-          /* Chrome,Safari4+ */
-          background: -webkit-linear-gradient(left, #000000 0%, #000000 71%, rgba(0, 0, 0, 0) 100%);
-          /* Chrome10+,Safari5.1+ */
-          /* Opera 11.10+ */
-          /* IE10+ */
-          background: -webkit-gradient(linear, left top, right top, from(#000000), color-stop(71%, #000000), to(rgba(0, 0, 0, 0)));
-          background: linear-gradient(to right, #000000 0%, #000000 71%, rgba(0, 0, 0, 0) 100%);
-          /* W3C */
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 );
-          /* IE6-9 */ }
-      #intro-view div.viewport div.background-color.right {
-        width: 50%;
-        right: 0;
-        padding-left: 34%; }
-        #intro-view div.viewport div.background-color.right > div {
-          /* FF3.6+ */
-          background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(29%, #000000), color-stop(100%, #000000));
-          /* Chrome,Safari4+ */
-          background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, #000000 29%, #000000 100%);
-          /* Chrome10+,Safari5.1+ */
-          /* Opera 11.10+ */
-          /* IE10+ */
-          background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(29%, #000000), to(#000000));
-          background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, #000000 29%, #000000 100%);
-          /* W3C */
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 );
-          /* IE6-9 */ }
-  #intro-view div.video-ctn {
-    width: 760px;
+  #intro-view div.begin-screen {
     position: absolute;
-    margin: auto;
-    z-index: 1;
     top: 50%;
-    left: 0;
-    right: 0;
+    z-index: 3;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
-    #intro-view div.video-ctn > div.empty-space {
-      padding-bottom: 56.57895%; }
-    #intro-view div.video-ctn > video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: none; }
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+    font-size: 37px;
+    line-height: 37px;
+    width: 100%; }
+    #intro-view div.begin-screen a.begin {
+      display: block;
+      background: url('../assets/img/button.png') center center no-repeat;
+      width: 200px;
+      height: 63px;
+      color: #ea2424;
+      text-decoration: none;
+      padding-top: 1%;
+      margin: 0 auto;
+      margin-top: 45px;
+      opacity: 0;
+      -webkit-backface-visibility: hidden; }
+    #intro-view div.begin-screen > div.line {
+      opacity: 0;
+      -webkit-transform: translateX(4%);
+      -ms-transform: translateX(4%);
+      transform: translateX(4%); }
 
 div.page {
   position: absolute;
