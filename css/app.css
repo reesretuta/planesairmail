@@ -286,9 +286,9 @@ body {
       -webkit-backface-visibility: hidden; }
     #intro-view div.begin-screen > div.line {
       opacity: 0;
-      -webkit-transform: translateX(4%);
-      -ms-transform: translateX(4%);
-      transform: translateX(4%); }
+      -webkit-transform: translateX(5%);
+      -ms-transform: translateX(5%);
+      transform: translateX(5%); }
 
 div.page {
   position: absolute;

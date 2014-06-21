@@ -59,9 +59,8 @@
         // ============================================================ //
         getTimelineBeginScreenIn: function() {
             /****************** Static Variables **************/
-            var animationTime = 0.5;
+            var animationTime = 0.4;
             var easing = 'Back.easeOut';
-
 
             var tweens = _.map(this.$beginLines, function(line) {
                 return TweenLite.to(line, animationTime, {
@@ -74,7 +73,7 @@
             var timeline = new TimelineMax({
                 paused: true,
                 tweens: tweens,
-                stagger: 0.1,
+                stagger: 0.08,
                 onStart: function() {
                     TweenLite.set(this.$beginBtn, {
                         scale: 0.7
@@ -84,14 +83,14 @@
             });
 
 
-            var btnInTime = 0.5;
+            var btnInTime = 0.4;
 
-            timeline.add(TweenLite.to(this.$beginBtn, animationTime, {
+            timeline.add(TweenLite.to(this.$beginBtn, 0.6, {
                 opacity: 1,
                 scaleY: 1,
                 ease: 'Elastic.easeOut'
             }), btnInTime);
-            timeline.add(TweenLite.to(this.$beginBtn, animationTime, {
+            timeline.add(TweenLite.to(this.$beginBtn, 0.6, {
                 scaleX: 1,
                 ease: 'Elastic.easeOut'
             }), btnInTime + (animationTime * 0.05));
