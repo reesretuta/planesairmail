@@ -41,7 +41,6 @@
             this.scene = scenesManager.createScene('intro', IntroScene);
 
             this.scene.onComplete(_.bind(this.showBeginScreen, this));
-//            this.scene.onComplete(_.bind(this.hide, this));
         },
 
         // ============================================================ //
@@ -162,6 +161,7 @@
         },
         hide: function() {
             this.timelineHide.play();
+            this.scene.open();
         },
         onComplete: function(callback) {
             this.onCompleteCallback = callback;

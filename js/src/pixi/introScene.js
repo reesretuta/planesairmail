@@ -16,22 +16,51 @@
     // ============================================================ //
 
     var IntroScene = function() {
-        //parent constructor
-        Scene.apply(this, arguments);
+        Scene.apply(this, arguments); //parent constructor
 
-        this.initializeVideo();
-
-        this.initializeVideoTimeline();
-
+        initializeVideo(this);
+        initializeMask(this);
+        initializeVideoTimeline(this);
     };
 
-    IntroScene.prototype.initializeVideo = function() {
+    // ============================================================ //
+    /* ****************** Public API Functions ******************** */
+    // ============================================================ //
+
+    IntroScene.prototype.startAnimation = function() {
+        this.introVideo.visible = true;
+
+        this.timelineVideo.play();
+    };
+
+    IntroScene.prototype.open = function() {
+        this.timelineOpen.play();
+    };
+
+
+    // called on each animation frame
+    IntroScene.prototype.update = function() {
+        // call parent function
+        Scene.prototype.update.call(this);
+    };
+
+    //set on complete function for animation timeline
+    IntroScene.prototype.onComplete = function(callback) {
+        this.timelineVideo.vars.onComplete = callback;
+    };
+
+
+
+    // ============================================================ //
+    /* ********************** Initialization ********************** */
+    // ============================================================ //
+
+    function initializeVideo(scene) {
         var introVideo = new PIXI.MovieClip(getIntroTextures());
 
         introVideo.windowX = 0.5;
         introVideo.windowY = 0.5;
-
-        introVideo.anchor = {x: 0.5, y: 0.5};
+        introVideo.anchor = new PIXI.Point(0.5, 0.5);
 
         introVideo.visible = false;
         introVideo.loop = false;
@@ -40,16 +69,43 @@
         introVideo.scaleMax = 2;
         introVideo.windowScale = 0.6;
 
-        this.addChild(introVideo);
+        scene.addChild(introVideo);
+        scene.introVideo = introVideo;
+    }
 
-        this.introVideo = introVideo;
-    };
+    function initializeMask(scene) {
+        var introMask = new PIXI.DisplayObjectContainer();
 
-    IntroScene.prototype.initializeVideoTimeline = function() {
+        var introMaskTop = PIXI.Sprite.fromImage('assets/img/intro-top.png');
+        var introMaskBtm = PIXI.Sprite.fromImage('assets/img/intro-btm.png');
 
-        this.introVideo._tweenFrame = 0;
+        introMaskTop.anchor = new PIXI.Point(.5, 1);
+        introMaskBtm.anchor = new PIXI.Point(.5, 0);
 
-        Object.defineProperty(this.introVideo, 'tweenFrame', {
+        introMaskTop.windowY = 0;
+        introMaskBtm.windowY = 0;
+
+        introMask.windowX = 0.5;
+        introMask.windowY = 0.5;
+        introMask.anchor = new PIXI.Point(.5, .5);
+
+        introMask.scaleMin = 0.98;
+        introMask.scaleMax = 2;
+        introMask.windowScale = 0.76;
+
+        introMask.addChild(introMaskTop);
+        introMask.addChild(introMaskBtm);
+        scene.addChild(introMask);
+
+        scene.introMaskTop = introMaskTop;
+        scene.introMaskBtm = introMaskBtm;
+    }
+
+    function initializeVideoTimeline(scene) {
+
+        scene.introVideo._tweenFrame = 0;
+
+        Object.defineProperty(scene.introVideo, 'tweenFrame', {
             get: function() {
                 return this._tweenFrame;
             },
@@ -60,14 +116,17 @@
             }
         });
 
+        scene.timelineVideo = getVideoAnimationTimeline(scene);
+        scene.timelineOpen = getIntroOpenTimeline(scene);
+    }
 
-        this.timeline = this.getVideoAnimationTimeline();
-    };
+    // ============================================================ //
+    /* ******************* Animation Functions ******************** */
+    // ============================================================ //
 
-
-    IntroScene.prototype.getVideoAnimationTimeline = function() {
+    function getVideoAnimationTimeline(scene) {
         var fps = 24;
-        var numFrames = this.introVideo.textures.length;
+        var numFrames = scene.introVideo.textures.length;
 
         var animationTime = numFrames/fps;
         var easing = new SteppedEase(numFrames);
@@ -76,40 +135,35 @@
             paused: true
         });
 
-        timeline.append(TweenLite.to(this.introVideo, animationTime, {
+        timeline.append(TweenLite.to(scene.introVideo, animationTime, {
             tweenFrame: numFrames-1,
             ease: easing
         }));
 
 
         return timeline;
-    };
+    }
 
-    IntroScene.prototype.onComplete = function(callback) {
-        this.timeline.vars.onComplete = callback;
-    };
+    function getIntroOpenTimeline(scene) {
+        var animationTime = 1.6;
+        var easing = 'Cubic.easeInOut';
 
-    // ============================================================ //
-    /* ******************* Animation Functions ******************** */
-    // ============================================================ //
+        var timeline = new TimelineLite({
+            paused: true
+        });
 
-    IntroScene.prototype.startAnimation = function() {
-        this.introVideo.visible = true;
-        //this.introVideo.gotoAndPlay(0);
+        timeline.add(TweenLite.to(scene.introMaskTop, animationTime, {
+            windowY: -0.5,
+            ease: easing
+        }), 0);
+        timeline.add(TweenLite.to(scene.introMaskBtm, animationTime, {
+            windowY: 0.5,
+            ease: easing
+        }), 0);
 
-        this.timeline.play();
-    };
+        return timeline;
 
-
-
-    // called on each animation frame
-    IntroScene.prototype.update = function() {
-        // call parent function
-        Scene.prototype.update.call(this);
-    };
-
-
-
+    }
 
 
 

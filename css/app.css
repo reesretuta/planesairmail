@@ -233,7 +233,8 @@ body {
     height: 50%;
     width: 100%;
     overflow: hidden;
-    z-index: 2; }
+    z-index: 2;
+    display: none; }
     #intro-view div.viewport.top {
       top: 0; }
       #intro-view div.viewport.top div.background-image {
