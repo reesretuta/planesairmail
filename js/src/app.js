@@ -37,7 +37,7 @@ app.render = _.after(2, function() {
 /* ************************** Asset Loading ************************** */
 // =================================================================== //
 
-var introVideoAssets = require('../../assets/assets.json');
+var introVideoAssets = require('./data/assets.json');
 
 
 // create an array of assets to load

@@ -277,8 +277,6 @@
             ease: easing
         }));
 
-        console.log(dusty);
-
         return timeline;
     }
 

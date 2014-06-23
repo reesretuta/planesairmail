@@ -6,9 +6,10 @@
     "use strict";
 
 
-    var scenesManager = require('../pixi/scenesManager');
-    var QuestionView = require('./questionView');
+    var soundPlayer = require('../soundPlayer');
+    var audioAssets = require('../data/audioAssets.json');
 
+    var QuestionView = require('./questionView');
 
 
     var SelectCharacterView = QuestionView.extend({
@@ -20,6 +21,13 @@
 
         onRadioChange: function(e) {
             QuestionView.prototype.onRadioChange.call(this, e);
+
+            var filePath = audioAssets[e.currentTarget.getAttribute('id')];
+
+            console.log(filePath);
+            console.log(soundPlayer);
+
+            soundPlayer.play(filePath);
         }
     });
 
