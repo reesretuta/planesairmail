@@ -54,6 +54,7 @@
         dusty.setIdleState(dustyIdleAnimation);
         dusty.addState('blink', dustyBlinkAnimation);
 
+        dusty.windowScale = 600/1366;
         dusty.windowX = 0.15;
         dusty.windowY = -1;
 
@@ -78,8 +79,9 @@
         dipper.windowY = -1;
         dipper.rotation = -0.40;
 
-        dipper.scale.x = 0.7;
-        dipper.scale.y = 0.7;
+        dipper.windowScale = 865/1366;
+        dipper.animationScaleX = 0.7;
+        dipper.animationScaleY = 0.7;
 
         var blurFilter = new PIXI.BlurFilter();
         blurFilter.blur = 10;
@@ -99,24 +101,45 @@
         });
 
 
-        var timelineDustyIn = this.getAnimationDustyIn();
-
-        timeline.add(timelineDustyIn.play(), 0);
+        timeline.add(this.getAnimationDustyIn().play(), 0);
         timeline.add(this.getAnimationDustyHover().play(), 0);
 
         timeline.add(this.getAnimationDipperIn().play(), 0.4);
 
-        this.timeline = timeline;
+        this.timelineIn = timeline;
+
+
+
+
+        var timelineOut = new TimelineMax({
+            paused: true
+        });
+
+        timelineOut.add(generateAnimationDipperOut(this.characters.dipper).play(), 0);
+        timelineOut.add(generateAnimationDustyOut(this.characters.dusty).play(), 0);
+
+        this.timelineOut = timelineOut;
     };
 
     EnterNameScene.prototype.startAnimation = function() {
-        this.timeline.play();
+        this.timelineIn.play();
 
         var dusty = this.characters.dusty;
 
         setTimeout(function() {
             dusty.goToState('blink');
         }, 5000);
+    };
+
+
+    EnterNameScene.prototype.hide = function() {
+        this.timelineOut.play();
+
+
+    };
+
+    EnterNameScene.prototype.onHideComplete = function(callback) {
+        this.timelineOut.vars.onComplete = callback;
     };
 
 
@@ -188,21 +211,21 @@
         });
 
         timeline.add(TweenLite.to(dipper, animationTime, {
-            windowY: 0.25,
+            windowY: 0.32,
             ease: 'Back.easeOut'
         }), 0);
 
         //sweep right
         timeline.add(TweenLite.to(dipper, animationTime, {
-            windowX: 0.90,
+            windowX: 0.86,
             rotation: 0,
             ease: easing
         }), sweepStartTime);
 
         // scale up
-        timeline.add(TweenLite.to(dipper.scale, animationTime + sweepStartTime, {
-            x: 1,
-            y: 1,
+        timeline.add(TweenLite.to(dipper, animationTime + sweepStartTime, {
+            animationScaleX: 1,
+            animationScaleY: 1,
             ease: easing
         }), 0);
         timeline.add(TweenLite.to(blurFilter, animationTime + sweepStartTime, {
@@ -210,9 +233,54 @@
             ease: easing
         }), 0);
 
-
         return timeline;
     };
+
+
+    function generateAnimationDipperOut(dipper) {
+        var animationTime = 1.6;
+        var easing = 'Cubic.easeInOut';
+
+        var blurFilter = dipper.filters[0];
+
+        var timeline = new TimelineMax({
+            paused: true
+        });
+
+        timeline.add(TweenLite.to(dipper, animationTime, {
+            animationScaleX: 1.4,
+            animationScaleY: 1.4,
+            windowY: -0.3,
+            windowX: 1.1,
+            ease: easing
+        }), 0);
+        timeline.add(TweenLite.to(blurFilter, animationTime/2, {
+            blur: 10,
+            ease: easing
+        }), 0);
+
+        return timeline;
+    }
+    function generateAnimationDustyOut(dusty) {
+        var animationTime = 1.6;
+        var easing = 'Cubic.easeInOut';
+
+        var timeline = new TimelineMax({
+            paused: true
+        });
+
+        timeline.add(TweenLite.to(dusty, animationTime, {
+            animationScaleX: 1.2,
+            animationScaleY: 1.2,
+            windowY: 0.24,
+            windowX: -0.3,
+            ease: easing
+        }));
+
+        console.log(dusty);
+
+        return timeline;
+    }
 
 
 

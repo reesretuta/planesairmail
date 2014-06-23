@@ -61,6 +61,8 @@ body {
   z-index: 0;
   width: 100%;
   height: 100%; }
+  #pixi-view.front {
+    z-index: 10; }
 
 /* ************************* Imports ************************** */
 #header {
@@ -227,40 +229,6 @@ body {
   z-index: 50; }
   #intro-view.inactive {
     display: none; }
-  #intro-view div.viewport {
-    position: absolute;
-    left: 0;
-    height: 50%;
-    width: 100%;
-    overflow: hidden;
-    z-index: 2;
-    display: none; }
-    #intro-view div.viewport.top {
-      top: 0; }
-      #intro-view div.viewport.top div.background-image {
-        background-image: url('../assets/img/intro-top.png');
-        background-position: bottom center;
-        bottom: 0; }
-    #intro-view div.viewport.bottom {
-      bottom: 0; }
-      #intro-view div.viewport.bottom div.background-image {
-        background-image: url('../assets/img/intro-btm.png');
-        background-position: top center;
-        top: 0; }
-    #intro-view div.viewport div.background-image {
-      -webkit-background-size: 100% auto;
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      width: 73.60927%;
-      min-width: 962.08609px;
-      max-width: 1924.17219px;
-      position: absolute;
-      left: 0;
-      right: 0;
-      z-index: 0;
-      margin: auto; }
-      #intro-view div.viewport div.background-image > div.empty-space {
-        padding-top: 33.53846%; }
   #intro-view div.begin-screen {
     position: absolute;
     top: 50%;
@@ -278,9 +246,9 @@ body {
       background: url('../assets/img/button.png') center center no-repeat;
       width: 200px;
       height: 63px;
+      line-height: 63px;
       color: #ea2424;
       text-decoration: none;
-      padding-top: 1%;
       margin: 0 auto;
       margin-top: 45px;
       opacity: 0;
@@ -399,8 +367,8 @@ div.question {
       left: 0;
       right: 0;
       margin: auto;
-      height: 100%;
-      width: 100%;
+      height: 98%;
+      width: 98%;
       border-radius: 10px;
       -webkit-box-shadow: none;
       box-shadow: none;

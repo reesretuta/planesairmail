@@ -34,14 +34,17 @@ var QuestionView = Backbone.View.extend({
     /* ***************** Animation Functions ********************** */
     // ============================================================ //
     show: function() {
-        "use strict";
-
         this.$el.addClass('active');
     },
     hide: function() {
-        "use strict";
-
         this.$el.removeClass('active');
+
+        if(_.isFunction(this.hideCallback)) {
+            this.hideCallback();
+        }
+    },
+    onHideComplete: function(callback) {
+        this.hideCallback = callback;
     },
 
 

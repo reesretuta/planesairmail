@@ -97,8 +97,13 @@
         introMask.addChild(introMaskBtm);
         scene.addChild(introMask);
 
+        scene.introMask = introMask;
         scene.introMaskTop = introMaskTop;
         scene.introMaskBtm = introMaskBtm;
+    }
+
+    function initializeBackgroundColor(scene) {
+
     }
 
     function initializeVideoTimeline(scene) {

@@ -33,6 +33,7 @@
         /* ***************** Run Animation Functions ****************** */
         // ============================================================ //
         startAnimation: function() {
+            $('#pixi-view').removeClass('front');
 
             this.scene.startAnimation();
         },
@@ -46,14 +47,24 @@
             scenesManager.goToScene('enterName');
 
 
-
             setTimeout(_.bind(this.startAnimation, this), 1000);
         },
         hide: function () {
-            this.$el.removeClass('active');
+            this.scene.onHideComplete(_.bind(this.setInactive, this));
+
+            //run hide animation
+            this.scene.hide();
         },
+        setInactive: function() {
+            this.$el.removeClass('active');
 
-
+            if(_.isFunction(this.hideCallback)) {
+                this.hideCallback();
+            }
+        },
+        onHideComplete: function(callback) {
+            this.hideCallback = callback;
+        },
 
         onNameChange: function(e) {
             this.model.set({value: this.$nameInput.val()});

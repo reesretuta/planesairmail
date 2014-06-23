@@ -94,9 +94,14 @@
         nextPage: function() {
             //hide active page
             var activePage = this.pages[this.activePageIndex];
-            activePage.hide();
+
+            activePage.onHideComplete(_.bind(this.showPageAfterHide, this));
 
             this.activePageIndex++;
+            activePage.hide();
+        },
+        showPageAfterHide: function() {
+            console.log('show');
 
             //show next page
             var nextPage = this.pages[this.activePageIndex];

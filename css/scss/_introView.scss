@@ -14,65 +14,6 @@
         display: none;
     }
 
-    div.viewport {
-        position: absolute;
-        left: 0;
-
-        height: 50%;
-        width: 100%;
-
-        overflow: hidden;
-
-        z-index: 2;
-
-        display: none;
-
-        &.top {
-            top: 0;
-
-            div.background-image {
-                background-image: url('../assets/img/intro-top.png');
-                background-position: bottom center;
-                bottom: 0;
-            }
-        }
-        &.bottom {
-            bottom: 0;
-
-            div.background-image {
-                background-image: url('../assets/img/intro-btm.png');
-                background-position: top center;
-                top: 0;
-            }
-        }
-
-
-        div.background-image {
-            background-size: 100% auto;
-            background-repeat: no-repeat;
-
-            $widthSizing: 975/755;
-
-            width: 57% * $widthSizing;
-            min-width: 745px * $widthSizing;
-            max-width: 2 * 745px * $widthSizing;
-
-
-
-            position: absolute;
-            left: 0;
-            right: 0;
-            z-index: 0;
-
-            margin: auto;
-
-            > div.empty-space {
-                padding-top: percentage(327/975);
-            }
-        }
-
-    }
-
 
 
     div.begin-screen {
@@ -94,11 +35,11 @@
             background: url('../assets/img/button.png') center center no-repeat;
             width: 200px;
             height: 63px;
+            line-height: 63px;
 
             color: #ea2424;
             text-decoration: none;
 
-            padding-top: 1%;
             margin: 0 auto;
             margin-top: 45px;
 

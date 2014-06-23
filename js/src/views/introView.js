@@ -158,6 +158,8 @@
             scenesManager.goToScene('intro');
 
             this.scene.startAnimation();
+
+            $('#pixi-view').addClass('front');
         },
         hide: function() {
             this.timelineHide.play();

@@ -112,9 +112,35 @@
         //keep scale within our defined bounds
         scale = Math.max(this.scaleMin, Math.min(scale, this.scaleMax));
 
-        this.scale = {x: scale, y: scale};
+
+        this.scale.x = scale * this._animationScaleX;
+        this.scale.y = scale * this._animationScaleY;
     };
 
+
+    // USE ONLY IF WINDOWSCALE IS ALSO SET
+    PIXI.DisplayObject.prototype._animationScaleX = 1;
+    PIXI.DisplayObject.prototype._animationScaleY = 1;
+    Object.defineProperty(PIXI.DisplayObject.prototype, 'animationScaleX', {
+        get: function() {
+            return this._animationScaleX;
+        },
+        set: function(value) {
+            this._animationScaleX = value;
+
+            this._setScale(this._$window.width(), this._$window.height());
+        }
+    });
+    Object.defineProperty(PIXI.DisplayObject.prototype, 'animationScaleY', {
+        get: function() {
+            return this._animationScaleY;
+        },
+        set: function(value) {
+            this._animationScaleY = value;
+
+            this._setScale(this._$window.width(), this._$window.height());
+        }
+    });
 
 
 
