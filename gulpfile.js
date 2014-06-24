@@ -89,24 +89,30 @@ gulp.task('watch', function () {
 });
 
 
+function getDirFiles(directories) {
+    "use strict";
+
+    return _.map(directories, function(dir) {
+        return _.map(fs.readdirSync(dir), function(file) {
+            return dir + '/' + file;
+        });
+    });
+}
 
 
 
 gulp.task('assets', function() {
     "use strict";
 
-    var dir = 'assets/introVideo';
+    var directories = ['assets/introVideo', 'assets/wipescreen'];
 
-    fs.readdir(dir, function(err, files) {
+    var files = JSON.stringify(_.flatten(getDirFiles(directories)));
 
-        var fullPathFiles = _.map(files, function(file) {
-            return dir + '/' + file;
-        });
+    files = files.split(',').join(',\n');
 
-        fs.writeFile('./assets/assets.json', JSON.stringify(fullPathFiles), function (err) {
-            if (err) throw err;
-            console.log('It\'s saved!');
-        });
+    fs.writeFile('./assets/assets.json', files, function (err) {
+        if (err) throw err;
+        console.log('It\'s saved!');
     });
 
 });

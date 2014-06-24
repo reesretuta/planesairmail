@@ -39,6 +39,7 @@ app.render = _.after(2, function() {
 
 var introVideoAssets = require('./data/assets.json');
 
+console.log(introVideoAssets);
 
 // create an array of assets to load
 var assetsToLoader = ['assets/spritesheets/dusty_idle.json', 'assets/spritesheets/dusty_blink.json'].concat(introVideoAssets);

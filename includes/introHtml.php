@@ -6,10 +6,20 @@
 <div id="intro-view">
     <div class="full-relative">
         <div class="viewport top">
-            <div class="empty-space"></div>
+            <div class="left vertical"></div>
+            <div class="right vertical"></div>
+            <div class="top horizontal"></div>
+            <div class="background">
+                <div class="empty-space"></div>
+            </div>
         </div>
-        <div class="viewport bottom">
-            <div class="empty-space"></div>
+        <div class="viewport btm">
+            <div class="left vertical"></div>
+            <div class="right vertical"></div>
+            <div class="btm horizontal"></div>
+            <div class="background">
+                <div class="empty-space"></div>
+            </div>
         </div>
         <div class="begin-screen">
             <div class="line">Send a message to your favorite member</div>

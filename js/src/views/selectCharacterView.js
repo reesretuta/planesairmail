@@ -24,20 +24,9 @@
 
             var filePath = audioAssets[e.currentTarget.getAttribute('id')];
 
-            console.log(filePath);
-            console.log(soundPlayer);
-
             soundPlayer.play(filePath);
         }
     });
-
-
-
-
-
-
-
-
 
 
 

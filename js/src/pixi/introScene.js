@@ -34,7 +34,7 @@
     };
 
     IntroScene.prototype.open = function() {
-        this.timelineOpen.play();
+        //this.timelineOpen.play();
     };
 
 
@@ -49,6 +49,20 @@
         this.timelineVideo.vars.onComplete = callback;
     };
 
+
+    IntroScene.prototype.setView = function(view) {
+        this.view = view;
+    };
+    IntroScene.prototype._onWindowResize = function(width, height) {
+        Scene.prototype._onWindowResize.call(this, width, height);
+
+        if(!_.isUndefined(this.view)) {
+            var scale = this.introVideo.scale;
+            var bounds = this.introVideo.getLocalBounds();
+
+            this.view.onWindowResize(width, height, (bounds.width * scale.x), (bounds.height * scale.y));
+        }
+    };
 
 
     // ============================================================ //
@@ -74,32 +88,7 @@
     }
 
     function initializeMask(scene) {
-        var introMask = new PIXI.DisplayObjectContainer();
 
-        var introMaskTop = PIXI.Sprite.fromImage('assets/img/intro-top.png');
-        var introMaskBtm = PIXI.Sprite.fromImage('assets/img/intro-btm.png');
-
-        introMaskTop.anchor = new PIXI.Point(.5, 1);
-        introMaskBtm.anchor = new PIXI.Point(.5, 0);
-
-        introMaskTop.windowY = 0;
-        introMaskBtm.windowY = 0;
-
-        introMask.windowX = 0.5;
-        introMask.windowY = 0.5;
-        introMask.anchor = new PIXI.Point(.5, .5);
-
-        introMask.scaleMin = 0.98;
-        introMask.scaleMax = 2;
-        introMask.windowScale = 0.76;
-
-        introMask.addChild(introMaskTop);
-        introMask.addChild(introMaskBtm);
-        scene.addChild(introMask);
-
-        scene.introMask = introMask;
-        scene.introMaskTop = introMaskTop;
-        scene.introMaskBtm = introMaskBtm;
     }
 
     function initializeBackgroundColor(scene) {
@@ -122,7 +111,6 @@
         });
 
         scene.timelineVideo = getVideoAnimationTimeline(scene);
-        scene.timelineOpen = getIntroOpenTimeline(scene);
     }
 
     // ============================================================ //
@@ -147,27 +135,6 @@
 
 
         return timeline;
-    }
-
-    function getIntroOpenTimeline(scene) {
-        var animationTime = 1.6;
-        var easing = 'Cubic.easeInOut';
-
-        var timeline = new TimelineLite({
-            paused: true
-        });
-
-        timeline.add(TweenLite.to(scene.introMaskTop, animationTime, {
-            windowY: -0.5,
-            ease: easing
-        }), 0);
-        timeline.add(TweenLite.to(scene.introMaskBtm, animationTime, {
-            windowY: 0.5,
-            ease: easing
-        }), 0);
-
-        return timeline;
-
     }
 
 

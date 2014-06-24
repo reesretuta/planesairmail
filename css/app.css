@@ -231,6 +231,54 @@ body {
   z-index: 50; }
   #intro-view.inactive {
     display: none; }
+  #intro-view div.viewport {
+    width: 100%;
+    height: 50%;
+    z-index: 0;
+    position: absolute;
+    left: 0; }
+    #intro-view div.viewport.top {
+      top: 0; }
+      #intro-view div.viewport.top > div.background {
+        bottom: 0;
+        background-image: url('../assets/img/intro-top.png');
+        background-position: bottom center; }
+        #intro-view div.viewport.top > div.background > div.empty-space {
+          padding-bottom: 33.53846%; }
+    #intro-view div.viewport.btm {
+      bottom: 0; }
+      #intro-view div.viewport.btm > div.background {
+        top: 0;
+        background-image: url('../assets/img/intro-btm.png');
+        background-position: top center; }
+        #intro-view div.viewport.btm > div.background > div.empty-space {
+          padding-bottom: 33.4359%; }
+    #intro-view div.viewport > div {
+      position: absolute;
+      background-color: #080b11; }
+      #intro-view div.viewport > div.left {
+        height: 100%;
+        left: 0; }
+      #intro-view div.viewport > div.right {
+        height: 100%;
+        right: 0; }
+      #intro-view div.viewport > div.btm {
+        width: 100%;
+        bottom: 0; }
+      #intro-view div.viewport > div.top {
+        width: 100%;
+        top: 0; }
+    #intro-view div.viewport div.background {
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      width: 0;
+      -webkit-background-size: contain;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: initial; }
   #intro-view div.begin-screen {
     position: absolute;
     top: 50%;

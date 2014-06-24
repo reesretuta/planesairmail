@@ -23,15 +23,20 @@
             this.initScene();
         },
         initJqueryVariables: function() {
+            this.$beginScreen = this.$el.find('div.begin-screen');
+            this.$beginLines = this.$beginScreen.find('div.line');
+            this.$beginBtn = this.$beginScreen.find('a.begin');
+
+
 
             var $viewPorts = this.$el.find('div.viewport');
 
             this.$viewPortTop = $viewPorts.filter('.top');
-            this.$viewPortBottom = $viewPorts.filter('.bottom');
+            this.$viewPortBottom = $viewPorts.filter('.btm');
 
-            this.$beginScreen = this.$el.find('div.begin-screen');
-            this.$beginLines = this.$beginScreen.find('div.line');
-            this.$beginBtn = this.$beginScreen.find('a.begin');
+            this.$verticalSides = $viewPorts.find('.vertical');
+            this.$horizontalSides = $viewPorts.find('.horizontal');
+            this.$backgrounds = $viewPorts.find('.background');
         },
         initAnimationTimeline: function() {
             this.timelineHide = this.getTimelineHide();
@@ -41,6 +46,8 @@
             this.scene = scenesManager.createScene('intro', IntroScene);
 
             this.scene.onComplete(_.bind(this.showBeginScreen, this));
+
+            this.scene.setView(this);
         },
 
         // ============================================================ //
@@ -116,11 +123,11 @@
             }), 0);
 
             timeline.add(TweenLite.to(this.$viewPortTop, animationTime, {
-                height: 0,
+                top: '-50%',
                 ease: easing
             }), 0);
             timeline.add(TweenLite.to(this.$viewPortBottom, animationTime, {
-                height: 0,
+                bottom: '-50%',
                 ease: easing
             }), 0);
 
@@ -147,6 +154,15 @@
             e.preventDefault();
 
             this.hide();
+        },
+        onWindowResize: function(windowWidth, windowHeight, videoWidth, videoHeight) {
+
+            console.log(windowWidth, windowHeight, videoWidth, videoHeight);
+
+            this.$backgrounds.width(videoWidth * 1.275 | 0);
+            this.$horizontalSides.height(((windowHeight - videoHeight)/2 + 1) | 0); //round up
+            this.$verticalSides.width(((windowWidth - videoWidth)/2 + 1) | 0); //round up
+
         },
 
         // ============================================================ //
