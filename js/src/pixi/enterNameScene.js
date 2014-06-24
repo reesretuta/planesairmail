@@ -17,7 +17,6 @@
         return PIXI.getTextures('dusty_blink_', 1, 17);
     }
 
-
     // ============================================================ //
     /* ************* Enter Name Pixi Animation Class ************** */
     // ============================================================ //
@@ -37,11 +36,12 @@
     // ============================================================ //
 
     EnterNameScene.prototype.initializeCharacters = function() {
-        this.initDusty();
-        this.initDipper();
+        initParachuters(this);
+        initDusty(this);
+        initDipper(this);
     };
 
-    EnterNameScene.prototype.initDusty = function() {
+    function initDusty(scene) {
 
         var dusty = new Character('Dusty');
 
@@ -59,14 +59,14 @@
         dusty.windowY = -1;
 
         // add to stage
-        this.addChild(dusty);
-        this.characters.dusty = dusty;
-    };
+        scene.addChild(dusty);
+        scene.characters.dusty = dusty;
+    }
 
-    EnterNameScene.prototype.initDipper = function() {
+    function initDipper(scene) {
         var dipper = new Character('Dipper');
 
-        var dipperIdleState = PIXI.Sprite.fromImage("./assets/img/dipper.png");
+        var dipperIdleState = PIXI.Sprite.fromImage("assets/img/dipper.png");
 
         dipperIdleState.anchor = {
             x: 440/865,
@@ -88,9 +88,57 @@
 
         dipper.filters = [blurFilter];
 
-        this.addChild(dipper);
-        this.characters.dipper = dipper;
-    };
+        scene.addChild(dipper);
+        scene.characters.dipper = dipper;
+    }
+
+    function initParachuters(scene) {
+        var parachuters = [getBlackout(), getDrip(), getDynamite()];
+
+        _.each(parachuters, function(parachuter) {
+            var blurFilter = new PIXI.BlurFilter();
+            blurFilter.blur = 0;
+
+            parachuter.filters = [blurFilter];
+            parachuter.windowX = 0.5;
+            parachuter.windowY = -1;
+
+            scene.addChild(parachuter);
+        });
+        scene.characters.parachuters = parachuters;
+    }
+    function getBlackout() {
+        var blackoutIdleState = PIXI.Sprite.fromImage("assets/img/blackout.png");
+        blackoutIdleState.anchor = {
+            x: 26/61,
+            y: 33/94
+        };
+
+        var blackout = new Character('Blackout', blackoutIdleState);
+
+        return blackout;
+    }
+    function getDrip() {
+        var dripIdleState = PIXI.Sprite.fromImage("assets/img/drip.png");
+        dripIdleState.anchor = {
+            x: 36/61,
+            y: 26/94
+        };
+
+        var drip = new Character('Drip', dripIdleState);
+
+        return drip;
+    }
+    function getDynamite() {
+        var dynamiteIdleState = PIXI.Sprite.fromImage("assets/img/dynamite.png");
+        dynamiteIdleState.anchor = {
+            x: 27/61,
+            y: 30/94
+        };
+
+        var dynamite = new Character('Dynamite', dynamiteIdleState);
+        return dynamite;
+    }
 
     // ============================================================ //
     /* ******************* Animation Functions ******************** */
@@ -108,9 +156,6 @@
 
         this.timelineIn = timeline;
 
-
-
-
         var timelineOut = new TimelineMax({
             paused: true
         });
@@ -124,18 +169,71 @@
     EnterNameScene.prototype.startAnimation = function() {
         this.timelineIn.play();
 
-        var dusty = this.characters.dusty;
+//        var dusty = this.characters.dusty;
+//        setTimeout(function() {
+//            dusty.goToState('blink');
+//        }, 5000);
 
-        setTimeout(function() {
-            dusty.goToState('blink');
-        }, 5000);
+
+        var parachuters = _.shuffle(this.characters.parachuters);
+
+        console.log(parachuters);
+
+        var startTime = 2000;
+        setTimeout(_.bind(this.animateParachuter, this, parachuters[0]), startTime);
+        setTimeout(_.bind(this.animateParachuter, this, parachuters[1]), startTime + 6000);
+        setTimeout(_.bind(this.animateParachuter, this, parachuters[2]), startTime + 15000);
     };
+
+
+    EnterNameScene.prototype.animateParachuter = function(parachuter) {
+        var animationTime = 35;
+
+        var depth = Math.random() * 5;
+        var x = 0.1 + (Math.random() * 0.8);
+        var scale = 1 - depth * 0.2/5;
+
+        placeJustOffscreen(parachuter);
+        parachuter.windowX = x;
+
+        var rotation = 0.3;
+
+
+        TweenLite.to(parachuter, animationTime, {
+            windowY: 1,
+            ease: 'Sine.easeOut'
+        });
+
+        parachuter.scale = {x: scale, y: scale};
+        parachuter.filters[0].blur = depth;
+        parachuter.rotation = rotation;
+        swayParachuter(parachuter, rotation);
+    };
+
+    function swayParachuter(parachuter, rotation) {
+        var swayTime = 1.2;
+        var dec = 0.03;
+
+        TweenLite.to(parachuter, swayTime, {
+            rotation: -rotation,
+            ease: 'Cubic.easeInOut'
+        });
+        TweenLite.to(parachuter, swayTime, {
+            rotation: rotation,
+            ease: 'Cubic.easeInOut',
+            delay: swayTime,
+            onComplete: function() {
+                if(rotation > 0) {
+                    swayParachuter(parachuter, rotation - dec);
+                }
+            }
+        });
+    }
+
 
 
     EnterNameScene.prototype.hide = function() {
         this.timelineOut.play();
-
-
     };
 
     EnterNameScene.prototype.onHideComplete = function(callback) {
@@ -147,11 +245,6 @@
     EnterNameScene.prototype.update = function() {
         // call parent function
         Scene.prototype.update.call(this);
-
-        // update each character
-        _.each(this.characters, function(character) {
-            character.update();
-        });
     };
 
 
@@ -236,7 +329,6 @@
         return timeline;
     };
 
-
     function generateAnimationDipperOut(dipper) {
         var animationTime = 1.6;
         var easing = 'Cubic.easeInOut';
@@ -279,6 +371,8 @@
 
         return timeline;
     }
+
+
 
 
 

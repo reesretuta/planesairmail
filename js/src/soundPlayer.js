@@ -7,7 +7,7 @@ var audioAssets = require('./data/audioAssets.json');
 
 var soundPlayer = {
     muted: false,
-    volume: 0.6,
+    volume: 0.4,
     sounds: {},
     on: function() {
         this.muted = false;

@@ -11,6 +11,7 @@
 
         this.name = name;
         this.idle = null;
+        this.animating = false;
         this.states = {};
         this.onUpdateCallback = function() {};
 

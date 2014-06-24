@@ -2,7 +2,7 @@
 (function() {
     "use strict";
 
-
+    var EnterNameScene = require('../pixi/enterNameScene');
     var scenesManager = require('../pixi/scenesManager');
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~ Collections ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,6 +36,8 @@
 
             //create canvas element
             scenesManager.initialize($(window).width(), $(window).height(), this.$el);
+
+            this.scene = scenesManager.createScene('enterName', EnterNameScene);
 
             // create views
             this.initIntroView();
@@ -71,8 +73,8 @@
 
             this.$pagesContainer = this.$el.find('div.pages-ctn');
 
-            var $backgrounds = this.$el.find('div.backgrounds div.background');
-            this.$backgroundCtr = $backgrounds;
+            var $backgrounds = this.$el.find('> div.background');
+            this.$backgrounds = $backgrounds;
             this.$background = $backgrounds.filter('.back');
             this.$middleground = $backgrounds.filter('.middle');
             this.$foreground = $backgrounds.filter('.front');
@@ -101,8 +103,6 @@
             activePage.hide();
         },
         showPageAfterHide: function() {
-            console.log('show');
-
             //show next page
             var nextPage = this.pages[this.activePageIndex];
             nextPage.show();
@@ -119,18 +119,22 @@
         },
 
         finishAndSend: function() {
+            this.$pagesContainer.hide();
             this.footer.hideCounter();
 
-            this.$backgroundCtr.hide();
-            this.$pagesContainer.hide();
 
             var pageModels = _.map(this.pages, function(page) {
                 return page.model;
             });
-
             this.responseView.setResponse(pageModels);
 
-            this.responseView.show();
+            //run bladewipe animation
+
+//            this.$backgrounds.hide();
+//
+//
+//
+//            this.responseView.show();
         },
 
         // ==================================================================== //
@@ -142,15 +146,12 @@
             setTimeout(function() {
                 introView.start(); //start intro
             }, 200);
-//            this.showFirstPage();
         },
-
 
         // ==================================================================== //
         /* *************************** Parallax Stuff ************************* */
         // ==================================================================== //
         shiftBackgroundLayers: function(x) {
-
             var backgroundRatio = 0.75;
             var middlegroundRatio = 1.5;
             var foregroundRatio = 3;

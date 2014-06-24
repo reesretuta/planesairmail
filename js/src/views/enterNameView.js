@@ -25,8 +25,7 @@
             this.$nameInput = this.$el.find('input[type=text].name');
         },
         initScene: function() {
-            this.scene = scenesManager.createScene('enterName', EnterNameScene);
-
+            this.scene = scenesManager.scenes['enterName'];
         },
 
         // ============================================================ //
@@ -47,7 +46,7 @@
             scenesManager.goToScene('enterName');
 
 
-            setTimeout(_.bind(this.startAnimation, this), 1000);
+            setTimeout(_.bind(this.startAnimation, this), 0);
         },
         hide: function () {
             this.scene.onHideComplete(_.bind(this.setInactive, this));

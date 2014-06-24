@@ -156,9 +156,6 @@
             this.hide();
         },
         onWindowResize: function(windowWidth, windowHeight, videoWidth, videoHeight) {
-
-            console.log(windowWidth, windowHeight, videoWidth, videoHeight);
-
             this.$backgrounds.width(videoWidth * 1.275 | 0);
             this.$horizontalSides.height(((windowHeight - videoHeight)/2 + 1) | 0); //round up
             this.$verticalSides.width(((windowWidth - videoWidth)/2 + 1) | 0); //round up
