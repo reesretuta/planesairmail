@@ -29,6 +29,9 @@
 
         this.initializeCharacters();
         this.initializeAnimationTimeline();
+
+        generateBladeWipeAnimation(this);
+        initializeVideoTimeline(this);
     };
 
     // ============================================================ //
@@ -140,6 +143,71 @@
         return dynamite;
     }
 
+
+    function generateBladeWipeAnimation(scene) {
+        var textures = PIXI.getTextures('assets/wipescreen/Blade_wpscrn_86', 400, 556);
+
+        console.log(textures);
+
+        var wipescreenVideo = new PIXI.MovieClip(textures);
+        wipescreenVideo.windowX = 0.5;
+        wipescreenVideo.windowY = 0.5;
+        wipescreenVideo.windowScale = 1;
+
+        wipescreenVideo.anchor = new PIXI.Point(0.5, 0.5);
+        wipescreenVideo.visible = false;
+        wipescreenVideo.loop = false;
+
+        scene.addChild(wipescreenVideo);
+        scene.wipescreenVideo = wipescreenVideo;
+    }
+
+    function initializeVideoTimeline(scene) {
+        scene.wipescreenVideo._tweenFrame = 0;
+
+        Object.defineProperty(scene.wipescreenVideo, 'tweenFrame', {
+            get: function() {
+                return this._tweenFrame;
+            },
+            set: function(value) {
+                this._tweenFrame = value;
+                this.currentFrame = value;
+                this.setTexture(this.textures[value | 0]);
+            }
+        });
+
+        scene.timelineVideo = getVideoAnimationTimeline(scene);
+    }
+    function getVideoAnimationTimeline(scene) {
+        var fps = 24;
+        var numFrames = scene.wipescreenVideo.textures.length;
+
+        var animationTime = numFrames/fps;
+        var easing = new SteppedEase(numFrames);
+
+        var timeline = new TimelineLite({
+            paused: true
+        });
+
+        timeline.append(TweenLite.to(scene.wipescreenVideo, animationTime, {
+            tweenFrame: numFrames-1,
+            ease: easing
+        }));
+
+
+        return timeline;
+    }
+
+    EnterNameScene.prototype.playWipescreen = function() {
+        this.wipescreenVideo.visible = true;
+        this.timelineVideo.play();
+    };
+    EnterNameScene.prototype.onWipescreenComplete = function(callback) {
+        this.timelineVideo.vars.onComplete = callback;
+    };
+    EnterNameScene.prototype.hideVideo = function() {
+        this.wipescreenVideo.visible = false;
+    };
     // ============================================================ //
     /* ******************* Animation Functions ******************** */
     // ============================================================ //

@@ -122,13 +122,23 @@
             this.$pagesContainer.hide();
             this.footer.hideCounter();
 
-
             var pageModels = _.map(this.pages, function(page) {
                 return page.model;
             });
             this.responseView.setResponse(pageModels);
 
+            var me = this;
+            this.scene.onWipescreenComplete(function() {
+                me.$backgrounds.hide();
+                me.responseView.show();
+                me.scene.hideVideo();
+            });
+
+            $('#pixi-view').addClass('middle');
             //run bladewipe animation
+            this.scene.playWipescreen();
+
+
 
 //            this.$backgrounds.hide();
 //
