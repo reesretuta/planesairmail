@@ -99,6 +99,11 @@
             //hide active page
             var activePage = this.pages[this.activePageIndex];
 
+            if(this.activePageIndex === 1) {
+                //animate in character
+                this.scene.animateInUserCharacter();
+            }
+
             activePage.onHideComplete(_.bind(this.showPageAfterHide, this));
 
             this.activePageIndex++;

@@ -15,7 +15,7 @@ var dusty, dipper, timelineIn, timelineOut;
 /* ************************ Helper Functions ************************* */
 // =================================================================== //
 function getDustyIdleTextures() {
-    return PIXI.getTextures('assets/spritesheets/dusty/one/Dusty_plane_000', 0, 11);
+    return PIXI.getTextures('assets/spritesheets/dusty/two/Dusty_plane_light_000', 0, 12);
 }
 
 function getDustyBlinkTextures() {
@@ -45,7 +45,7 @@ function initializeDusty() {
     dusty.setIdleState(dustyIdleAnimation);
 //    dusty.addState('blink', dustyBlinkAnimation);
 
-    dusty.windowScale = 600/1366;
+    dusty.windowScale = 900/1366;
     dusty.windowX = 0.15;
     dusty.windowY = -1;
 
@@ -99,7 +99,7 @@ function generateAnimationInTimeline() {
 }
 
 function generateTimelineDustyIn(dusty) {
-    var animationTime = 1.8;
+    var animationTime = 1.6;
     var easing = 'Cubic.easeInOut';
 
     var ogAttributes = _.pick(dusty, 'windowX', 'windowScale');
@@ -113,7 +113,7 @@ function generateTimelineDustyIn(dusty) {
     });
 
     timeline.add(TweenLite.to(dusty, animationTime, {
-        windowY: 0.5,
+        windowY: 0.52,
         ease: easing
     }), 0);
 

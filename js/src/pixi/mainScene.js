@@ -9,6 +9,7 @@
     var dustyDipperModule = require('../animations/dustyDipper');
     var parachutersModule = require('../animations/parachuters');
     var responseModule = require('../animations/response');
+    var characterModule = require('../animations/characterModule');
 
 
     // ============================================================ //
@@ -23,36 +24,39 @@
         parachutersModule.initialize(this);
         bladewipeModule.initialize(this);
         dustyDipperModule.initialize(this);
+        characterModule.initialize(this);
     };
 
     // ============================================================ //
     /* ****************** Public API Functions ******************** */
     // ============================================================ //
 
-    MainScene.prototype.playWipescreen = function() {
-        bladewipeModule.playVideo();
-    };
-    MainScene.prototype.onWipescreenComplete = function(callback) {
-        bladewipeModule.onVideoComplete(callback);
-    };
-    MainScene.prototype.hideVideo = function() {
-        bladewipeModule.hideVideo();
-    };
+    MainScene.prototype = {
+        playWipescreen: function() {
+            bladewipeModule.playVideo();
+        },
+        onWipescreenComplete:function(callback) {
+            bladewipeModule.onVideoComplete(callback);
+        },
+        hideVideo: function() {
+            bladewipeModule.hideVideo();
+        },
+        startEnterNameAnimation: function() {
+            dustyDipperModule.animateIn();
 
-    MainScene.prototype.startEnterNameAnimation = function() {
-        dustyDipperModule.animateIn();
-
-        var startTime = 2000;
-        setTimeout(parachutersModule.animateNext, startTime);
-        setTimeout(parachutersModule.animateNext, startTime + 6000);
-        setTimeout(parachutersModule.animateNext, startTime + 15000);
+            var startTime = 2000;
+            setTimeout(parachutersModule.animateNext, startTime);
+            setTimeout(parachutersModule.animateNext, startTime + 6000);
+            setTimeout(parachutersModule.animateNext, startTime + 15000);
+        },
+        showResponse: function() {
+            parachutersModule.hide();
+            responseModule.show();
+        },
+        animateInUserCharacter: function() {
+            characterModule.animateIn();
+        }
     };
-
-    MainScene.prototype.showResponse = function() {
-        parachutersModule.hide();
-        responseModule.show();
-    };
-
 
 
 
