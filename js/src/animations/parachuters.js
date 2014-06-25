@@ -61,7 +61,7 @@ function getDynamite() {
 function animateParachuter(parachuter) {
     var animationTime = 35;
 
-    var depth = Math.random() * 4;
+    var depth = Math.random() * 5;
     var x = 0.1 + (Math.random() * 0.8);
     var scale = 1 - depth * 0.2/5;
 
@@ -79,7 +79,7 @@ function animateParachuter(parachuter) {
     });
 
     parachuter.scale = {x: scale, y: scale};
-    parachuter.filters[0].blur = depth;
+    parachuter.filters[0].blur = depth * 3/5;
     parachuter.rotation = rotation;
 
     swayParachuter(parachuter, rotation);

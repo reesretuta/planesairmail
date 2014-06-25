@@ -6,7 +6,19 @@
 </head>
 <body>
     <div id="content" class="full-relative">
-        <div id="assetLoader"><div class="text"></div></div>
+        <div id="passwordScreen">
+            <div class="content">
+                <form action="index.php">
+                    <label>
+                        Password: <input type="password" name="pwd">
+                    </label>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+        <div id="assetLoader">
+            <div class="text"></div>
+        </div>
         <div id="header">
             <div class="full-relative">
                 <div class="logo"></div>

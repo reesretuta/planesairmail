@@ -36,7 +36,8 @@ function initialize() {
 function initializeDusty() {
     var dusty = new Character('Dusty');
 
-    var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
+//    var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
+    var dustyIdleAnimation = PIXI.Sprite.fromImage('assets/img/dusty2.png');
 //    var dustyBlinkAnimation = new PIXI.MovieClip(getDustyBlinkTextures());
 
     dustyIdleAnimation.anchor = {x: 650/1200, y: 340/638};
@@ -45,7 +46,8 @@ function initializeDusty() {
     dusty.setIdleState(dustyIdleAnimation);
 //    dusty.addState('blink', dustyBlinkAnimation);
 
-    dusty.windowScale = 900/1366;
+//    dusty.windowScale = 900/1366;
+    dusty.windowScale = 700/1366;
     dusty.windowX = 0.15;
     dusty.windowY = -1;
 
@@ -235,26 +237,26 @@ function generateAnimationDustyOut(dusty) {
         paused: true
     });
 
-    timeline.add(TweenLite.to(dusty, animationTime, {
-        animationScaleX: 1.3,
-        animationScaleY: 1.3,
-        windowY: -0.3,
-        windowX: 0.6,
-        rotation: -0.2
-    }), 0);
-
-    timeline.add(TweenLite.to(blurFilter, animationTime/5, {
-        blur: 10,
-        ease: easing
-    }), 0);
-
 //    timeline.add(TweenLite.to(dusty, animationTime, {
-//        animationScaleX: 1.2,
-//        animationScaleY: 1.2,
-//        windowY: 0.24,
-//        windowX: -0.3,
+//        animationScaleX: 1.3,
+//        animationScaleY: 1.3,
+//        windowY: -0.3,
+//        windowX: 0.6,
+//        rotation: -0.2
+//    }), 0);
+//
+//    timeline.add(TweenLite.to(blurFilter, animationTime/5, {
+//        blur: 10,
 //        ease: easing
-//    }));
+//    }), 0);
+
+    timeline.add(TweenLite.to(dusty, animationTime, {
+        animationScaleX: 1.2,
+        animationScaleY: 1.2,
+        windowY: 0.24,
+        windowX: -0.3,
+        ease: easing
+    }));
 
     return timeline;
 }
