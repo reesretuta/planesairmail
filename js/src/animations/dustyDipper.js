@@ -39,7 +39,7 @@ function initializeDusty() {
     var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
 //    var dustyBlinkAnimation = new PIXI.MovieClip(getDustyBlinkTextures());
 
-    dustyIdleAnimation.anchor = {x: 0.5, y: 0.5};
+    dustyIdleAnimation.anchor = {x: 650/1200, y: 340/638};
 //    dustyBlinkAnimation.anchor = {x: 0.5, y: 0.5};
 
     dusty.setIdleState(dustyIdleAnimation);
@@ -49,8 +49,14 @@ function initializeDusty() {
     dusty.windowX = 0.15;
     dusty.windowY = -1;
 
+    var blurFilter = new PIXI.BlurFilter();
+    blurFilter.blur = 0;
+
+    dusty.filters = [blurFilter];
+
     return dusty;
 }
+
 function initializeDipper() {
     var dipper = new Character('Dipper');
 
@@ -220,20 +226,35 @@ function generateAnimationDipperOut(dipper) {
     return timeline;
 }
 function generateAnimationDustyOut(dusty) {
-    var animationTime = 1.6;
-    var easing = 'Cubic.easeInOut';
+    var animationTime = 2.4;
+    var easing = 'Circ.easeInOut';
+
+    var blurFilter = dusty.filters[0];
 
     var timeline = new TimelineMax({
         paused: true
     });
 
     timeline.add(TweenLite.to(dusty, animationTime, {
-        animationScaleX: 1.2,
-        animationScaleY: 1.2,
-        windowY: 0.24,
-        windowX: -0.3,
+        animationScaleX: 1.3,
+        animationScaleY: 1.3,
+        windowY: -0.3,
+        windowX: 0.6,
+        rotation: -0.2
+    }), 0);
+
+    timeline.add(TweenLite.to(blurFilter, animationTime/5, {
+        blur: 10,
         ease: easing
-    }));
+    }), 0);
+
+//    timeline.add(TweenLite.to(dusty, animationTime, {
+//        animationScaleX: 1.2,
+//        animationScaleY: 1.2,
+//        windowY: 0.24,
+//        windowX: -0.3,
+//        ease: easing
+//    }));
 
     return timeline;
 }

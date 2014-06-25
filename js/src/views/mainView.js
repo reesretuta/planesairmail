@@ -36,7 +36,7 @@
             this.initJqueryVariables();
 
             //create canvas element
-            scenesManager.initialize($(window).width(), $(window).height(), this.$el);
+            scenesManager.initialize(this.$window.width(), this.$window.height(), this.$el);
 
             this.scene = scenesManager.createScene('main', MainScene);
 
@@ -47,6 +47,19 @@
             this.footer = new FooterView({numDots: this.pages.length});
             this.responseView = new ResponseView();
 
+            this.initWindowEvents();
+        },
+
+        initWindowEvents: function() {
+            this.$window.on('resize', _.bind(this.repositionPageNav, this));
+
+//            if (window.DeviceOrientationEvent) {
+//                window.addEventListener("deviceorientation", function(event) {
+//
+//                    console.log(event.beta, event.gamma);
+//
+//                }, true);
+//            }
         },
 
         initIntroView: function() {
@@ -81,8 +94,9 @@
             this.$middleground = $backgrounds.filter('.middle');
             this.$foreground = $backgrounds.filter('.front');
 
-            this.$next = this.$pagesContainer.find('div.page-nav a.next');
-            this.$finishSend = this.$pagesContainer.find('div.page-nav a.finish-send');
+            this.$pageNav = this.$pagesContainer.find('div.page-nav');
+            this.$next = this.$pageNav.find('a.next');
+            this.$finishSend = this.$pageNav.find('a.finish-send');
         },
 
 
@@ -108,6 +122,7 @@
 
             this.activePageIndex++;
             activePage.hide();
+            this.repositionPageNav(true);
         },
         showPageAfterHide: function() {
             //show next page
@@ -134,6 +149,8 @@
             });
             this.responseView.setResponse(pageModels);
 
+            this.scene.onUserCharacterOut(_.bind(this.scene.playWipescreen, this.scene));
+
             var me = this;
             this.scene.onWipescreenComplete(function() {
                 me.$backgrounds.hide();
@@ -144,10 +161,25 @@
             //set canvas to be in front of trees
             $('#pixi-view').addClass('middle');
 
+            this.scene.animateOutUserCharacter();
+        },
+        repositionPageNav: function(animate) {
+            var activePage = this.pages[this.activePageIndex];
 
-            //run bladewipe animation
-            this.scene.playWipescreen();
+            var pixelPosition = (activePage.$el.offset().top + activePage.$el.height());
 
+            var windowHeight = this.$window.height();
+
+
+            var topFrac = Math.min(pixelPosition/windowHeight, (windowHeight - this.footer.height() - this.$pageNav.outerHeight())/windowHeight);
+
+            var percTop = 100 * topFrac + '%';
+
+            if(!!animate) {
+                TweenLite.to(this.$pageNav, 0.2, {top: percTop, ease:'Quad.easeInOut'});
+                return;
+            }
+            this.$pageNav.css('top', percTop);
         },
 
         // ==================================================================== //

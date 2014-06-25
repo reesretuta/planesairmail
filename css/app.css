@@ -225,7 +225,10 @@ body {
       z-index: 11;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
-      transform: translateX(-50%); }
+      transform: translateX(-50%);
+      -webkit-backface-visibility: hidden;
+      padding-top: 20px;
+      padding-bottom: 20px; }
       #content div.pages-ctn div.page-nav a {
         color: #ea2424;
         text-decoration: none;
@@ -245,7 +248,7 @@ body {
         background: url('../assets/img/icons/send-btn.png') center center no-repeat;
         width: 240px;
         height: 53px;
-        line-height: 53px; }
+        line-height: 43px; }
 
 #intro-view {
   height: 100%;
@@ -337,17 +340,18 @@ body {
 div.page {
   position: absolute;
   top: 50%;
-  left: 0;
   right: 0;
   z-index: 10;
   margin: auto;
-  width: 609px;
+  width: 549px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  display: none; }
+  left: 200%;
+  visibility: hidden; }
   div.page.active {
-    display: block; }
+    left: 0;
+    visibility: visible; }
 
 div.page.name .input-wrapper {
   height: 95px;
@@ -403,9 +407,9 @@ div.question {
     width: 100%; }
   div.question div.option {
     float: left;
-    height: 203px;
-    width: 203px;
-    padding: 40px; }
+    height: 183px;
+    width: 183px;
+    padding: 30px; }
     div.question div.option input {
       display: none; }
     div.question div.option label {

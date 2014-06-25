@@ -128,6 +128,10 @@
             this.$counter.hide();
         },
 
+        height: function() {
+            return this.$el.outerHeight() + this.$counter.outerHeight();
+        },
+
 
         // ==================================================================== //
         /* ************************* Event Listeners ************************** */

@@ -3,27 +3,27 @@
 div.page {
     position: absolute;
     top: 50%;
-    left: 0;
     right: 0;
 
     z-index: 10;
 
     margin: auto;
 
-    width: 609px;
+    width: 549px;
 
     transform: translateY(-50%);
 
-    display: none;
+    left: 200%;
+    visibility: hidden;
     &.active {
-        display: block;
+        left: 0;
+        visibility: visible;
     }
 }
 
 
 
 $blue: rgba(179, 209, 233, 0.35);
-
 
 
 

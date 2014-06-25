@@ -38,6 +38,9 @@
         onWipescreenComplete:function(callback) {
             bladewipeModule.onVideoComplete(callback);
         },
+        onUserCharacterOut: function(callback) {
+            characterModule.onAnimationOutComplete(callback);
+        },
         hideVideo: function() {
             bladewipeModule.hideVideo();
         },
@@ -55,6 +58,9 @@
         },
         animateInUserCharacter: function() {
             characterModule.animateIn();
+        },
+        animateOutUserCharacter: function() {
+            characterModule.animateOut();
         }
     };
 

@@ -46,11 +46,11 @@ function initDusty() {
     var dusty = new Character('Dusty');
 
     var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
-    dustyIdleAnimation.anchor = {x: 0.5, y: 0.5};
+    dustyIdleAnimation.anchor = {x: 0.5, y: 405/983};
     dusty.setIdleState(dustyIdleAnimation);
 
-    dusty.windowScale = 600/1366;
-    dusty.windowX = 0.30;
+    dusty.windowScale = 850/1366;
+    dusty.windowX = 0.25;
     dusty.windowY = -1;
 
     return dusty;
@@ -81,21 +81,32 @@ function initWindlifter() {
 // =================================================================== //
 
 function animateIn() {
-    console.log('animate in');
+    var animationTime = 1.8;
+    var easing = 'Cubic.easeInOut';
 
+    placeJustOffscreen(char);
+    char.windowX = 0.6;
+
+    return TweenLite.to(char, animationTime, {
+        windowY: 0.3,
+        windowX: 0.25,
+        ease: easing
+    });
+}
+
+var onAnimationOutCallback = function(){};
+
+function animateOut() {
     var animationTime = 1.8;
     var easing = 'Cubic.easeInOut';
 
     return TweenLite.to(char, animationTime, {
-        windowY: 0.3,
+        windowY: 0.25,
+        windowX: -0.4,
         ease: easing,
-        onStart: function() {
-            placeJustOffscreen(char);
-            char.windowX = 0.30;
-        }
+        onComplete: onAnimationOutCallback
     });
 }
-
 
 
 
@@ -109,6 +120,10 @@ var animationModule = {
         scene.addChild(displayObjectContainer);
     }),
     animateIn: animateIn,
+    animateOut: animateOut,
+    onAnimationOutComplete: function(callback) {
+        onAnimationOutCallback = callback;
+    },
     setCharacter: function(character) {
         char = allCharacters[character];
     }
