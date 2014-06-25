@@ -5,6 +5,8 @@
     var extend = require('./extend');
     var Scene = require('./scene');
 
+    var introVideoModule = require('../animations/introVideo');
+    var backgroundModule = require('../animations/background');
     var bladewipeModule = require('../animations/bladewipe');
     var dustyDipperModule = require('../animations/dustyDipper');
     var parachutersModule = require('../animations/parachuters');
@@ -20,11 +22,18 @@
         //parent constructor
         Scene.apply(this, arguments);
 
-        responseModule.initialize(this);
+        backgroundModule.initialize();
+        backgroundModule.addBackgroundToScene(this);
         parachutersModule.initialize(this);
+        backgroundModule.addRestToScene(this);
+
+        responseModule.initialize(this);
         bladewipeModule.initialize(this);
         dustyDipperModule.initialize(this);
         characterModule.initialize(this);
+
+        introVideoModule.initialize(this);
+        this.introVideo = introVideoModule.getVideo();
     };
 
     // ============================================================ //
@@ -61,6 +70,26 @@
         },
         animateOutUserCharacter: function() {
             characterModule.animateOut();
+        },
+
+        // ==================================================================== //
+        /* *************************** Parallax Stuff ************************* */
+        // ==================================================================== //
+        shiftBackgroundLayers: function(x) {
+            backgroundModule.shiftBackgroundLayers(x);
+        },
+        setView: function(view) {
+            this.view = view;
+        },
+        _onWindowResize: function(width, height) {
+            Scene.prototype._onWindowResize.call(this, width, height);
+
+            if(!_.isUndefined(this.view)) {
+                var scale = this.introVideo.scale;
+                var bounds = this.introVideo.getLocalBounds();
+
+                this.view.onWindowResize(width, height, (bounds.width * scale.x), (bounds.height * scale.y));
+            }
         }
     };
 

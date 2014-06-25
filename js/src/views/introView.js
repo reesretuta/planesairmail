@@ -42,7 +42,7 @@
             this.timelineBeginScreenIn = this.getTimelineBeginScreenIn();
         },
         initScene: function() {
-            this.scene = scenesManager.createScene('intro', IntroScene);
+            this.scene = scenesManager.scenes['main'];
 
             this.scene.setView(this);
         },
@@ -164,7 +164,7 @@
         start: function() {
             this.setActive();
 
-            scenesManager.goToScene('intro');
+            scenesManager.goToScene('main');
             $('#pixi-view').addClass('front');
 
             introVideoModule.onComplete(_.bind(this.showBeginScreen, this));

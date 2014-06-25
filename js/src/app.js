@@ -36,32 +36,32 @@ app.render = _.after(2, function() {
 /* ************************** Asset Loading ************************** */
 // =================================================================== //
 
-//app.assetLoader = new AssetLoadingView({onComplete: app.render});
+app.assetLoader = new AssetLoadingView({onComplete: app.render});
 
 
 $(app.render);
 
 
 //TODO: Delete!!
-$(function() {
-    "use strict";
-
-    var password = 'disneyPlanesTwo';
-    var $passwordScreen = $('#passwordScreen');
-
-    var $passwordInput = $passwordScreen.find('input[type=password]');
-
-
-    $passwordScreen.find('form').submit(function(e) {
-        e.preventDefault();
-
-        if($passwordInput.val() === password) {
-            $passwordScreen.fadeOut(50);
-
-            app.assetLoader = new AssetLoadingView({onComplete: app.render});
-        }
-    });
-});
+//$(function() {
+//    "use strict";
+//
+//    var password = 'disneyPlanesTwo';
+//    var $passwordScreen = $('#passwordScreen');
+//
+//    var $passwordInput = $passwordScreen.find('input[type=password]');
+//
+//
+//    $passwordScreen.find('form').submit(function(e) {
+//        e.preventDefault();
+//
+//        if($passwordInput.val() === password) {
+//            $passwordScreen.fadeOut(50);
+//
+//            app.assetLoader = new AssetLoadingView({onComplete: app.render});
+//        }
+//    });
+//});
 
 
 module.exports = app;

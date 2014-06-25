@@ -26,11 +26,6 @@
             </div>
         </div>
 
-        <div class="background back"></div>
-        <div class="background middle"></div>
-        <div class="background front"></div>
-
-
         <?php include_once('includes/introHtml.php'); ?>
 
 

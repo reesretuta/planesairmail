@@ -194,23 +194,6 @@
         },
 
         // ==================================================================== //
-        /* *************************** Parallax Stuff ************************* */
-        // ==================================================================== //
-        shiftBackgroundLayers: function(x) {
-            var backgroundRatio = 0.75;
-            var middlegroundRatio = 1.5;
-            var foregroundRatio = 3;
-
-            var backgroundLeft = -(x - 0.5) * backgroundRatio + '%';
-            var middlegroundLeft = -(x - 0.5) * middlegroundRatio + '%';
-            var foregroundLeft = -(x - 0.5) * foregroundRatio + '%';
-
-            this.$background.css('left', backgroundLeft);
-            this.$middleground.css('left', middlegroundLeft);
-            this.$foreground.css('left', foregroundLeft);
-        },
-
-        // ==================================================================== //
         /* ************************* Event Listeners ************************** */
         // ==================================================================== //
         onNext: function(e) {
@@ -228,7 +211,7 @@
         onMouseMove: function(e) {
             e.preventDefault();
 
-            this.shiftBackgroundLayers(e.pageX/this.$window.width());
+            this.scene.shiftBackgroundLayers(e.pageX/this.$window.width());
         }
     });
 
