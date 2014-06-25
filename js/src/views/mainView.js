@@ -38,7 +38,7 @@
             //create canvas element
             scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
-            this.scene = scenesManager.createScene('enterName', MainScene);
+            this.scene = scenesManager.createScene('main', MainScene);
 
             // create views
             this.initIntroView();

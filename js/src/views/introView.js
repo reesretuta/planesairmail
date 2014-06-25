@@ -5,6 +5,7 @@
     var scenesManager = require('../pixi/scenesManager');
     var IntroScene = require('../pixi/introScene');
 
+    var introVideoModule = require('../animations/introVideo');
 
     var IntroView = Backbone.View.extend({
         el: '#intro-view',
@@ -27,8 +28,6 @@
             this.$beginLines = this.$beginScreen.find('div.line');
             this.$beginBtn = this.$beginScreen.find('a.begin');
 
-
-
             var $viewPorts = this.$el.find('div.viewport');
 
             this.$viewPortTop = $viewPorts.filter('.top');
@@ -44,8 +43,6 @@
         },
         initScene: function() {
             this.scene = scenesManager.createScene('intro', IntroScene);
-
-            this.scene.onComplete(_.bind(this.showBeginScreen, this));
 
             this.scene.setView(this);
         },
@@ -87,7 +84,6 @@
                 },
                 onStartScope: this
             });
-
 
             var btnInTime = 0.4;
 
@@ -169,14 +165,14 @@
             this.setActive();
 
             scenesManager.goToScene('intro');
-
-            this.scene.startAnimation();
-
             $('#pixi-view').addClass('front');
+
+            introVideoModule.onComplete(_.bind(this.showBeginScreen, this));
+            introVideoModule.playVideo();
         },
         hide: function() {
             this.timelineHide.play();
-            this.scene.open();
+//            this.scene.open();
         },
         onComplete: function(callback) {
             this.onCompleteCallback = callback;

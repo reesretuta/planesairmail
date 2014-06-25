@@ -4,6 +4,7 @@
     "use strict";
 
     var scenesManager = require('../pixi/scenesManager');
+    var dustyDipperModule = require('../animations/dustyDipper');
 
     var EnterNameView = Backbone.View.extend({
         el: 'div.name.page',
@@ -16,15 +17,18 @@
         /* ********************** Initialization ********************** */
         // ============================================================ //
         initialize: function (options) {
-
             this.initScene();
 
             this.model = new Backbone.Model({value: ''});
 
             this.$nameInput = this.$el.find('input[type=text].name');
+
+            this.hideCallback = function(){};
+
+            _.bindAll(this, 'startAnimation','show','hide','setInactive');
         },
         initScene: function() {
-            this.scene = scenesManager.scenes['enterName'];
+            this.scene = scenesManager.scenes['main'];
         },
 
         // ============================================================ //
@@ -33,7 +37,7 @@
         startAnimation: function() {
             $('#pixi-view').removeClass('front');
 
-            this.scene.startAnimation();
+            this.scene.startEnterNameAnimation();
         },
 
         // ============================================================ //
@@ -42,23 +46,20 @@
         show: function () {
             this.$el.addClass('active');
 
-            scenesManager.goToScene('enterName');
+            scenesManager.goToScene('main');
 
-
-            setTimeout(_.bind(this.startAnimation, this), 0);
+            setTimeout(this.startAnimation, 0);
         },
         hide: function () {
-            this.scene.onHideComplete(_.bind(this.setInactive, this));
+            dustyDipperModule.onAnimationOutComplete(this.setInactive);
 
             //run hide animation
-            this.scene.hide();
+            dustyDipperModule.animateOut();
         },
         setInactive: function() {
             this.$el.removeClass('active');
 
-            if(_.isFunction(this.hideCallback)) {
-                this.hideCallback();
-            }
+            this.hideCallback();
         },
         onHideComplete: function(callback) {
             this.hideCallback = callback;

@@ -14,7 +14,7 @@ var parachuters;
 // =================================================================== //
 /* ************************* Initialization ************************** */
 // =================================================================== //
-function initialize(scene) {
+function initialize() {
     parachuters = _.shuffle([getBlackout(), getDrip(), getDynamite()]);
 
     _.each(parachuters, function(parachuter) {
@@ -25,8 +25,6 @@ function initialize(scene) {
         parachuter.windowX = 0.5;
         parachuter.windowY = -1;
     });
-
-//    scene.characters.parachuters = parachuters;
 }
 function getBlackout() {
     var blackoutIdleState = PIXI.Sprite.fromImage("assets/img/blackout.png");
@@ -35,9 +33,7 @@ function getBlackout() {
         y: 33/94
     };
 
-    var blackout = new Character('Blackout', blackoutIdleState);
-
-    return blackout;
+    return new Character('Blackout', blackoutIdleState);
 }
 function getDrip() {
     var dripIdleState = PIXI.Sprite.fromImage("assets/img/drip.png");
@@ -46,9 +42,7 @@ function getDrip() {
         y: 26/94
     };
 
-    var drip = new Character('Drip', dripIdleState);
-
-    return drip;
+    return new Character('Drip', dripIdleState);
 }
 function getDynamite() {
     var dynamiteIdleState = PIXI.Sprite.fromImage("assets/img/dynamite.png");
@@ -57,8 +51,7 @@ function getDynamite() {
         y: 30/94
     };
 
-    var dynamite = new Character('Dynamite', dynamiteIdleState);
-    return dynamite;
+    return new Character('Dynamite', dynamiteIdleState);
 }
 
 

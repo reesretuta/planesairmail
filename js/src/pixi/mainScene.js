@@ -18,9 +18,9 @@
         //parent constructor
         Scene.apply(this, arguments);
 
+        parachutersModule.initialize(this);
         bladewipeModule.initialize(this);
         dustyDipperModule.initialize(this);
-        parachutersModule.initialize(this);
     };
 
     // ============================================================ //
@@ -43,7 +43,9 @@
     /* ******************* Animation Functions ******************** */
     // ============================================================ //
 
-    MainScene.prototype.startAnimation = function() {
+    MainScene.prototype.startEnterNameAnimation = function() {
+        console.log('yes');
+
         dustyDipperModule.animateIn();
 
         var startTime = 2000;
@@ -52,15 +54,6 @@
         setTimeout(parachutersModule.animateNext, startTime + 15000);
     };
 
-
-
-    MainScene.prototype.hide = function() {
-        dustyDipperModule.animateOut();
-    };
-
-    MainScene.prototype.onHideComplete = function(callback) {
-        dustyDipperModule.onAnimationOutComplete(callback);
-    };
 
 
     // called on each animation frame
