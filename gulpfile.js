@@ -89,28 +89,69 @@ gulp.task('watch', function () {
 });
 
 
-function getDirFiles(directories) {
+
+
+
+
+function prepend(str, arr) {
     "use strict";
 
-    return _.map(directories, function(dir) {
-        return _.map(fs.readdirSync(dir), function(file) {
-            return dir + '/' + file;
-        });
+    return _.map(arr, function(el) {
+        return str + '/' + el;
     });
 }
 
+function isImageOrFolder(str) {
+    "use strict";
+    var parts = str.split('.');
+    var ext = parts[parts.length-1];
 
+    return fs.lstatSync(str).isDirectory() || ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'gif';
+}
+
+function getFiles(dir) {
+    "use strict";
+
+    var folders = _.filter(prepend(dir, fs.readdirSync(dir)), isImageOrFolder);
+
+    var files = _.map(folders, function(item) {
+        if(fs.lstatSync(item).isDirectory()) {
+            return getFiles(item);
+        } else {
+            return [item];
+        }
+    });
+
+    return _.flatten(files);
+}
+
+function getFileSize(file) {
+    "use strict";
+
+    return fs.statSync(file).size;
+}
 
 gulp.task('assets', function() {
     "use strict";
 
-    var directories = ['assets/introVideo', 'assets/wipescreen'];
+    var dir = 'assets';
+    var destinationFile = './js/src/data/assets.json';
 
-    var files = JSON.stringify(_.flatten(getDirFiles(directories)));
+    var files = getFiles(dir);
 
-    files = files.split(',').join(',\n');
+    var fileSizes = _.map(files, getFileSize);
+    var totalAssetSize = _.reduce(fileSizes, function(total, size) {
+        return total + size;
+    });
 
-    fs.writeFile('./assets/assets.json', files, function (err) {
+    var assetData = {
+        totalSize: totalAssetSize,
+        assets: _.zipObject(files, fileSizes)
+    };
+
+    var fileData = JSON.stringify(assetData, null, "\t");
+
+    fs.writeFile(destinationFile, fileData, function (err) {
         if (err) throw err;
         console.log('It\'s saved!');
     });

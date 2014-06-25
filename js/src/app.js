@@ -8,6 +8,7 @@ require('./pixi/libModifications');
 
 
 var MainView = require('./views/mainView');
+var AssetLoadingView = require('./views/assetLoadingView');
 
 
 // =================================================================== //
@@ -20,11 +21,8 @@ var app = {};
 
 
 
-
 // after assets loaded & jquery loaded
 app.render = _.after(2, function() {
-    "use strict";
-
     app.mainView = new MainView();
 
     app.mainView.start();
@@ -37,19 +35,8 @@ app.render = _.after(2, function() {
 /* ************************** Asset Loading ************************** */
 // =================================================================== //
 
-var introVideoAssets = require('./data/assets.json');
+app.assetLoader = new AssetLoadingView({onComplete: app.render});
 
-// create an array of assets to load
-var assetsToLoader = ['assets/spritesheets/dusty_idle.json', 'assets/spritesheets/dusty_blink.json'].concat(introVideoAssets);
-
-// create a new loader
-var loader = new PIXI.AssetLoader(assetsToLoader);
-
-// use callback
-loader.onComplete = app.render;
-
-//begin load
-loader.load();
 
 
 

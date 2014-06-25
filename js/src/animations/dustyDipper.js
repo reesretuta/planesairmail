@@ -15,7 +15,7 @@ var dusty, dipper, timelineIn, timelineOut;
 /* ************************ Helper Functions ************************* */
 // =================================================================== //
 function getDustyIdleTextures() {
-    return PIXI.getTextures('dusty_idle_', 1, 11);
+    return PIXI.getTextures('assets/spritesheets/dusty/one/Dusty_plane_000', 0, 11);
 }
 
 function getDustyBlinkTextures() {
@@ -37,13 +37,13 @@ function initializeDusty() {
     var dusty = new Character('Dusty');
 
     var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
-    var dustyBlinkAnimation = new PIXI.MovieClip(getDustyBlinkTextures());
+//    var dustyBlinkAnimation = new PIXI.MovieClip(getDustyBlinkTextures());
 
     dustyIdleAnimation.anchor = {x: 0.5, y: 0.5};
-    dustyBlinkAnimation.anchor = {x: 0.5, y: 0.5};
+//    dustyBlinkAnimation.anchor = {x: 0.5, y: 0.5};
 
     dusty.setIdleState(dustyIdleAnimation);
-    dusty.addState('blink', dustyBlinkAnimation);
+//    dusty.addState('blink', dustyBlinkAnimation);
 
     dusty.windowScale = 600/1366;
     dusty.windowX = 0.15;

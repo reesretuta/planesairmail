@@ -6,6 +6,7 @@
 </head>
 <body>
     <div id="content" class="full-relative">
+        <div id="assetLoader"><div class="text"></div></div>
         <div id="header">
             <div class="full-relative">
                 <div class="logo"></div>
