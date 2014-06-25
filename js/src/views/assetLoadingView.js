@@ -35,14 +35,16 @@ var AssetLoadingView = Backbone.View.extend({
     el: '#assetLoader',
     initialize: function(options) {
         this.$text = this.$el.find('> .text');
-        this.$text.html('0/'+totalFiles);
+        this.$text.html('0.00%');
 
         this.onCompleteCallback = options.onComplete || function(){};
 
         startLoader(this);
     },
     update: function(loadCount) {
-        this.$text.html((totalFiles-loadCount) + '/' + totalFiles);
+        var percentage = Math.round(10000 * (totalFiles-loadCount)/totalFiles)/100;
+
+        this.$text.html(percentage + '%');
     },
     assetsLoaded: function() {
         this.onCompleteCallback();
