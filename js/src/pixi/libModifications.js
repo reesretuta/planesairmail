@@ -10,7 +10,7 @@
     /* ******************* Relative Position Functions ******************* */
     // =================================================================== //
 
-    PIXI.DisplayObject.prototype._$window = $(window);
+    var $window = $(window);
 
     PIXI.DisplayObject.prototype._windowX = 0;
     PIXI.DisplayObject.prototype._windowY = 0;
@@ -34,7 +34,7 @@
         set: function(value) {  // Value should be between 0 and 1
             this._windowX = value;
 
-            this._setPositionX(this._$window.width());
+            this._setPositionX($window.width());
         }
     });
     Object.defineProperty(PIXI.DisplayObject.prototype, 'windowY', {
@@ -44,7 +44,7 @@
         set: function(value) {  // Value should be between 0 and 1
             this._windowY = value;
 
-            this._setPositionY(this._$window.height());
+            this._setPositionY($window.height());
         }
     });
 
@@ -62,7 +62,7 @@
         set: function(value) {  // Value should be between 0 and 1
             this._bumpX = value;
 
-            this.position.x = (this._$window.width() * this._windowX) + value;
+            this.position.x = ($window.width() * this._windowX) + value;
         }
     });
     Object.defineProperty(PIXI.DisplayObject.prototype, 'bumpY', {
@@ -72,7 +72,7 @@
         set: function(value) {  // Value should be between 0 and 1
             this._bumpY = value;
 
-            this.position.y = (this._$window.height() * this._windowY) + value;
+            this.position.y = ($window.height() * this._windowY) + value;
         }
     });
 
@@ -100,7 +100,7 @@
         set: function(value) {
             this._windowScale = value;
 
-            this._setScale(this._$window.width(), this._$window.height());
+            this._setScale($window.width(), $window.height());
         }
     });
 
@@ -128,7 +128,7 @@
         set: function(value) {
             this._animationScaleX = value;
 
-            this._setScale(this._$window.width(), this._$window.height());
+            this._setScale($window.width(), $window.height());
         }
     });
     Object.defineProperty(PIXI.DisplayObject.prototype, 'animationScaleY', {
@@ -138,7 +138,7 @@
         set: function(value) {
             this._animationScaleY = value;
 
-            this._setScale(this._$window.width(), this._$window.height());
+            this._setScale($window.width(), $window.height());
         }
     });
 

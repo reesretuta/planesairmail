@@ -2,7 +2,7 @@
 (function() {
     "use strict";
 
-    var EnterNameScene = require('../pixi/enterNameScene');
+    var MainScene = require('../pixi/mainScene');
     var scenesManager = require('../pixi/scenesManager');
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~ Collections ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -15,6 +15,7 @@
     var SelectCharacterView = require('./selectCharacterView');
     var ResponseView = require('./responseView');
     var FooterView = require('./footerView');
+
 
 
     var MainView = Backbone.View.extend({
@@ -37,7 +38,7 @@
             //create canvas element
             scenesManager.initialize($(window).width(), $(window).height(), this.$el);
 
-            this.scene = scenesManager.createScene('enterName', EnterNameScene);
+            this.scene = scenesManager.createScene('enterName', MainScene);
 
             // create views
             this.initIntroView();

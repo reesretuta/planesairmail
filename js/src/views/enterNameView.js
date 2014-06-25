@@ -4,7 +4,6 @@
     "use strict";
 
     var scenesManager = require('../pixi/scenesManager');
-    var EnterNameScene = require('../pixi/enterNameScene');
 
     var EnterNameView = Backbone.View.extend({
         el: 'div.name.page',
