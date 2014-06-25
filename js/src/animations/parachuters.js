@@ -9,7 +9,7 @@ var placeJustOffscreen = require('./placeJustOffscreen');
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var parachuters;
+var parachuters, parachutersContainer;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -106,7 +106,6 @@ function swayParachuter(parachuter, rotation) {
 
 
 
-
 // =================================================================== //
 /* **************************** Public API *************************** */
 // =================================================================== //
@@ -116,10 +115,18 @@ var animationModule = {
     initialize: _.once(function(scene) {
         initialize();
 
-        _.each(parachuters, _.bind(scene.addChild, scene));
+        parachutersContainer = new PIXI.DisplayObjectContainer();
+
+        _.each(parachuters, _.bind(parachutersContainer.addChild, parachutersContainer));
+
+        scene.addChild(parachutersContainer);
     }),
     animateNext: function() {
-        animateParachuter(parachuters.shift());
+        if(parachuters.length > 0)
+            animateParachuter(parachuters.shift());
+    },
+    hide: function() {
+        parachutersContainer.visible = false;
     }
 };
 

@@ -482,7 +482,6 @@ div.question.character-select div.option div.background {
 
 #response {
   display: none;
-  background-color: yellow;
   z-index: 5;
   top: 0;
   left: 0;

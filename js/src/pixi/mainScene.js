@@ -8,6 +8,7 @@
     var bladewipeModule = require('../animations/bladewipe');
     var dustyDipperModule = require('../animations/dustyDipper');
     var parachutersModule = require('../animations/parachuters');
+    var responseModule = require('../animations/response');
 
 
     // ============================================================ //
@@ -18,17 +19,15 @@
         //parent constructor
         Scene.apply(this, arguments);
 
+        responseModule.initialize(this);
         parachutersModule.initialize(this);
         bladewipeModule.initialize(this);
         dustyDipperModule.initialize(this);
     };
 
     // ============================================================ //
-    /* ********************* Initialization *********************** */
+    /* ****************** Public API Functions ******************** */
     // ============================================================ //
-
-
-
 
     MainScene.prototype.playWipescreen = function() {
         bladewipeModule.playVideo();
@@ -39,13 +38,8 @@
     MainScene.prototype.hideVideo = function() {
         bladewipeModule.hideVideo();
     };
-    // ============================================================ //
-    /* ******************* Animation Functions ******************** */
-    // ============================================================ //
 
     MainScene.prototype.startEnterNameAnimation = function() {
-        console.log('yes');
-
         dustyDipperModule.animateIn();
 
         var startTime = 2000;
@@ -54,20 +48,10 @@
         setTimeout(parachutersModule.animateNext, startTime + 15000);
     };
 
-
-
-    // called on each animation frame
-    MainScene.prototype.update = function() {
-        // call parent function
-        Scene.prototype.update.call(this);
+    MainScene.prototype.showResponse = function() {
+        parachutersModule.hide();
+        responseModule.show();
     };
-
-
-
-
-
-
-
 
 
 

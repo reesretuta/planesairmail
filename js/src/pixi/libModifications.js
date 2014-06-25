@@ -89,6 +89,9 @@
     PIXI.DisplayObject.prototype.scaleMin = 0;
     PIXI.DisplayObject.prototype.scaleMax = Number.MAX_VALUE;
 
+    PIXI.DisplayObject.prototype._scaleType = 'contain';
+    PIXI.DisplayObject.prototype._scaleFnc = Math.min;
+
     // WindowScale: value between 0 & 1, or -1
     // This defines what % of the window (height or width, whichever is smaller)
     // the object will be sized. Example: a windowScale of 0.5 will size the displayObject
@@ -104,10 +107,25 @@
         }
     });
 
+    // Two possible values: contain or cover. Used with windowScale to decide whether to take the
+    // smaller bound (contain) or the larger bound (cover) when deciding content size relative to screen.
+    Object.defineProperty(PIXI.DisplayObject.prototype, 'scaleType', {
+        get: function() {
+            return this._scaleType;
+        },
+        set: function(value) {
+            this._scaleType = value;
+
+            this._scaleFnc = (value === 'contain') ? Math.min : Math.max;
+        }
+    });
+
+
+
     PIXI.DisplayObject.prototype._setScale = function(windowWidth, windowHeight) {
         var localBounds = this.getLocalBounds();
 
-        var scale = this._windowScale * Math.min(windowHeight/localBounds.height, windowWidth/localBounds.width);
+        var scale = this._windowScale * this._scaleFnc(windowHeight/localBounds.height, windowWidth/localBounds.width);
 
         //keep scale within our defined bounds
         scale = Math.max(this.scaleMin, Math.min(scale, this.scaleMax));

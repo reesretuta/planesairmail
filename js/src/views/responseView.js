@@ -6,17 +6,14 @@
     "use strict";
 
 
-
-
     var ResponseView = Backbone.View.extend({
         el: '#response',
 
         initialize: function() {
-
+            //this.scene = scenesManager.createScene('response', ResponseScene);
         },
 
         setResponse: function(models) {
-            // TODO
 
             var nameModel = _.first(models);
 
@@ -50,6 +47,8 @@
 
         show: function() {
             this.$el.show();
+
+            //scenesManager.goToScene('response');
         },
         hide: function() {
 

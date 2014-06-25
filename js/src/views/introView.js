@@ -172,7 +172,6 @@
         },
         hide: function() {
             this.timelineHide.play();
-//            this.scene.open();
         },
         onComplete: function(callback) {
             this.onCompleteCallback = callback;

@@ -46,6 +46,7 @@
 
             this.footer = new FooterView({numDots: this.pages.length});
             this.responseView = new ResponseView();
+
         },
 
         initIntroView: function() {
@@ -132,20 +133,16 @@
             this.scene.onWipescreenComplete(function() {
                 me.$backgrounds.hide();
                 me.responseView.show();
-                me.scene.hideVideo();
+                me.scene.showResponse();
             });
 
+            //set canvas to be in front of trees
             $('#pixi-view').addClass('middle');
+
+
             //run bladewipe animation
             this.scene.playWipescreen();
 
-
-
-//            this.$backgrounds.hide();
-//
-//
-//
-//            this.responseView.show();
         },
 
         // ==================================================================== //

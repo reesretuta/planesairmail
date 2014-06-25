@@ -26,6 +26,7 @@ function generateBladeWipeAnimation() {
     wipescreenVideo.windowX = 0.5;
     wipescreenVideo.windowY = 0.5;
     wipescreenVideo.windowScale = 1;
+    wipescreenVideo.scaleType = 'cover';
 
     wipescreenVideo.anchor = new PIXI.Point(0.5, 0.5);
     wipescreenVideo.visible = false;
@@ -71,6 +72,12 @@ function getVideoAnimationTimeline(video) {
         ease: easing
     }));
 
+    timeline.addLabel('callback', timeline.duration());
+
+    timeline.append(TweenLite.to(video, 0.2, {
+        alpha: 0
+    }));
+
     return timeline;
 }
 
@@ -97,7 +104,7 @@ var animationModule = {
         wipescreenVideo.visible = false;
     },
     onVideoComplete: function(callback) {
-        videoTimeline.vars.onComplete = callback;
+        videoTimeline.add(callback, 'callback');
     }
 };
 
