@@ -19,13 +19,15 @@ function initialize() {
     background = initBackground();
     middleground = initMiddleground();
     foreground = initForeground();
+
+    console.log('window width', $(window).width());
 }
 function setAttrs(sprite) {
     sprite.anchor = new PIXI.Point(.5, 1);
     sprite.windowX = 0.5;
     sprite.windowY = 1;
 
-    sprite.scaleStyle = 'cover';
+    sprite.scaleType = 'cover';
     sprite.windowScale = 1.06;
 }
 function initBackground() {

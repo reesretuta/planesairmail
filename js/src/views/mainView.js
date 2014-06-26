@@ -51,15 +51,29 @@
         },
 
         initWindowEvents: function() {
+            console.log('init window Events');
+
             this.$window.on('resize', _.bind(this.repositionPageNav, this));
 
-//            if (window.DeviceOrientationEvent) {
-//                window.addEventListener("deviceorientation", function(event) {
-//
-//                    console.log(event.beta, event.gamma);
-//
-//                }, true);
-//            }
+            if (window.DeviceOrientationEvent) {
+                console.log('deviceorientation');
+
+                window.addEventListener("deviceorientation", function(event) {
+                    console.log('orientation', event.beta, event.gamma);
+                }, true);
+            } else if (window.DeviceMotionEvent) {
+                console.log('devicemotion');
+
+                window.addEventListener('devicemotion', function(event) {
+                    console.log('motion', event.acceleration.x * 2, event.acceleration.y * 2);
+                }, true);
+            } else {
+                console.log('moz orientation');
+
+                window.addEventListener("MozOrientation", function(orientation) {
+                    console.log('moz', orientation.x * 50, orientation.y * 50);
+                }, true);
+            }
         },
 
         initIntroView: function() {
@@ -214,6 +228,9 @@
             this.scene.shiftBackgroundLayers(e.pageX/this.$window.width());
         }
     });
+
+
+
 
 
 
