@@ -36,33 +36,36 @@ app.render = _.after(2, function() {
 /* ************************** Asset Loading ************************** */
 // =================================================================== //
 
-app.assetLoader = new AssetLoadingView({onComplete: app.render});
+var $passwordScreen = $('#passwordScreen');
+
+if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== -1) {
+    $(function() {
+        "use strict";
+
+        var password = 'disneyPlanesTwo';
+
+        var $passwordInput = $passwordScreen.find('input[type=password]');
+
+
+        $passwordScreen.find('form').submit(function(e) {
+            e.preventDefault();
+
+            if($passwordInput.val() === password) {
+                $passwordScreen.fadeOut(50);
+
+                app.assetLoader = new AssetLoadingView({onComplete: app.render});
+            }
+        });
+    });
+} else {
+    app.assetLoader = new AssetLoadingView({onComplete: app.render});
+
+    $passwordScreen.remove();
+}
+
 
 
 $(app.render);
-
-
-//TODO: Delete!!
-//$(function() {
-//    "use strict";
-//
-//    var password = 'disneyPlanesTwo';
-//    var $passwordScreen = $('#passwordScreen');
-//
-//    var $passwordInput = $passwordScreen.find('input[type=password]');
-//
-//
-//    $passwordScreen.find('form').submit(function(e) {
-//        e.preventDefault();
-//
-//        if($passwordInput.val() === password) {
-//            $passwordScreen.fadeOut(50);
-//
-//            app.assetLoader = new AssetLoadingView({onComplete: app.render});
-//        }
-//    });
-//});
-
 
 module.exports = app;
 

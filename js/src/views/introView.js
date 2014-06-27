@@ -3,7 +3,6 @@
     "use strict";
 
     var scenesManager = require('../pixi/scenesManager');
-    var IntroScene = require('../pixi/introScene');
 
     var introVideoModule = require('../animations/introVideo');
 
@@ -81,8 +80,7 @@
                     TweenLite.set(this.$beginBtn, {
                         scale: 0.7
                     });
-                },
-                onStartScope: this
+                }.bind(this)
             });
 
             var btnInTime = 0.4;

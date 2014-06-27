@@ -1,6 +1,7 @@
 
 
 var template = require('../templates/question.hbs');
+var itemAnimationsModule = require('../animations/pageItems');
 
 var QuestionView = Backbone.View.extend({
     // Variables
@@ -17,6 +18,37 @@ var QuestionView = Backbone.View.extend({
         options.parent.append(this.el);
 
         this.$el.addClass(this.model.attributes.class);
+
+        this.$options = this.$el.find('div.option');
+
+        this.initAnimations(this.model.attributes.class);
+    },
+    initAnimations: function(questionType) {
+        "use strict";
+
+        var animations;
+
+        if(questionType === 'canned') {
+            animations = itemAnimationsModule.getRandomCannedAnimations(this.$options);
+        } else {
+            animations = itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
+        }
+
+        this.animationIn = animations[0];
+        this.animationOut = animations[1];
+
+        this.animationOut.vars.onComplete = function() {
+            this.$el.removeClass('active');
+
+            if(_.isFunction(this.hideCallback)) {
+                this.hideCallback();
+            }
+        }.bind(this);
+    },
+    setAnimationIn: function() {
+        "use strict";
+
+
     },
 
     // ============================================================ //
@@ -35,13 +67,12 @@ var QuestionView = Backbone.View.extend({
     // ============================================================ //
     show: function() {
         this.$el.addClass('active');
+
+        this.animationIn.play();
     },
     hide: function() {
-        this.$el.removeClass('active');
 
-        if(_.isFunction(this.hideCallback)) {
-            this.hideCallback();
-        }
+        this.animationOut.play();
     },
     onHideComplete: function(callback) {
         this.hideCallback = callback;
