@@ -5,7 +5,6 @@
 (function() {
     "use strict";
 
-
     var ResponseView = Backbone.View.extend({
         el: '#response',
 

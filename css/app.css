@@ -115,23 +115,28 @@ body {
 /* ************************* Imports ************************** */
 #header {
   width: 100%;
-  height: 90px;
   position: absolute;
   top: 0;
   left: 0;
-  background: url('../assets/img/header.png') repeat-x top left;
-  -webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.6);
   z-index: 6; }
+  #header > div.empty-space {
+    padding-bottom: 6.73499%; }
+  #header div.header-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
   #header .logo {
     background: url('../assets/img/logo.png') center center no-repeat;
-    width: 215px;
-    height: 104px;
+    width: 15.73939%;
     position: absolute;
     left: 0;
     right: 0;
     bottom: -3px;
     margin: auto; }
+    #header .logo > div.empty-space {
+      padding-bottom: 48.37209%; }
   #header .in-theaters {
     background: url('../assets/img/in-theaters.png') center center no-repeat;
     width: 191px;
@@ -144,12 +149,18 @@ body {
 
 #footer {
   width: 100%;
-  height: 45px;
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 6;
-  background-color: black; }
+  z-index: 6; }
+  #footer > div.empty-space {
+    padding-bottom: 3.29429%; }
+  #footer div.footer-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
   #footer a.volume {
     display: block;
     position: absolute;

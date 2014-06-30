@@ -204,6 +204,9 @@
 
             setTimeout(function() {
                 introView.start(); //start intro
+
+                //trigger window resize
+                scenesManager.onWindowResize();
             }, 200);
         },
 
