@@ -181,7 +181,6 @@
 
             var windowHeight = this.$window.height();
 
-
             var topFrac = Math.min(pixelPosition/windowHeight, (windowHeight - this.footer.height() - this.$pageNav.outerHeight())/windowHeight);
 
             var percTop = 100 * topFrac + '%';

@@ -17,9 +17,8 @@ var dusty, dipper, timelineIn, timelineOut;
 function getDustyIdleTextures() {
     return PIXI.getTextures('assets/spritesheets/dusty/two/Dusty_plane_light_000', 0, 12);
 }
-
-function getDustyBlinkTextures() {
-    return PIXI.getTextures('dusty_blink_', 1, 17);
+function getDipperIdleTextures() {
+    return PIXI.getTextures('assets/spritesheets/dipper/Dipper_000', 0, 12);
 }
 
 // =================================================================== //
@@ -57,11 +56,12 @@ function initializeDusty() {
 function initializeDipper() {
     var dipper = new Character('Dipper');
 
-    var dipperIdleState = PIXI.Sprite.fromImage("assets/img/dipper.png");
+    var dipperIdleState = new PIXI.MovieClip(getDipperIdleTextures());
 
+    dipperIdleState.scale.x = -1;
     dipperIdleState.anchor = {
-        x: 440/865,
-        y: 310/433
+        x: 571/1200,
+        y: 410/638
     };
 
     dipper.setIdleState(dipperIdleState);
@@ -160,7 +160,7 @@ function generateTimelineDipperIn(dipper) {
     });
 
     timeline.add(TweenLite.to(dipper, animationTime, {
-        windowY: 0.32,
+        windowY: 0.33,
         ease: 'Back.easeOut'
     }), 0);
 
