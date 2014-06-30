@@ -26,6 +26,7 @@
             var cannedModels = partitionedQuestions[1];
 
 
+            console.log(cannedModels);
 
 
             // TODO: Change to actual generated response

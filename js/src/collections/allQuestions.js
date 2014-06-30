@@ -42,8 +42,7 @@
 
     //shuffle questions and pick 3
     var personalityQuestions = getRandomPersonalityQuestions(3);
-    var cannedQuestions = getRandomCannedQuestions(3, 3);
-
+    var cannedQuestions = getRandomCannedQuestions(3, 1);
 
 
     allQuestions.add(characterSelect);
