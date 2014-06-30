@@ -1,38 +1,6 @@
 {
     "questions": [
         {
-            "name": "favorite-disney-movie",
-            "class": "favorite-disney-movie",
-            "copy": "What is your favorite Disney movie?",
-            "options": [
-                {
-                    "text": "The Lion King",
-                    "value": "thelionking"
-                },
-                {
-                    "text": "Phantom of the Megaplex",
-                    "value": "phantom"
-                },
-                {
-                    "text": "Game of Thrones",
-                    "value": "gameofthrones"
-                },
-                {
-                    "text": "Hercules",
-                    "value": "hercules"
-                },
-                {
-                    "text": "Breakin' 2: Electric Boogaloo",
-                    "value": "breakin"
-                },
-                {
-                    "text": "Memento",
-                    "value": "memento"
-                }
-            ],
-            "required": false
-        },
-        {
             "name": "favorite-color",
             "class": "favorite-color",
             "copy": "What's your favorite color?",
@@ -61,72 +29,69 @@
                     "text": "Purple",
                     "value": "purple"
                 }
-            ],
-            "required": false
+            ]
         },
         {
-            "name": "question4",
-            "class": "question4",
-            "copy": "Lorem Ipsum?",
+            "name": "favorite-food",
+            "class": "favorite-food",
+            "copy": "What is your favorite food?",
             "options": [
                 {
-                    "text": "Lorem",
-                    "value": "lorem"
+                    "text": "Pizza",
+                    "value": "pizza"
                 },
                 {
-                    "text": "Ipsum",
-                    "value": "ipsum"
+                    "text": "Ice Cream",
+                    "value": "icecream"
                 },
                 {
-                    "text": "Dolor",
-                    "value": "dolor"
+                    "text": "Broccoli",
+                    "value": "broccoli"
                 },
                 {
-                    "text": "Sit",
-                    "value": "sit"
+                    "text": "French Fries",
+                    "value": "frenchfries"
                 },
                 {
-                    "text": "Amet",
-                    "value": "amet"
+                    "text": "Chicken Nuggets",
+                    "value": "chickennuggets"
                 },
                 {
-                    "text": "Consectetur",
-                    "value": "consectetur"
+                    "text": "PB&J",
+                    "value": "pbj"
                 }
-            ],
-            "required": false
+            ]
         },
         {
-            "name": "question5",
-            "class": "question5",
-            "copy": "Lorem Ipsum 2?",
+            "name": "favorite-sport",
+            "class": "favorite-sport",
+            "copy": "What is your favorite sport?",
             "options": [
                 {
-                    "text": "Lorem 2",
-                    "value": "lorem2"
+                    "text": "Football",
+                    "value": "football"
                 },
                 {
-                    "text": "Ipsum 2",
-                    "value": "ipsum2"
+                    "text": "Baseball",
+                    "value": "baseball"
                 },
                 {
-                    "text": "Dolor 2",
-                    "value": "dolor2"
+                    "text": "Hockey",
+                    "value": "hockey"
                 },
                 {
-                    "text": "Sit 2",
-                    "value": "sit2"
+                    "text": "Swimming/Diving",
+                    "value": "swimming"
                 },
                 {
-                    "text": "Amet 2",
-                    "value": "amet2"
+                    "text": "Soccer",
+                    "value": "soccer"
                 },
                 {
-                    "text": "Consectetur 2",
-                    "value": "consectetur2"
+                    "text": "Racing",
+                    "value": "racing"
                 }
-            ],
-            "required": false
+            ]
         }
     ]
 }

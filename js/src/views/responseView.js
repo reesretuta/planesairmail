@@ -16,7 +16,9 @@
 
             var nameModel = _.first(models);
 
-            var partitionedQuestions = _.partition(_.rest(models), function(model) {
+            var answeredQuestions = _.filter(_.rest(models), function(model) {return model.attributes.value !== ''});
+
+            var partitionedQuestions = _.partition(answeredQuestions, function(model) {
                 return model.attributes.class !== 'canned';
             });
 

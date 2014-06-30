@@ -11,6 +11,8 @@
 
     var QuestionView = require('./questionView');
 
+    var characterModule = require('../animations/characterModule');
+
 
     var SelectCharacterView = QuestionView.extend({
 
@@ -22,9 +24,13 @@
         onRadioChange: function(e) {
             QuestionView.prototype.onRadioChange.call(this, e);
 
-            var filePath = audioAssets[e.currentTarget.getAttribute('id')];
+            var char = e.currentTarget.getAttribute('id');
+
+            var filePath = audioAssets[char];
 
             soundPlayer.play(filePath);
+
+            characterModule.setCharacter(char);
         }
     });
 

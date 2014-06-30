@@ -27,6 +27,7 @@
             this.$placeholderInner = this.$placeholder.find('> div');
             this.$title = this.$el.find('div.title');
 
+
             this.hideCallback = function(){};
 
             _.bindAll(this, 'startAnimation','show','hide','setInactive');

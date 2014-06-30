@@ -1,9 +1,5 @@
 
 
-
-
-
-
 "use strict";
 
 var Character = require('../pixi/character');
@@ -14,6 +10,18 @@ var placeJustOffscreen = require('./placeJustOffscreen');
 // =================================================================== //
 function getDustyIdleTextures() {
     return PIXI.getTextures('assets/spritesheets/dusty/one/Dusty_plane_000', 0, 12);
+}
+function getDipperIdleTextures() {
+    return PIXI.getTextures('assets/spritesheets/dipper/Dipper_000', 0, 12);
+}
+function getBladeTextures() {
+    return PIXI.getTextures('assets/spritesheets/blade/Guide_BladeRanger_body_970x600_000', 0, 12);
+}
+function getCabbieTextures() {
+    return PIXI.getTextures('assets/spritesheets/cabbie/Cabbie_000', 0, 12);
+}
+function getWindlifterTextures() {
+    return PIXI.getTextures('assets/spritesheets/windlifter/Guide_Windlifter_body_970x600_000', 0, 12);
 }
 
 // =================================================================== //
@@ -50,28 +58,50 @@ function initDusty() {
     dusty.setIdleState(dustyIdleAnimation);
 
     dusty.windowScale = 850/1366;
-    dusty.windowX = 0.25;
     dusty.windowY = -1;
 
     return dusty;
 }
 function initBlade() {
-    var blade = new Character('Blade');
+    var bladeIdleAnimation = new PIXI.MovieClip(getBladeTextures());
+    bladeIdleAnimation.anchor = {x: 457/970, y: 346/600};
+
+    var blade = new Character('Blade', bladeIdleAnimation);
+
+    blade.windowScale = 0.6;
+    blade.windowY = -1;
 
     return blade;
 }
 function initCabbie() {
-    var cabbie = new Character('Cabbie');
+    var cabbieIdleAnimation = new PIXI.MovieClip(getCabbieTextures());
+    cabbieIdleAnimation.anchor = {x: 545/1200, y: 351/622};
+
+    var cabbie = new Character('Cabbie', cabbieIdleAnimation);
+
+    cabbie.windowScale = 0.6;
+    cabbie.windowY = -1;
 
     return cabbie;
 }
 function initDipper() {
-    var dipper = new Character('Dipper');
+    var dipperIdleState = new PIXI.MovieClip(getDipperIdleTextures());
+    dipperIdleState.anchor = {x: 571/1200, y: 410/638};
+
+    var dipper = new Character('Dipper', dipperIdleState);
+
+    dipper.windowY = -1;
+    dipper.windowScale = 865/1366;
 
     return dipper;
 }
 function initWindlifter() {
-    var windlifter = new Character('Windlifter');
+    var windliferIdleState = new PIXI.MovieClip(getWindlifterTextures());
+    windliferIdleState.anchor = {x: 0.5, y: 0.5};
+
+    var windlifter = new Character('Windlifter', windliferIdleState);
+    windlifter.windowY = -1;
+    windlifter.windowScale = 970/1366;
 
     return windlifter;
 }
