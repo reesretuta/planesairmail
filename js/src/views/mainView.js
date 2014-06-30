@@ -102,12 +102,6 @@
 
             this.$pagesContainer = this.$el.find('div.pages-ctn');
 
-            var $backgrounds = this.$el.find('> div.background');
-            this.$backgrounds = $backgrounds;
-            this.$background = $backgrounds.filter('.back');
-            this.$middleground = $backgrounds.filter('.middle');
-            this.$foreground = $backgrounds.filter('.front');
-
             this.$pageNav = this.$pagesContainer.find('div.page-nav');
             this.$next = this.$pageNav.find('a.next');
             this.$finishSend = this.$pageNav.find('a.finish-send');
@@ -120,7 +114,10 @@
         showFirstPage: function() {
             this.pages[0].show();
 
+            this.$next.css('opacity', 0);
             this.$next.addClass('active');
+
+            TweenLite.to(this.$next, 0.3, {opacity: 1});
         },
 
         nextPage: function() {
@@ -167,13 +164,13 @@
 
             var me = this;
             this.scene.onWipescreenComplete(function() {
-                me.$backgrounds.hide();
+//                me.$backgrounds.hide();
                 me.responseView.show();
                 me.scene.showResponse();
             });
 
             //set canvas to be in front of trees
-            $('#pixi-view').addClass('middle');
+//            $('#pixi-view').addClass('middle');
 
             this.scene.animateOutUserCharacter();
         },

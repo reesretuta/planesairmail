@@ -14,8 +14,7 @@ var personalityAnimationPairs = [
     [_.bind(staggerItems, fadeInFromRight), _.bind(staggerItems, snapOutRotate)],
     [_.bind(staggerItems, fadeInFromRight), _.bind(staggerItems, snapOut)],
     [_.bind(staggerItems, bounceFadeInFromTop), _.bind(staggerItems, snapOutRotate)],
-    [_.bind(staggerItems, bounceFadeInFromTop), _.bind(staggerItems, snapOut)],
-    [_.bind(staggerItems, rotateInLeft), _.bind(staggerItems, snapOut)]
+    [_.bind(staggerItems, bounceFadeInFromTop), _.bind(staggerItems, snapOut)]
 ];
 
 var cannedAnimationPairs = [

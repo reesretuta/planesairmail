@@ -91,6 +91,19 @@ div.page.name {
             color: $placeholderColor;
         }
     }
+
+    div.placeholder {
+        position: absolute;
+        top: 46%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+        color: white;
+
+        z-index: -1;
+
+        font-size: 28px;
+    }
 }
 
 

@@ -164,18 +164,24 @@ body {
   #footer a.volume {
     display: block;
     position: absolute;
-    top: 0;
-    bottom: 0px;
-    right: 30px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 1.46413%;
     margin: auto;
-    height: 30px;
-    width: 30px;
     background: url('../assets/img/icons/volume.png') center left no-repeat;
     -webkit-background-size: contain;
-    background-size: contain; }
+    background-size: contain;
+    width: 1.75695%; }
+    #footer a.volume > div.empty-space {
+      padding-bottom: 100%; }
     #footer a.volume svg {
       height: 100%;
-      width: 100%; }
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
   #footer div.counter {
     position: absolute;
     left: 50%;
@@ -405,6 +411,16 @@ div.page.name input[type="text"] {
   div.page.name input[type="text"]:-ms-input-placeholder {
     /* Internet Explorer 10+ */
     color: #FFFFFF; }
+div.page.name div.placeholder {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: -1;
+  font-size: 28px; }
 
 div.question {
   color: white; }

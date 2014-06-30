@@ -10,6 +10,7 @@
         el: 'div.name.page',
         events: {
             'change input.name': 'onNameChange',
+            'keydown input.name': 'onNameChange',
             'keyup input.name': 'onNameChange',
             'paste input.name': 'onNameChange'
         },
@@ -22,6 +23,9 @@
             this.model = new Backbone.Model({value: ''});
 
             this.$nameInput = this.$el.find('input[type=text].name');
+            this.$placeholder = this.$el.find('div.placeholder');
+            this.$placeholderInner = this.$placeholder.find('> div');
+            this.$title = this.$el.find('div.title');
 
             this.hideCallback = function(){};
 
@@ -37,8 +41,20 @@
         startAnimation: function() {
             $('#pixi-view').removeClass('front');
 
-            this.scene.startEnterNameAnimation();
+            this.scene.startEnterNameAnimation();   //animate in characters
+
+            var animationTime = 0.3;
+
+            TweenLite.to(this.$title, animationTime, {opacity: 1, y: 0, ease: 'Back.easeOut'});
+            TweenLite.to(this.$nameInput, animationTime, {opacity: 1});
+            TweenLite.to(this.$placeholderInner, animationTime, {opacity: 1, y: 0, ease: 'Back.easeOut', delay: 0.15});
         },
+        preAnimationSetup: function() {
+            TweenLite.set(this.$title, {opacity: 0, y: -75});
+            TweenLite.set(this.$nameInput, {opacity: 0});
+            TweenLite.set(this.$placeholderInner, {opacity: 0, y: -50});
+        },
+
 
         // ============================================================ //
         /* ************************ Show/Hide ************************* */
@@ -48,6 +64,7 @@
 
             scenesManager.goToScene('main');
 
+            this.preAnimationSetup();
             setTimeout(this.startAnimation, 0);
         },
         hide: function () {
@@ -66,7 +83,11 @@
         },
 
         onNameChange: function(e) {
-            this.model.set({value: this.$nameInput.val()});
+            var val = this.$nameInput.val();
+
+            this.$placeholder.toggle(val === '');
+
+            this.model.set({value: val});
         }
     });
 

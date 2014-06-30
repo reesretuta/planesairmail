@@ -9,7 +9,10 @@
                 <div class="title">
                     <div class="line">LET'S DIVE IN! TELL US YOUR FIRST NAME!</div>
                 </div>
-                <input type="text" name="name" class="name" placeholder="MY NAME IS"/>
+                <input type="text" name="name" class="name"/>
+                <div class="placeholder">
+                    <div>My name is</div>
+                </div>
             </div>
         </div>
     </div>
