@@ -624,3 +624,15 @@ div.question.character-select div.option div.background {
   background-size: cover;
   background-color: white;
   display: none; }
+  #response-bg.dusty {
+    background-image: url('../assets/img/response_bg_dusty.jpg'); }
+  #response-bg.cabbie {
+    background-image: url('../assets/img/response_bg_cabbie.jpg'); }
+  #response-bg.bladeranger {
+    background-image: url('../assets/img/response_bg_blade.jpg'); }
+  #response-bg.dipper {
+    background-image: url('../assets/img/response_bg_dipper.jpg'); }
+  #response-bg.windlifter {
+    background-image: url('../assets/img/response_bg_windlifter.jpg'); }
+  #response-bg.team {
+    background-image: url('../assets/img/response_bg_team.jpg'); }

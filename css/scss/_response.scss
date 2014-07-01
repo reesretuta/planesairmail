@@ -58,4 +58,23 @@
     background-color: white;
 
     display: none;
+
+    &.dusty {
+        background-image: url('../assets/img/response_bg_dusty.jpg');
+    }
+    &.cabbie {
+        background-image: url('../assets/img/response_bg_cabbie.jpg');
+    }
+    &.bladeranger {
+        background-image: url('../assets/img/response_bg_blade.jpg');
+    }
+    &.dipper {
+        background-image: url('../assets/img/response_bg_dipper.jpg');
+    }
+    &.windlifter {
+        background-image: url('../assets/img/response_bg_windlifter.jpg');
+    }
+    &.team {
+        background-image: url('../assets/img/response_bg_team.jpg');
+    }
 }

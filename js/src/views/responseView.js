@@ -22,6 +22,8 @@
             var nameModel = models[0];
             var characterModel = models[1];
 
+            this.$background.addClass(characterModel.attributes.value);
+
 
             var answeredQuestions = _.filter(_.rest(models, 2), function(model) {return model.attributes.value !== ''});
 
@@ -36,12 +38,7 @@
             var character = characterModel.attributes.value;
             var response = "";
 
-            console.log('cahracter:', character);
             var personalityResponses = _.map(personalityModels, function(model)  {
-                console.log(model.attributes.name);
-                console.log(responseMap[character][model.attributes.name]);
-                console.log(model.attributes);
-
                 return responseMap[character][model.attributes.name].replace('%template%', model.attributes.text);
             });
 
