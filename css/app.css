@@ -290,6 +290,26 @@ body {
         width: 240px;
         height: 53px;
         line-height: 43px; }
+      #content div.pages-ctn div.page-nav div.skip {
+        position: relative;
+        height: 30px;
+        width: 170px;
+        margin: 0 auto;
+        margin-top: 13px;
+        overflow: hidden; }
+      #content div.pages-ctn div.page-nav a.skip {
+        display: block;
+        color: black;
+        line-height: 27px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 7px;
+        font-size: 18px;
+        text-shadow: none;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 30px;
+        width: 170px; }
 
 #intro-view {
   height: 100%;
@@ -380,72 +400,76 @@ body {
 
 div.page {
   position: absolute;
-  top: 50%;
   right: 0;
+  top: 0;
+  padding-top: 11%;
   z-index: 10;
   margin: auto;
-  width: 549px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  width: 679px;
   left: 200%;
   visibility: hidden; }
   div.page.active {
     left: 0;
     visibility: visible; }
 
-div.page.name .input-wrapper {
-  height: 95px;
-  width: 100%; }
-div.page.name div.title {
-  position: absolute;
-  bottom: 100%;
-  width: 100%;
-  text-align: center;
-  font-size: 36px;
-  line-height: 36px;
-  margin-bottom: 53px;
-  color: white;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2); }
-div.page.name input[type="text"] {
-  border: 0px solid;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(179, 209, 233, 0.35);
-  border-radius: 15px;
-  font-size: 20px;
-  text-align: center;
-  -webkit-box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.2); }
-  div.page.name input[type="text"]:focus {
-    outline: 0; }
-  div.page.name input[type="text"]::-webkit-input-placeholder {
-    /* WebKit browsers */
-    color: #FFFFFF; }
-  div.page.name input[type="text"]:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #FFFFFF;
-    opacity: 1; }
-  div.page.name input[type="text"]::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #FFFFFF;
-    opacity: 1; }
-  div.page.name input[type="text"]:-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    color: #FFFFFF; }
-div.page.name div.placeholder {
-  position: absolute;
-  top: 46%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  color: white;
-  z-index: -1;
-  font-size: 28px; }
+div.page.name {
+  padding-top: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+  div.page.name .input-wrapper {
+    height: 95px;
+    width: 100%; }
+  div.page.name div.title {
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 36px;
+    line-height: 36px;
+    margin-bottom: 53px;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2); }
+  div.page.name input[type="text"] {
+    border: 0px solid;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(179, 209, 233, 0.35);
+    border-radius: 15px;
+    font-size: 20px;
+    text-align: center;
+    -webkit-box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.2); }
+    div.page.name input[type="text"]:focus {
+      outline: 0; }
+    div.page.name input[type="text"]::-webkit-input-placeholder {
+      /* WebKit browsers */
+      color: #FFFFFF; }
+    div.page.name input[type="text"]:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 */
+      color: #FFFFFF;
+      opacity: 1; }
+    div.page.name input[type="text"]::-moz-placeholder {
+      /* Mozilla Firefox 19+ */
+      color: #FFFFFF;
+      opacity: 1; }
+    div.page.name input[type="text"]:-ms-input-placeholder {
+      /* Internet Explorer 10+ */
+      color: #FFFFFF; }
+  div.page.name div.placeholder {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: -1;
+    font-size: 28px; }
 
 div.question {
   color: white; }
@@ -458,9 +482,9 @@ div.question {
     width: 100%; }
   div.question div.option {
     float: left;
-    height: 183px;
-    width: 183px;
-    padding: 30px; }
+    height: 223px;
+    width: 223px;
+    padding: 50px; }
     div.question div.option input {
       display: none; }
     div.question div.option label {

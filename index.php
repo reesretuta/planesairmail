@@ -54,6 +54,9 @@
             <div class="page-nav">
                 <a href="#" class="finish-send">Finish & send</a>
                 <a href="#" class="next">next</a>
+                <div class="skip">
+                    <a href="#" class="skip">I would like to skip</a>
+                </div>
             </div>
 
             <?php include_once('includes/enterNameHtml.php'); ?>

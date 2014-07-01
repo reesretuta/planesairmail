@@ -70,6 +70,8 @@
         hide: function () {
             dustyDipperModule.onAnimationOutComplete(this.setInactive);
 
+            TweenLite.to(this.$el, 0.3, {opacity: 0});
+
             //run hide animation
             dustyDipperModule.animateOut();
         },

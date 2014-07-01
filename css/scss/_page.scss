@@ -2,16 +2,16 @@
 
 div.page {
     position: absolute;
-    top: 50%;
     right: 0;
+    top: 0;
+
+    padding-top: 11%;
 
     z-index: 10;
 
     margin: auto;
 
-    width: 549px;
-
-    transform: translateY(-50%);
+    width: 679px;
 
     left: 200%;
     visibility: hidden;
@@ -28,6 +28,10 @@ $blue: rgba(179, 209, 233, 0.35);
 
 
 div.page.name {
+    padding-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
     .input-wrapper {
         height: 95px;
         width: 100%;

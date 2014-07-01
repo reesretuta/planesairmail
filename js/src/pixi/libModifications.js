@@ -198,7 +198,6 @@
         var numDigits = (rangeEnd-1).toString().length;
 
         return _.map(_.range(rangeStart, rangeEnd), function(num) {
-
             var numZeros = numDigits - num.toString().length;   //extra characters
             var zeros = new Array(numZeros + 1).join('0');
 
@@ -208,7 +207,7 @@
 
     PIXI.getTextures = function(filePrefix, rangeStart, rangeEnd) {
         return _.map(getFileNames(filePrefix, rangeStart, rangeEnd), PIXI.Texture.fromFrame);
-    }
+    };
 
 
 
@@ -225,7 +224,7 @@
     PIXI.MovieClip.prototype.destroy = function(destroyBaseTexture) {
         if(_.isUndefined(destroyBaseTexture)) destroyBaseTexture = true;
 
-        PIXI.Sprite.prototype.destroy.call(this, destroyBaseTexture);
+        this.parent.removeChild(this);
         _.each(this.textures, function(texture) {
             texture.destroy(destroyBaseTexture);
         });

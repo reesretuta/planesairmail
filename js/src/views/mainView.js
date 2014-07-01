@@ -23,6 +23,7 @@
         events: {
             'click a.next': 'onNext',
             'click a.finish-send': 'onFinish',
+            'click a.skip': 'onSkip',
             'mousemove': 'onMouseMove'
         },
 
@@ -106,6 +107,8 @@
             this.$pageNav = this.$pagesContainer.find('div.page-nav');
             this.$next = this.$pageNav.find('a.next');
             this.$finishSend = this.$pageNav.find('a.finish-send');
+
+            this.$skip = this.$pageNav.find('a.skip');
         },
 
 
@@ -128,9 +131,15 @@
             //hide active page
             var activePage = this.pages[this.activePageIndex];
 
+            if(this.activePageIndex == 0) {
+                this.hideSkip();
+            }
+
             if(this.activePageIndex === 1) {
                 //animate in character
                 this.scene.animateInUserCharacter();
+
+                this.showSkip();
             }
 
             activePage.onHideComplete(_.bind(this.showPageAfterHide, this));
@@ -152,6 +161,7 @@
 
             if(this.activePageIndex === this.pages.length-1) {
                 this.showFinishBtn();
+                this.hideSkip();
             }
         },
         showFinishBtn: function() {
@@ -182,7 +192,7 @@
         repositionPageNav: function(animate) {
             var activePage = this.pages[this.activePageIndex];
 
-            var pixelPosition = (activePage.$el.offset().top + activePage.$el.height());
+            var pixelPosition = (activePage.$el.offset().top + activePage.$el.outerHeight());
 
             var windowHeight = this.$window.height();
 
@@ -195,6 +205,14 @@
                 return;
             }
             this.$pageNav.css('top', percTop);
+        },
+
+
+        hideSkip: function() {
+            TweenLite.to(this.$skip, 0.2, {bottom: '100%'});
+        },
+        showSkip: function() {
+            TweenLite.to(this.$skip, 0.2, {bottom: 0});
         },
 
         // ==================================================================== //
@@ -217,7 +235,9 @@
         onNext: function(e) {
             e.preventDefault();
 
-            if(this.animating || this.activePageIndex >= (this.pages.length - 1)) return;
+            if(this.animating
+                || this.pages[this.activePageIndex].model.attributes.value === ''
+                || this.activePageIndex >= (this.pages.length - 1)) return;
 
             this.nextPage();
         },
@@ -232,6 +252,13 @@
             e.preventDefault();
 
             this.scene.shiftBackgroundLayers(e.pageX/this.$window.width());
+        },
+        onSkip: function(e) {
+            e.preventDefault();
+
+            if(this.animating || this.activePageIndex >= (this.pages.length - 1)) return;
+
+            this.nextPage();
         }
     });
 
