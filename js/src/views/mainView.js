@@ -41,6 +41,7 @@
             scenesManager.initialize(this.$window.width(), this.$window.height(), this.$el);
 
             this.scene = scenesManager.createScene('main', MainScene);
+            scenesManager.goToScene('main');
 
             // create views
             this.initIntroView();
@@ -55,7 +56,7 @@
         initWindowEvents: function() {
 //            console.log('init window Events');
 //
-//            this.$window.on('resize', _.bind(this.repositionPageNav, this));
+            this.$window.on('resize', _.bind(this.repositionPageNav, this));
 //
 //            if (window.DeviceOrientationEvent) {
 //                console.log('deviceorientation');

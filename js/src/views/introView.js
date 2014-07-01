@@ -165,7 +165,6 @@
         start: function() {
             this.setActive();
 
-            scenesManager.goToScene('main');
             $('#pixi-view').addClass('front');
 
             introVideoModule.onComplete(_.bind(this.showBeginScreen, this));

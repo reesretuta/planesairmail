@@ -194,7 +194,7 @@ function generateAnimationOutTimeline() {
     var timelineOut = new TimelineMax({
         paused: true,
         onComplete: function() {
-            dipper.destroy(false);
+//            dipper.destroy(false);
             dusty.destroy();
 
             onAnimationOutComplete();

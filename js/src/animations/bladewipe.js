@@ -64,6 +64,9 @@ function getVideoAnimationTimeline(video) {
         onStart: function() {
             video.visible = true;
             video.tweenFrame = 0;
+        },
+        onComplete: function() {
+            video.destroy();
         }
     });
 
@@ -74,7 +77,7 @@ function getVideoAnimationTimeline(video) {
 
     timeline.addLabel('callback', timeline.duration());
 
-    timeline.append(TweenLite.to(video, 0.2, {
+    timeline.append(TweenLite.to(video, 0.3, {
         alpha: 0
     }));
 

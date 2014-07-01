@@ -60,6 +60,8 @@
             return false;
         },
         onWindowResize: function() {
+            if(!ScenesManager.currentScene) return;
+
             var width = $window.width();
             var height = $window.height();
 

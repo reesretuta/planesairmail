@@ -268,8 +268,8 @@ body {
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
       -webkit-backface-visibility: hidden;
-      padding-top: 40px;
-      padding-bottom: 20px; }
+      padding-top: 20px;
+      padding-bottom: 10px; }
       #content div.pages-ctn div.page-nav a {
         color: #ea2424;
         text-decoration: none;
