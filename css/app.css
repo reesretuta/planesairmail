@@ -616,6 +616,25 @@ div.question.character-select div.option div.background {
     #response #card-wrap #card-from {
       text-align: center;
       font-size: 35px; }
+    #response #card-wrap #printversion {
+      background: url('../assets/img/print.png');
+      position: absolute;
+      left: 45px;
+      bottom: 30px;
+      height: 28px;
+      width: 177px;
+      display: block; }
+    #response #card-wrap #sendmore {
+      background: url('../assets/img/sendMore.png');
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 51px;
+      width: 300px;
+      display: block;
+      bottom: -75px; }
 
 #response-bg {
   position: absolute;

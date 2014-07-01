@@ -14,6 +14,8 @@
             Thanks for writing to us <span></span>
         </div>
         <div id="card-from"></div>
+        <a href="#" id="printversion"></a>
+        <a href="#" id="sendmore"></a>
     </div>
-    <a id="name">Send More Airmail</a>
+    
 </div>

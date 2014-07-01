@@ -46,6 +46,30 @@
         text-align:center;
         font-size:35px;
       }
+      
+      #printversion{
+        background: url('../assets/img/print.png');
+        position:absolute;
+        left:45px;
+        bottom:30px;
+        height:28px;
+        width:177px;
+        display:block;
+      }
+      
+      #sendmore{
+        background: url('../assets/img/sendMore.png');
+        position:absolute;
+        left:50%;
+        transform: translateX(-50%);
+        height:51px;
+        width:300px;
+        display:block;
+        bottom:-75px;
+        
+      }
+      
+      
     }
 }
 
