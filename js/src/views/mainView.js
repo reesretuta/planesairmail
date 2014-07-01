@@ -30,6 +30,7 @@
         /* ************************ Initialization Stuff ********************** */
         // ==================================================================== //
         initialize: function() {
+            this.animating = false;
             this.pages = [];
             this.activePageIndex = 0;
 
@@ -117,10 +118,13 @@
             this.$next.css('opacity', 0);
             this.$next.addClass('active');
 
+            this.repositionPageNav(false);
+
             TweenLite.to(this.$next, 0.3, {opacity: 1});
         },
 
         nextPage: function() {
+            this.animating = true;
             //hide active page
             var activePage = this.pages[this.activePageIndex];
 
@@ -134,13 +138,17 @@
             this.activePageIndex++;
             activePage.hide();
             this.repositionPageNav(true);
+
+            this.footer.setCounter(this.activePageIndex);
         },
         showPageAfterHide: function() {
             //show next page
             var nextPage = this.pages[this.activePageIndex];
-            nextPage.show();
 
-            this.footer.setCounter(this.activePageIndex);
+            nextPage.onShowComplete(function() {
+                this.animating = false;
+            }.bind(this));
+            nextPage.show();
 
             if(this.activePageIndex === this.pages.length-1) {
                 this.showFinishBtn();
@@ -209,12 +217,14 @@
         onNext: function(e) {
             e.preventDefault();
 
-            if(this.activePageIndex >= (this.pages.length - 1)) return;
+            if(this.animating || this.activePageIndex >= (this.pages.length - 1)) return;
 
             this.nextPage();
         },
         onFinish: function(e) {
             e.preventDefault();
+
+            if(this.animating) return;
 
             this.finishAndSend();
         },

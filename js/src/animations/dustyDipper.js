@@ -37,12 +37,12 @@ function initializeDusty() {
 
     var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
 
-    dustyIdleAnimation.anchor = {x: 650/1200, y: 340/638};
+    dustyIdleAnimation.anchor = {x: 641/1200, y: 340/638};
 
     dusty.setIdleState(dustyIdleAnimation);
 
-    dusty.windowScale = 900/1366;
-    dusty.windowX = 0.15;
+    dusty.windowScale = 0.47;
+    dusty.windowX = 0.18;
     dusty.windowY = -1;
 
     var blurFilter = new PIXI.BlurFilter();
@@ -187,12 +187,17 @@ function generateTimelineDipperIn(dipper) {
 // =================================================================== //
 /* *************************** Animate Out *************************** */
 // =================================================================== //
+
+var onAnimationOutComplete = function(){};
+
 function generateAnimationOutTimeline() {
     var timelineOut = new TimelineMax({
         paused: true,
         onComplete: function() {
             dipper.destroy(false);
             dusty.destroy();
+
+            onAnimationOutComplete();
         }
     });
 
@@ -228,7 +233,7 @@ function generateAnimationDipperOut(dipper) {
 }
 function generateAnimationDustyOut(dusty) {
     var animationTime = 2.4;
-    var easing = 'Circ.easeInOut';
+    var easing = 'Expo.easeInOut';
 
     var blurFilter = dusty.filters[0];
 
@@ -239,12 +244,12 @@ function generateAnimationDustyOut(dusty) {
     timeline.add(TweenLite.to(dusty, animationTime, {
         animationScaleX: 1.3,
         animationScaleY: 1.3,
-        windowY: -0.3,
+        windowY: -0.1,
         windowX: 0.6,
-        rotation: -0.2
+        ease: easing
     }), 0);
 
-    timeline.add(TweenLite.to(blurFilter, animationTime/5, {
+    timeline.add(TweenLite.to(blurFilter, animationTime, {
         blur: 10,
         ease: easing
     }), 0);
@@ -276,7 +281,7 @@ var animationModule = {
         timelineIn.vars.onComplete = callback;
     },
     onAnimationOutComplete: function(callback) {
-        timelineOut.vars.onComplete = callback;
+        onAnimationOutComplete = callback;
     }
 
 };
