@@ -5,7 +5,9 @@
         "firefighter": "Before joining the Air Attack Team, I was a world-famous air racer – I even raced around the world!  Now I race to put out fires. ",
         "bestfriend": "It wasn’t easy becoming a champion racer or a firefighter but I’ve had an amazing team of friends with me every step of the way! ",
         "favoriteplace": "I have been flying for as long as I can remember but my favorite place to fly is above my hometown, Pumpwash Junction. I do some fancy flying there!",
-        "favorite-food": "Anything's better to eat than Vitaminamulch. Especially %food%!"
+        "favorite-food": "Anything's better to eat than Vitaminamulch. Especially %template%!",
+        "favorite-color": "My favorite color is GREEN. Green means go! And I love to go fast.",
+        "favorite-sport": "Cool! Your favorite sport is %template%!"
     },
     "dipper": {
         "job": "I have a really important job fighting wildfires. I'm a Super-scooper with the Piston Peak Attack Team.",

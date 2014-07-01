@@ -19,8 +19,6 @@ function initialize() {
     background = initBackground();
     middleground = initMiddleground();
     foreground = initForeground();
-
-    console.log('window width', $(window).width());
 }
 function setAttrs(sprite) {
     sprite.anchor = new PIXI.Point(.5, 1);

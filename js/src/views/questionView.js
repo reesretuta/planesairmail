@@ -85,7 +85,9 @@ var QuestionView = Backbone.View.extend({
     onRadioChange: function(e) {
         "use strict";
 
-        this.model.set({value: e.currentTarget.getAttribute('value')});
+        var text = $(e.currentTarget).siblings('div.text').html();
+
+        this.model.set({value: e.currentTarget.getAttribute('value'), text: text});
     }
 });
 
