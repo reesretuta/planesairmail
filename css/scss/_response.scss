@@ -23,6 +23,9 @@
       #card-header{
         font-size:35px;
         margin-bottom:15px;
+        span{
+          text-transform: uppercase;
+        }
       }
       
       #card-body{
@@ -34,6 +37,9 @@
       
       #card-sincerely{
         text-align:center;
+        span{
+          text-transform: capitalize;
+        }
       }
       
       #card-from{

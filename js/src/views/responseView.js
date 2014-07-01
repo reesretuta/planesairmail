@@ -18,7 +18,6 @@
         },
 
         setResponse: function(models) {
-
             var nameModel = models[0];
             var characterModel = models[1];
 
@@ -49,9 +48,9 @@
             response += ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ');
 
 
-
-            console.log(response);
-
+            this.$el.find('#card-header span, #card-sincerely span').html(nameModel.attributes.value);
+            this.$el.find('#card-body').html(response);
+            this.$el.find('#card-from').html(character);
 
 //            // TODO: Change to actual generated response
 //            var html = 'Name: ' + nameModel.attributes.value + '<br/>';

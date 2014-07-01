@@ -602,6 +602,8 @@ div.question.character-select div.option div.background {
     #response #card-wrap #card-header {
       font-size: 35px;
       margin-bottom: 15px; }
+      #response #card-wrap #card-header span {
+        text-transform: uppercase; }
     #response #card-wrap #card-body {
       font-family: 'Helvetica';
       font-size: 15px;
@@ -609,6 +611,8 @@ div.question.character-select div.option div.background {
       margin-bottom: 15px; }
     #response #card-wrap #card-sincerely {
       text-align: center; }
+      #response #card-wrap #card-sincerely span {
+        text-transform: capitalize; }
     #response #card-wrap #card-from {
       text-align: center;
       font-size: 35px; }
