@@ -148,6 +148,29 @@ body {
     top: 0;
     bottom: 15px;
     margin: auto; }
+  #header div.social {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-right: 10px; }
+    #header div.social > a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      background-color: #e22123;
+      margin-right: 10px;
+      border-radius: 5px;
+      padding: 5px;
+      padding-top: 2px;
+      float: left; }
+    #header div.social div.fb-like {
+      display: block;
+      float: left;
+      margin-top: 3px;
+      margin-right: 10px; }
 
 #footer {
   width: 100%;

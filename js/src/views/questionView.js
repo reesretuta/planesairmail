@@ -37,6 +37,14 @@ var QuestionView = Backbone.View.extend({
         this.animationIn = animations[0];
         this.animationOut = animations[1];
 
+
+
+        this.animationIn.vars.onComplete = function() {
+            if(_.isFunction(this.showCallback)) {
+                this.showCallback();
+            }
+        }.bind(this);
+
         this.animationOut.vars.onComplete = function() {
             this.$el.removeClass('active');
 
@@ -71,11 +79,13 @@ var QuestionView = Backbone.View.extend({
         this.animationIn.play();
     },
     hide: function() {
-
         this.animationOut.play();
     },
     onHideComplete: function(callback) {
         this.hideCallback = callback;
+    },
+    onShowComplete: function(callback) {
+        this.showCallback = callback;
     },
 
 

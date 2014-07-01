@@ -21,6 +21,8 @@
             this.initJqueryVariables();
             this.initAnimationTimeline();
             this.initScene();
+
+            this.$beginBtn.hide();
         },
         initJqueryVariables: function() {
             this.$beginScreen = this.$el.find('div.begin-screen');
@@ -80,6 +82,7 @@
                     TweenLite.set(this.$beginBtn, {
                         scale: 0.7
                     });
+                    this.$beginBtn.show();
                 }.bind(this)
             });
 

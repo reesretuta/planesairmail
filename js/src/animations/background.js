@@ -53,17 +53,6 @@ function initForeground() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 var animationModule = {
     initialize: _.once(function() {
         initialize();
