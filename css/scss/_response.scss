@@ -107,3 +107,17 @@
         background-image: url('../assets/img/response_bg_team.jpg');
     }
 }
+
+
+
+@media print {
+  #response-bg{
+    background:#fff;
+    background-image:none !important;
+  }
+
+  #printversion, #sendmore, .social, .volume{
+    display:none !important;
+  }
+}
+
