@@ -129,6 +129,8 @@ body {
     height: 100%; }
   #header .logo {
     background: url('../assets/img/logo.png') center center no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
     width: 15.73939%;
     position: absolute;
     left: 0;
@@ -538,11 +540,15 @@ div.question.character-select div.option div.background {
   padding-top: 200px;
   text-align: center;
   color: white; }
-  #response #card-wrap {
-    background: no-repeat center center;
-    -webkit-background-size: contain;
-    background-size: contain;
-    background-image: url('../assets/img/response_letter_bg.jpg');
-    height: 403px;
-    width: 768px;
-    left: 50%; }
+
+#response-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../assets/img/response_bg_dusty.jpg') center center no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-color: white;
+  display: none; }

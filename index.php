@@ -6,6 +6,7 @@
 </head>
 <body>
     <div id="content" class="full-relative">
+        <div id="response-bg"></div>
         <div id="passwordScreen">
             <div class="content">
                 <form action="index.php">

@@ -26,6 +26,7 @@
 
     .logo {
         background: url('../assets/img/logo.png') center center no-repeat;
+        background-size: contain;
 
         width: percentage(215/1366);
 

@@ -44,10 +44,6 @@ function initialize() {
     char = allCharacters.dusty;
 
     displayObjectContainer = new PIXI.DisplayObjectContainer();
-
-    _.each(allCharacters, function(ch) {
-        displayObjectContainer.addChild(ch);
-    });
 }
 
 function initDusty() {
@@ -114,6 +110,9 @@ function animateIn() {
     var animationTime = 1.8;
     var easing = 'Cubic.easeInOut';
 
+    //add character in
+    displayObjectContainer.addChild(char);
+
     placeJustOffscreen(char);
     char.windowX = 0.6;
 
@@ -134,7 +133,13 @@ function animateOut() {
         windowY: 0.25,
         windowX: -0.4,
         ease: easing,
-        onComplete: onAnimationOutCallback
+        onComplete: function() {
+            console.log(char);
+
+            char.destroy();
+
+            onAnimationOutCallback();
+        }
     });
 }
 

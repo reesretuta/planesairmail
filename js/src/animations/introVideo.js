@@ -74,6 +74,9 @@ function getVideoAnimationTimeline(video) {
         onStart: function() {
             video.visible = true;
             video.tweenFrame = 0;
+        },
+        onComplete: function() {
+            video.destroy();
         }
     });
 

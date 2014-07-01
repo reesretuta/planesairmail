@@ -84,8 +84,6 @@ function getVideoAnimationTimeline(video) {
 
 
 
-
-
 // =================================================================== //
 /* **************************** Public API *************************** */
 // =================================================================== //
@@ -112,7 +110,7 @@ var animationModule = {
 
 
 
-_.bindAll.apply(_, [].concat(animationModule, Object.keys(animationModule)));
+_.bindAll.apply(_, [animationModule].concat(Object.keys(animationModule)));
 
 
 

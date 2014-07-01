@@ -94,6 +94,14 @@
 
 
 
+    Character.prototype.destroy = function() {
+        this.parent.removeChild(this);
+
+        _.each(this.children, function(child) {
+            child.destroy();
+        });
+    };
+
 
 
 
