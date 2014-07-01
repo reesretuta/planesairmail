@@ -12,4 +12,13 @@
     text-align: center;
 
     color: white;
+    
+    #card-wrap{
+      background: no-repeat center center;
+      background-size: contain;
+      background-image: url('../assets/img/response_letter_bg.jpg');
+      height:403px;
+      width:768px;
+      left:50%;
+    }
 }
