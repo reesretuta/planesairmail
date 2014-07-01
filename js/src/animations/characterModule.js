@@ -27,7 +27,7 @@ function getWindlifterTextures() {
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var char, allCharacters, displayObjectContainer;
+var char, allCharacters, displayObjectContainer, pixiScene;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -133,7 +133,11 @@ function animateOut() {
         windowY: 0.25,
         windowX: -0.4,
         ease: easing,
-        onComplete: onAnimationOutCallback
+        onComplete: function() {
+            char.destroy();
+
+            onAnimationOutCallback();
+        }
     });
 }
 

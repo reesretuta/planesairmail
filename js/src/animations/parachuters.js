@@ -129,12 +129,14 @@ var animationModule = {
     hide: function() {
         parachutersContainer.visible = false;
 
-        pixiScene.removeChild(parachutersContainer);
+        _.each(parachuters, function(parachuter) {
+            parachuter.destroy();
+        });
     }
 };
 
 
-_.bindAll.apply(_, [].concat(animationModule, Object.keys(animationModule)));
+_.bindAll.apply(_, [animationModule].concat(Object.keys(animationModule)));
 
 
 

@@ -185,7 +185,7 @@
 
 
     // =================================================================== //
-    /* ************** Spritesheet Texture Functions *************** */
+    /* ******************* Spritesheet Texture Functions ****************** */
     // =================================================================== //
 
 
@@ -211,6 +211,25 @@
     }
 
 
+
+    // =================================================================== //
+    /* ************************** Memory Cleanup ************************* */
+    // =================================================================== //
+    PIXI.Sprite.prototype.destroy = function(destroyBaseTexture) {
+        if(_.isUndefined(destroyBaseTexture)) destroyBaseTexture = true;
+
+        this.parent.removeChild(this);
+        this.texture.destroy(destroyBaseTexture);
+    };
+
+    PIXI.MovieClip.prototype.destroy = function(destroyBaseTexture) {
+        if(_.isUndefined(destroyBaseTexture)) destroyBaseTexture = true;
+
+        PIXI.Sprite.prototype.destroy.call(this, destroyBaseTexture);
+        _.each(this.textures, function(texture) {
+            texture.destroy(destroyBaseTexture);
+        });
+    };
 
 
 
