@@ -3,16 +3,47 @@
 
 #response {
     display: none;
-
     z-index: 5;
     top: 0;
     left: 0;
-
     padding-top: 200px;
     text-align: center;
-
     color: white;
+
+    #card-wrap{
+      background: url('../assets/img/response_letter_bg.jpg') center center no-repeat;
+      width:768px;
+      height:386px;
+      left:50%;
+      position:absolute;
+      transform: translateX(-50%);
+      padding:63px 40px 0 40px;
+      color:#000;
+      text-align:left;
+      #card-header{
+        font-size:35px;
+        margin-bottom:15px;
+      }
+      
+      #card-body{
+        font-family: 'Helvetica';
+        font-size:15px;
+        line-height:18px;
+        margin-bottom:15px;
+      }
+      
+      #card-sincerely{
+        text-align:center;
+      }
+      
+      #card-from{
+        text-align:center;
+        font-size:35px;
+      }
+    }
+
 }
+
 
 #response-bg {
     position: absolute;
