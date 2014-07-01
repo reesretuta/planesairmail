@@ -62,8 +62,6 @@
     MainScene.prototype = {
         playWipescreen: function() {
             bladewipeModule.playVideo();
-
-            console.log(this);
         },
         onWipescreenComplete:function(callback) {
             bladewipeModule.onVideoComplete(callback);

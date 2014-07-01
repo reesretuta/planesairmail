@@ -27,7 +27,7 @@ function getWindlifterTextures() {
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var char, allCharacters, displayObjectContainer, pixiScene;
+var char, allCharacters, displayObjectContainer;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -134,6 +134,8 @@ function animateOut() {
         windowX: -0.4,
         ease: easing,
         onComplete: function() {
+            console.log(char);
+
             char.destroy();
 
             onAnimationOutCallback();

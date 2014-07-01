@@ -160,7 +160,7 @@ function generateTimelineDipperIn(dipper) {
     });
 
     timeline.add(TweenLite.to(dipper, animationTime, {
-        windowY: 0.33,
+        windowY: 0.30,
         ease: 'Back.easeOut'
     }), 0);
 
@@ -248,14 +248,6 @@ function generateAnimationDustyOut(dusty) {
         blur: 10,
         ease: easing
     }), 0);
-
-//    timeline.add(TweenLite.to(dusty, animationTime, {
-//        animationScaleX: 1.2,
-//        animationScaleY: 1.2,
-//        windowY: 0.24,
-//        windowX: -0.3,
-//        ease: easing
-//    }));
 
     return timeline;
 }

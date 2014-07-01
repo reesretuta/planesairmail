@@ -92,6 +92,10 @@ var animationModule = {
         background.visible = false;
         middleground.visible = false;
         foreground.visible = false;
+
+        background.destroy();
+        middleground.destroy();
+        foreground.destroy();
     }
 };
 

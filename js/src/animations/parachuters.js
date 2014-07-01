@@ -9,7 +9,7 @@ var placeJustOffscreen = require('./placeJustOffscreen');
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var parachuters, parachutersContainer, pixiScene;
+var parachuters, parachutersContainer;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -120,7 +120,6 @@ var animationModule = {
         _.each(parachuters, _.bind(parachutersContainer.addChild, parachutersContainer));
 
         scene.addChild(parachutersContainer);
-        pixiScene = scene;
     }),
     animateNext: function() {
         if(parachuters.length > 0)
