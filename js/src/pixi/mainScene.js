@@ -10,7 +10,6 @@
     var bladewipeModule = require('../animations/bladewipe');
     var dustyDipperModule = require('../animations/dustyDipper');
     var parachutersModule = require('../animations/parachuters');
-    var responseModule = require('../animations/response');
     var characterModule = require('../animations/characterModule');
 
 
@@ -46,7 +45,6 @@
         parachutersModule.initialize(this);
         backgroundModule.addRestToScene(this);
 
-        responseModule.initialize(this);
         bladewipeModule.initialize(this);
         dustyDipperModule.initialize(this);
         characterModule.initialize(this);
@@ -64,6 +62,8 @@
     MainScene.prototype = {
         playWipescreen: function() {
             bladewipeModule.playVideo();
+
+            console.log(this);
         },
         onWipescreenComplete:function(callback) {
             bladewipeModule.onVideoComplete(callback);
@@ -84,7 +84,7 @@
         },
         showResponse: function() {
             parachutersModule.hide();
-            responseModule.show();
+            backgroundModule.hide();
         },
         animateInUserCharacter: function() {
             characterModule.animateIn();

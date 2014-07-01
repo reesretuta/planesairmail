@@ -8,7 +8,7 @@ var placeJustOffscreen = require('./placeJustOffscreen');
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var dusty, dipper, timelineIn, timelineOut;
+var dusty, dipper, timelineIn, timelineOut, pixiScene;
 
 
 // =================================================================== //
@@ -189,11 +189,15 @@ function generateTimelineDipperIn(dipper) {
 // =================================================================== //
 function generateAnimationOutTimeline() {
     var timelineOut = new TimelineMax({
-        paused: true
+        paused: true,
+        onComplete: function() {
+            pixiScene.removeChild(dipper);
+            pixiScene.removeChild(dusty);
+        }
     });
 
-        timelineOut.add(generateAnimationDipperOut(dipper).play(), 0);
-        timelineOut.add(generateAnimationDustyOut(dusty).play(), 0);
+    timelineOut.add(generateAnimationDipperOut(dipper).play(), 0);
+    timelineOut.add(generateAnimationDustyOut(dusty).play(), 0);
 
    return timelineOut;
 }
@@ -266,6 +270,8 @@ function generateAnimationDustyOut(dusty) {
 var animationModule = {
     initialize: _.once(function(scene) {
         initialize();
+
+        pixiScene = scene;
 
         scene.addChild(dipper);
         scene.addChild(dusty);

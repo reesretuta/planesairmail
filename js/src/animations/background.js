@@ -87,8 +87,12 @@ var animationModule = {
         background.windowX = backgroundX;
         middleground.windowX = middlegroundX;
         foreground.windowX = foregroundX;
+    },
+    hide: function() {
+        background.visible = false;
+        middleground.visible = false;
+        foreground.visible = false;
     }
-
 };
 
 

@@ -12,7 +12,7 @@ function getIntroTextures() {
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var video, videoTimeline;
+var video, videoTimeline, pixiScene;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -74,6 +74,9 @@ function getVideoAnimationTimeline(video) {
         onStart: function() {
             video.visible = true;
             video.tweenFrame = 0;
+        },
+        onComplete: function() {
+            pixiScene.removeChild(video);
         }
     });
 
@@ -98,6 +101,7 @@ var animationModule = {
     initialize: function(scene) {
         initialize();
 
+        pixiScene = scene;
         scene.addChild(video);
     },
     getVideo: function() {

@@ -9,7 +9,7 @@ var placeJustOffscreen = require('./placeJustOffscreen');
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var parachuters, parachutersContainer;
+var parachuters, parachutersContainer, pixiScene;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -120,6 +120,7 @@ var animationModule = {
         _.each(parachuters, _.bind(parachutersContainer.addChild, parachutersContainer));
 
         scene.addChild(parachutersContainer);
+        pixiScene = scene;
     }),
     animateNext: function() {
         if(parachuters.length > 0)
@@ -127,6 +128,8 @@ var animationModule = {
     },
     hide: function() {
         parachutersContainer.visible = false;
+
+        pixiScene.removeChild(parachutersContainer);
     }
 };
 

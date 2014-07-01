@@ -164,13 +164,10 @@
 
             var me = this;
             this.scene.onWipescreenComplete(function() {
-//                me.$backgrounds.hide();
                 me.responseView.show();
                 me.scene.showResponse();
             });
 
-            //set canvas to be in front of trees
-//            $('#pixi-view').addClass('middle');
 
             this.scene.animateOutUserCharacter();
         },

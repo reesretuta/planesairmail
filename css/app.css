@@ -129,6 +129,8 @@ body {
     height: 100%; }
   #header .logo {
     background: url('../assets/img/logo.png') center center no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
     width: 15.73939%;
     position: absolute;
     left: 0;
