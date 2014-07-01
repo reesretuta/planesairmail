@@ -26,7 +26,6 @@
 
             this.$background.addClass(characterModel.attributes.value);
 
-
             var answeredQuestions = _.filter(_.rest(models, 2), function(model) {return model.attributes.value !== ''});
 
             var partitionedQuestions = _.partition(answeredQuestions, function(model) {

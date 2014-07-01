@@ -107,6 +107,9 @@
 <script src="js/lib/EasePack.min.js"></script>
 
 
+<script src='js/lib/fastclick.js'></script>
+
+
 <!-------------------------------- App Javascript ------------------------>
 <script src="js/build/app.js"></script>
 

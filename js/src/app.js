@@ -31,10 +31,6 @@ app.render = _.after(2, function() {
 
 
 
-
-console.log('yes');
-
-
 // =================================================================== //
 /* ************************** Asset Loading ************************** */
 // =================================================================== //
@@ -72,7 +68,11 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 
 
 
-$(app.render);
+$(function() {
+    FastClick.attach(document.body);
+
+    app.render();
+});
 
 module.exports = app;
 
