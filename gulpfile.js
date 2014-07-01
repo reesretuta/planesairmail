@@ -54,8 +54,8 @@ gulp.task('minify', function() {
     // underscore & jquery must be included before backbone.js or other libraries
     var minifySrcFiles = [
         jsLibFolder + '/underscore-min.js',
-        jsLibFolder + '/jquery-1.11.1.min.js',
         jsLibFolder + '/*.js',
+        '!' + jsLibFolder + '/jquery-1.11.1.min.js',
         jsBuildFolder + '/app.js'
     ];
 
