@@ -12,6 +12,9 @@
 
         initialize: function() {
             //this.scene = scenesManager.createScene('response', ResponseScene);
+
+            this.$background = $('#response-bg');
+
         },
 
         setResponse: function(models) {
@@ -73,7 +76,7 @@
 
         show: function() {
             this.$el.show();
-
+            this.$background.show();
             //scenesManager.goToScene('response');
         },
         hide: function() {

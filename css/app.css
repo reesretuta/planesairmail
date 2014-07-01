@@ -540,3 +540,15 @@ div.question.character-select div.option div.background {
   padding-top: 200px;
   text-align: center;
   color: white; }
+
+#response-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../assets/img/response_bg_dusty.jpg') center center no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-color: white;
+  display: none; }
