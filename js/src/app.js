@@ -57,7 +57,10 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
             }
         });
     });
+
     $passwordScreen.show();
+
+    console.log($passwordScreen);
 } else {
     app.assetLoader = new AssetLoadingView({onComplete: app.render});
 
