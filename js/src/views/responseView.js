@@ -9,6 +9,9 @@
 
     var ResponseView = Backbone.View.extend({
         el: '#response',
+        events: {
+            'click a#printversion': 'print'
+        },
 
         initialize: function() {
             //this.scene = scenesManager.createScene('response', ResponseScene);
@@ -16,7 +19,7 @@
             this.$background = $('#response-bg');
 
         },
-
+        
         setResponse: function(models) {
             var nameModel = models[0];
             var characterModel = models[1];
@@ -77,6 +80,10 @@
         },
         hide: function() {
 
+        },
+        
+        print: function(){
+          window.print();
         }
 
 
