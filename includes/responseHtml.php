@@ -3,6 +3,7 @@
 
 <div id="response" class="full-absolute">
     <div id="card-wrap">
+        
         <div id="card-header">
             Dear <span></span>,
         </div>
@@ -17,5 +18,5 @@
         <a href="#" id="printversion"></a>
         <a href="/" id="sendmore"></a>
     </div>
-    
+    <img id="letterbg" src="/assets/img/response_letter_bg.jpg" />
 </div>

@@ -599,7 +599,6 @@ div.question.character-select div.option div.background {
   text-align: center;
   color: white; }
   #response #card-wrap {
-    background: url('../assets/img/response_letter_bg.jpg') center center no-repeat;
     width: 768px;
     height: 386px;
     left: 50%;
@@ -610,6 +609,10 @@ div.question.character-select div.option div.background {
     padding: 63px 40px 0 40px;
     color: #000;
     text-align: left; }
+    #response #card-wrap #letterbg {
+      position: absolute;
+      top: 0;
+      left: 0; }
     #response #card-wrap #card-header {
       font-size: 35px;
       margin-bottom: 15px; }
@@ -671,9 +674,11 @@ div.question.character-select div.option div.background {
   #response-bg.team {
     background-image: url('../assets/img/response_bg_team.jpg'); }
 
-@media print {
-  #response-bg {
-    background: #fff;
-    background-image: none !important; }
-  #printversion, #sendmore, .social, .volume {
-    display: none !important; } }
+@media print { }
+
+#response-bg {
+  background: #fff;
+  background-image: none !important; }
+
+#printversion, #sendmore, .social, .volume {
+  display: none !important; }
