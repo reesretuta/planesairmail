@@ -59,11 +59,14 @@
               return cannedOrder[model.attributes.value];
             });
             
-            _.sortBy(personalityModels, function(model){
-              return personalityOrder[model.attributes.name];
-            });
+            // _.sortBy(personalityModels, function(model){
+            //   return personalityOrder[model.attributes.name];
+            // });
             
             var personalityResponses = _.map(personalityModels, function(model)  {
+              console.log(responseMap[character][model.attributes.name]);
+              console.log(responseMap[character]);
+              console.log('eher');
                 return responseMap[character][model.attributes.name].replace('%template%', model.attributes.text);
             });
 

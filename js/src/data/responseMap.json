@@ -7,7 +7,7 @@
         "favoriteplace": "I have been flying for as long as I can remember but my favorite place to fly is above my hometown, Pumpwash Junction. I do some fancy flying there!",
         "favorite-food": "Anything's better to eat than Vitaminamulch. Especially %template%!",
         "favorite-color": "My favorite color is GREEN. Green means go! And I love to go fast.",
-        "favorite-animal": "The CHEETAH is my favorite animal because speed counts when an air rescue is under way."
+        "favorite-sport": "The CHEETAH is my favorite animal because speed counts when an air rescue is under way."
     },
     "dipper": {
         "job": "I have a really important job fighting wildfires. I'm a Super-scooper with the Piston Peak Attack Team.",
@@ -17,7 +17,7 @@
         "favoriteplace": "My favorite place to fly is the Fusel Lodge, right here in Piston Peak. It's so beautiful. And where Dusty and I had our first date! It was a date, right? I'm pretty sure it was a date.",
         "favorite-food": "While I really like to eat %template%, there's nothing better than a fresh can of oil!",
         "favorite-color": "What's my favorite color? YELLOW like the sunshine.. and like ME!",
-        "favorite-animal": "My favorite animal is the DOLPHIN. It dips in and out of the water, just like ME!"
+        "favorite-sport": "My favorite animal is the DOLPHIN. It dips in and out of the water, just like ME!"
     },
     "windlifter": {
         "job": "I am a Heavy-Lift Helicopter with the Piston Peak Air Attack Team, an elite crew of firefighting aircraft. ",
@@ -27,7 +27,7 @@
         "favoriteplace": "Windlifter likes to fly many places and be one with the wind. The wind speaks, Windlifter listens.",
         "favorite-food": "%template% is delicious! Have you tried it with a can of oil? That's Windlifter's favorite food.",
         "favorite-color": "Windlifter's favorite color is BLUE like the water and the sky.",
-        "favorite-animal": "Windlifter spirit animal is the BEAR - like the Lakota, strong and silent."
+        "favorite-sport": "Windlifter spirit animal is the BEAR - like the Lakota, strong and silent."
     },
     "blade": {
         "job": "I'm a Fire and Rescue Helicopter, and the Copter in Charge here at Piston Peak. ",
@@ -37,7 +37,7 @@
         "favoriteplace": "I like to fly to many places, but my favorite place is above Piston Peak. I patrol the skies and make sure all the tourists are camping by the book. Remember, safety first!",
         "favorite-food": "You say you like to eat %template%? I like that too. I also like a fresh can of oil.",
         "favorite-color": "My favorite color is RED, the color of Fire Safety.",
-        "favorite-animal": "As the Chopper Captain, I soar above the V-6 Valley and scope out fires. I'd say the EAGLE is my favorite animal."
+        "favorite-sport": "As the Chopper Captain, I soar above the V-6 Valley and scope out fires. I'd say the EAGLE is my favorite animal."
     },
     "cabbie": {
         "job": "I'm an ex-military cargo plane with the Piston Peak Attack Team - firefighting is a big responsibility.",
@@ -47,7 +47,7 @@
         "favoriteplace": "I've flown over many places in my time. My favorite spot is Anchor Lake - a long body of water with an anchor-shaped island.",
         "favorite-food": "In the military, %template% is rationed but I'll take as much fresh oil as I can get!",
         "favorite-color": "My favorite color is GREEN - it can help me hide above the pine trees.",
-        "favorite-animal": "KANGAROOs are my favorite - They hop around carrying their cargo - a lot like me."
+        "favorite-sport": "KANGAROOs are my favorite - They hop around carrying their cargo - a lot like me."
     },
     "team": {
         "job": "The Piston Peak Air Attack Team is an elite group of firefighting aircrafts. ",
@@ -57,6 +57,6 @@
         "favoriteplace": "Piston Peak has some great places to fly. But our favorite spot is the wooden railway bridge - with the thundering Whitewall Falls behind it.",
         "favorite-food": "We eat %template% all the time and slurp it down with fresh cans of oil. HOIST!",
         "favorite-color": "We like all colors of the rainbow. But as a team, our favorite color is %template%, just like you!",
-        "favorite-animal": "Here at Piston Peak, we are team. Like a pack of DOGs, we work together for a common goal. "
+        "favorite-sport": "Here at Piston Peak, we are team. Like a pack of DOGs, we work together for a common goal. "
     }
 }
