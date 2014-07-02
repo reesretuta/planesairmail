@@ -15,23 +15,17 @@
         return _.first(_.shuffle(personalityQuestionData.questions), num);
     }
 
-    function getRandomCannedQuestions(numInGroup, num) {
-        var cannedOptions = _.shuffle(cannedQuestionData.options);
 
-        var cannedQuestions = _.map(_.range(num), function(i) {
-            var options = _.first(_.rest(cannedOptions, i * numInGroup), numInGroup);
-
+    function getEmptyCannedQuestions(num) {
+        return _.map(_.range(num), function(i) {
             return {
                 class: cannedQuestionData.class,
                 copy: cannedQuestionData.copy,
                 name: 'canned-question' + i,
-                options: options
+                options: []
             }
         });
-
-        return cannedQuestions;
     }
-
 
 
 
@@ -42,12 +36,26 @@
 
     //shuffle questions and pick 3
     var personalityQuestions = getRandomPersonalityQuestions(3);
-    var cannedQuestions = getRandomCannedQuestions(3, 1);
+    var cannedQuestions = getEmptyCannedQuestions(3);
 
 
     allQuestions.add(characterSelect);
     allQuestions.add(personalityQuestions);
     allQuestions.add(cannedQuestions);
+
+
+
+    function filterUnused(options, used) {
+        return _.filter(options, function(option) {
+            return used.indexOf(option.value) === -1;
+        });
+    }
+
+    allQuestions.getUnusedCannedOptions = function(num, used) {
+        var possibleOptions = _.shuffle(filterUnused(cannedQuestionData.options, used));
+
+        return _.first(possibleOptions, num);
+    };
 
 
     module.exports = allQuestions;

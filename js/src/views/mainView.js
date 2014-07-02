@@ -17,6 +17,9 @@
     var FooterView = require('./footerView');
 
 
+    function getValues(views) {
+        return _.map(views, function(view) {return view.model.attributes.value; });
+    }
 
     var MainView = Backbone.View.extend({
         el: '#content',
@@ -51,11 +54,14 @@
             this.responseView = new ResponseView();
 
             this.initWindowEvents();
+
+            //setup options for first canned view
+            this.cannedViews = _.filter(this.pages, function(page) {
+                return page.model.attributes.class === 'canned';
+            });
         },
 
         initWindowEvents: function() {
-//            console.log('init window Events');
-//
             this.$window.on('resize', _.bind(this.repositionPageNav, this));
 //
 //            if (window.DeviceOrientationEvent) {
@@ -112,7 +118,16 @@
             this.$skip = this.$pageNav.find('a.skip');
         },
 
+        // ==================================================================== //
+        /* ******************** Canned Question View Stuff ******************** */
+        // ==================================================================== //
+        updateViewOptionsWithUnused: function(cannedView) {
+            var usedOptions = _.compact(getValues(this.cannedViews));
 
+            var options = allQuestions.getUnusedCannedOptions(3, usedOptions);
+
+            cannedView.setOptions(options);
+        },
         // ==================================================================== //
         /* *********************** Change View Functions ********************** */
         // ==================================================================== //
@@ -131,15 +146,19 @@
             this.animating = true;
             //hide active page
             var activePage = this.pages[this.activePageIndex];
+            var nextPage = this.pages[this.activePageIndex + 1];
 
-            if(this.activePageIndex == 0) {
+            if(nextPage.isCanned()) {
+                this.updateViewOptionsWithUnused(nextPage);
+            }
+
+            if(this.activePageIndex === 0) { //character select page
                 this.hideSkip();
             }
 
             if(this.activePageIndex === 1) {
                 //animate in character
                 this.scene.animateInUserCharacter();
-
                 this.showSkip();
             }
 
@@ -152,6 +171,11 @@
             this.footer.setCounter(this.activePageIndex);
         },
         showPageAfterHide: function() {
+            var lastPage = this.pages[this.activePageIndex-1];
+            if(lastPage.isCanned()) {
+                lastPage.removeOptions();   //canned options are repeated and share the same ID
+            }
+
             //show next page
             var nextPage = this.pages[this.activePageIndex];
 
@@ -227,7 +251,7 @@
 
                 //trigger window resize
                 scenesManager.onWindowResize();
-            }, 200);
+            }, 300);
         },
 
         // ==================================================================== //
@@ -256,6 +280,8 @@
         },
         onSkip: function(e) {
             e.preventDefault();
+
+            console.log('skip', this.animating, this.activePageIndex, this.pages.length);
 
             if(this.animating || this.activePageIndex >= (this.pages.length - 1)) return;
 

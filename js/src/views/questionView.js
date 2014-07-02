@@ -21,14 +21,15 @@ var QuestionView = Backbone.View.extend({
 
         this.$options = this.$el.find('div.option');
 
-        this.initAnimations(this.model.attributes.class);
+        if(this.$options.length !== 0)
+            this.initAnimations();
     },
-    initAnimations: function(questionType) {
+    initAnimations: function() {
         "use strict";
 
         var animations;
 
-        if(questionType === 'canned') {
+        if(this.isCanned()) {
             animations = itemAnimationsModule.getRandomCannedAnimations(this.$options);
         } else {
             animations = itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
@@ -36,8 +37,6 @@ var QuestionView = Backbone.View.extend({
 
         this.animationIn = animations[0];
         this.animationOut = animations[1];
-
-
 
         this.animationIn.vars.onComplete = function() {
             if(_.isFunction(this.showCallback)) {
@@ -57,6 +56,28 @@ var QuestionView = Backbone.View.extend({
         "use strict";
 
 
+    },
+
+
+    removeOptions: function() {
+        "use strict";
+
+        this.$options.remove();
+    },
+    setOptions: function(options) {
+        "use strict";
+
+        this.model.set('options', options);
+
+        //reinitialize
+        this.el.innerHTML = this.template(this.model.attributes);
+
+        this.$options = this.$el.find('div.option');
+        this.initAnimations();
+    },
+    isCanned: function() {
+        "use strict";
+        return this.model.attributes.class === 'canned';
     },
 
     // ============================================================ //

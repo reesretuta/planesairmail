@@ -75,6 +75,9 @@
             //run hide animation
             dustyDipperModule.animateOut();
         },
+        isCanned: function() {
+            return false;
+        },
         setInactive: function() {
             this.$el.removeClass('active');
 
