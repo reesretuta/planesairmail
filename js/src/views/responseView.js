@@ -21,9 +21,10 @@
         },
         
         setResponse: function(models) {
-            var nameModel = models[0];
+          
+            var userName = (models[0].attributes.value == '') ? 'Friend' : models[0].attributes.value;
             var characterModel = models[1];
-
+            
             this.$background.addClass(characterModel.attributes.value);
 
             var answeredQuestions = _.filter(_.rest(models, 2), function(model) {return model.attributes.value !== ''});
@@ -40,7 +41,28 @@
             var response = "";
 
             // ******** sort here ********
-
+            var cannedOrder = {
+              job: 0,
+              forestfires: 1,
+              firefighter: 2,
+              bestfriend: 3,
+              favoriteplace: 4
+            };
+            
+            var personalityOrder = {
+              food: 0,
+              color: 1,
+              animal: 2
+            }
+            
+            _.sortBy(cannedModels, function(model){
+              return cannedOrder[model.attributes.value];
+            });
+            
+            _.sortBy(personalityModels, function(model){
+              return personalityOrder[model.attributes.name];
+            });
+            
             var personalityResponses = _.map(personalityModels, function(model)  {
                 return responseMap[character][model.attributes.name].replace('%template%', model.attributes.text);
             });
@@ -51,8 +73,8 @@
 
             response += ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ');
 
-            $('#card-header').find('span').html(nameModel.attributes.value);
-            $('#card-sincerely').find('span').html(nameModel.attributes.value);
+            $('#card-header').find('span').html(userName);
+            $('#card-sincerely').find('span').html(userName);
             $('#card-body').html(response);
             $('#card-from').html(character);
         },
