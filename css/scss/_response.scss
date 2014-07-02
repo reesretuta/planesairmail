@@ -118,14 +118,13 @@
 
 
 @media print {
+  #response-bg{
+    background:#fff;
+    background-image:none !important;
+  }
 
+  #printversion, #sendmore, .social, .volume{
+    display:none !important;
+  }
 }
 
-#response-bg{
-  background:#fff;
-  background-image:none !important;
-}
-
-#printversion, #sendmore, .social, .volume{
-  display:none !important;
-}
