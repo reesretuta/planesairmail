@@ -27,7 +27,12 @@
             </div>
         </div>
         <div id="assetLoader">
-            <div class="text"></div>
+            <div class="bar">
+                <div class="full-relative">
+                    <div class="text"></div>
+                </div>
+            </div>
+            <div class="logo"></div>
         </div>
 
         <div id="header">

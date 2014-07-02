@@ -246,12 +246,13 @@
         start: function() {
             var introView = this.introView;
 
+            scenesManager.onWindowResize();
+
             setTimeout(function() {
                 introView.start(); //start intro
 
                 //trigger window resize
-                scenesManager.onWindowResize();
-            }, 300);
+            }, 1000);
         },
 
         // ==================================================================== //

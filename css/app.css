@@ -81,17 +81,19 @@ body {
   height: 100%;
   z-index: 100;
   background-color: #08090b; }
-  #assetLoader .text {
+  #assetLoader div.bar {
+    background-color: #C2001B;
+    width: 0;
+    height: 15px;
     position: absolute;
-    top: 50%;
-    left: 0;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    text-align: center;
-    color: #e8e8e8;
-    font-size: 50px;
-    width: 100%; }
+    top: 0;
+    left: 0; }
+    #assetLoader div.bar div.text {
+      position: absolute;
+      top: 100%;
+      right: 6px;
+      color: white;
+      font-size: 24px; }
 
 #passwordScreen {
   display: none;
@@ -542,8 +544,8 @@ div.question {
       -webkit-transition: -webkit-box-shadow 0.2s ease-in-out;
       transition: box-shadow 0.2s ease-in-out; }
     div.question div.option input[type=radio]:checked ~ div.box-shadow {
-      -webkit-box-shadow: 2px 2px 13px 0px rgba(255, 255, 255, 0.8), -2px -2px 13px 0px rgba(255, 255, 255, 0.8);
-      box-shadow: 2px 2px 13px 0px rgba(255, 255, 255, 0.8), -2px -2px 13px 0px rgba(255, 255, 255, 0.8); }
+      -webkit-box-shadow: 2px 2px 15px 0px rgba(255, 255, 255, 0.8), -2px -2px 15px 0px rgba(255, 255, 255, 0.8);
+      box-shadow: 2px 2px 15px 0px rgba(255, 255, 255, 0.8), -2px -2px 15px 0px rgba(255, 255, 255, 0.8); }
 
 /* ************************ Canned Questions ************************* */
 div.question.canned div.copy {

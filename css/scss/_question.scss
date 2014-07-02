@@ -104,8 +104,8 @@ div.question {
             transition: box-shadow 0.2s ease-in-out;
         }
         input[type=radio]:checked ~ div.box-shadow {
-            box-shadow: 2px 2px 13px 0px rgba(255, 255, 255, 0.8),
-            -2px -2px 13px 0px rgba(255, 255, 255, 0.8);
+            box-shadow: 2px 2px 15px 0px rgba(255, 255, 255, 0.8),
+            -2px -2px 15px 0px rgba(255, 255, 255, 0.8);
         }
     }
 }
