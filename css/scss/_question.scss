@@ -104,7 +104,8 @@ div.question {
             transition: box-shadow 0.2s ease-in-out;
         }
         input[type=radio]:checked ~ div.box-shadow {
-            box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.8);
+            box-shadow: 2px 2px 13px 0px rgba(255, 255, 255, 0.8),
+            -2px -2px 13px 0px rgba(255, 255, 255, 0.8);
         }
     }
 }
@@ -139,7 +140,7 @@ div.question.canned {
         }
 
         div.text {
-            color: black;
+            color: white;
 
             font-size: 25px;
             text-shadow: none;
@@ -177,7 +178,7 @@ div.question.canned {
 /* **************************** Specifics **************************** */
 // =================================================================== //
 
-div.question.character-select {
+div.question.character-select, div.question.favorite-sport, div.question.favorite-color, div.question.favorite-food  {
     div.option div.background {
         width: percentage(450/166);
         height: percentage(400/166);
@@ -207,4 +208,64 @@ div.question.character-select {
 }
 #team ~ div.background {
     background-image: url('../assets/img/icons/the_team.png');
+}
+
+
+#red ~ div.background {
+    background-image: url('../assets/img/icons/red.png');
+}
+#blue ~ div.background {
+    background-image: url('../assets/img/icons/blue.png');
+}
+#yellow ~ div.background {
+    background-image: url('../assets/img/icons/broccoli.png');
+}
+#orange ~ div.background {
+    background-image: url('../assets/img/icons/orange.png');
+}
+#green ~ div.background {
+    background-image: url('../assets/img/icons/green.png');
+}
+#purple ~ div.background {
+    background-image: url('../assets/img/icons/purple.png');
+}
+
+
+#pizza ~ div.background {
+    background-image: url('../assets/img/icons/pizza.png');
+}
+#icecream ~ div.background {
+    background-image: url('../assets/img/icons/icecream.png');
+}
+#broccoli ~ div.background {
+    background-image: url('../assets/img/icons/broccoli.png');
+}
+#frenchfries ~ div.background {
+    background-image: url('../assets/img/icons/fries.png');
+}
+#chickennuggets ~ div.background {
+    background-image: url('../assets/img/icons/nuggets.png');
+}
+#pbj ~ div.background {
+    background-image: url('../assets/img/icons/pbj.png');
+}
+
+
+#football ~ div.background {
+    background-image: url('../assets/img/icons/football.png');
+}
+#baseball ~ div.background {
+    background-image: url('../assets/img/icons/baseball.png');
+}
+#hockey ~ div.background {
+    background-image: url('../assets/img/icons/hockey.png');
+}
+#swimming ~ div.background {
+    background-image: url('../assets/img/icons/swim_dive.png');
+}
+#soccer ~ div.background {
+    background-image: url('../assets/img/icons/soccer.png');
+}
+#racing ~ div.background {
+    background-image: url('../assets/img/icons/racing.png');
 }

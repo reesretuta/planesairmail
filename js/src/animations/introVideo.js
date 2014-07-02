@@ -6,7 +6,7 @@
 
 
 function getIntroTextures() {
-    return PIXI.getTextures('assets/introVideo/PLANES2_760x428_00', 0, 122);
+    return PIXI.getTextures('assets/introVideo/PLANES2_760x428_2_00', 0, 122);
 }
 
 // =================================================================== //
@@ -116,7 +116,7 @@ var animationModule = {
 };
 
 
-_.bindAll.apply(_, [].concat(animationModule, Object.keys(animationModule)));
+_.bindAll.apply(_, [animationModule].concat(Object.keys(animationModule)));
 
 
 module.exports = animationModule;

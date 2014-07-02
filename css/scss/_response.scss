@@ -73,10 +73,7 @@
         width:300px;
         display:block;
         bottom:-75px;
-        
       }
-      
-      
     }
 }
 
@@ -118,14 +115,12 @@
 
 
 @media print {
+    #response-bg{
+        background:#fff;
+        background-image: none !important;
+    }
 
-}
-
-#response-bg{
-  background:#fff;
-  background-image:none !important;
-}
-
-#printversion, #sendmore, .social, .volume{
-  display:none !important;
+    #printversion, #sendmore, .social, .volume{
+        display:none !important;
+    }
 }

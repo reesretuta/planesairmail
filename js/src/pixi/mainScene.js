@@ -13,6 +13,7 @@
     var characterModule = require('../animations/characterModule');
 
 
+
     function initializeHeaderFooter(scene) {
         var header = PIXI.Sprite.fromImage('assets/img/header.png');
 
@@ -46,8 +47,9 @@
         backgroundModule.addRestToScene(this);
 
         bladewipeModule.initialize(this);
-        dustyDipperModule.initialize(this);
         characterModule.initialize(this);
+        dustyDipperModule.initialize(this);
+
 
         initializeHeaderFooter(this);
 
