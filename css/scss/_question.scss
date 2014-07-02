@@ -118,16 +118,21 @@ div.question.canned {
         margin-bottom: 70px;
     }
     div.option {
-        width: 500px;
-        height: 53px;
+        width: percentage(500/679);
+
         padding: 0;
         float: none;
 
         margin: 0 auto;
-        margin-bottom: 27px;
+        margin-bottom: percentage(27/679);
         &:last-child {
             margin-bottom: 0;
         }
+
+        .full-relative >.empty-space {
+            padding-bottom: percentage(53/500);
+        }
+
 
         div.background {
             background-image: url('../assets/img/icons/canned-btn.png');
@@ -141,9 +146,10 @@ div.question.canned {
 
             z-index: 2;
             bottom: auto;
-            top: 0;
 
-            padding-top: 2.4%;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0;
         }
     }
 
