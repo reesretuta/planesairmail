@@ -6,11 +6,14 @@
     {{#each options}}
         <div class="option">
             <div class="full-relative">
-                <input type="radio" name="{{../name}}" value="{{value}}" id="{{value}}" />
-                <label for="{{value}}" class="full-relative"></label>
-                <div class="background"></div>
-                <div class="text">{{text}}</div>
-                <div class="box-shadow"></div>
+                <div class="empty-space"></div>
+                <div class="content">
+                    <input type="radio" name="{{../name}}" value="{{value}}" id="{{value}}" />
+                    <label for="{{value}}" class="full-relative"></label>
+                    <div class="background"></div>
+                    <div class="text">{{text}}</div>
+                    <div class="box-shadow"></div>
+                </div>
             </div>
         </div>
     {{/each}}

@@ -45,7 +45,6 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 
         var $passwordInput = $passwordScreen.find('input[type=password]');
 
-
         $passwordScreen.find('form').submit(function(e) {
             e.preventDefault();
 

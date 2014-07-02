@@ -402,10 +402,11 @@ div.page {
   position: absolute;
   right: 0;
   top: 0;
-  padding-top: 11%;
+  padding-top: 10%;
   z-index: 10;
   margin: auto;
-  width: 679px;
+  width: 54%;
+  max-width: 679px;
   left: 200%;
   visibility: hidden; }
   div.page.active {
@@ -482,9 +483,19 @@ div.question {
     width: 100%; }
   div.question div.option {
     float: left;
-    height: 223px;
-    width: 223px;
-    padding: 50px; }
+    width: 32.84242%;
+    padding-left: 7.36377%;
+    padding-right: 7.36377%;
+    padding-top: 4.41826%;
+    padding-bottom: 4.41826%; }
+    div.question div.option .full-relative div.content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+    div.question div.option .full-relative > .empty-space {
+      padding-bottom: 100%; }
     div.question div.option input {
       display: none; }
     div.question div.option label {

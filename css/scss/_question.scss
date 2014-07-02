@@ -19,9 +19,29 @@ div.question {
     div.option {
         float: left;
 
-        height: 223px;
-        width: 223px;
-        padding: 50px;
+        width: percentage(223/679);
+
+        padding-left: percentage(50/679);
+        padding-right: percentage(50/679);
+        padding-top: percentage(30/679);
+        padding-bottom: percentage(30/679);
+
+
+        .full-relative {
+            div.content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            > .empty-space {
+                padding-bottom: 100%;
+            }
+
+        }
+
 
         input {
             display: none;

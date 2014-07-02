@@ -44,8 +44,11 @@ function initializeVideoTimeline(video) {
         },
         set: function(value) {
             this._tweenFrame = value;
-            this.currentFrame = value;
-            this.setTexture(this.textures[value | 0]);
+
+            this.gotoAndStop(value);
+
+//            this.currentFrame = value;
+//            this.setTexture(this.textures[value | 0]);
         }
     });
 
@@ -75,11 +78,16 @@ function getVideoAnimationTimeline(video) {
         ease: easing
     }));
 
-    timeline.addLabel('callback', timeline.duration());
 
-    timeline.append(TweenLite.to(video, 0.3, {
-        alpha: 0
-    }));
+    var fadeOutTime = 0.2;
+    var fadeOutStart = timeline.duration() - 0.1;
+
+    timeline.addLabel('callback', timeline.duration() - 0.1);
+
+    timeline.add(TweenLite.to(video, fadeOutTime, {
+        alpha: 0,
+        ease: 'Cubic.easeInOut'
+    }), fadeOutStart);
 
     return timeline;
 }
