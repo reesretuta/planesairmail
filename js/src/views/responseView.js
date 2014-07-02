@@ -39,6 +39,8 @@
             var character = characterModel.attributes.value;
             var response = "";
 
+            // ******** sort here ********
+
             var personalityResponses = _.map(personalityModels, function(model)  {
                 return responseMap[character][model.attributes.name].replace('%template%', model.attributes.text);
             });
@@ -49,27 +51,10 @@
 
             response += ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ');
 
-
-            this.$el.find('#card-header span, #card-sincerely span').html(nameModel.attributes.value);
-            this.$el.find('#card-body').html(response);
-            this.$el.find('#card-from').html(character);
-
-//            // TODO: Change to actual generated response
-//            var html = 'Name: ' + nameModel.attributes.value + '<br/>';
-//
-//            html += '<br/>';
-//
-//            html += _.reduce(personalityModels, function(str, model) {
-//                return str + model.attributes.name + ': ' + model.attributes.value + '<br/>';
-//            }, '');
-//
-//            html += '<br/>';
-//
-//            html += _.reduce(cannedModels, function(str, model) {
-//                return str + model.attributes.name + ': ' + model.attributes.value + '<br/>';
-//            }, '');
-//
-//            this.$el.html(html);
+            $('#card-header').find('span').html(nameModel.attributes.value);
+            $('#card-sincerely').find('span').html(nameModel.attributes.value);
+            $('#card-body').html(response);
+            $('#card-from').html(character);
         },
 
         show: function() {
