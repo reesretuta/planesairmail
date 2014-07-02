@@ -49,6 +49,7 @@
             TweenLite.to(this.$nameInput, animationTime, {opacity: 1});
             TweenLite.to(this.$placeholderInner, animationTime, {opacity: 1, y: 0, ease: 'Back.easeOut', delay: 0.15});
         },
+
         preAnimationSetup: function() {
             TweenLite.set(this.$title, {opacity: 0, y: -75});
             TweenLite.set(this.$nameInput, {opacity: 0});
