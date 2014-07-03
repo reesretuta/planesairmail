@@ -2,9 +2,7 @@
 (function() {
     "use strict";
 
-    var scenesManager = require('../pixi/scenesManager');
-
-    var introVideoModule = require('../animations/introVideo');
+    var introModule = require('../animations/intro');
 
     var IntroView = Backbone.View.extend({
         el: '#intro-view',
@@ -15,12 +13,12 @@
         /* ****************** Initialization Stuff ******************** */
         // ============================================================ //
         initialize: function(options) {
-
             this.onCompleteCallback = function(){};
+
+            this.introFrames = introModule.getIntroFrames();
 
             this.initJqueryVariables();
             this.initAnimationTimeline();
-            this.initScene();
 
             this.$beginBtn.hide();
         },
@@ -28,24 +26,10 @@
             this.$beginScreen = this.$el.find('div.begin-screen');
             this.$beginLines = this.$beginScreen.find('div.line');
             this.$beginBtn = this.$beginScreen.find('a.begin');
-
-            var $viewPorts = this.$el.find('div.viewport');
-
-            this.$viewPortTop = $viewPorts.filter('.top');
-            this.$viewPortBottom = $viewPorts.filter('.btm');
-
-            this.$verticalSides = $viewPorts.find('.vertical');
-            this.$horizontalSides = $viewPorts.find('.horizontal');
-            this.$backgrounds = $viewPorts.find('.background');
         },
         initAnimationTimeline: function() {
             this.timelineHide = this.getTimelineHide();
             this.timelineBeginScreenIn = this.getTimelineBeginScreenIn();
-        },
-        initScene: function() {
-            this.scene = scenesManager.scenes['main'];
-
-            this.scene.setView(this);
         },
 
         // ============================================================ //
@@ -113,65 +97,49 @@
                 onComplete: this.onAnimationFinished,
                 onCompleteScope: this
             });
-
             timeline.add(TweenLite.to(this.$beginScreen, animationTime/4, {
                 opacity: 0,
                 ease: easing
             }), 0);
 
-            timeline.add(TweenLite.to(this.$viewPortTop, animationTime, {
-                top: '-50%',
+            timeline.add(TweenLite.to(this.introFrames.top, animationTime, {
+                windowY: 0,
                 ease: easing
             }), 0);
-            timeline.add(TweenLite.to(this.$viewPortBottom, animationTime, {
-                bottom: '-50%',
+            timeline.add(TweenLite.to(this.introFrames.btm, animationTime, {
+                windowY: 1,
                 ease: easing
             }), 0);
 
             return timeline;
         },
         onAnimationFinished: function() {
-            this.setInactive();
+            this.$el.remove();
+
+            introModule.destroy();
 
             this.onCompleteCallback();
         },
 
-        setActive: function() {
-            this.$el.removeClass('inactive');
+        setMainView: function(view) {
+            this.mainView = view;
         },
-        setInactive: function() {
-            this.$el.addClass('inactive');
-        },
-
         // ============================================================ //
         /* ************************* Events *************************** */
         // ============================================================ //
-
         onBeginClick: function(e) {
             e.preventDefault();
 
             this.hide();
         },
-        onWindowResize: function(windowWidth, windowHeight, videoWidth, videoHeight) {
-            this.$backgrounds.width(videoWidth * 1.275 | 0);
-            this.$horizontalSides.height(((windowHeight - videoHeight)/2 + 1) | 0); //round up
-            this.$verticalSides.width(((windowWidth - videoWidth)/2 + 1) | 0); //round up
-
-        },
 
         // ============================================================ //
         /* *********************** Public API ************************* */
         // ============================================================ //
-        start: function() {
-            this.setActive();
-
-            $('#pixi-view').addClass('front');
-
-            introVideoModule.onComplete(_.bind(this.showBeginScreen, this));
-            introVideoModule.playVideo();
-        },
         hide: function() {
             this.timelineHide.play();
+
+            this.mainView.showContent();
         },
         onComplete: function(callback) {
             this.onCompleteCallback = callback;

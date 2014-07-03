@@ -127,6 +127,12 @@
         hideCounter: function() {
             this.$counter.hide();
         },
+        hide: function() {
+            this.$el.hide();
+        },
+        show: function() {
+            this.$el.show();
+        },
 
         height: function() {
             return this.$el.outerHeight() + this.$counter.outerHeight();

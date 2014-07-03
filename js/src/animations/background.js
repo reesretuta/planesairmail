@@ -65,6 +65,8 @@ var animationModule = {
         scene.addChild(foreground);
     },
     shiftBackgroundLayers: function(x) {
+        if(_.isUndefined(background)) return;
+
         var backgroundRatio = 0.75;
         var middlegroundRatio = 1.5;
         var foregroundRatio = 3;

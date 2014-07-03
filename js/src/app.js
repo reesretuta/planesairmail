@@ -8,7 +8,7 @@ require('./pixi/libModifications');
 
 
 var MainView = require('./views/mainView');
-var AssetLoadingView = require('./views/assetLoadingView');
+//var AssetLoadingView = require('./views/assetLoadingView');
 
 
 // =================================================================== //
@@ -18,15 +18,6 @@ var AssetLoadingView = require('./views/assetLoadingView');
 var app = {};
 
 
-
-
-
-// after assets loaded & jquery loaded
-app.render = _.after(2, function() {
-    app.mainView = new MainView();
-
-    app.mainView.start();
-});
 
 
 
@@ -51,7 +42,7 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
             if($passwordInput.val() === password) {
                 $passwordScreen.fadeOut(50);
 
-                app.assetLoader = new AssetLoadingView({onComplete: app.render});
+//                app.assetLoader = new AssetLoadingView({onComplete: app.render});
             }
         });
     });
@@ -60,7 +51,7 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 
     console.log($passwordScreen);
 } else {
-    app.assetLoader = new AssetLoadingView({onComplete: app.render});
+//    app.assetLoader = new AssetLoadingView({onComplete: app.render});
 
     $passwordScreen.remove();
 }
@@ -70,7 +61,9 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 $(function() {
     FastClick.attach(document.body);
 
-    app.render();
+    app.mainView = new MainView();
+
+    app.mainView.start();
 });
 
 

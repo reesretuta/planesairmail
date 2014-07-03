@@ -5,7 +5,6 @@
     var extend = require('./extend');
     var Scene = require('./scene');
 
-    var introVideoModule = require('../animations/introVideo');
     var backgroundModule = require('../animations/background');
     var bladewipeModule = require('../animations/bladewipe');
     var dustyDipperModule = require('../animations/dustyDipper');
@@ -13,24 +12,23 @@
     var characterModule = require('../animations/characterModule');
 
 
-
     function initializeHeaderFooter(scene) {
-        var header = PIXI.Sprite.fromImage('assets/img/header.png');
-
-        header.windowScale = 1;
-        header.anchor = new PIXI.Point(0.5, 0);
-        header.windowX = 0.5;
-        header.windowY = 0;
-
-        var footer = PIXI.Sprite.fromImage('assets/img/footer.png');
-
-        footer.windowScale = 1;
-        footer.anchor = new PIXI.Point(.5, 1);
-        footer.windowX = 0.5;
-        footer.windowY = 1;
-
-        scene.addChild(header);
-        scene.addChild(footer);
+//        var header = PIXI.Sprite.fromImage('assets/img/header.png');
+//
+//        header.windowScale = 1;
+//        header.anchor = new PIXI.Point(0.5, 0);
+//        header.windowX = 0.5;
+//        header.windowY = 0;
+//
+//        var footer = PIXI.Sprite.fromImage('assets/img/footer.png');
+//
+//        footer.windowScale = 1;
+//        footer.anchor = new PIXI.Point(.5, 1);
+//        footer.windowX = 0.5;
+//        footer.windowY = 1;
+//
+//        scene.addChild(header);
+//        scene.addChild(footer);
     }
 
     // ============================================================ //
@@ -50,12 +48,10 @@
         characterModule.initialize(this);
         dustyDipperModule.initialize(this);
 
-
-        initializeHeaderFooter(this);
-
-        introVideoModule.initialize(this);
-        this.introVideo = introVideoModule.getVideo();
+//        initializeHeaderFooter(this);
     };
+
+
 
     // ============================================================ //
     /* ****************** Public API Functions ******************** */
@@ -104,13 +100,6 @@
         },
         _onWindowResize: function(width, height) {
             Scene.prototype._onWindowResize.call(this, width, height);
-
-            if(!_.isUndefined(this.view)) {
-                var scale = this.introVideo.scale;
-                var bounds = this.introVideo.getLocalBounds();
-
-                this.view.onWindowResize(width, height, (bounds.width * scale.x), (bounds.height * scale.y));
-            }
         }
     };
 

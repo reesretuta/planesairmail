@@ -16,6 +16,38 @@
     var ResponseView = require('./responseView');
     var FooterView = require('./footerView');
 
+    var introModule = require('../animations/intro');
+
+    // =================================================================== //
+    /* ***************************** Loader ****************************** */
+    // =================================================================== //
+    var assetData = require('../data/assets.json');
+
+    var fileNames = Object.keys(assetData.assets);
+    var totalFiles = fileNames.length;
+
+    var loader = new PIXI.AssetLoader(fileNames);
+    var startTime;
+
+    function startLoader(view) {
+
+        loader.onProgress = function() {
+            var percentageLoaded = (totalFiles - this.loadCount)/totalFiles;
+            var timeElapsed = _.now() - startTime;
+
+            introModule.updateLoader(percentageLoaded, timeElapsed);
+        };
+        loader.onComplete = function() {
+            view.onAssetsLoaded();
+        };
+
+        startTime = _.now();
+        loader.load();
+    }
+
+    // =================================================================== //
+    /* ************************* Mainview Class ************************** */
+    // =================================================================== //
 
     function getValues(views) {
         return _.map(views, function(view) {return view.model.attributes.value; });
@@ -30,10 +62,23 @@
             'mousemove': 'onMouseMove'
         },
 
+        onAssetsLoaded: function() {
+            this.scene = scenesManager.createScene('main', MainScene);
+            scenesManager.goToScene('main');
+
+            scenesManager.onWindowResize();
+
+            introModule.onComplete(this.introView.showBeginScreen.bind(this.introView));
+            introModule.assetsLoaded();
+            introModule.assetsLoaded();
+        },
+
         // ==================================================================== //
         /* ************************ Initialization Stuff ********************** */
         // ==================================================================== //
         initialize: function() {
+            introModule.initialize();
+
             this.animating = false;
             this.pages = [];
             this.activePageIndex = 0;
@@ -42,9 +87,6 @@
 
             //create canvas element
             scenesManager.initialize(this.$window.width(), this.$window.height(), this.$el);
-
-            this.scene = scenesManager.createScene('main', MainScene);
-            scenesManager.goToScene('main');
 
             // create views
             this.initIntroView();
@@ -59,11 +101,13 @@
             this.cannedViews = _.filter(this.pages, function(page) {
                 return page.model.attributes.class === 'canned';
             });
+
+            this.hideContent();
         },
 
         initWindowEvents: function() {
             this.$window.on('resize', _.bind(this.repositionPageNav, this));
-//
+
 //            if (window.DeviceOrientationEvent) {
 //                console.log('deviceorientation');
 //
@@ -88,6 +132,7 @@
         initIntroView: function() {
             var introView = new IntroView();
 
+            introView.setMainView(this);
             introView.onComplete(_.bind(this.showFirstPage, this));
 
             this.introView = introView;
@@ -116,6 +161,8 @@
             this.$finishSend = this.$pageNav.find('a.finish-send');
 
             this.$skip = this.$pageNav.find('a.skip');
+
+            this.$header = $('#header');
         },
 
         // ==================================================================== //
@@ -134,12 +181,13 @@
         showFirstPage: function() {
             this.pages[0].show();
 
-            this.$next.css('opacity', 0);
+            this.$pageNav.css('opacity', 0);
             this.$next.addClass('active');
+            this.$skip.addClass('active');
 
             this.repositionPageNav(false);
 
-            TweenLite.to(this.$next, 0.3, {opacity: 1});
+            TweenLite.to(this.$pageNav, 0.3, {opacity: 1});
         },
 
         nextPage: function() {
@@ -240,19 +288,21 @@
             TweenLite.to(this.$skip, 0.2, {bottom: 0});
         },
 
+        showContent: function() {
+            this.$pagesContainer.show();
+            this.footer.show();
+            this.$header.show();
+        },
+        hideContent: function() {
+            this.$pagesContainer.hide();
+            this.$header.hide();
+            this.footer.hide();
+        },
         // ==================================================================== //
         /* ************************* Render Functions ************************* */
         // ==================================================================== //
         start: function() {
-            var introView = this.introView;
-
-            scenesManager.onWindowResize();
-
-            setTimeout(function() {
-                introView.start(); //start intro
-
-                //trigger window resize
-            }, 1000);
+            startLoader(this);
         },
 
         // ==================================================================== //
@@ -276,6 +326,8 @@
         },
         onMouseMove: function(e) {
             e.preventDefault();
+
+            if(_.isUndefined(this.scene)) return;
 
             this.scene.shiftBackgroundLayers(e.pageX/this.$window.width());
         },

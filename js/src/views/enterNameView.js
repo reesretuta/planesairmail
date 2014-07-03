@@ -18,8 +18,6 @@
         /* ********************** Initialization ********************** */
         // ============================================================ //
         initialize: function (options) {
-            this.initScene();
-
             this.model = new Backbone.Model({value: ''});
 
             this.$nameInput = this.$el.find('input[type=text].name');
@@ -32,14 +30,14 @@
             _.bindAll(this, 'startAnimation','show','hide','setInactive');
         },
         initScene: function() {
-            this.scene = scenesManager.scenes['main'];
+            this.scene = scenesManager.scenes.main;
         },
 
         // ============================================================ //
         /* ***************** Run Animation Functions ****************** */
         // ============================================================ //
         startAnimation: function() {
-            $('#pixi-view').removeClass('front');
+            this.initScene();
 
             this.scene.startEnterNameAnimation();   //animate in characters
 
@@ -62,8 +60,6 @@
         // ============================================================ //
         show: function () {
             this.$el.addClass('active');
-
-            scenesManager.goToScene('main');
 
             this.preAnimationSetup();
             setTimeout(this.startAnimation, 0);

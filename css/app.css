@@ -58,21 +58,7 @@ html, body {
 body {
   background-color: #000000; }
 
-#pixi-view {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
-  width: 100%;
-  height: 100%; }
-  #pixi-view.front {
-    z-index: 10; }
-  #pixi-view.middle {
-    z-index: 4; }
-
+/* ********************** Asset Loader ************************ */
 #assetLoader {
   position: absolute;
   top: 0;
@@ -95,6 +81,7 @@ body {
       color: white;
       font-size: 24px; }
 
+/* ********************* password Screen ********************** */
 #passwordScreen {
   display: none;
   position: absolute;
@@ -120,9 +107,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 6; }
-  #header > div.empty-space {
-    padding-bottom: 6.73499%; }
+  z-index: 6;
+  background: url('../assets/img/header.png') top center repeat-x;
+  height: 100px;
+  padding-bottom: 9px; }
   #header div.header-content {
     position: absolute;
     top: 0;
@@ -133,7 +121,7 @@ body {
     background: url('../assets/img/logo.png') center center no-repeat;
     -webkit-background-size: contain;
     background-size: contain;
-    width: 15.73939%;
+    width: 215px;
     position: absolute;
     left: 0;
     right: 0;
@@ -146,18 +134,18 @@ body {
     width: 191px;
     height: 27px;
     position: absolute;
-    left: 20px;
+    right: 20px;
     top: 0;
     bottom: 15px;
     margin: auto; }
   #header div.social {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    padding-right: 10px; }
+    padding-left: 10px; }
     #header div.social > a {
       display: block;
       color: white;
@@ -179,9 +167,11 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 6; }
-  #footer > div.empty-space {
-    padding-bottom: 3.29429%; }
+  z-index: 6;
+  background: url('../assets/img/footer.png') top center repeat-x;
+  -webkit-background-size: auto 100%;
+  background-size: auto 100%;
+  height: 45px; }
   #footer div.footer-content {
     position: absolute;
     top: 0;
@@ -300,7 +290,6 @@ body {
         margin-top: 13px;
         overflow: hidden; }
       #content div.pages-ctn div.page-nav a.skip {
-        display: block;
         color: black;
         line-height: 27px;
         background-color: rgba(255, 255, 255, 0.3);
@@ -741,3 +730,23 @@ div.question.character-select div.option div.background, div.question.favorite-s
     background-image: none !important; }
   #printversion, #sendmore, .social, .volume {
     display: none !important; } }
+
+#pixi-intro, #pixi-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%; }
+
+#pixi-view {
+  z-index: 1; }
+  #pixi-view.front {
+    z-index: 10; }
+  #pixi-view.middle {
+    z-index: 4; }
+
+#pixi-intro {
+  z-index: 49; }
