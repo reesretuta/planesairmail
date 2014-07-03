@@ -60,12 +60,14 @@
             });
             cannedModels = sortedCannedModels;
             
-            
-            
-            _.sortBy(personalityModels, function(model){
+            var sortedPersonalityModels = _.sortBy(personalityModels, function(model){
               return personalityOrder[model.attributes.name];
             });
             
+            personalityModels = sortedPersonalityModels;
+            
+            
+            alert(character);
             var personalityResponses = _.map(personalityModels, function(model)  {
                 return responseMap[character][model.attributes.name].replace('%template%', model.attributes.text);
             });
@@ -74,11 +76,19 @@
                 return responseMap[character][model.attributes.value];
             });
 
-            response += ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ');
 
-            $('#card-header').find('span').html(userName);
-            $('#card-sincerely').find('span').html(userName);
+            var greeting = responseMap[character]['greeting'].replace('%template%', userName);
+            var body1 = responseMap[character]['body1'];
+            var body2 = responseMap[character]['body2'].replace('%template%', userName);;
+            var sincerely = responseMap[character]['sincerely'] +", ";
+
+
+            response += body1 + ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ') + ' ' + body2;
+
+
+            $('#card-greeting').html(greeting);
             $('#card-body').html(response);
+            $('#card-sincerely').html(sincerely);
             $('#card-from').html(character);
         },
 

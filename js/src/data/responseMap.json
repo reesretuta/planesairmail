@@ -1,5 +1,9 @@
 {
     "dusty" : {
+        "greeting": "Hi there %template%!",
+        "body1": "I was really excited to receive your airmail!",
+        "body2": "I've gotta get back to fighting fires here, hope to see you at the Propwash Junction's Corn Fest! ",
+        "sincerely": "Over and out",
         "job": "I'm a SEAT, or a Single-Engine Air Tanker, with the Piston Peak Air Attack Team, an elite group of firefighting aircraft.",
         "forestfires": "I can scoop water from lakes and dive into the forest to drop the water on wildfires. Speed counts when an air rescue is under way, so I'm always ready to fly into danger!",
         "firefighter": "Before joining the Air Attack Team, I was a world-famous air racer - I even raced around the world!  Now I race to put out fires. ",
@@ -10,6 +14,10 @@
         "favorite-sport": "The CHEETAH is my favorite animal because speed counts when an air rescue is under way."
     },
     "dipper": {
+        "greeting": "Hi there, %template%",
+        "body1": "I'm Dipper. That's what everyone calls me, so you can too!",
+        "body2": "Thanks for writing to me %template%.",
+        "sincerely": "Remember, the sky's the limit!",
         "job": "I have a really important job fighting wildfires. I'm a Super-scooper with the Piston Peak Attack Team.",
         "forestfires": "I fight forest fires in several ways.  Sometimes I drop retardant to contain a fire.  I can also scoop water from the lake and drop it directly on the fire. My boss Blade Ranger calls me a Mud-Dropper!",
         "firefighter": "I wasn't always a firefighter. I used to haul cargo up in Anchorage. Yep, a lot of guys in Alaska. I was beating them off with a stick!",
@@ -20,6 +28,10 @@
         "favorite-sport": "My favorite animal is the DOLPHIN. It dips in and out of the water, just like ME!"
     },
     "windlifter": {
+        "greeting": "Hello, %template%!",
+        "body1": "My name is Windlifter.  I enjoyed reading your letter!",
+        "body2": "Thanks for your letter %template%.",
+        "sincerely": "Your new friend",
         "job": "I am a Heavy-Lift Helicopter with the Piston Peak Air Attack Team, an elite crew of firefighting aircraft. ",
         "forestfires": "Blade calls me a “Mud Dropper” because I have a detachable tank loaded with fire retardant to help put out the fires.  Mud is slang for retardant.  Windlifter can hold more retardant than anyone else on the team.",
         "firefighter": "Windlifter wasn't always a firefighter. Windlifter used to be a lumberjack, lifting dozens of heavy logs and carrying them to the lumber mill.  But now I am a firefighter and this keeps me very busy.",
@@ -29,7 +41,11 @@
         "favorite-color": "Windlifter's favorite color is BLUE like the water and the sky.",
         "favorite-sport": "Windlifter spirit animal is the BEAR - like the Lakota, strong and silent."
     },
-    "blade": {
+    "bladeranger": {
+        "greeting": "%template%",
+        "body1": "You must be the new recruit.  I'm Blade Ranger.",
+        "body2": "Thanks for your letter %template%, Remember, you can do anything! You just have to train hard and have courage.",
+        "sincerely": "Your partner",
         "job": "I'm a Fire and Rescue Helicopter, and the Copter in Charge here at Piston Peak. ",
         "forestfires": "When there's a fire, I give the orders for the Air Attack Team to spring into action!",
         "firefighter": "I've been the Chopper Captain for a long time, but I wasn't always a firefighter. I was a TV star on a show about police helicopters! But I realized I didn't want to pretend to save lives, I wanted to save them for real!",
@@ -40,6 +56,10 @@
         "favorite-sport": "As the Chopper Captain, I soar above the V-6 Valley and scope out fires. I'd say the EAGLE is my favorite animal."
     },
     "cabbie": {
+        "greeting": "====Hi there %template%!",
+        "body1": "I was really excited to receive your airmail!",
+        "body2": "I've gotta get back to fighting fires here, hope to see you at the Propwash Junction's Corn Fest! ",
+        "sincerely": "Over and out",
         "job": "I'm an ex-military cargo plane with the Piston Peak Attack Team - firefighting is a big responsibility.",
         "forestfires": "I carry the Smokejumpers - who clear fallen trees and debris. During a fire, I drop them from the sky, right over the flames.",
         "firefighter": "I wasn't always a firefighter. I used to drop airborne utility vehicles behind enemy lines during war. Now I drop Smokejumpers at Piston Peak.",
@@ -50,6 +70,10 @@
         "favorite-sport": "KANGAROOs are my favorite - They hop around carrying their cargo - a lot like me."
     },
     "team": {
+        "greeting": "====Hi there %template%!",
+        "body1": "I was really excited to receive your airmail!",
+        "body2": "I've gotta get back to fighting fires here, hope to see you at the Propwash Junction's Corn Fest! ",
+        "sincerely": "Over and out",
         "job": "The Piston Peak Air Attack Team is an elite group of firefighting aircrafts. ",
         "forestfires": "We fly in when others are flyin out. It takes a special kinda plane.",
         "firefighter": "Life doesn't always go the way you expect it. This is a second career for all of us. ",
