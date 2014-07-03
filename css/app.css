@@ -663,10 +663,10 @@ div.question.character-select div.option div.background, div.question.favorite-s
       position: absolute;
       top: 0;
       left: 0; }
-    #response #card-wrap #card-header {
+    #response #card-wrap #card-greeting {
       font-size: 35px;
       margin-bottom: 15px; }
-      #response #card-wrap #card-header span {
+      #response #card-wrap #card-greeting span {
         text-transform: uppercase; }
     #response #card-wrap #card-body {
       font-family: 'Helvetica';
