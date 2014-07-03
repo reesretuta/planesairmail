@@ -198,16 +198,17 @@
 
             if(nextPage.isCanned()) {
                 this.updateViewOptionsWithUnused(nextPage);
-            }
 
-            if(this.activePageIndex === 0) { //character select page
+                if(!activePage.isCanned()) {
+                    this.showSkip();
+                }
+            } else {
                 this.hideSkip();
             }
 
             if(this.activePageIndex === 1) {
                 //animate in character
                 this.scene.animateInUserCharacter();
-                this.showSkip();
             }
 
             activePage.onHideComplete(_.bind(this.showPageAfterHide, this));

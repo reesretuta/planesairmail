@@ -188,7 +188,6 @@
     /* ******************* Spritesheet Texture Functions ****************** */
     // =================================================================== //
 
-
     // used to get individual textures of spritesheet json files
     //
     // Example call: getFileNames('animation_idle_', 1, 105);
@@ -210,7 +209,6 @@
     };
 
 
-
     // =================================================================== //
     /* ************************** Memory Cleanup ************************* */
     // =================================================================== //
@@ -225,7 +223,8 @@
     PIXI.MovieClip.prototype.destroy = function(destroyBaseTexture) {
         if(_.isUndefined(destroyBaseTexture)) destroyBaseTexture = true;
 
-        this.parent.removeChild(this);
+        if(!_.isUndefined(this.parent)) this.parent.removeChild(this);
+
         _.each(this.textures, function(texture) {
             texture.destroy(destroyBaseTexture);
         });

@@ -84,7 +84,7 @@
 
             timeline.add(function() {
                 introModule.showLogo();
-            }, 0.7);
+            }, 0.65);
 
             return timeline;
         },

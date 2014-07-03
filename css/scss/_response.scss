@@ -1,5 +1,15 @@
 
 
+#letterbg {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 0;
+}
 
 #response {
     display: none;
@@ -10,73 +20,71 @@
     text-align: center;
     color: white;
 
-    #card-wrap{
-      
-      width:768px;
-      height:386px;
-      left:50%;
-      position:absolute;
-      transform: translateX(-50%);
-      padding:63px 40px 0 40px;
-      color:#000;
-      text-align:left;
-      
-      #letterbg{
-        position:absolute;
-        top:0;
-        left:0;
-      }
-      
-      #card-greeting{
-        font-size:35px;
-        margin-bottom:15px;
-        span{
-          text-transform: uppercase;
+    #card-wrap {
+        width: 768px;
+        height: 386px;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        padding: 63px 40px 0 40px;
+        color: #000;
+        text-align: left;
+
+
+
+        #card-greeting {
+            font-size: 35px;
+            margin-bottom: 15px;
+            span {
+                text-transform: uppercase;
+            }
         }
-      }
-      
-      #card-body{
-        font-family: 'Helvetica';
-        font-size:15px;
-        line-height:18px;
-        margin-bottom:15px;
-      }
-      
-      #card-sincerely{
-        text-align:center;
-        span{
-          text-transform: capitalize;
+
+        #card-body {
+            font-family: 'Helvetica';
+            font-size: 15px;
+            line-height: 18px;
+            margin-bottom: 15px;
         }
-      }
-      
-      #card-from{
-        text-align:center;
-        font-size:35px;
-      }
-      
-      #printversion{
-        background: url('../assets/img/print.png');
-        position:absolute;
-        left:45px;
-        bottom:30px;
-        height:28px;
-        width:177px;
-        display:block;
-      }
-      
-      #sendmore{
-        background: url('../assets/img/sendMore.png');
-        position:absolute;
-        left:50%;
-        transform: translateX(-50%);
-        height:51px;
-        width:300px;
-        display:block;
-        bottom:-75px;
-      }
+
+        #card-sincerely {
+            text-align: center;
+            span {
+                text-transform: capitalize;
+            }
+        }
+
+        #card-from {
+            text-align: center;
+            font-size: 35px;
+        }
+
+        #printversion {
+            background: url('../assets/img/print.png');
+            position: absolute;
+            left: 45px;
+            bottom: 30px;
+            height: 28px;
+            width: 177px;
+            display: block;
+        }
+
+        #sendmore {
+            background: url('../assets/img/sendMore.png');
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 51px;
+            width: 300px;
+            display: block;
+            bottom: -75px;
+        }
     }
 }
-
 
 #response-bg {
     position: absolute;
@@ -112,16 +120,14 @@
     }
 }
 
-
-
 @media print {
-  #response-bg{
-    background:#fff;
-    background-image:none !important;
-  }
+    #response-bg {
+        background: #fff;
+        background-image: none !important;
+    }
 
-  #printversion, #sendmore, .social, .volume{
-    display:none !important;
-  }
+    #printversion, #sendmore, .social, .volume {
+        display: none !important;
+    }
 }
 

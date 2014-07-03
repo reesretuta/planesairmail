@@ -2,8 +2,10 @@
 
 "use strict";
 
-var Character = require('../pixi/character');
+
 var placeJustOffscreen = require('./placeJustOffscreen');
+
+var allCharacters = require('../pixi/allCharacters');
 
 // =================================================================== //
 /* **************************** Variables **************************** */
@@ -15,7 +17,7 @@ var dusty, dipper, timelineIn, timelineOut;
 /* ************************ Helper Functions ************************* */
 // =================================================================== //
 function getDustyIdleTextures() {
-    return PIXI.getTextures('assets/spritesheets/dusty/two/Dusty_plane_light_000', 0, 12);
+    return PIXI.getTextures('assets/spritesheets/dusty2/Dusty_plane_light_000', 0, 12);
 }
 function getDipperIdleTextures() {
     return PIXI.getTextures('assets/spritesheets/dipper/Dipper_000', 0, 12);
@@ -33,51 +35,29 @@ function initialize() {
 }
 
 function initializeDusty() {
-    var dusty = new Character('Dusty');
+    var dusty = allCharacters.dustyLight;
 
-    var dustyIdleAnimation = new PIXI.MovieClip(getDustyIdleTextures());
-
-    dustyIdleAnimation.anchor = {x: 641/1200, y: 340/638};
-
-    dusty.setIdleState(dustyIdleAnimation);
-
-    dusty.windowScale = 0.47;
+    dusty.idle.windowScale = 0.47;
     dusty.windowX = 0.18;
     dusty.windowY = -1;
-
-    var blurFilter = new PIXI.BlurFilter();
-    blurFilter.blur = 0;
-
-    dusty.filters = [blurFilter];
 
     return dusty;
 }
 
 function initializeDipper() {
-    var dipper = new Character('Dipper');
+    var dipper = allCharacters.dipper;
 
-    var dipperIdleState = new PIXI.MovieClip(getDipperIdleTextures());
-
-    dipperIdleState.scale.x = -1;
-    dipperIdleState.anchor = {
-        x: 571/1200,
-        y: 410/638
-    };
-
-    dipper.setIdleState(dipperIdleState);
+    dipper.flip();
 
     dipper.windowX = 0.75;
     dipper.windowY = -1;
     dipper.rotation = -0.40;
 
-    dipper.windowScale = 865/1366;
-    dipper.animationScaleX = 0.7;
-    dipper.animationScaleY = 0.7;
+    dipper.idle.windowScale = 865/1366;
+    dipper.idle.animationScaleX = 0.7;
+    dipper.idle.animationScaleY = 0.7;
 
-    var blurFilter = new PIXI.BlurFilter();
-    blurFilter.blur = 10;
-
-    dipper.filters = [blurFilter];
+    dipper.filters[0].blur = 10;
 
     return dipper;
 }
@@ -105,13 +85,11 @@ function generateTimelineDustyIn(dusty) {
     var animationTime = 1.6;
     var easing = 'Cubic.easeInOut';
 
-    var ogAttributes = _.pick(dusty, 'windowX', 'windowScale');
 
     var timeline = new TimelineMax({
         paused: true,
         onStart: function() {
             placeJustOffscreen(dusty);
-            _.extend(dusty, ogAttributes);
         }
     });
 
@@ -147,7 +125,6 @@ function generateTimelineDipperIn(dipper) {
     var sweepStartTime = animationTime * 0.11;
     var easing = 'Cubic.easeInOut';
 
-    var ogAttributes = _.pick(dipper, 'windowX', 'rotation', 'windowScale', 'animationScaleX', 'animationScaleY');
 
     var blurFilter = dipper.filters[0];
 
@@ -155,7 +132,6 @@ function generateTimelineDipperIn(dipper) {
         paused: true,
         onStart: function() {
             placeJustOffscreen(dipper);
-            _.extend(dipper, ogAttributes);
         }
     });
 
@@ -172,7 +148,7 @@ function generateTimelineDipperIn(dipper) {
     }), sweepStartTime);
 
     // scale up
-    timeline.add(TweenLite.to(dipper, animationTime + sweepStartTime, {
+    timeline.add(TweenLite.to(dipper.idle, animationTime + sweepStartTime, {
         animationScaleX: 1,
         animationScaleY: 1,
         ease: easing
@@ -194,7 +170,6 @@ function generateAnimationOutTimeline() {
     var timelineOut = new TimelineMax({
         paused: true,
         onComplete: function() {
-//            dipper.destroy(false);
             dusty.destroy();
 
             onAnimationOutComplete();
@@ -217,13 +192,17 @@ function generateAnimationDipperOut(dipper) {
         paused: true
     });
 
-    timeline.add(TweenLite.to(dipper, animationTime, {
+    timeline.add(TweenLite.to(dipper.idle, animationTime, {
         animationScaleX: 1.4,
         animationScaleY: 1.4,
+        ease: easing
+    }), 0);
+    timeline.add(TweenLite.to(dipper, animationTime, {
         windowY: -0.3,
         windowX: 1.1,
         ease: easing
     }), 0);
+
     timeline.add(TweenLite.to(blurFilter, animationTime/2, {
         blur: 10,
         ease: easing
@@ -241,13 +220,18 @@ function generateAnimationDustyOut(dusty) {
         paused: true
     });
 
-    timeline.add(TweenLite.to(dusty, animationTime, {
+    timeline.add(TweenLite.to(dusty.idle, animationTime, {
         animationScaleX: 1.3,
         animationScaleY: 1.3,
+        ease: easing
+    }), 0);
+
+    timeline.add(TweenLite.to(dusty, animationTime, {
         windowY: -0.1,
         windowX: 0.6,
         ease: easing
     }), 0);
+
 
     timeline.add(TweenLite.to(blurFilter, animationTime, {
         blur: 10,
@@ -267,9 +251,6 @@ function generateAnimationDustyOut(dusty) {
 var animationModule = {
     initialize: _.once(function(scene) {
         initialize();
-
-        scene.addChild(dipper);
-        scene.addChild(dusty);
     }),
     animateIn: function() {
         timelineIn.play(0);

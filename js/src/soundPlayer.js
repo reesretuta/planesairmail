@@ -24,8 +24,6 @@ var soundPlayer = {
         if(!this.muted) {
             this.sounds[filePath].volume = this.volume;
             this.sounds[filePath].play();
-
-            console.log('play', filePath);
         }
     }
 };

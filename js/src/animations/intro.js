@@ -479,6 +479,8 @@ var animationModule = {
         running = false;
 
         $('#pixi-intro').remove();
+
+        $window.off('resize', onWindowResize);
     }
 };
 

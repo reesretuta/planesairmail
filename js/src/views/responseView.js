@@ -5,9 +5,18 @@
 (function() {
     "use strict";
 
+
     var responseMap = require('../data/responseMap.json');
 
+    var responseModule = require('../animations/responseModule');
+
+
+
+
+
+
     var ResponseView = Backbone.View.extend({
+        character: '',
         el: '#response',
         events: {
             'click a#printversion': 'print'
@@ -17,7 +26,6 @@
             //this.scene = scenesManager.createScene('response', ResponseScene);
 
             this.$background = $('#response-bg');
-
         },
         
         setResponse: function(models) {
@@ -39,6 +47,7 @@
 
             var character = characterModel.attributes.value;
             var response = "";
+            this.character = character;
 
             // ******** sort here ********
             var cannedOrder = {
@@ -53,7 +62,7 @@
               food: 0,
               color: 1,
               animal: 2
-            }
+            };
 
             var sortedCannedModels = _.sortBy(cannedModels, function(model){
               return cannedOrder[model.attributes.value];
@@ -66,8 +75,7 @@
             
             personalityModels = sortedPersonalityModels;
             
-            
-            alert(character);
+
             var personalityResponses = _.map(personalityModels, function(model)  {
                 return responseMap[character][model.attributes.name].replace('%template%', model.attributes.text);
             });
@@ -95,17 +103,20 @@
         show: function() {
             this.$el.show();
             this.$background.show();
-            //scenesManager.goToScene('response');
+
+            setTimeout(function() {
+                responseModule.animateIn(this.character);
+            }.bind(this), 400);
         },
         hide: function() {
 
         },
         
-        print: function(){
-          window.print();
+        print: function(e) {
+            e.preventDefault();
+
+            window.print();
         }
-
-
     });
 
 

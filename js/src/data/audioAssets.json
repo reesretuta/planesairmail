@@ -1,8 +1,8 @@
 {
     "dusty": "assets/audio/dusty.mp3",
     "bladeranger": "assets/audio/blade.mp3",
-    "cabbie": "assets/audio/Mustang_2012_Start.mp3",
+    "cabbie": "assets/audio/cabbie.mp3",
     "dipper": "assets/audio/dipper.mp3",
     "windlifter": "assets/audio/windlifter.mp3",
-    "team": "assets/audio/Yellow_Generic_Start.mp3"
+    "team": "assets/audio/team.mp3"
 }

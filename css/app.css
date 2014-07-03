@@ -545,7 +545,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
   background-image: url('../assets/img/icons/blue.png'); }
 
 #yellow ~ div.background {
-  background-image: url('../assets/img/icons/broccoli.png'); }
+  background-image: url('../assets/img/icons/yellow.png'); }
 
 #orange ~ div.background {
   background-image: url('../assets/img/icons/orange.png'); }
@@ -592,6 +592,16 @@ div.question.character-select div.option div.background, div.question.favorite-s
 #racing ~ div.background {
   background-image: url('../assets/img/icons/racing.png'); }
 
+#letterbg {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 0; }
+
 #response {
   display: none;
   z-index: 5;
@@ -603,18 +613,15 @@ div.question.character-select div.option div.background, div.question.favorite-s
   #response #card-wrap {
     width: 768px;
     height: 386px;
-    left: 50%;
     position: absolute;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 63px 40px 0 40px;
     color: #000;
     text-align: left; }
-    #response #card-wrap #letterbg {
-      position: absolute;
-      top: 0;
-      left: 0; }
     #response #card-wrap #card-greeting {
       font-size: 35px;
       margin-bottom: 15px; }
