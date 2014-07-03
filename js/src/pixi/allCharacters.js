@@ -22,9 +22,6 @@
     function getDustyTextures() {
         return PIXI.getTextures('assets/spritesheets/dusty/Dusty_plane_000', 0, 12);
     }
-    function getDusty2Textures() {
-        return PIXI.getTextures('assets/spritesheets/dusty2/Dusty_plane_light_000', 0, 12);
-    }
     function getDusty3Textures() {
         return PIXI.getTextures('assets/spritesheets/dusty3/Dusty_plane5_0000', 0, 12);
     }
@@ -70,9 +67,6 @@
         dusty: _.once(function() {
             return initCharacter('Dusty', getDustyTextures(), {x: 480/1200, y: 405/983});
         }),
-        dustyLight: _.once(function() {
-            return initCharacter('Dusty2', getDusty2Textures(), {x: 641/1200, y: 340/638});
-        }),
         dustyDark: _.once(function() {
             return initCharacter('Dusty3', getDusty3Textures(), {x: 335/600, y: 165/360});
         }),
@@ -104,9 +98,6 @@
             }
         });
     });
-
-
-    console.log(allCharacters);
 
 
     module.exports = allCharacters;

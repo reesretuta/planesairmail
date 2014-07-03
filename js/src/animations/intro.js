@@ -327,7 +327,7 @@ function updateLogo(width, height, videoHeight) {
     var bounds = logo.getLocalBounds();
 
     var newLogoHeight = (height - videoHeight)/2;
-    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1.4);
+    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1.2);
 
     logo.scale.x = scale;
     logo.scale.y = scale;

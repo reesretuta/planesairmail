@@ -35,9 +35,9 @@ function initialize() {
 }
 
 function initializeDusty() {
-    var dusty = allCharacters.dustyLight;
+    var dusty = allCharacters.dustyFour;
 
-    dusty.idle.windowScale = 0.47;
+    dusty.idle.windowScale = 0.4;
     dusty.windowX = 0.18;
     dusty.windowY = -1;
 

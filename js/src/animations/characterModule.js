@@ -227,6 +227,7 @@ function teamAnimationSetup(dusty, blade, cabbie, dipper, windlifter) {
     dusty.windowX = -0.2;
     dusty.idle.windowScale = 0.35;
     dusty.rotation = 0.6;
+    dusty.setStatic();
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Blade ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     placeJustOffscreen(blade);

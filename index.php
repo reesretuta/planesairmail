@@ -77,6 +77,7 @@
             <div class="full-relative">
                 <div class="empty-space"></div>
                 <div class="footer-content">
+                    <div class="copyright">&copy;2014 DISNEY</div>
                     <div class="counter clearfix">
                         <div class="dot">
                             <div class="number full-absolute">1</div>
