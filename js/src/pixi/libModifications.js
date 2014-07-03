@@ -217,7 +217,8 @@
     PIXI.Sprite.prototype.destroy = function(destroyBaseTexture) {
         if(_.isUndefined(destroyBaseTexture)) destroyBaseTexture = true;
 
-        this.parent.removeChild(this);
+        if(!_.isUndefined(this.parent)) this.parent.removeChild(this);
+
         this.texture.destroy(destroyBaseTexture);
     };
 

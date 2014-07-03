@@ -1,8 +1,4 @@
 
-
-
-
-
 <div id="intro-view">
     <div class="full-relative">
         <div class="begin-screen">

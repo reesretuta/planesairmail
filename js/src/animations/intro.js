@@ -7,6 +7,9 @@
 function getIntroTextures() {
     return PIXI.getTextures('assets/introVideo/PLANES2_760x428_2_00', 0, 122);
 }
+function getLogoTextures() {
+    return PIXI.getTextures('assets/spritesheets/logo/PLANE_logo_tall_0000', 0, 72);
+}
 
 // =================================================================== //
 /* **************************** Variables **************************** */
@@ -67,7 +70,6 @@ function initializeBackgroundColors() {
 
     _.each(bgColors, function(graphic) {
         graphic.beginFill(0x07080B);
-//        graphic.beginFill(0xFF080B);
         graphic.lineStyle(0);
 
         graphic.drawRect(0, 0, 1, 1);
@@ -153,6 +155,61 @@ function initializeVideoTimeline(video) {
 
     stage.addChild(introVideoContainer);
 })();
+
+// =================================================================== //
+/* ******************************* Logo ****************************** */
+// =================================================================== //
+var logo, logoTimeline;
+
+function initializeLogo() {
+    var logo = new PIXI.MovieClip(getLogoTextures());
+
+    logo.windowY = 0;
+    logo.anchor = new PIXI.Point(.5, 1);
+
+    logo.visible = false;
+    logo.loop = false;
+
+    logo._tweenFrame = 0;
+    Object.defineProperty(logo, 'tweenFrame', {
+        get: function() {
+            return this._tweenFrame;
+        },
+        set: function(value) {
+            this._tweenFrame = value;
+            this.currentFrame = value;
+            this.setTexture(this.textures[value | 0]);
+        }
+    });
+
+    return logo;
+}
+
+function getLogoAnimationTimeline(logo) {
+    var fps = 32;
+    var numFrames = logo.textures.length;
+
+    var animationTime = numFrames/fps;
+    var easing = new SteppedEase(numFrames);
+
+    var timeline = new TimelineLite({
+        paused: true,
+        onStart: function() {
+            logo.visible = true;
+            logo.tweenFrame = 0;
+        },
+        onComplete: function() {
+
+        }
+    });
+
+    timeline.append(TweenLite.to(logo, animationTime, {
+        tweenFrame: numFrames-1,
+        ease: easing
+    }));
+
+    return timeline;
+}
 
 // =================================================================== //
 /* *********************** Animation Functions *********************** */
@@ -264,6 +321,20 @@ function onWindowResize() {
     stage._onWindowResize(width, height);
     renderer.resize(width, height);
 }
+function updateLogo(width, height, videoHeight) {
+    if(_.isUndefined(logo)) return;
+
+    var bounds = logo.getLocalBounds();
+
+    var newLogoHeight = (height - videoHeight)/2;
+    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1.4);
+
+    logo.scale.x = scale;
+    logo.scale.y = scale;
+
+    //calc position
+    logo.windowY = newLogoHeight/height - 0.5;
+}
 
 function updateLoadingSize(width, height) {
     setGraphicScale(loadingBar, width);
@@ -298,6 +369,7 @@ function updateVideoAndFrame(width, height) {
 
     updateTopFrameBackground(width, height, localBounds.width * scale, localBounds.height * scale);
     updateBtmFrameBackground(width, height, btmBounds.width * scale, btmBounds.height * scale);
+    updateLogo(width, height, videoScale * video.getLocalBounds().height);
 }
 function updateTopFrameBackground(width, height, frameWidth, frameHeight) {
     var sideWidth = (width-frameWidth)/2;
@@ -329,10 +401,11 @@ function updateBtmFrameBackground(width, height, frameWidth, frameHeight) {
     bgColors.btmRight.windowX = frameWidth/(2*width);
 }
 
+
+
 // =================================================================== //
 /* **************************** Public API *************************** */
 // =================================================================== //
-
 
 var animationModule = {
     initialize: function() {
@@ -360,14 +433,18 @@ var animationModule = {
             graphicScale: newX
         });
     },
-    assetsLoaded: function() {
+    assetsLoaded: _.once(function() {
         video = initializeVideo();
         videoTimeline = initializeVideoTimeline(video);
+        logo = initializeLogo();
+        logoTimeline = getLogoAnimationTimeline(logo);
 
         introVideoContainer.addChild(video);
 
         initializeIntroFrameTop();
         initializeIntroFrameBtm();
+
+        introFrameTop.addChild(logo);
 
         onWindowResize();
 
@@ -380,8 +457,14 @@ var animationModule = {
                 }
             });
         }, 600);
+    }),
+    showLogo: function() {
+        logoTimeline.play();
     },
     destroy: function() {
+        video.destroy();
+        logo.destroy();
+
         introVideoContainer = null;
         introFrameTop = null;
         introFrameBtm = null;
@@ -390,6 +473,8 @@ var animationModule = {
 
         stage = null;
         renderer = null;
+        video = null;
+        logo = null;
 
         running = false;
 

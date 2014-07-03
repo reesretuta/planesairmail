@@ -334,8 +334,6 @@
         onSkip: function(e) {
             e.preventDefault();
 
-            console.log('skip', this.animating, this.activePageIndex, this.pages.length);
-
             if(this.animating || this.activePageIndex >= (this.pages.length - 1)) return;
 
             this.nextPage();

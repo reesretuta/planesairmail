@@ -82,6 +82,9 @@
                 ease: 'Elastic.easeOut'
             }), btnInTime + (animationTime * 0.05));
 
+            timeline.add(function() {
+                introModule.showLogo();
+            }, 0.7);
 
             return timeline;
         },
@@ -101,6 +104,8 @@
                 opacity: 0,
                 ease: easing
             }), 0);
+
+
 
             timeline.add(TweenLite.to(this.introFrames.top, animationTime, {
                 windowY: 0,
