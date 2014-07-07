@@ -28,7 +28,7 @@ var device = {
         return this.isAndroidTablet() || this.isIpad();
     },
     isMobile: function() {
-        return true;
+//        return true;
         return !this.isTablet() && (this.isIOS() || this.isAndroid() || this.isBlackBerry() || this.isOpera() || this.isWindows());
     },
     currentDevice: function() {
