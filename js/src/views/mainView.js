@@ -2,6 +2,11 @@
 (function() {
     "use strict";
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var loader = require('../loader');
+    var device = require('../device');
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~ PIXI Scene ~~~~~~~~~~~~~~~~~~~~~~~~
     var MainScene = require('../pixi/mainScene');
     var scenesManager = require('../pixi/scenesManager');
 
@@ -16,34 +21,12 @@
     var ResponseView = require('./responseView');
     var FooterView = require('./footerView');
 
-    var introModule = require('../animations/intro');
+    var isMobile = device.isMobile();
 
-    // =================================================================== //
-    /* ***************************** Loader ****************************** */
-    // =================================================================== //
-    var assetData = require('../data/assets.json');
-
-    var fileNames = Object.keys(assetData.assets);
-    var totalFiles = fileNames.length;
-
-    var loader = new PIXI.AssetLoader(fileNames);
-    var startTime;
-
-    function startLoader(view) {
-
-        loader.onProgress = function() {
-            var percentageLoaded = (totalFiles - this.loadCount)/totalFiles;
-            var timeElapsed = _.now() - startTime;
-
-            introModule.updateLoader(percentageLoaded, timeElapsed);
-        };
-        loader.onComplete = function() {
-            view.onAssetsLoaded();
-        };
-
-        startTime = _.now();
-        loader.load();
+    if(!isMobile) {
+        var introModule = require('../animations/intro');
     }
+
 
     // =================================================================== //
     /* ************************* Mainview Class ************************** */
@@ -54,6 +37,9 @@
     }
 
     var MainView = Backbone.View.extend({
+        animating: false,
+        pages: [],
+        activePageIndex: 0,
         el: '#content',
         events: {
             'click a.next': 'onNext',
@@ -62,6 +48,9 @@
             'mousemove': 'onMouseMove'
         },
 
+        onAssetProgress: function(percentageLoaded, timeElapsed) {
+            introModule.updateLoader(percentageLoaded, timeElapsed);
+        },
         onAssetsLoaded: function() {
             this.scene = scenesManager.createScene('main', MainScene);
             scenesManager.goToScene('main');
@@ -70,23 +59,27 @@
 
             introModule.onComplete(this.introView.showBeginScreen.bind(this.introView));
             introModule.assetsLoaded();
-            introModule.assetsLoaded();
         },
 
         // ==================================================================== //
         /* ************************ Initialization Stuff ********************** */
         // ==================================================================== //
         initialize: function() {
-            introModule.initialize();
+            if(!_.isUndefined(introModule))
+                introModule.initialize();
 
-            this.animating = false;
-            this.pages = [];
-            this.activePageIndex = 0;
+            if(isMobile) {
+                this.$el.addClass('mobile');
+            }
+
+            $('#assetLoader').remove();
 
             this.initJqueryVariables();
 
-            //create canvas element
-            scenesManager.initialize(this.$window.width(), this.$window.height(), this.$el);
+            if(!isMobile) {
+                //create canvas element
+                scenesManager.initialize(this.$window.width(), this.$window.height(), this.$el);
+            }
 
             // create views
             this.initIntroView();
@@ -206,12 +199,12 @@
                 this.hideSkip();
             }
 
-            if(this.activePageIndex === 1) {
+            if(this.activePageIndex === 1 && !isMobile) {
                 //animate in character
                 this.scene.animateInUserCharacter();
             }
 
-            activePage.onHideComplete(_.bind(this.showPageAfterHide, this));
+            activePage.onHideComplete(this.showPageAfterHide.bind(this));
 
             this.activePageIndex++;
             activePage.hide();
@@ -252,16 +245,21 @@
             });
             this.responseView.setResponse(pageModels);
 
-            this.scene.onUserCharacterOut(_.bind(this.scene.playWipescreen, this.scene));
+            if(!isMobile) {
+                this.scene.onUserCharacterOut(_.bind(this.scene.playWipescreen, this.scene));
 
-            var me = this;
-            this.scene.onWipescreenComplete(function() {
-                me.responseView.show();
-                me.scene.showResponse();
-            });
+                var me = this;
+                this.scene.onWipescreenComplete(function() {
+                    me.responseView.show();
+                    me.scene.showResponse();
+                });
 
+                this.scene.animateOutUserCharacter();
+            } else {
+                $('#mobile-backgrounds').hide();
 
-            this.scene.animateOutUserCharacter();
+                this.responseView.show();
+            }
         },
         repositionPageNav: function(animate) {
             var activePage = this.pages[this.activePageIndex];
@@ -303,7 +301,11 @@
         /* ************************* Render Functions ************************* */
         // ==================================================================== //
         start: function() {
-            startLoader(this);
+            if(!device.isMobile()) {
+                loader.start(this);
+            } else {
+                this.introView.showBeginScreen();
+            }
         },
 
         // ==================================================================== //

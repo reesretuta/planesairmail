@@ -11,8 +11,8 @@
     var responseModule = require('../animations/responseModule');
 
 
-
-
+    var device = require('../device');
+    var isMobile = device.isMobile();
 
 
     var ResponseView = Backbone.View.extend({
@@ -23,9 +23,8 @@
         },
 
         initialize: function() {
-            //this.scene = scenesManager.createScene('response', ResponseScene);
-
             this.$background = $('#response-bg');
+            this.$letterBackground = $('#letterbg');
         },
         
         setResponse: function(models) {
@@ -93,7 +92,6 @@
 
             response += body1 + ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ') + ' ' + body2;
 
-
             $('#card-greeting').html(greeting);
             $('#card-body').html(response);
             $('#card-sincerely').html(sincerely);
@@ -103,10 +101,13 @@
         show: function() {
             this.$el.show();
             this.$background.show();
+            this.$letterBackground.addClass('active');
 
-            setTimeout(function() {
-                responseModule.animateIn(this.character);
-            }.bind(this), 400);
+            if(!isMobile) {
+                setTimeout(function() {
+                    responseModule.animateIn(this.character);
+                }.bind(this), 400);
+            }
         },
         hide: function() {
 

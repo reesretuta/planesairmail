@@ -1,0 +1,55 @@
+
+
+
+
+
+#mobile-backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    z-index: 1;
+
+    > div {
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        top: 0;
+        left: 0;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+
+        &.front {
+            background-image: url('../assets/img/foreground_trees.png');
+
+            z-index: 2;
+        }
+        &.middle {
+            background-image: url('../assets/img/midground.png');
+
+            z-index: 1;
+        }
+        &.back {
+            background-image: url('../assets/img/site_bg.jpg');
+
+            z-index: 0;
+        }
+    }
+}
+
+
+#content {
+    &.mobile {
+        div.mobile {
+            display: block;
+        }
+    }
+}

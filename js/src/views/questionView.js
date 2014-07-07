@@ -1,10 +1,15 @@
 
+var device = require('../device');
 
 var template = require('../templates/question.hbs');
 var itemAnimationsModule = require('../animations/pageItems');
 
+var isMobile = device.isMobile();
+
 var QuestionView = Backbone.View.extend({
     // Variables
+    showCallback: function(){},
+    hideCallback: function(){},
     className: 'question page',
     template: template,
 
@@ -21,7 +26,7 @@ var QuestionView = Backbone.View.extend({
 
         this.$options = this.$el.find('div.option');
 
-        if(this.$options.length !== 0)
+        if(this.$options.length !== 0 && !isMobile)
             this.initAnimations();
     },
     initAnimations: function() {
@@ -39,25 +44,15 @@ var QuestionView = Backbone.View.extend({
         this.animationOut = animations[1];
 
         this.animationIn.vars.onComplete = function() {
-            if(_.isFunction(this.showCallback)) {
-                this.showCallback();
-            }
+            this.showCallback();
         }.bind(this);
 
         this.animationOut.vars.onComplete = function() {
             this.$el.removeClass('active');
 
-            if(_.isFunction(this.hideCallback)) {
-                this.hideCallback();
-            }
+            this.hideCallback();
         }.bind(this);
     },
-    setAnimationIn: function() {
-        "use strict";
-
-
-    },
-
 
     removeOptions: function() {
         "use strict";
@@ -73,7 +68,9 @@ var QuestionView = Backbone.View.extend({
         this.el.innerHTML = this.template(this.model.attributes);
 
         this.$options = this.$el.find('div.option');
-        this.initAnimations();
+
+        if(!isMobile)
+            this.initAnimations();
     },
     isCanned: function() {
         "use strict";
@@ -97,10 +94,21 @@ var QuestionView = Backbone.View.extend({
     show: function() {
         this.$el.addClass('active');
 
-        this.animationIn.play();
+        if(!device.isMobile()) {
+            this.animationIn.play();
+        } else {
+            this.showCallback();
+        }
     },
     hide: function() {
-        this.animationOut.play();
+        if(!device.isMobile()) {
+            this.animationOut.play();
+        } else {
+            this.$el.removeClass('active');
+
+            this.hideCallback();
+        }
+
     },
     onHideComplete: function(callback) {
         this.hideCallback = callback;

@@ -1,7 +1,4 @@
 
-
-
-
 "use strict";
 
 function getIntroTextures() {
@@ -28,8 +25,6 @@ function initialize() {
     // add the renderer view element to the DOM
     renderer.view.setAttribute('id', 'pixi-intro');
     $('#content').append(renderer.view);
-
-    $('#assetLoader').remove();
 
     requestAnimFrame(animate);
 

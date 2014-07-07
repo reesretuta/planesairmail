@@ -15,6 +15,11 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
     <div id="content" class="full-relative">
+        <div id="mobile-backgrounds" class="mobile">
+            <div class="front"></div>
+            <div class="middle"></div>
+            <div class="back"></div>
+        </div>
         <div id="response-bg"></div>
         <div id="passwordScreen">
             <div class="content">
@@ -101,6 +106,8 @@
         </div>
     </div>
 </body>
+
+<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
 
 <!----------------------------- Backbone Libraries ----------------------->
 <script src="js/lib/handlebars-v1.3.0.js"></script>
