@@ -26,7 +26,7 @@ function initialize() {
 function initializeDusty() {
     var dusty = allCharacters.dustyFour;
 
-    dusty.idle.windowScale = 0.4;
+    dusty.idle.windowScale = 0.32;
     dusty.windowX = 0.18;
     dusty.windowY = -1;
 
@@ -216,7 +216,7 @@ function generateAnimationDustyOut(dusty) {
     }), 0);
 
     timeline.add(TweenLite.to(dusty, animationTime, {
-        windowY: -0.1,
+        windowY: -0.2,
         windowX: 0.6,
         ease: easing
     }), 0);
