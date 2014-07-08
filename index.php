@@ -1,3 +1,10 @@
+<?php
+
+
+$server = "http://$_SERVER[HTTP_HOST]/";
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +19,10 @@
     <!-- OG TAGS-->
     <meta property="og:title" content="Planes Airmail"/>
     <meta property="og:type" content="video.movie"/>
-    <meta property="og:url" content="http://planesairmail.com"/>
-    <meta property="og:image" content="" name="thumb" />
-    <link rel="image_src" href="/" />
+    <meta property="og:url" content="<?= $server; ?>"/>
+    <meta property="og:image" content="<?= $server; ?>favicon.ico" name="thumb" />
+    <link rel="shortcut icon" href="<?= $server; ?>favicon.ico" type="image/icon">
+    <link rel="icon" href="<?= $server; ?>favicon.ico" type="image/icon">
     <meta property="og:site_name" content="Planes Airmail"/>
     <meta property="og:description" content=""/>
 
