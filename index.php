@@ -2,6 +2,22 @@
 <html>
 <head>
     <title>Planes Airmail</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- OG TAGS-->
+    <meta property="og:title" content="Planes Airmail"/>
+    <meta property="og:type" content="video.movie"/>
+    <meta property="og:url" content="http://planesairmail.com"/>
+    <meta property="og:image" content="" name="thumb" />
+    <link rel="image_src" href="/" />
+    <meta property="og:site_name" content="Planes Airmail"/>
+    <meta property="og:description" content=""/>
+
     <link rel="stylesheet" type="text/css" href="css/app.css" />
 </head>
 <body>
@@ -31,6 +47,7 @@
                 </form>
             </div>
         </div>
+
         <div id="assetLoader">
             <div class="bar">
                 <div class="full-relative">
@@ -51,8 +68,8 @@
                         <div class="in-theaters"></div>
                         <div class="social clearfix">
                             <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                            <a href="http://www.disney.com">Find showtimes</a>
-                            <a href="http://www.disney.com">View Trailer</a>
+                            <a href="http://www.disney.com" class="showtimes">Find showtimes</a>
+                            <a href="http://www.disney.com" class="trailer">View Trailer</a>
                         </div>
                     </div>
                 </div>
@@ -64,10 +81,19 @@
 
         <div class="pages-ctn full-relative">
             <div class="page-nav">
-                <a href="#" class="finish-send">Finish & send</a>
-                <a href="#" class="next">next</a>
+                <a href="#" class="finish-send">
+                    <div class="empty-space"></div>
+                    <div class="text">Finish & send</div>
+                </a>
+                <a href="#" class="next">
+                    <div class="empty-space"></div>
+                    <div class="text">next</div>
+                </a>
                 <div class="skip">
-                    <a href="#" class="skip">I would like to skip</a>
+                    <div class="empty-space"></div>
+                    <a href="#" class="skip">
+                        I would like to skip
+                    </a>
                 </div>
             </div>
 
@@ -85,6 +111,7 @@
                     <div class="copyright">&copy;2014 DISNEY</div>
                     <div class="counter clearfix">
                         <div class="dot">
+                            <div class="empty-space"></div>
                             <div class="number full-absolute">1</div>
                             <div class="fill full-absolute"></div>
                         </div>

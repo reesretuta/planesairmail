@@ -32,8 +32,8 @@
             display: block;
 
             background: url('../assets/img/button.png') center center no-repeat;
+            background-size: contain;
             width: 200px;
-            height: 63px;
             line-height: 52px;
 
             color: #ea2424;
@@ -45,12 +45,32 @@
             opacity: 0;
 
             -webkit-backface-visibility: hidden;
+
+            position: relative;
+
+            > div.empty-space {
+                padding-bottom: percentage(63/200);
+            }
+            > div.text {
+                position: absolute;
+                left: 0;
+                top: 45%;
+                transform: translateY(-50%);
+
+                width: 100%;
+            }
         }
 
         > div.line {
             opacity: 0;
 
             transform: translateX(5%);
+        }
+
+        div.all-text {
+            font-size: 24px;
+            line-height: 24px;
+            padding: 0 2%;
         }
     }
 

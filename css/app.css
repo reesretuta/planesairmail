@@ -226,7 +226,6 @@ body {
     padding-bottom: 18px; }
     #footer div.counter .dot {
       width: 30px;
-      height: 30px;
       position: relative;
       display: block;
       float: left;
@@ -237,6 +236,8 @@ body {
       background-color: rgba(0, 0, 0, 0.65); }
       #footer div.counter .dot:last-child {
         margin-right: 0; }
+      #footer div.counter .dot > div.empty-space {
+        padding-bottom: 100%; }
       #footer div.counter .dot div.number {
         top: 0;
         left: 0;
@@ -284,28 +285,40 @@ body {
         text-decoration: none;
         text-align: center;
         font-size: 30px;
+        position: relative;
+        margin: 0 auto;
         display: none; }
         #content div.pages-ctn div.page-nav a.active {
           display: block; }
+        #content div.pages-ctn div.page-nav a > div.text {
+          position: absolute;
+          top: 46%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
       #content div.pages-ctn div.page-nav a.next {
         background: url('../assets/img/button.png') center center no-repeat;
         -webkit-background-size: contain;
         background-size: contain;
-        width: 175px;
-        height: 56px;
-        padding-top: 6px; }
+        width: 175px; }
+        #content div.pages-ctn div.page-nav a.next > div.empty-space {
+          padding-bottom: 32%; }
       #content div.pages-ctn div.page-nav a.finish-send {
         background: url('../assets/img/icons/send-btn.png') center center no-repeat;
         width: 240px;
         height: 53px;
         line-height: 43px; }
+        #content div.pages-ctn div.page-nav a.finish-send > div.empty-space {
+          padding-bottom: 22.08333%; }
       #content div.pages-ctn div.page-nav div.skip {
         position: relative;
-        height: 30px;
         width: 170px;
         margin: 0 auto;
         margin-top: 13px;
         overflow: hidden; }
+        #content div.pages-ctn div.page-nav div.skip > div.empty-space {
+          padding-bottom: 17.64706%; }
       #content div.pages-ctn div.page-nav a.skip {
         color: black;
         line-height: 27px;
@@ -344,26 +357,42 @@ body {
     #intro-view div.begin-screen a.begin {
       display: block;
       background: url('../assets/img/button.png') center center no-repeat;
+      -webkit-background-size: contain;
+      background-size: contain;
       width: 200px;
-      height: 63px;
       line-height: 52px;
       color: #ea2424;
       text-decoration: none;
       margin: 0 auto;
       margin-top: 45px;
       opacity: 0;
-      -webkit-backface-visibility: hidden; }
+      -webkit-backface-visibility: hidden;
+      position: relative; }
+      #intro-view div.begin-screen a.begin > div.empty-space {
+        padding-bottom: 31.5%; }
+      #intro-view div.begin-screen a.begin > div.text {
+        position: absolute;
+        left: 0;
+        top: 45%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 100%; }
     #intro-view div.begin-screen > div.line {
       opacity: 0;
       -webkit-transform: translateX(5%);
       -ms-transform: translateX(5%);
       transform: translateX(5%); }
+    #intro-view div.begin-screen div.all-text {
+      font-size: 24px;
+      line-height: 24px;
+      padding: 0 2%; }
 
 div.page {
   position: absolute;
   right: 0;
   top: 0;
-  padding-top: 10%;
+  padding-top: 90px;
   z-index: 10;
   margin: auto;
   width: 54%;
@@ -373,6 +402,8 @@ div.page {
   div.page.active {
     left: 0;
     visibility: visible; }
+  div.page > div.full-relative {
+    padding-top: 5%; }
 
 div.page.name {
   padding-top: 0;
@@ -757,5 +788,98 @@ div.question.character-select div.option div.background, div.question.favorite-s
       background-image: url('../assets/img/site_bg.jpg');
       z-index: 0; }
 
-#content.mobile div.mobile {
-  display: block; }
+#content div.mobile {
+  display: none; }
+
+#content.mobile {
+  /* ****************************** Header ****************************** */
+  /* ****************************** Footer ****************************** */
+  /* **************************** Intro Stuff *************************** */
+  /* *************************** Page Navigation ************************ */
+  /* ************************ Enter Your Name Page ********************** */
+  /* *************************** Question Pages ************************* */ }
+  #content.mobile div.mobile {
+    display: block; }
+  #content.mobile #header {
+    height: auto; }
+    #content.mobile #header > div.full-relative > div.empty-space {
+      padding-bottom: 32.09294%; }
+    #content.mobile #header .in-theaters {
+      display: none; }
+    #content.mobile #header div.social {
+      width: 100%;
+      padding: 0 1.67286%; }
+      #content.mobile #header div.social div.fb-like {
+        display: none !important; }
+      #content.mobile #header div.social > a {
+        margin-right: 0;
+        font-size: 12px;
+        border-radius: 3px; }
+        #content.mobile #header div.social > a.showtimes {
+          float: left; }
+        #content.mobile #header div.social > a.trailer {
+          float: right; }
+    #content.mobile #header .logo {
+      width: 50%;
+      bottom: 26%;
+      background-position: 76% 50%; }
+  #content.mobile #footer a.volume {
+    display: none; }
+  #content.mobile #footer div.counter {
+    width: 100%;
+    padding: 0 5.5%;
+    padding-bottom: 3%; }
+    #content.mobile #footer div.counter .dot {
+      width: 7.5%;
+      margin-right: 5.71%; }
+      #content.mobile #footer div.counter .dot:last-child {
+        margin-right: 0; }
+      #content.mobile #footer div.counter .dot div.number {
+        font-size: 14px; }
+  #content.mobile #intro-view div.begin-screen a.begin {
+    margin-top: 9%;
+    font-size: 20px;
+    width: 38%; }
+  #content.mobile #intro-view div.begin-screen > div.line {
+    display: none; }
+  #content.mobile div.pages-ctn div.page-nav a.next {
+    width: 135px;
+    font-size: 22px; }
+  #content.mobile div.pages-ctn div.page-nav div.skip {
+    width: 135px;
+    margin-top: 5px; }
+    #content.mobile div.pages-ctn div.page-nav div.skip a.skip {
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      line-height: 21px;
+      border-radius: 4px; }
+  #content.mobile div.page {
+    width: 100%; }
+  #content.mobile div.page.name .input-wrapper {
+    height: 45px; }
+  #content.mobile div.page.name div.title {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 7%; }
+  #content.mobile div.page.name input[type="text"] {
+    width: 85%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 7px; }
+  #content.mobile div.page.name div.placeholder {
+    font-size: 22px; }
+  #content.mobile div.question div.copy {
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 6%; }
+  #content.mobile div.question div.option {
+    width: 50%;
+    padding: 5% 13%; }
+    #content.mobile div.question div.option div.text {
+      font-size: 14px;
+      width: 200%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%); }

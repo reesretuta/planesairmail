@@ -34,10 +34,9 @@ var device = {
     currentDevice: function() {
         if (this.isMobile())
             return "mobile";
-        else if (this.isTablet())
+        if (this.isTablet())
             return "tablet";
-        else
-            return "desktop";
+        return "desktop";
     },
     currentDeviceName: function() {
         switch(true) {
