@@ -5,7 +5,7 @@ function getIntroTextures() {
     return PIXI.getTextures('assets/introVideo/PLANES2_760x428_2_00', 0, 122);
 }
 function getLogoTextures() {
-    return PIXI.getTextures('assets/spritesheets/logo/PLANE_logo_tall_0000', 0, 72);
+    return PIXI.getTextures('assets/spritesheets/logo/PLANE_logo_tall_480x260_0000', 0, 72);
 }
 
 // =================================================================== //
@@ -334,7 +334,7 @@ function updateLogo(width, height, videoHeight) {
     var bounds = logo.getLocalBounds();
 
     var newLogoHeight = (height - videoHeight)/2;
-    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1.2);
+    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1);
 
     logo.scale.x = scale;
     logo.scale.y = scale;
