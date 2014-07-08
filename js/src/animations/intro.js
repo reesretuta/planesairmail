@@ -1,7 +1,4 @@
 
-
-
-
 "use strict";
 
 function getIntroTextures() {
@@ -28,8 +25,6 @@ function initialize() {
     // add the renderer view element to the DOM
     renderer.view.setAttribute('id', 'pixi-intro');
     $('#content').append(renderer.view);
-
-    $('#assetLoader').remove();
 
     requestAnimFrame(animate);
 
@@ -250,7 +245,7 @@ function getVideoAnimationTimeline(video) {
 var loadingScreen = new PIXI.DisplayObjectContainer();
 var loadingBar = new PIXI.Graphics();
 var loadingBackground = new PIXI.Graphics();
-
+var loaderLogo = PIXI.Sprite.fromImage('assets/img/preloader_logo.png');
 
 function setGraphicScale(obj, width, height) {
     obj.scale.x = obj._graphicScale * width;
@@ -301,9 +296,19 @@ function initLoadingBackground() {
     loadingScreen.addChild(loadingBackground);
 }
 
+function initLogo() {
+    loaderLogo.windowX = 0.5;
+    loaderLogo.windowY = 0.5;
+
+    loaderLogo.anchor = new PIXI.Point(.5,.5);
+
+    loadingScreen.addChild(loaderLogo);
+}
+
 (function() {
     initLoadingBackground();
     initLoadingBar();
+    initLogo();
 
     stage.addChild(loadingScreen);
 })();

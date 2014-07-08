@@ -2,6 +2,7 @@
 
 (function() {
     "use strict";
+    var device = require('../device');
 
     var scenesManager = require('../pixi/scenesManager');
     var dustyDipperModule = require('../animations/dustyDipper');
@@ -37,6 +38,7 @@
         /* ***************** Run Animation Functions ****************** */
         // ============================================================ //
         startAnimation: function() {
+            this.preAnimationSetup();
             this.initScene();
 
             this.scene.startEnterNameAnimation();   //animate in characters
@@ -61,16 +63,21 @@
         show: function () {
             this.$el.addClass('active');
 
-            this.preAnimationSetup();
-            setTimeout(this.startAnimation, 0);
+            if(!device.isMobile()) {
+                setTimeout(this.startAnimation, 0);
+            }
         },
         hide: function () {
-            dustyDipperModule.onAnimationOutComplete(this.setInactive);
+            if(!device.isMobile()) {
+                dustyDipperModule.onAnimationOutComplete(this.setInactive);
 
-            TweenLite.to(this.$el, 0.3, {opacity: 0});
+                TweenLite.to(this.$el, 0.3, {opacity: 0});
 
-            //run hide animation
-            dustyDipperModule.animateOut();
+                //run hide animation
+                dustyDipperModule.animateOut();
+            } else {
+                this.setInactive();
+            }
         },
         isCanned: function() {
             return false;

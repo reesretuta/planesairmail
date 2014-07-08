@@ -8,7 +8,9 @@ require('./pixi/libModifications');
 
 
 var MainView = require('./views/mainView');
-//var AssetLoadingView = require('./views/assetLoadingView');
+var device = require('./device');
+
+
 
 
 // =================================================================== //
@@ -21,9 +23,8 @@ var app = {};
 
 
 
-
 // =================================================================== //
-/* ************************** Asset Loading ************************** */
+/* ************************* Password Screen ************************* */
 // =================================================================== //
 
 var $passwordScreen = $('#passwordScreen');
@@ -41,8 +42,6 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 
             if($passwordInput.val() === password) {
                 $passwordScreen.fadeOut(50);
-
-//                app.assetLoader = new AssetLoadingView({onComplete: app.render});
             }
         });
     });
@@ -51,8 +50,6 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 
     console.log($passwordScreen);
 } else {
-//    app.assetLoader = new AssetLoadingView({onComplete: app.render});
-
     $passwordScreen.remove();
 }
 
@@ -65,7 +62,6 @@ $(function() {
 
     app.mainView.start();
 });
-
 
 
 module.exports = app;

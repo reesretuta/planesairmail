@@ -29,9 +29,20 @@
                 text-align: center;
                 font-size: 30px;
 
+                position: relative;
+                margin : 0 auto;
+
                 display: none;
                 &.active {
                     display: block;
+                }
+
+                > div.text {
+                    position: absolute;
+                    top: 46%;
+                    left: 50%;
+
+                    transform: translate(-50%, -50%);
                 }
             }
 
@@ -41,8 +52,10 @@
                 background-size: contain;
 
                 width: 175px;
-                height: 56px;
-                padding-top: 6px;
+
+                > div.empty-space {
+                    padding-bottom: percentage(56/175);
+                }
             }
 
             a.finish-send {
@@ -51,18 +64,25 @@
                 width: 240px;
                 height: 53px;
                 line-height: 43px;
+
+                > div.empty-space {
+                    padding-bottom: percentage(53/240);
+                }
             }
 
             div.skip {
                 position: relative;
 
-                height: 30px;
                 width: 170px;
 
                 margin: 0 auto;
                 margin-top: 13px;
 
                 overflow: hidden;
+
+                > div.empty-space {
+                    padding-bottom: percentage(30/170);
+                }
             }
 
             a.skip {

@@ -1,0 +1,235 @@
+
+
+
+
+
+#mobile-backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    z-index: 1;
+
+    > div {
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        top: 0;
+        left: 0;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+
+        &.front {
+            background-image: url('../assets/img/foreground_trees.png');
+
+            z-index: 2;
+        }
+        &.middle {
+            background-image: url('../assets/img/midground.png');
+
+            z-index: 1;
+        }
+        &.back {
+            background-image: url('../assets/img/site_bg.jpg');
+
+            z-index: 0;
+        }
+    }
+}
+
+
+
+#content div.mobile {
+    display: none;
+}
+
+#content {
+    &.mobile {
+        div.mobile {
+            display: block;
+        }
+
+        // ==================================================================== //
+        /* ****************************** Header ****************************** */
+        // ==================================================================== //
+        #header {
+            height: auto;
+
+            > div.full-relative > div.empty-space {
+                padding-bottom: 32.09294%;
+            }
+
+            .in-theaters {
+                display: none;
+            }
+
+            div.social {
+                width: 100%;
+                padding: 0 percentage(9/538);
+
+                div.fb-like {
+                    display: none !important;          //TODO REMOVE THIS
+                }
+
+                > a {
+                    margin-right: 0;
+                    font-size: 12px;
+                    border-radius: 3px;
+
+                    &.showtimes {
+                        float: left;
+                    }
+                    &.trailer {
+                        float: right;
+                    }
+                }
+
+            }
+
+            .logo {
+                width: 50%;
+                bottom: 26%;
+
+                background-position: 76% 50%;
+            }
+        }
+
+        // ==================================================================== //
+        /* ****************************** Footer ****************************** */
+        // ==================================================================== //
+        #footer {
+            a.volume {
+                display: none;
+            }
+
+            div.counter {
+                width:100%;
+                padding: 0 5.5%;
+                padding-bottom: 3%;
+
+                .dot {
+                    width: 7.5%;
+                    margin-right: 5.71%;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    div.number {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+
+        // ==================================================================== //
+        /* **************************** Intro Stuff *************************** */
+        // ==================================================================== //
+
+        #intro-view div.begin-screen {
+            a.begin {
+                margin-top: 9%;
+                font-size: 20px;
+                width: 38%;
+            }
+
+            > div.line {
+                display: none;
+            }
+        }
+
+
+        // ==================================================================== //
+        /* *************************** Page Navigation ************************ */
+        // ==================================================================== //
+
+        div.pages-ctn div.page-nav {
+            a.next {
+                width: 135px;
+                font-size: 22px;
+            }
+
+            div.skip {
+                width: 135px;
+                margin-top: 5px;
+
+                a.skip {
+                    width: 100%;
+                    height: 100%;
+                    font-size: 14px;
+                    line-height: 21px;
+
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        div.page {
+            width: 100%;
+        }
+
+        // ==================================================================== //
+        /* ************************ Enter Your Name Page ********************** */
+        // ==================================================================== //
+        div.page.name {
+
+            .input-wrapper {
+                height: 45px;
+            }
+
+            div.title {
+                font-size: 24px;
+                line-height: 24px;
+                margin-bottom: 7%;
+            }
+
+            input[type="text"] {
+                width: 85%;
+                margin: 0 auto;
+                display: block;
+                border-radius: 7px;
+            }
+
+            div.placeholder {
+                font-size: 22px;
+            }
+        }
+
+        // ==================================================================== //
+        /* *************************** Question Pages ************************* */
+        // ==================================================================== //
+        div.question {
+
+            div.copy {
+                font-size: 22px;
+                line-height: 22px;
+                margin-bottom: 6%;
+            }
+
+            div.option {
+                width: 50%;
+                padding: 5% 13%;
+
+                div.text {
+                    font-size: 14px;
+                    width: 200%;
+
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+
+
+
+    }
+}

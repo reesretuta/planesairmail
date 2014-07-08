@@ -5,7 +5,7 @@ div.page {
     right: 0;
     top: 0;
 
-    padding-top: 10%;
+    padding-top: 90px;
 
     z-index: 10;
 
@@ -19,6 +19,10 @@ div.page {
     &.active {
         left: 0;
         visibility: visible;
+    }
+
+    > div.full-relative {
+        padding-top: 5%;
     }
 }
 

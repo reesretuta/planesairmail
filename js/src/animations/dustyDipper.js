@@ -12,17 +12,6 @@ var allCharacters = require('../pixi/allCharacters');
 // =================================================================== //
 var dusty, dipper, timelineIn, timelineOut;
 
-
-// =================================================================== //
-/* ************************ Helper Functions ************************* */
-// =================================================================== //
-function getDustyIdleTextures() {
-    return PIXI.getTextures('assets/spritesheets/dusty2/Dusty_plane_light_000', 0, 12);
-}
-function getDipperIdleTextures() {
-    return PIXI.getTextures('assets/spritesheets/dipper/Dipper_000', 0, 12);
-}
-
 // =================================================================== //
 /* ************************* Initialization ************************** */
 // =================================================================== //

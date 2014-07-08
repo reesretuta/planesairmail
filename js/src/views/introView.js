@@ -2,7 +2,11 @@
 (function() {
     "use strict";
 
-    var introModule = require('../animations/intro');
+    var device = require('../device');
+
+    if(!device.isMobile()) {
+        var introModule = require('../animations/intro');
+    }
 
     var IntroView = Backbone.View.extend({
         el: '#intro-view',
@@ -15,8 +19,6 @@
         initialize: function(options) {
             this.onCompleteCallback = function(){};
 
-            this.introFrames = introModule.getIntroFrames();
-
             this.initJqueryVariables();
             this.initAnimationTimeline();
 
@@ -28,8 +30,13 @@
             this.$beginBtn = this.$beginScreen.find('a.begin');
         },
         initAnimationTimeline: function() {
-            this.timelineHide = this.getTimelineHide();
-            this.timelineBeginScreenIn = this.getTimelineBeginScreenIn();
+            if(device.isMobile()) {
+                this.timelineHide = this.getMobileTimelineHide();
+                this.timelineBeginScreenIn = this.getMobileTimelineBeginScreenIn();
+            } else {
+                this.timelineHide = this.getTimelineHide();
+                this.timelineBeginScreenIn = this.getTimelineBeginScreenIn();
+            }
         },
 
         // ============================================================ //
@@ -45,6 +52,21 @@
         // ============================================================ //
         /* ***************** Animation Functions ********************** */
         // ============================================================ //
+        getMobileTimelineBeginScreenIn: function() {
+            var timeline = new TimelineMax({
+                paused: true
+            });
+
+            timeline.add(function() {
+                TweenLite.set(this.$beginLines, {x: 0, opacity: 1});
+                TweenLite.set(this.$beginBtn, {opacity: 1});
+
+                this.$beginBtn.show();
+                this.mainView.showContent();
+            }.bind(this), 0);
+
+            return timeline;
+        },
         getTimelineBeginScreenIn: function() {
             /****************** Static Variables **************/
             var animationTime = 0.4;
@@ -89,7 +111,21 @@
             return timeline;
         },
 
+        getMobileTimelineHide: function() {
+            var timeline = new TimelineMax({
+                paused: true
+            });
+
+            timeline.add(function() {
+                this.$el.remove();
+                this.onCompleteCallback();
+            }.bind(this), 0);
+
+            return timeline;
+        },
         getTimelineHide: function() {
+            var introFrames = introModule.getIntroFrames();
+
             /****************** Static Variables **************/
             var animationTime = 1.6;
             var easing = 'Cubic.easeInOut';
@@ -106,12 +142,11 @@
             }), 0);
 
 
-
-            timeline.add(TweenLite.to(this.introFrames.top, animationTime, {
+            timeline.add(TweenLite.to(introFrames.top, animationTime, {
                 windowY: 0,
                 ease: easing
             }), 0);
-            timeline.add(TweenLite.to(this.introFrames.btm, animationTime, {
+            timeline.add(TweenLite.to(introFrames.btm, animationTime, {
                 windowY: 1,
                 ease: easing
             }), 0);
