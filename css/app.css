@@ -50,7 +50,7 @@ html, body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: initial;
   font-family: PAGRevolucion, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2); }
@@ -266,7 +266,11 @@ body {
         transform: scale(1); }
 
 #content {
-  z-index: 2; }
+  z-index: 2;
+  overflow: hidden; }
+  #content > div.full-absolute {
+    top: 0;
+    left: 0; }
   #content div.pages-ctn {
     z-index: 5; }
     #content div.pages-ctn div.page-nav {
@@ -792,6 +796,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
   display: none; }
 
 #content.mobile {
+  height: auto;
   /* ****************************** Header ****************************** */
   /* ****************************** Footer ****************************** */
   /* **************************** Intro Stuff *************************** */
@@ -883,3 +888,5 @@ div.question.character-select div.option div.background, div.question.favorite-s
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%); }
+  #content.mobile > div.empty-space {
+    padding-bottom: 177.5%; }

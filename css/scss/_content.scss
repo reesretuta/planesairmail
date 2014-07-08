@@ -3,6 +3,12 @@
 
 #content {
     z-index: 2;
+    overflow: hidden;
+
+    > div.full-absolute {
+        top: 0;
+        left: 0;
+    }
 
     div.pages-ctn {
         z-index: 5;

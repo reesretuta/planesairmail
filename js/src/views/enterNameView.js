@@ -7,6 +7,18 @@
     var scenesManager = require('../pixi/scenesManager');
     var dustyDipperModule = require('../animations/dustyDipper');
 
+
+    function getClipboardText(e) {
+        if(!_.isUndefined(e.originalEvent)) e = e.originalEvent;
+
+        if (window.clipboardData && window.clipboardData.getData) { // IE
+            return window.clipboardData.getData('Text');
+        } else {
+            return e.clipboardData.getData('text/plain');
+        }
+    }
+
+
     var EnterNameView = Backbone.View.extend({
         el: 'div.name.page',
         events: {
@@ -92,10 +104,24 @@
         },
 
         onNameChange: function(e) {
+            if(e.which === 32) return false;
+
             var val = this.$nameInput.val();
 
-            this.$placeholder.toggle(val === '');
+            if(e.type === 'paste') {
+                var text = getClipboardText(e);
 
+                val += text.split(' ').join('');
+
+                this.$nameInput.val(val);
+
+                this.$placeholder.toggle(val === '');
+                this.model.set({value: val});
+
+                return false;
+            }
+
+            this.$placeholder.toggle(val === '');
             this.model.set({value: val});
         }
     });
