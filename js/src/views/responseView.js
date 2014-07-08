@@ -116,6 +116,7 @@
         print: function(e) {
             e.preventDefault();
             // window.print();
+
             var g = $('#card-greeting').html();
             var b = $('#card-body').html();
             var s = $('#card-sincerely').html();
