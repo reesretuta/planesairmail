@@ -114,8 +114,13 @@
         
         print: function(e) {
             e.preventDefault();
-
-            window.print();
+            // window.print();
+            var g = $('#card-greeting').html();
+            var b = $('#card-body').html();
+            var s = $('#card-sincerely').html();
+            var f = $('#card-from').html();
+            window.open(window.location.href + 'print.php' + '?char=blade' + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + f);
+            
         }
     });
 
