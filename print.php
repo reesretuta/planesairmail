@@ -129,8 +129,9 @@
         #character{
             position: absolute;
             top: -205px;
-            left: 90px;
+            left: 124px;
             z-index: -1;
+            width: 67%;
         }
         
         #card-text{
