@@ -13,7 +13,7 @@
 
     var device = require('../device');
     var isMobile = device.isMobile();
-
+    var printCharacter = '';
 
     var ResponseView = Backbone.View.extend({
         character: '',
@@ -33,7 +33,7 @@
             var characterModel = models[1];
             
             this.$background.addClass(characterModel.attributes.value);
-
+            printCharacter = characterModel.attributes.value;
             var answeredQuestions = _.filter(_.rest(models, 2), function(model) {return model.attributes.value !== ''});
 
             var partitionedQuestions = _.partition(answeredQuestions, function(model) {
@@ -121,7 +121,7 @@
             var b = $('#card-body').html();
             var s = $('#card-sincerely').html();
             var f = $('#card-from').html();
-            window.open(window.location.href + 'print.php' + '?char=blade' + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + f);
+            window.open(window.location.href + 'print.php' + '?char=' + printCharacter + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + f);
             
         }
     });

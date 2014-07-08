@@ -121,7 +121,7 @@
 
         #letter{
             left:0;
-            top:0;
+            top:20px;
             position: absolute;
             z-index:-2;
         }
@@ -135,8 +135,8 @@
         
         #card-text{
             width:644px;
-            margin: 0 auto  ;
-            padding-top:90px;
+            margin: 0 auto;
+            padding-top:110px;
         }
         
         #card-greeting{
