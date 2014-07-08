@@ -68,7 +68,7 @@ var animateIn = (function() {
             windlifter.windowX = 0.5;
 
             TweenLite.to(windlifter, animationTime, {
-                windowX: 0.14,
+                windowX: 0.17,
                 windowY: 0.27
             });
         },

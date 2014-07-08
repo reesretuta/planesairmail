@@ -297,10 +297,11 @@ body {
         #content div.pages-ctn div.page-nav a > div.text {
           position: absolute;
           top: 46%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
+          left: 0;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          width: 100%; }
       #content div.pages-ctn div.page-nav a.next {
         background: url('../assets/img/button.png') center center no-repeat;
         -webkit-background-size: contain;

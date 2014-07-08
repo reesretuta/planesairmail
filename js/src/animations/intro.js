@@ -222,6 +222,7 @@ function getVideoAnimationTimeline(video) {
         onStart: function() {
             video.visible = true;
             video.tweenFrame = 0;
+            createjs.Sound.play('IntroVideo', {delay: 50});
         },
         onComplete: function() {
             video.destroy();
@@ -230,10 +231,11 @@ function getVideoAnimationTimeline(video) {
         }
     });
 
-    timeline.append(TweenLite.to(video, animationTime, {
+    var delay = 0;
+    timeline.add(TweenLite.to(video, animationTime, {
         tweenFrame: numFrames-1,
         ease: easing
-    }));
+    }), delay);
 
     return timeline;
 }

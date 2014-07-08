@@ -227,7 +227,9 @@ function teamAnimationSetup(dusty, blade, cabbie, dipper, windlifter) {
     dusty.windowX = -0.2;
     dusty.idle.windowScale = 0.35;
     dusty.rotation = 0.6;
+    dusty.filters[0].blur = 0;
     dusty.setStatic();
+    TweenLite.killTweensOf(dusty);
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Blade ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     placeJustOffscreen(blade);
@@ -262,7 +264,9 @@ function teamAnimationSetup(dusty, blade, cabbie, dipper, windlifter) {
     windlifter.setStatic();
 
 
-    dusty.pushToTop();
+    requestAnimFrame(function() {
+        dusty.pushToTop();
+    });
 }
 
 function animateInTeam() {
@@ -364,7 +368,6 @@ function animateOutTeam() {
                     })
                 ]
             })
-
         ],
         onComplete: function() {
             dusty.destroy();

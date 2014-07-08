@@ -1,9 +1,31 @@
 
 
 
+// =================================================================== //
+/* ************************** Audio Loader *************************** */
+// =================================================================== //
+var audioAssetData = require('./data/audioAssets.json');
+var numAudioAssets = audioAssetData.manifest.length;
+
+
+
+function startAudioLoader() {
+    // if initializeDefaultPlugins returns false, we cannot play sound
+    if (!createjs.Sound.initializeDefaultPlugins()) { return; }
+
+    createjs.Sound.alternateExtensions = ["mp3"];
+    createjs.Sound.addEventListener("fileload", function() {
+        "use strict";
+
+    });
+    createjs.Sound.registerManifest(audioAssetData.manifest);
+
+    createjs.Sound.setVolume(0.4);
+}
+
 
 // =================================================================== //
-/* ***************************** Loader ****************************** */
+/* ************************* Primary Loader ************************** */
 // =================================================================== //
 var assetData = require('./data/assets.json');
 
@@ -26,8 +48,17 @@ function startLoader(view) {
     };
 
     startTime = _.now();
+
+    startAudioLoader();
     loader.load();
 }
+
+
+
+
+
+
+
 
 
 module.exports = {

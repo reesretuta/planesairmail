@@ -10,7 +10,7 @@ var allCharacters = require('../pixi/allCharacters');
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
-var dusty, dipper, timelineIn, timelineOut;
+var dusty, dipper, timelineIn, timelineOut, timelineDustyHover;
 
 // =================================================================== //
 /* ************************* Initialization ************************** */
@@ -159,8 +159,6 @@ function generateAnimationOutTimeline() {
     var timelineOut = new TimelineMax({
         paused: true,
         onComplete: function() {
-            dusty.destroy();
-
             onAnimationOutComplete();
         }
     });

@@ -6,7 +6,6 @@
 (function() {
     "use strict";
 
-    var soundPlayer = require('../soundPlayer');
 
     var FooterView = Backbone.View.extend({
         el: '#footer',
@@ -61,11 +60,11 @@
 
             if(this.volumeOn) {
                 this.volumeOnAnimation.play(0);
-                soundPlayer.on();
             } else {
                 this.volumeOffAnimation.play(0);
-                soundPlayer.off();
             }
+
+            createjs.Sound.setMute(this.volumeOn);
         },
 
         getTimelineVolumeOn: function() {

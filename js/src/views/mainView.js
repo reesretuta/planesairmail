@@ -281,10 +281,10 @@
 
 
         hideSkip: function() {
-            TweenLite.to(this.$skip, 0.2, {bottom: '100%'});
+            TweenLite.to(this.$skip, 0.2, {bottom: '100%', opacity: 0});
         },
         showSkip: function() {
-            TweenLite.to(this.$skip, 0.2, {bottom: 0});
+            TweenLite.to(this.$skip, 0.2, {bottom: 0, opacity: 1});
         },
 
         showContent: function() {

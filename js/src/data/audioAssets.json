@@ -1,8 +1,45 @@
 {
-    "dusty": "assets/audio/dusty.mp3",
-    "bladeranger": "assets/audio/blade.mp3",
-    "cabbie": "assets/audio/cabbie.mp3",
-    "dipper": "assets/audio/dipper.mp3",
-    "windlifter": "assets/audio/windlifter.mp3",
-    "team": "assets/audio/team.mp3"
+    "manifest": [
+        {
+            "id": "Blade",
+            "src": "assets/audio/blade.ogg"
+        },
+        {
+            "id": "Cabbie",
+            "src": "assets/audio/cabbie.ogg"
+        },
+        {
+            "id": "Dipper",
+            "src": "assets/audio/dipper.ogg"
+        },
+        {
+            "id": "Dusty",
+            "src": "assets/audio/dusty.ogg"
+        },
+        {
+            "id": "Team",
+            "src": "assets/audio/team.ogg"
+        },
+        {
+            "id": "Windlifter",
+            "src": "assets/audio/windlifter.ogg"
+        },
+        {
+            "id": "IntroVideo",
+            "src": "assets/audio/comingatyou.ogg"
+        },
+        {
+            "id": "Wipescreen",
+            "src": "assets/audio/wipescreen.ogg"
+        }
+
+    ],
+    "characterAudioIds": {
+        "dusty": "Dusty",
+        "bladeranger": "Blade",
+        "cabbie": "Cabbie",
+        "dipper": "Dipper",
+        "windlifter": "Windlifter",
+        "team": "Team"
+    }
 }

@@ -139,7 +139,7 @@
     </div>
 </body>
 
-<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+
 
 <!----------------------------- Backbone Libraries ----------------------->
 <script src="js/lib/handlebars-v1.3.0.js"></script>
@@ -155,7 +155,8 @@
 <script src="js/lib/CSSPlugin.min.js"></script>
 <script src="js/lib/EasePack.min.js"></script>
 
-
+<!----------------------------- Other Libraries ----------------------->
+<script src="http://code.createjs.com/soundjs-0.5.2.min.js"></script>
 <script src='js/lib/fastclick.js'></script>
 
 

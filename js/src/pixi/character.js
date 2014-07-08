@@ -85,6 +85,11 @@
             this.scale.x = -(this.scale.x);
         },
         pushToTop: function() {
+            if(_.isUndefined(this.parent)) {
+                console.log('Error! No parent defined for character:',this.name + '.','It is likely pustToTop() was called after character was added but before PIXI scene was updated.');
+                return;
+            }
+
             var length = this.parent.children.length;
 
             this.parent.addChildAt(this, length-1);

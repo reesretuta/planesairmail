@@ -67,6 +67,8 @@ function getVideoAnimationTimeline(video) {
         onStart: function() {
             video.visible = true;
             video.tweenFrame = 0;
+
+            createjs.Sound.play('Wipescreen');
         },
         onComplete: function() {
             video.destroy();
