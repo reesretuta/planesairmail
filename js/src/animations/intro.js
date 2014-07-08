@@ -379,8 +379,8 @@ function updateVideoAndFrame(width, height) {
     updateLogo(width, height, videoScale * video.getLocalBounds().height);
 }
 function updateTopFrameBackground(width, height, frameWidth, frameHeight) {
-    var sideWidth = (width-frameWidth)/2;
-    var topHeight = (height/2-frameHeight);
+    var sideWidth = (width-frameWidth)/2 + frameWidth * 100/975;
+    var topHeight = (height/2-frameHeight) + frameHeight * 100/326;
 
     bgColors.topLeft.scale.x = sideWidth;
     bgColors.topLeft.scale.y = height/2;
@@ -390,22 +390,22 @@ function updateTopFrameBackground(width, height, frameWidth, frameHeight) {
 
     bgColors.topRight.scale.x = sideWidth;
     bgColors.topRight.scale.y = height/2;
-    bgColors.topRight.windowX = frameWidth/(2*width);
+    bgColors.topRight.windowX = (width-sideWidth)/width - 0.5;
 }
 function updateBtmFrameBackground(width, height, frameWidth, frameHeight) {
-    var sideWidth = (width-frameWidth)/2;
-    var btmHeight = (height/2-frameHeight);
+    var sideWidth = (width-frameWidth)/2 + frameWidth * 100/975;
+    var btmHeight = (height/2-frameHeight) + frameHeight * 100/326;
 
     bgColors.btmLeft.scale.x = sideWidth;
     bgColors.btmLeft.scale.y = height/2;
 
     bgColors.btm.scale.x = width;
     bgColors.btm.scale.y = btmHeight;
-    bgColors.btm.windowY = frameHeight/height;
+    bgColors.btm.windowY = (height-btmHeight)/height - 0.5;
 
     bgColors.btmRight.scale.x = sideWidth;
     bgColors.btmRight.scale.y = height/2;
-    bgColors.btmRight.windowX = frameWidth/(2*width);
+    bgColors.btmRight.windowX = (width-sideWidth)/width - 0.5;
 }
 
 
