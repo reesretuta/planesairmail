@@ -40,9 +40,6 @@
     .cabbie {
         background-image: url('assets/img/response_bg_cabbie.jpg');
     }
-    .bladeranger {
-        background-image: url('assets/img/response_bg_blade.jpg');
-    }
     .dipper {
         background-image: url('assets/img/response_bg_dipper.jpg');
     }
@@ -51,6 +48,9 @@
     }
     .team {
         background-image: url('assets/img/response_bg_team.jpg');
+    }
+    .bladeranger {
+        background-image: url('assets/img/response_bg_blade.jpg');
     }
     </style>
 </head>
@@ -64,7 +64,7 @@
     $sincerely = $_GET['sincerely'];
     $from = $_GET['from'];
     switch ($char) {
-        case 'blade':
+        case 'bladeranger':
             $char = '/assets/spritesheets/blade/Guide_BladeRanger_body_970x600_00000.png';
         break;
         case 'cabbie':
