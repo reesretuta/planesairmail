@@ -25,6 +25,16 @@
             .value();
     }
 
+    function getCorrectPersonalityModel(model, personalityModels) {
+        var val = model.get('value');
+
+        var personalityModel = _.filter(personalityModels, function(mod) {
+            return val === mod.get('name');
+        })[0];
+
+        return personalityModel;
+    }
+
 
     var cannedOrder = getOrder(cannedQuestionData.options, 'value');
     var personalityOrder = getOrder(personalityQuestionData.questions, 'name');
@@ -69,17 +79,22 @@
             return response;
         },
 
-        getPersonalityResponses: function(personalityCannedModels, character) {
+        getPersonalityResponses: function(personalityCannedModels, personalityModels, character) {
 
             var response = _.chain(personalityCannedModels)
                 .sortBy(function(model) { return personalityOrder[model.get('value')]; })    // sort based on personalityOrder object above
                 .map(function(model) {                                                      // grab responses for each question
-                    var template = responseMap[character][model.get('value')];
+                    var personalityModel = getCorrectPersonalityModel(model, personalityModels);
 
-                    // ****** If statements & special cases go here *********
-                    
+                    var template;
+                    if(personalityModel.get('value') === 'frenchfries' || personalityModel.get('value') === 'chickennuggets') {
+                        template = responseMap[character][model.get('value') + '-plural'];
+                    } else {
+                        template = responseMap[character][model.get('value')];
+                    }
 
-                    return template.replace('%template%', model.get('text'));
+
+                    return template.replace('%template%', personalityModel.get('text'));
                 })
                 .value();       // exit chain
 
@@ -99,28 +114,27 @@
             var answeredQuestions = _.filter(questionModels, isAnswered);
             
             var cannedModels = _.filter(answeredQuestions, function(model) { return model.get('class') === 'canned'; });
-            
+            var personalityModels = _.filter(answeredQuestions, function(model) { return model.get('class') !== 'canned'; });
+
+
             var trueCannedValues;
-            
             if(cannedModels.length === 0) {
               trueCannedValues = _.chain(cannedQuestionData.options)
-                      .filter(isTrueCanned)
-                      .pluck('value')
-                      .value();
+                  .pluck('value')
+                  .filter(isTrueCanned)
+                  .value();
             } else {
               trueCannedValues = _.chain(cannedModels)
-                      .filter(isTrueCanned)
-                      .map(function(model) { return model.get('value'); })
-                      .value();
+                  .map(function(model) { return model.get('value'); })
+                  .filter(isTrueCanned)
+                  .value();
             }
 
 
-            
             var personalityCannedModels = _.filter(cannedModels, function(model) { return !isTrueCanned(model.get('value')); });
             
             var cannedResponses = this.getCannedResponses(trueCannedValues, character);
-            var personalityResponses = this.getPersonalityResponses(personalityCannedModels, character);
-            
+            var personalityResponses = this.getPersonalityResponses(personalityCannedModels, personalityModels, character);
 
 
             this.$background.addClass(character);

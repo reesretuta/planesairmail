@@ -56,8 +56,6 @@ var QuestionView = Backbone.View.extend({
     },
 
     isCanned: function() {
-        "use strict";
-
         return false;
     },
 
