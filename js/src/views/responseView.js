@@ -53,6 +53,12 @@
       return _.isUndefined(personalityOrder[value]);
     }
 
+    function lastCharIsPunctuation(str) {
+        var c = str.charAt(str.length-1);
+
+        return c === '.' || c === ',' || c === '!';
+    }
+
     var ResponseView = Backbone.View.extend({
         character: '',
         el: '#response',
@@ -145,7 +151,11 @@
             var greeting = responseMap[character]['greeting'].replace('%template%', userName);
             var body1 = responseMap[character]['body1'];
             var body2 = responseMap[character]['body2'].replace('%template%', userName);
-            var sincerely = responseMap[character]['sincerely'] +", ";
+            var sincerely = responseMap[character].sincerely;
+
+            if(!lastCharIsPunctuation(sincerely)) {
+                sincerely += ',';
+            }
 
 
             var response = body1 + ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ') + ' ' + body2;
