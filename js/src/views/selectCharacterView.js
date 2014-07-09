@@ -23,10 +23,7 @@
         },
 
         getSelectedCharacter: function() {
-            var value = this.model.get('value');
-            var options = this.model.get('options');
-
-            return _.findWhere(options, {value: value});
+            return this.model.get('text');
         },
         onRadioChange: function(e) {
             QuestionView.prototype.onRadioChange.call(this, e);

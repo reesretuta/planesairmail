@@ -1,9 +1,10 @@
 
-var device = require('../device');
+
 
 var template = require('../templates/question.hbs');
 var itemAnimationsModule = require('../animations/pageItems');
 
+var device = require('../device');
 var isMobile = device.isMobile();
 
 var QuestionView = Backbone.View.extend({
@@ -33,12 +34,7 @@ var QuestionView = Backbone.View.extend({
     getAnimations: function() {
         "use strict";
 
-        if(this.isCanned()) {
-            return itemAnimationsModule.getRandomCannedAnimations(this.$options);
-        } else {
-            return itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
-        }
-
+        return itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
     },
     initAnimations: function() {
         "use strict";
@@ -59,36 +55,10 @@ var QuestionView = Backbone.View.extend({
         }.bind(this);
     },
 
-    removeOptions: function() {
-        "use strict";
-
-        this.$options.remove();
-    },
-    setOptions: function(options) {
-        "use strict";
-
-        this.model.set('options', options);
-
-        //reinitialize
-        this.el.innerHTML = this.template(this.model.attributes);
-
-        this.$options = this.$el.find('div.option');
-
-        if(!isMobile)
-            this.initAnimations();
-    },
-
-    setCharacter: function(character) {
-        "use strict";
-
-        var copy = this.model.get('copy').replace('%character%', character);
-
-        this.model.set('copy', copy);
-        this.$copy.html(copy);
-    },
     isCanned: function() {
         "use strict";
-        return this.model.attributes.class === 'canned';
+
+        return false;
     },
 
     // ============================================================ //
@@ -108,14 +78,14 @@ var QuestionView = Backbone.View.extend({
     show: function() {
         this.$el.addClass('active');
 
-        if(!device.isMobile()) {
+        if(!isMobile) {
             this.animationIn.play();
         } else {
             this.showCallback();
         }
     },
     hide: function() {
-        if(!device.isMobile()) {
+        if(!isMobile) {
             this.animationOut.play();
         } else {
             this.$el.removeClass('active');
