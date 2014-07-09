@@ -131,7 +131,7 @@
             }
 
 
-            var personalityCannedModels = _.filter(cannedModels, function(model) { return !isTrueCanned(model.get('value')); });
+            var personalityCannedModels = _.reject(cannedModels, isTrueCanned);
             
             var cannedResponses = this.getCannedResponses(trueCannedValues, character);
             var personalityResponses = this.getPersonalityResponses(personalityCannedModels, personalityModels, character);
