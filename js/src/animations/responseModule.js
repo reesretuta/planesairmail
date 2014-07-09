@@ -39,7 +39,8 @@ var animateIn = (function() {
             cabbie.idle.windowScale = 0.6;
             placeJustOffscreen(cabbie);
             cabbie.windowX = 0.5;
-            cabbie.rotation = 0.65;
+            cabbie.rotation = 0;
+            cabbie.filters[0].blur = 0;
 
             TweenLite.to(cabbie, animationTime, {
                 windowX: 0.55,
@@ -52,8 +53,9 @@ var animateIn = (function() {
             dipper.idle.windowScale = 0.4;
             placeJustOffscreen(dipper);
             dipper.windowX = 0.6;
-            dipper.scale.x = 1;
-            dipper.rotation = 0.2;
+            dipper.scale.x = -1;
+            dipper.rotation = 0;
+            dipper.filters[0].blur = 0;
 
            TweenLite.to(dipper, animationTime, {
                windowX: 0.47,
@@ -68,7 +70,7 @@ var animateIn = (function() {
             windlifter.windowX = 0.5;
 
             TweenLite.to(windlifter, animationTime, {
-                windowX: 0.14,
+                windowX: 0.17,
                 windowY: 0.27
             });
         },

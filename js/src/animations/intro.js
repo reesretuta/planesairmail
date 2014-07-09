@@ -5,7 +5,7 @@ function getIntroTextures() {
     return PIXI.getTextures('assets/introVideo/PLANES2_760x428_2_00', 0, 122);
 }
 function getLogoTextures() {
-    return PIXI.getTextures('assets/spritesheets/logo/PLANE_logo_tall_0000', 0, 72);
+    return PIXI.getTextures('assets/spritesheets/logo/PLANE_logo_tall_480x260_0000', 0, 72);
 }
 
 // =================================================================== //
@@ -222,6 +222,7 @@ function getVideoAnimationTimeline(video) {
         onStart: function() {
             video.visible = true;
             video.tweenFrame = 0;
+            createjs.Sound.play('IntroVideo', {delay: 50});
         },
         onComplete: function() {
             video.destroy();
@@ -230,10 +231,11 @@ function getVideoAnimationTimeline(video) {
         }
     });
 
-    timeline.append(TweenLite.to(video, animationTime, {
+    var delay = 0;
+    timeline.add(TweenLite.to(video, animationTime, {
         tweenFrame: numFrames-1,
         ease: easing
-    }));
+    }), delay);
 
     return timeline;
 }
@@ -332,7 +334,7 @@ function updateLogo(width, height, videoHeight) {
     var bounds = logo.getLocalBounds();
 
     var newLogoHeight = (height - videoHeight)/2;
-    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1.2);
+    var scale = Math.min(newLogoHeight/(bounds.height - 55), 1);
 
     logo.scale.x = scale;
     logo.scale.y = scale;
@@ -377,8 +379,8 @@ function updateVideoAndFrame(width, height) {
     updateLogo(width, height, videoScale * video.getLocalBounds().height);
 }
 function updateTopFrameBackground(width, height, frameWidth, frameHeight) {
-    var sideWidth = (width-frameWidth)/2;
-    var topHeight = (height/2-frameHeight);
+    var sideWidth = (width-frameWidth)/2 + frameWidth * 100/975;
+    var topHeight = (height/2-frameHeight) + frameHeight * 100/326;
 
     bgColors.topLeft.scale.x = sideWidth;
     bgColors.topLeft.scale.y = height/2;
@@ -388,22 +390,22 @@ function updateTopFrameBackground(width, height, frameWidth, frameHeight) {
 
     bgColors.topRight.scale.x = sideWidth;
     bgColors.topRight.scale.y = height/2;
-    bgColors.topRight.windowX = frameWidth/(2*width);
+    bgColors.topRight.windowX = (width-sideWidth)/width - 0.5;
 }
 function updateBtmFrameBackground(width, height, frameWidth, frameHeight) {
-    var sideWidth = (width-frameWidth)/2;
-    var btmHeight = (height/2-frameHeight);
+    var sideWidth = (width-frameWidth)/2 + frameWidth * 100/975;
+    var btmHeight = (height/2-frameHeight) + frameHeight * 100/326;
 
     bgColors.btmLeft.scale.x = sideWidth;
     bgColors.btmLeft.scale.y = height/2;
 
     bgColors.btm.scale.x = width;
     bgColors.btm.scale.y = btmHeight;
-    bgColors.btm.windowY = frameHeight/height;
+    bgColors.btm.windowY = (height-btmHeight)/height - 0.5;
 
     bgColors.btmRight.scale.x = sideWidth;
     bgColors.btmRight.scale.y = height/2;
-    bgColors.btmRight.windowX = frameWidth/(2*width);
+    bgColors.btmRight.windowX = (width-sideWidth)/width - 0.5;
 }
 
 

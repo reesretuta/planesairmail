@@ -1,3 +1,10 @@
+<?php
+
+
+$server = "http://$_SERVER[HTTP_HOST]/";
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +19,10 @@
     <!-- OG TAGS-->
     <meta property="og:title" content="Planes Airmail"/>
     <meta property="og:type" content="video.movie"/>
-    <meta property="og:url" content="http://planesairmail.com"/>
-    <meta property="og:image" content="" name="thumb" />
-    <link rel="image_src" href="/" />
+    <meta property="og:url" content="<?= $server; ?>"/>
+    <meta property="og:image" content="<?= $server; ?>favicon.ico" name="thumb" />
+    <link rel="shortcut icon" href="<?= $server; ?>favicon.ico" type="image/icon">
+    <link rel="icon" href="<?= $server; ?>favicon.ico" type="image/icon">
     <meta property="og:site_name" content="Planes Airmail"/>
     <meta property="og:description" content=""/>
 
@@ -139,7 +147,7 @@
     </div>
 </body>
 
-<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+
 
 <!----------------------------- Backbone Libraries ----------------------->
 <script src="js/lib/handlebars-v1.3.0.js"></script>
@@ -155,7 +163,8 @@
 <script src="js/lib/CSSPlugin.min.js"></script>
 <script src="js/lib/EasePack.min.js"></script>
 
-
+<!----------------------------- Other Libraries ----------------------->
+<script src="http://code.createjs.com/soundjs-0.5.2.min.js"></script>
 <script src='js/lib/fastclick.js'></script>
 
 
