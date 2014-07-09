@@ -22,6 +22,9 @@
             QuestionView.prototype.initialize.call(this, options);
         },
 
+        getSelectedCharacter: function() {
+            return this.model.get('text');
+        },
         onRadioChange: function(e) {
             QuestionView.prototype.onRadioChange.call(this, e);
 

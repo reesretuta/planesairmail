@@ -12,6 +12,7 @@
     var dustyDipperModule = require('../animations/dustyDipper');
     var parachutersModule = require('../animations/parachuters');
     var characterModule = require('../animations/characterModule');
+    var responseModule = require('../animations/responseModule');
 
 
     // ============================================================ //
@@ -33,6 +34,7 @@
         bladewipeModule.initialize(this);
         characterModule.initialize(this);
         dustyDipperModule.initialize(this);
+        responseModule.initialize(this);
     };
 
     // ============================================================ //

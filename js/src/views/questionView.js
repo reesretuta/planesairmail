@@ -1,9 +1,10 @@
 
-var device = require('../device');
+
 
 var template = require('../templates/question.hbs');
 var itemAnimationsModule = require('../animations/pageItems');
 
+var device = require('../device');
 var isMobile = device.isMobile();
 
 var QuestionView = Backbone.View.extend({
@@ -24,21 +25,21 @@ var QuestionView = Backbone.View.extend({
 
         this.$el.addClass(this.model.attributes.class);
 
+        this.$copy = this.$el.find('div.copy');
         this.$options = this.$el.find('div.option');
 
         if(this.$options.length !== 0 && !isMobile)
             this.initAnimations();
     },
+    getAnimations: function() {
+        "use strict";
+
+        return itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
+    },
     initAnimations: function() {
         "use strict";
 
-        var animations;
-
-        if(this.isCanned()) {
-            animations = itemAnimationsModule.getRandomCannedAnimations(this.$options);
-        } else {
-            animations = itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
-        }
+        var animations = this.getAnimations();
 
         this.animationIn = animations[0];
         this.animationOut = animations[1];
@@ -54,27 +55,10 @@ var QuestionView = Backbone.View.extend({
         }.bind(this);
     },
 
-    removeOptions: function() {
-        "use strict";
-
-        this.$options.remove();
-    },
-    setOptions: function(options) {
-        "use strict";
-
-        this.model.set('options', options);
-
-        //reinitialize
-        this.el.innerHTML = this.template(this.model.attributes);
-
-        this.$options = this.$el.find('div.option');
-
-        if(!isMobile)
-            this.initAnimations();
-    },
     isCanned: function() {
         "use strict";
-        return this.model.attributes.class === 'canned';
+
+        return false;
     },
 
     // ============================================================ //
@@ -94,14 +78,14 @@ var QuestionView = Backbone.View.extend({
     show: function() {
         this.$el.addClass('active');
 
-        if(!device.isMobile()) {
+        if(!isMobile) {
             this.animationIn.play();
         } else {
             this.showCallback();
         }
     },
     hide: function() {
-        if(!device.isMobile()) {
+        if(!isMobile) {
             this.animationOut.play();
         } else {
             this.$el.removeClass('active');

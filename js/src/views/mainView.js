@@ -17,6 +17,7 @@
     var IntroView = require('./introView');
     var EnterNameView = require('./enterNameView');
     var QuestionView = require('./questionView');
+    var CannedQuestionView = require('./cannedQuestionView');
     var SelectCharacterView = require('./selectCharacterView');
     var ResponseView = require('./responseView');
     var FooterView = require('./footerView');
@@ -90,11 +91,6 @@
 
             this.initWindowEvents();
 
-            //setup options for first canned view
-            this.cannedViews = _.filter(this.pages, function(page) {
-                return page.model.attributes.class === 'canned';
-            });
-
             this.hideContent();
         },
 
@@ -135,14 +131,33 @@
             var charModel = _.first(allQuestions.models);
             var questionModels = _.rest(allQuestions.models);
 
+            var partitionedQuestionModels = _.partition(questionModels, function(model) {
+                return model.get('class') !== 'canned';
+            });
+
+            var personalityModels = partitionedQuestionModels[0];
+            var cannedModels = partitionedQuestionModels[1];
+
+
+
+
             var enterNameView = new EnterNameView();
             var selectCharView = new SelectCharacterView({model: charModel, parent: this.$pagesContainer});
 
-            var questionViews = _.map(questionModels, function(questionModel) {
-                return new QuestionView({model: questionModel, parent: this.$pagesContainer});
-            }, this);
+            var personalityViews = _.map(personalityModels, function(model) {
+                return new QuestionView({model: model, parent: this.$pagesContainer});
+            }.bind(this));
 
-            this.pages = [enterNameView, selectCharView].concat(questionViews);
+            var cannedViews = _.map(cannedModels, function(model) {
+                return new CannedQuestionView({model: model, parent: this.$pagesContainer});
+            }.bind(this));
+
+
+
+            this.cannedViews = cannedViews;
+            this.selectCharacterView = selectCharView;
+
+            this.pages = [enterNameView, selectCharView].concat(personalityViews, cannedViews);
         },
         initJqueryVariables: function() {
             this.$window = $(window);
@@ -199,9 +214,14 @@
                 this.hideSkip();
             }
 
-            if(this.activePageIndex === 1 && !isMobile) {
-                //animate in character
-                this.scene.animateInUserCharacter();
+            //active page is character select
+            if(this.activePageIndex === 1) {
+                this.updateCannedCopy();
+
+                if(!isMobile) {
+                    //animate in character
+                    this.scene.animateInUserCharacter();
+                }
             }
 
             activePage.onHideComplete(this.showPageAfterHide.bind(this));
@@ -296,6 +316,13 @@
             this.$pagesContainer.hide();
             this.$header.hide();
             this.footer.hide();
+        },
+        updateCannedCopy: function() {
+            var character = this.selectCharacterView.getSelectedCharacter();
+
+            _.each(this.cannedViews, function(view) {
+                view.setCharacter(character);
+            });
         },
         // ==================================================================== //
         /* ************************* Render Functions ************************* */

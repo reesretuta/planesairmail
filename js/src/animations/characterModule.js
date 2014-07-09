@@ -5,10 +5,24 @@
 var allCharacters = require('../pixi/allCharacters');
 var placeJustOffscreen = require('./placeJustOffscreen');
 
+
 // =================================================================== //
 /* **************************** Variables **************************** */
 // =================================================================== //
 var characterName;
+var $window = $(window);
+
+
+
+
+function getOffscreenX(character) {
+    var width = character.getBounds().width;
+    var anchorX = character.idle.anchor.x;
+    var windowWidth = $window.width();
+
+    return (windowWidth + anchorX*width)/windowWidth;
+}
+
 
 
 // =================================================================== //
@@ -224,44 +238,38 @@ function teamAnimationSetup(dusty, blade, cabbie, dipper, windlifter) {
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Dusty ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     placeJustOffscreen(dusty);
-    dusty.windowX = -0.2;
-    dusty.idle.windowScale = 0.35;
+    dusty.windowX = 1 - getOffscreenX(dusty);
+    dusty.idle.windowScale = 0.27;
     dusty.rotation = 0.6;
     dusty.filters[0].blur = 0;
-    dusty.setStatic();
     TweenLite.killTweensOf(dusty);
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Blade ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     placeJustOffscreen(blade);
-    blade.windowX = 0.55;
-    blade.idle.windowScale = 0.3;
-    blade.setStatic();
+    blade.windowX = 0.45;
+    blade.idle.windowScale = 0.33;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cabbie ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    cabbie.windowX = 0.5;
-    cabbie.windowY = -0.3;
-    cabbie.idle.windowScale = 0.2;
-    cabbie.filters[0].blur = 4;
-    cabbie.setStatic();
+    placeJustOffscreen(cabbie);
+    cabbie.windowX = 0.14;
+    cabbie.idle.windowScale = 0.25;
+    cabbie.filters[0].blur = 0;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Dipper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    dipper.rotation = 0.55;
-
-    dipper.windowX = -0.3;
-    dipper.windowY = 0.6;
-
-    dipper.filters[0].blur = 3;
-    dipper.idle.windowScale = 0.2;
-    dipper.setStatic();
+    dipper.rotation = -0.3;
+    dipper.windowX = -0.2;
+    dipper.windowY = 0.25;
+    dipper.filters[0].blur = 0;
+    dipper.idle.windowScale = 0.22;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~ Windlifter ~~~~~~~~~~~~~~~~~~~~~~~~~
-    windlifter.windowX = -0.3;
-    windlifter.windowY = 0.5;
-    windlifter.idle.windowScale = 0.08;
-    windlifter.rotation = 0.4;
-    windlifter.filters[0].blur = 1;
+    windlifter.windowX = -0.1;
+    windlifter.windowY = 0.7;
+//    windlifter.idle.windowScale = 0.08;
+    windlifter.idle.windowScale = 0.12;
+    windlifter.rotation = -0.3;
+    windlifter.filters[0].blur = 0;
     windlifter.flip();
-    windlifter.setStatic();
 
 
     requestAnimFrame(function() {
@@ -270,49 +278,138 @@ function teamAnimationSetup(dusty, blade, cabbie, dipper, windlifter) {
 }
 
 function animateInTeam() {
-    var animationTime = 2.3;
+    var animationTime = 3.8;
     var easing = 'Cubic.easeInOut';
+
+//    animationTime = 10;
 
     var dusty = allCharacters.dustyFour;
     var blade = allCharacters.blade;
-    var cabbie = allCharacters.cabbie;
+    var cabbie = allCharacters.cabbieTwo;
     var dipper = allCharacters.dipper;
     var windlifter = allCharacters.windlifter;
 
     teamAnimationSetup(dusty, blade, cabbie, dipper, windlifter);
 
-    new TimelineMax({
-        stagger: 0.27,
-        align: 'start',
-        tweens: [
-            TweenLite.to(dusty, animationTime, {
-                windowY: 0.24,
-                windowX: 0.2,
-                ease: easing
-            }),
-            TweenLite.to(blade, animationTime, {
-                windowY: 0.59,
-                windowX: 0.83,
-                ease: easing
-            }),
-            TweenLite.to(dipper, animationTime, {
-                windowY: 0.52,
-                windowX: 0.05,
-                rotation: 0,
-                ease: easing
-            }),
-            TweenLite.to(cabbie, animationTime, {
-                windowY: 0.2,
-                windowX: 0.78,
-                ease: easing
-            }),
-            TweenLite.to(windlifter, animationTime, {
-                windowY: 0.7,
-                windowX: 0.16,
-                ease: easing
-            })
-        ]
+    var timeline = new TimelineMax({
+        paused: true
     });
+    // ~~~~~~~~~~~~~~~~~~ Animation Start Labels ~~~~~~~~~~~~~~~~~~~
+    timeline.addLabel('Blade', 0);
+    timeline.addLabel('Cabbie', animationTime * 0.13);
+    timeline.addLabel('Windlifter', animationTime * 0.15);
+    timeline.addLabel('Dipper', animationTime * 0.46);
+    timeline.addLabel('Dusty', animationTime * 0.85);
+
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Cabbie ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var cabbieAnimationTime = animationTime * 1.3;
+    timeline.add(TweenLite.to(cabbie, cabbieAnimationTime, {
+        windowX: getOffscreenX(cabbie),
+        ease: easing
+    }), 'Cabbie');
+
+    timeline.add(TweenLite.to(cabbie, cabbieAnimationTime, {
+        windowY: 0.3,
+        ease: 'Expo.easeOut'
+    }), 'Cabbie');
+
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Blade ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var bladeAnimationTime = animationTime;
+
+    timeline.add(TweenLite.to(blade, bladeAnimationTime, {
+        windowX: getOffscreenX(blade),
+        ease: easing
+    }), 'Blade');
+
+    timeline.add(TweenLite.to(blade, bladeAnimationTime, {
+        windowY: 0.5,
+        ease: 'Back.easeOut'
+    }), 'Blade');
+
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~ Windlifter ~~~~~~~~~~~~~~~~~~~~~~~~~
+    var windlifterAnimTime = animationTime * 1.6;
+
+    timeline.add(TweenLite.to(windlifter, windlifterAnimTime, {
+        windowX: getOffscreenX(windlifter),
+        rotation: 0.4,
+        ease: easing
+    }), 'Windlifter');
+
+    timeline.add(TweenLite.to(windlifter, windlifterAnimTime * 0.7, {
+        windowY: 0.35,
+        ease: 'Quad.easeIn'
+    }), 'Windlifter');
+
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Dipper ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var dipperAnimTime = animationTime * 1.5;
+
+    timeline.add(TweenLite.to(dipper, dipperAnimTime, {
+        windowX: getOffscreenX(dipper),
+        rotation: 0,
+        ease: easing
+    }), 'Dipper');
+
+    timeline.add(TweenLite.to(dipper, dipperAnimTime, {
+        windowY: 0.6,
+        ease: 'Back.easeOut'
+    }), 'Dipper');
+
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Dusty ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var dustyAnimTime = animationTime * 0.7;
+
+    timeline.add(TweenLite.to(dusty, dustyAnimTime, {
+        windowX: 0.2,
+        ease: 'Quad.easeInOut'
+    }), 'Dusty');
+
+    timeline.add(TweenLite.to(dusty, dustyAnimTime, {
+        windowY: 0.24,
+        ease: 'Sine.easeOut'
+    }), 'Dusty');
+
+
+
+
+
+    timeline.play();
+
+//    new TimelineMax({
+//        stagger: 0.27,
+//        align: 'start',
+//        tweens: [
+//            TweenLite.to(dusty, animationTime, {
+//                windowY: 0.24,
+//                windowX: 0.2,
+//                ease: easing
+//            }),
+//            TweenLite.to(blade, animationTime, {
+//                windowY: 0.59,
+//                windowX: 0.83,
+//                ease: easing
+//            }),
+//            TweenLite.to(dipper, animationTime, {
+//                windowY: 0.52,
+//                windowX: 0.05,
+//                rotation: 0,
+//                ease: easing
+//            }),
+//            TweenLite.to(cabbie, animationTime, {
+//                windowY: 0.2,
+//                windowX: 0.78,
+//                ease: easing
+//            }),
+//            TweenLite.to(windlifter, animationTime, {
+//                windowY: 0.7,
+//                windowX: 0.16,
+//                ease: easing
+//            })
+//        ]
+//    });
 }
 
 function animateOutTeam() {
@@ -325,56 +422,74 @@ function animateOutTeam() {
     var dipper = allCharacters.dipper;
     var windlifter = allCharacters.windlifter;
 
-    new TimelineMax({
-        stagger: 0.29,
-        align: 'start',
-        tweens: [
-            new TimelineMax({
-                tweens: [
-                    TweenLite.to(cabbie, animationTime, {
-                        windowY: 0.1,
-                        ease: 'Back.easeIn'
-                    }),
-                    TweenLite.to(cabbie, animationTime, {
-                        windowX: 1.6,
-                        ease: easing
-                    })
-                ]
-            }),
-            TweenLite.to(windlifter, animationTime, {
-                windowY: 0.8,
-                windowX: 1.2,
-                ease: easing
-            }),
-            TweenLite.to(dusty, animationTime, {
-                windowY: 0.2,
-                windowX: 1.4,
-                ease: easing
-            }),
-            TweenLite.to(blade, animationTime, {
-                windowY: 0.6,
-                windowX: 1.6,
-                ease: easing
-            }),
-            new TimelineMax({
-                tweens: [
-                    TweenLite.to(dipper, animationTime, {
-                        windowY: 0.5,
-                        ease: 'Back.easeIn'
-                    }),
-                    TweenLite.to(dipper, animationTime, {
-                        windowX: 1.3,
-                        ease: easing
-                    })
-                ]
-            })
-        ],
+    var timeline = new TimelineMax({
+        paused: true,
         onComplete: function() {
-            dusty.destroy();
-
             onAnimationOutCallback();
         }
     });
+
+    timeline.add(TweenLite.to(dusty, animationTime, {
+        windowY: 0.1,
+        ease: 'Back.easeIn'
+    }), 0);
+    timeline.add(TweenLite.to(dusty, animationTime, {
+        windowX: getOffscreenX(dusty),
+        ease: easing
+    }), 0);
+
+
+    timeline.play();
+//    new TimelineMax({
+//        stagger: 0.29,
+//        align: 'start',
+//        tweens: [
+//            new TimelineMax({
+//                tweens: [
+//                    TweenLite.to(cabbie, animationTime, {
+//                        windowY: 0.1,
+//                        ease: 'Back.easeIn'
+//                    }),
+//                    TweenLite.to(cabbie, animationTime, {
+//                        windowX: 1.6,
+//                        ease: easing
+//                    })
+//                ]
+//            }),
+//            TweenLite.to(windlifter, animationTime, {
+//                windowY: 0.8,
+//                windowX: 1.2,
+//                ease: easing
+//            }),
+//            TweenLite.to(dusty, animationTime, {
+//                windowY: 0.2,
+//                windowX: 1.4,
+//                ease: easing
+//            }),
+//            TweenLite.to(blade, animationTime, {
+//                windowY: 0.6,
+//                windowX: 1.6,
+//                ease: easing
+//            }),
+//            new TimelineMax({
+//                tweens: [
+//                    TweenLite.to(dipper, animationTime, {
+//                        windowY: 0.5,
+//                        ease: 'Back.easeIn'
+//                    }),
+//                    TweenLite.to(dipper, animationTime, {
+//                        windowX: 1.3,
+//                        ease: easing
+//                    })
+//                ]
+//            })
+//        ],
+//        onComplete: function() {
+//            dusty.destroy();
+//
+//            onAnimationOutCallback();
+//        }
+//    });
 }
 
 // =================================================================== //
@@ -395,7 +510,7 @@ var animationModule = {
         animateIn = animationsIn[characterName];
         animateOut = animationsOut[characterName];
 
-        animateIn();
+        setTimeout(animateIn, 700);
     },
     animateOut: function() {
         if(characterName === 'team') {

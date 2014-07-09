@@ -17,4 +17,4 @@
         <a href="/" id="sendmore"></a>
     </div>
 </div>
-<img id="letterbg" src="/assets/img/response_letter_bg.jpg" />
+<!--<img id="letterbg" src="/assets/img/response_letter_bg.jpg" />-->
