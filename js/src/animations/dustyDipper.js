@@ -215,7 +215,7 @@ function generateAnimationDustyOut(dusty) {
 
     timeline.add(TweenLite.to(dusty, animationTime, {
         windowY: -0.2,
-        windowX: 0.6,
+        windowX: 0.7,
         ease: easing
     }), 0);
 

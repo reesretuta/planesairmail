@@ -16,6 +16,9 @@
     function getCabbieTextures() {
         return PIXI.getTextures('assets/spritesheets/cabbie/Cabbie_000', 0, 12);
     }
+    function getCabbie2Textures() {
+        return PIXI.getTextures('assets/spritesheets/cabbie2/Cabbie_2_0000', 0, 12);
+    }
     function getDipperTextures() {
         return PIXI.getTextures('assets/spritesheets/dipper/Dipper_000', 0, 12);
     }
@@ -60,6 +63,9 @@
         }),
         cabbie: _.once(function() {
             return initCharacter('Cabbie', getCabbieTextures(), {x: 545/1200, y: 351/622});
+        }),
+        cabbieTwo: _.once(function() {
+            return initCharacter('Cabbie2', getCabbie2Textures(), {x: 408/750, y: 238/380});
         }),
         dipper: _.once(function() {
             return initCharacter('Dipper', getDipperTextures(), {x: 539/1200, y: 435/638});
