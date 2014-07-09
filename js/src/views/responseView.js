@@ -38,6 +38,10 @@
     function isAnswered(model) {
         return model.get('value') !== '';
     }
+    
+    function isTrueCanned(value) {
+      return _.isUndefined(personalityOrder[value]);
+    }
 
     var ResponseView = Backbone.View.extend({
         character: '',
@@ -55,26 +59,25 @@
             return nameModel.get('value') || 'Friend';
         },
 
-        getCannedResponses: function(answeredQuestions, character) {
+        getCannedResponses: function(cannedValues, character) {
 
-            var response = _.chain(answeredQuestions)
-                .filter(function(model) { return model.get('class') === 'canned'; })    // filter down to just canned questions
-                .sortBy(function(model) { return cannedOrder[model.get('value')]; })    // sort based on cannedOrder object above
-                .map(function(model) { return responseMap[character][model.get('value')]; }) // grab responses for each question
+            var response = _.chain(cannedValues)
+                .sortBy(function(value) { return cannedOrder[value]; })    // sort based on cannedOrder object above
+                .map(function(value) { return responseMap[character][value]; }) // grab responses for each question
                 .value();       // exit chain
 
             return response;
         },
 
-        getPersonalityResponses: function(answeredQuestions, character) {
+        getPersonalityResponses: function(personalityCannedModels, character) {
 
-            var response = _.chain(answeredQuestions)
-                .filter(function(model) { return model.get('class') !== 'canned'; })    // filter down to just personality questions
-                .sortBy(function(model) { return personalityOrder[model.get('name')]; })    // sort based on personalityOrder object above
+            var response = _.chain(personalityCannedModels)
+                .sortBy(function(model) { return personalityOrder[model.get('value')]; })    // sort based on personalityOrder object above
                 .map(function(model) {                                                      // grab responses for each question
-                    var template = responseMap[character][model.get('name')];
+                    var template = responseMap[character][model.get('value')];
 
                     // ****** If statements & special cases go here *********
+                    
 
                     return template.replace('%template%', model.get('text'));
                 })
@@ -94,10 +97,30 @@
             this.character = character;
 
             var answeredQuestions = _.filter(questionModels, isAnswered);
+            
+            var cannedModels = _.filter(answeredQuestions, function(model) { return model.get('class') === 'canned'; });
+            
+            var trueCannedValues;
+            
+            if(cannedModels.length === 0) {
+              trueCannedValues = _.chain(cannedQuestionData.options)
+                      .filter(isTrueCanned)
+                      .pluck('value')
+                      .value();
+            } else {
+              trueCannedValues = _.chain(cannedModels)
+                      .filter(isTrueCanned)
+                      .map(function(model) { return model.get('value'); })
+                      .value();
+            }
 
 
-            var cannedResponses = this.getCannedResponses(answeredQuestions, character);
-            var personalityResponses = this.getPersonalityResponses(answeredQuestions, character);
+            
+            var personalityCannedModels = _.filter(cannedModels, function(model) { return !isTrueCanned(model.get('value')); });
+            
+            var cannedResponses = this.getCannedResponses(trueCannedValues, character);
+            var personalityResponses = this.getPersonalityResponses(personalityCannedModels, character);
+            
 
 
             this.$background.addClass(character);
