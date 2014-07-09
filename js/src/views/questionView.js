@@ -24,21 +24,26 @@ var QuestionView = Backbone.View.extend({
 
         this.$el.addClass(this.model.attributes.class);
 
+        this.$copy = this.$el.find('div.copy');
         this.$options = this.$el.find('div.option');
 
         if(this.$options.length !== 0 && !isMobile)
             this.initAnimations();
     },
+    getAnimations: function() {
+        "use strict";
+
+        if(this.isCanned()) {
+            return itemAnimationsModule.getRandomCannedAnimations(this.$options);
+        } else {
+            return itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
+        }
+
+    },
     initAnimations: function() {
         "use strict";
 
-        var animations;
-
-        if(this.isCanned()) {
-            animations = itemAnimationsModule.getRandomCannedAnimations(this.$options);
-        } else {
-            animations = itemAnimationsModule.getRandomPersonalityAnimations(this.$options);
-        }
+        var animations = this.getAnimations();
 
         this.animationIn = animations[0];
         this.animationOut = animations[1];
@@ -71,6 +76,15 @@ var QuestionView = Backbone.View.extend({
 
         if(!isMobile)
             this.initAnimations();
+    },
+
+    setCharacter: function(character) {
+        "use strict";
+
+        var copy = this.model.get('copy').replace('%character%', character);
+
+        this.model.set('copy', copy);
+        this.$copy.html(copy);
     },
     isCanned: function() {
         "use strict";

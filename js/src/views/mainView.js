@@ -142,6 +142,13 @@
                 return new QuestionView({model: questionModel, parent: this.$pagesContainer});
             }, this);
 
+            this.cannedViews = _.filter(questionViews, function(questionView) {
+                return questionView.isCanned();
+            });
+            this.selectCharacterView = selectCharView;
+
+            console.log(this.cannedViews);
+
             this.pages = [enterNameView, selectCharView].concat(questionViews);
         },
         initJqueryVariables: function() {
@@ -199,9 +206,14 @@
                 this.hideSkip();
             }
 
-            if(this.activePageIndex === 1 && !isMobile) {
-                //animate in character
-                this.scene.animateInUserCharacter();
+            //active page is character select
+            if(this.activePageIndex === 1) {
+                this.updateCannedCopy();
+
+                if(!isMobile) {
+                    //animate in character
+                    this.scene.animateInUserCharacter();
+                }
             }
 
             activePage.onHideComplete(this.showPageAfterHide.bind(this));
@@ -296,6 +308,13 @@
             this.$pagesContainer.hide();
             this.$header.hide();
             this.footer.hide();
+        },
+        updateCannedCopy: function() {
+            var character = this.selectCharacterView.getSelectedCharacter();
+
+            _.each(this.cannedViews, function(view) {
+                view.setCharacter(character.text);
+            });
         },
         // ==================================================================== //
         /* ************************* Render Functions ************************* */
