@@ -21,6 +21,18 @@
         {
             "text": "Where is your favorite place to fly?",
             "value": "favoriteplace"
-        }
+        },
+        {
+            "text": "What is your favorite food?",
+            "value": "favoritefood"
+        },
+        {
+            "text": "What is your favorite color?",
+            "value": "favoritecolor"
+        },
+        {
+            "text": "What is your favorite sport?",
+            "value": "favoritesport"
+        },
     ]
 }
