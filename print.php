@@ -66,18 +66,23 @@
     switch ($char) {
         case 'bladeranger':
             $char = '/assets/spritesheets/blade/Guide_BladeRanger_body_970x600_00000.png';
+            $signature = '/assets/img/signatures/bladeranger.png';
         break;
         case 'cabbie':
             $char = '/assets/spritesheets/cabbie/Cabbie_00000.png';
+            $signature = '/assets/img/signatures/cabbie.png';
         break;
         case 'dipper':
             $char = '/assets/spritesheets/dipper/Dipper_00000.png';
+            $signature = '/assets/img/signatures/dipper.png';
         break;
         case 'dusty':
             $char = '/assets/spritesheets/dusty/Dusty_plane_00000.png';
+            $signature = '/assets/img/signatures/dusty.png';
         break;
         case 'windlifter':
             $char = '/assets/spritesheets/windlifter/Guide_Windlifter_body_970x600_00000.png';
+            $signature = '/assets/img/signatures/windlifter.png';
         break;
         default:
         die('invalid input');
@@ -94,7 +99,7 @@
                 <div id="card-greeting"><?= $greeting ?></div>
                 <div id="card-body"><?= $body ?></div>
                 <div id="card-sincerely"><?= $sincerely ?></div>
-                <div id="card-from"><?= $from ?></div>
+                <div id="card-from"><img src="<?= $signature ?>" /></div>
             </div>
             
             

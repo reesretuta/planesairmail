@@ -687,12 +687,29 @@ div.question.character-select div.option div.background, div.question.favorite-s
       line-height: 18px;
       margin-bottom: 15px; }
     #response #card-wrap #card-sincerely {
-      text-align: center; }
+      text-align: center;
+      margin-bottom: 11px; }
       #response #card-wrap #card-sincerely span {
         text-transform: capitalize; }
     #response #card-wrap #card-from {
       text-align: center;
-      font-size: 35px; }
+      font-size: 35px;
+      width: 248px;
+      height: 59px;
+      text-indent: -9999em;
+      margin: 0 auto; }
+      #response #card-wrap #card-from.dusty {
+        background-image: url('../assets/img/signatures/dusty.png'); }
+      #response #card-wrap #card-from.cabbie {
+        background-image: url('../assets/img/signatures/cabbie.png'); }
+      #response #card-wrap #card-from.bladeranger {
+        background-image: url('../assets/img/signatures/bladeranger.png'); }
+      #response #card-wrap #card-from.dipper {
+        background-image: url('../assets/img/signatures/dipper.png'); }
+      #response #card-wrap #card-from.windlifter {
+        background-image: url('../assets/img/signatures/windlifter.png'); }
+      #response #card-wrap #card-from.team {
+        background-image: url('../assets/img/signatures/team.png'); }
     #response #card-wrap #printversion {
       background: url('../assets/img/print.png');
       position: absolute;
@@ -729,7 +746,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
   #response-bg.cabbie {
     background-image: url('../assets/img/response_bg_cabbie.jpg'); }
   #response-bg.bladeranger {
-    background-image: url('../assets/img/response_bg_blade.jpg'); }
+    background-image: url('..ff'); }
   #response-bg.dipper {
     background-image: url('../assets/img/response_bg_dipper.jpg'); }
   #response-bg.windlifter {

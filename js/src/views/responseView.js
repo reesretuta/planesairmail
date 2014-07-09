@@ -25,6 +25,7 @@
         initialize: function() {
             this.$background = $('#response-bg');
             this.$letterBackground = $('#letterbg');
+            this.$signature = $('#card-from');
         },
         
         setResponse: function(models) {
@@ -33,6 +34,7 @@
             var characterModel = models[1];
             
             this.$background.addClass(characterModel.attributes.value);
+            this.$signature.addClass(characterModel.attributes.value);
             printCharacter = characterModel.attributes.value;
             var answeredQuestions = _.filter(_.rest(models, 2), function(model) {return model.attributes.value !== ''});
 
