@@ -1,0 +1,323 @@
+
+
+
+
+#mobile-characters {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: auto;
+
+    > div.empty-space {
+        padding-bottom: percentage(568/320);
+    }
+
+    > div.full-absolute {
+        top: 0;
+        left: 0;
+    }
+
+
+    div.character {
+        position: absolute;
+        display: none;
+        background-position: center center;
+        background-size: contain;
+
+
+        &.front {
+            z-index: 3;
+        }
+        &.active {
+            display: block;
+        }
+        &.flip {
+            -moz-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+            filter: FlipH;
+
+            -ms-filter: "FlipH";
+        }
+
+        // ==================================================================== //
+        /* ******************************** Dipper **************************** */
+        // ==================================================================== //
+
+        &.dipper {
+            background-image: url('../assets/spritesheets/dipper/Dipper_00000.png');
+
+            width: 85%;
+            top: 5.7%;
+            left: 38%;
+
+            &.selected {
+                top: 11.7%;
+                left: -26%;
+
+                &.response {
+                    left: 17%;
+                    top: 9%;
+                    transform: rotate(15deg);
+                }
+            }
+
+            &.team {
+                -moz-transform: scaleX(-1);
+                -o-transform: scaleX(-1);
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+                filter: FlipH;
+
+                -ms-filter: "FlipH";
+
+                left: -8%;
+                width: 41%;
+                top: 24%;
+
+                &.response {
+                    left: 3%;
+                    width: 40%;
+                    top: 9%;
+                }
+            }
+
+            > div.empty-space {
+                padding-bottom: percentage(510/960);
+            }
+        }
+
+        // ==================================================================== //
+        /* ***************************** BladeRanger ************************** */
+        // ==================================================================== //
+
+        &.bladeranger {
+            background-image: url('../assets/spritesheets/blade/Guide_BladeRanger_body_970x600_00000.png');
+
+            width: 85%;
+            top: 8.7%;
+            left: 48%;
+            &.response {
+                width: 91%;
+                top: 4%;
+                left: 23%;
+            }
+
+            &.team {
+                width: 79%;
+                top: 35.7%;
+                left: 48%;
+
+                &.response {
+                    width: 39%;
+                    top: 9%;
+                    left: 74%;
+                }
+            }
+
+
+            > div.empty-space {
+                padding-bottom: percentage(371/600);
+            }
+        }
+
+        // ==================================================================== //
+        /* ******************************** Cabbie **************************** */
+        // ==================================================================== //
+
+        &.cabbie {
+            background-image: url('../assets/spritesheets/cabbie/Cabbie_00000.png');
+
+            width: 85%;
+            top: 23.7%;
+            left: -25%;
+
+            &.response {
+                top: 10%;
+                left: 21%;
+
+                -moz-transform: scaleX(-1)  rotate(12deg);
+                -o-transform: scaleX(-1)  rotate(12deg);
+                -webkit-transform: scaleX(-1) rotate(12deg);
+                transform: scaleX(-1) rotate(12deg);
+                filter: FlipH;
+
+                -ms-filter: "FlipH";
+            }
+
+            > div.empty-space {
+                padding-bottom: percentage(498/960);
+            }
+        }
+        &.cabbie2 {
+            background-image: url('../assets/spritesheets/cabbie2/Cabbie_2_000000.png');
+
+            &.team {
+                width: 23%;
+                left: 0;
+                top: 46%;
+                opacity: 0.8;
+
+                transform: rotate(-8deg);
+
+                &.response {
+                    width: 24%;
+                    left: 46%;
+                    top: 10%;
+                }
+            }
+
+            > div.empty-space {
+                padding-bottom: percentage(380/750);
+            }
+        }
+
+        // ==================================================================== //
+        /* ****************************** Windlifter ************************** */
+        // ==================================================================== //
+
+        &.windlifter {
+            background-image: url('../assets/spritesheets/windlifter/Guide_Windlifter_body_970x600_00000.png');
+
+            width: 75%;
+            top: 19.7%;
+            left: -23%;
+
+            &.team {
+                -moz-transform: scaleX(-1);
+                -o-transform: scaleX(-1);
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+                filter: FlipH;
+
+                -ms-filter: "FlipH";
+
+                left: 3%;
+                top: 16%;
+                width: 18%;
+                opacity: 0.75;
+
+                &.response {
+                    left: -1%;
+                    top: 13%;
+                    width: 16%;
+                }
+            }
+
+            &.response {
+                width: 71%;
+                top: 3.2%;
+                left: 26%;
+            }
+
+            > div.empty-space {
+                padding-bottom: percentage(371/600);
+            }
+        }
+
+        // ==================================================================== //
+        /* ******************************** Dusty ***************************** */
+        // ==================================================================== //
+
+        &.dusty {
+            background-image: url('../assets/spritesheets/dusty/Dusty_plane_00000.png');
+
+            top: 30%;
+            width: 51%;
+            left: -11.5%;
+
+            > div.empty-space {
+                padding-bottom: percentage(492/600);
+            }
+        }
+
+        &.dusty2 {
+            background-image: url('../assets/spritesheets/dusty3/Dusty_plane5_000000.png');
+
+            &.team.response {
+                width: 45%;
+                top: 15%;
+                left: 39%;
+            }
+
+            &.response {
+                width: 52%;
+                top: 13%;
+                left: 34%;
+            }
+
+            > div.empty-space {
+                padding-bottom: percentage(360/600);
+            }
+        }
+
+        &.dusty3 {
+            background-image: url('../assets/spritesheets/dusty4/Dusty_angle1_noBlink_00000.png');
+
+            top: 19%;
+            left: -1%;
+            width: 44%;
+            transform: rotate(32deg);
+
+            &.team {
+                left: 61%;
+                top: 21%;
+            }
+
+            > div.empty-space {
+                padding-bottom: percentage(341/600);
+            }
+        }
+
+
+
+
+
+        // ==================================================================== //
+        /* ****************************** Parachuters ************************* */
+        // ==================================================================== //
+
+
+        &.parachuter1 {
+            background-image: url('../assets/img/drip.png');
+
+            width: 10%;
+            top: 60.5%;
+            left: 15%;
+
+            > div.empty-space {
+                padding-bottom: percentage(94/61);
+            }
+        }
+
+        &.parachuter2 {
+            background-image: url('../assets/img/dynamite.png');
+
+            width: 10%;
+            top: 14%;
+            left: 45%;
+            opacity: 0.4;
+
+            > div.empty-space {
+                padding-bottom: percentage(94/61);
+            }
+        }
+
+        &.parachuter3 {
+            background-image: url('../assets/img/blackout.png');
+
+            width: 10%;
+            top: 50%;
+            left: 75%;
+            opacity: 0.75;
+
+            > div.empty-space {
+                padding-bottom: percentage(94/61);
+            }
+        }
+
+
+
+    }
+}

@@ -829,8 +829,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
   /* *************************** Page Navigation ************************ */
   /* ************************ Enter Your Name Page ********************** */
   /* *************************** Question Pages ************************* */
-  /* *************************** Canned Question ************************ */
-  /* *************************** Page Navigation ************************ */ }
+  /* *************************** Canned Question ************************ */ }
   #content.mobile > div.empty-space {
     padding-bottom: 177.5%; }
   #content.mobile div.mobile {
@@ -961,7 +960,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
   #content.mobile #response {
-    padding-top: 31%;
+    padding-top: 35%;
     padding-left: 5.5%;
     padding-right: 5.5%; }
     #content.mobile #response #card-wrap {
@@ -979,8 +978,8 @@ div.question.character-select div.option div.background, div.question.favorite-s
         font-size: 21px;
         margin-bottom: 2%; }
       #content.mobile #response #card-wrap #card-body {
-        font-size: 11px;
-        line-height: 16px;
+        font-size: 12px;
+        line-height: 17px;
         margin-bottom: 2%;
         letter-spacing: -0.1px; }
       #content.mobile #response #card-wrap #card-sincerely {
@@ -994,7 +993,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
         height: auto;
         width: 72%;
         bottom: initial;
-        top: 100%;
+        top: 106%;
         background-repeat: no-repeat; }
         #content.mobile #response #card-wrap #sendmore > div.empty-space {
           padding-bottom: 17%; }
@@ -1005,29 +1004,41 @@ div.question.character-select div.option div.background, div.question.favorite-s
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 31%;
+  padding-top: 35%;
   padding-left: 5.5%;
   padding-right: 5.5%;
   z-index: 2; }
   #letterbg-ctr.active div.background {
     display: block; }
   #letterbg-ctr div.background {
-    background: url('../assets/img/response_letter_bg.jpg') no-repeat top center;
-    -webkit-background-size: 100% auto;
-    background-size: 100% auto;
+    background: url('../assets/img/response_letter_bg_mobile.jpg') top center;
+    -webkit-background-size: cover;
+    background-size: cover;
     height: 100%;
     display: none; }
 
 #mobile-characters {
   top: 0;
   left: 0;
-  z-index: 2; }
+  z-index: 2;
+  height: auto; }
+  #mobile-characters > div.empty-space {
+    padding-bottom: 177.5%; }
+  #mobile-characters > div.full-absolute {
+    top: 0;
+    left: 0; }
   #mobile-characters div.character {
     position: absolute;
     display: none;
     background-position: center center;
     -webkit-background-size: contain;
-    background-size: contain; }
+    background-size: contain;
+    /* ******************************** Dipper **************************** */
+    /* ***************************** BladeRanger ************************** */
+    /* ******************************** Cabbie **************************** */
+    /* ****************************** Windlifter ************************** */
+    /* ******************************** Dusty ***************************** */
+    /* ****************************** Parachuters ************************* */ }
     #mobile-characters div.character.front {
       z-index: 3; }
     #mobile-characters div.character.active {
@@ -1064,9 +1075,9 @@ div.question.character-select div.option div.background, div.question.favorite-s
         width: 41%;
         top: 24%; }
         #mobile-characters div.character.dipper.team.response {
-          left: -6%;
-          width: 51%;
-          top: 8%; }
+          left: 3%;
+          width: 40%;
+          top: 9%; }
       #mobile-characters div.character.dipper > div.empty-space {
         padding-bottom: 53.125%; }
     #mobile-characters div.character.bladeranger {
@@ -1083,9 +1094,9 @@ div.question.character-select div.option div.background, div.question.favorite-s
         top: 35.7%;
         left: 48%; }
         #mobile-characters div.character.bladeranger.team.response {
-          width: 62%;
-          top: 5%;
-          left: 62%; }
+          width: 39%;
+          top: 9%;
+          left: 74%; }
       #mobile-characters div.character.bladeranger > div.empty-space {
         padding-bottom: 61.83333%; }
     #mobile-characters div.character.cabbie {
@@ -1137,8 +1148,13 @@ div.question.character-select div.option div.background, div.question.favorite-s
         width: 18%;
         opacity: 0.75; }
         #mobile-characters div.character.windlifter.team.response {
-          left: -7%;
-          top: 20%; }
+          left: -1%;
+          top: 13%;
+          width: 16%; }
+      #mobile-characters div.character.windlifter.response {
+        width: 71%;
+        top: 3.2%;
+        left: 26%; }
       #mobile-characters div.character.windlifter > div.empty-space {
         padding-bottom: 61.83333%; }
     #mobile-characters div.character.dusty {
@@ -1151,9 +1167,9 @@ div.question.character-select div.option div.background, div.question.favorite-s
     #mobile-characters div.character.dusty2 {
       background-image: url('../assets/spritesheets/dusty3/Dusty_plane5_000000.png'); }
       #mobile-characters div.character.dusty2.team.response {
-        width: 43%;
+        width: 45%;
         top: 15%;
-        left: 41%; }
+        left: 39%; }
       #mobile-characters div.character.dusty2.response {
         width: 52%;
         top: 13%;

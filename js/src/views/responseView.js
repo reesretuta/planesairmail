@@ -178,10 +178,33 @@
                     responseModule.animateIn(this.character);
                 }.bind(this), 400);
             } else {
-                $('#letterbg-ctr').addClass('active');
+                var $letterBgCtr = $('#letterbg-ctr');
+                var $cardWrap = $('#card-wrap');
+
+                var height = $cardWrap.outerHeight();
+                var posTop = $cardWrap.offset().top;
+
+                $letterBgCtr.height(height);
+                $letterBgCtr.addClass('active');
+
+                this.setMobileContentHeight();
+
                 this.showMobileCharacters();
             }
         },
+
+        setMobileContentHeight: function() {
+            var $sendMore = $('#sendmore');
+            var $footer = $('#footer');
+            var $content = $('#content');
+
+            var offsetTop = $sendMore.offset().top;
+            var height = $sendMore.height();
+            var footerHeight = $footer.height();
+
+            $content.css('min-height', offsetTop*1.04 + height + footerHeight);
+        },
+
         showMobileCharacters: function() {
             var $mobileCtr = $('#mobile-characters');
 
