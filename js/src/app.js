@@ -6,7 +6,7 @@
 require('./pixi/libModifications');
 
 
-
+var HeaderView = require('./views/headerView');
 var MainView = require('./views/mainView');
 var device = require('./device');
 
@@ -56,7 +56,13 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 $(function() {
     app.mainView = new MainView();
 
+    app.headerView = new HeaderView();
+
+
+
     app.mainView.start();
+
+
 });
 
 

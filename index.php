@@ -27,16 +27,44 @@ $server = "http://$_SERVER[HTTP_HOST]/";
     <meta property="og:description" content=""/>
 
     <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-52699659-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </head>
 <body>
-    <div id="fb-root"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.Event.subscribe('edge.create', function(targetUrl) {
+                _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+            });
+            FB.Event.subscribe('edge.remove', function(targetUrl) {
+                _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+            });
+            FB.Event.subscribe('message.send', function(targetUrl) {
+                _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+            });
+        };
+    </script>
+
+
+    <div id="fb-root"></div>
+
 
     <div id="content" class="full-relative">
         <div class="mobile empty-space"></div>
@@ -77,8 +105,8 @@ $server = "http://$_SERVER[HTTP_HOST]/";
                                 <div class="in-theaters"></div>
                                 <div class="social clearfix">
                                     <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                                    <a href="http://www.disney.com" class="showtimes">Find showtimes</a>
-                                    <a href="http://www.disney.com" class="trailer">View Trailer</a>
+                                    <a href="http://www.fandango.com/planes:fire26rescue_170063/movietimes" class="showtimes" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Find Showtimes']);">Find showtimes</a>
+                                    <a href="https://www.youtube.com/watch?v=ibAxkCJfvC4" class="trailer" onClick="_gaq.push(['_trackEvent', 'Clicks', 'View Trailer']);">View Trailer</a>
                                 </div>
                             </div>
                         </div>

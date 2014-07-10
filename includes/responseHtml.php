@@ -16,7 +16,7 @@
             <div class="empty-space"></div>
         </div>
         <a href="#" id="printversion"></a>
-        <a href="/" id="sendmore">
+        <a href="/" id="sendmore" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Send more airmail']);">
             <div class="empty-space"></div>
         </a>
     </div>
