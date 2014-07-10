@@ -244,6 +244,7 @@
             e.preventDefault();
 
             var url = e.currentTarget.getAttribute('href');
+            var newTab = (2 === e.which || e.metaKey || e.ctrlKey);
 
             ga('send', 'event', 'More airmail', 'click', ipAddress, {
                 hitCallback: function() {

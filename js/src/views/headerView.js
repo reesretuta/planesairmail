@@ -1,6 +1,8 @@
 
 
-
+function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+}
 
 
 var HeaderView = Backbone.View.extend({
@@ -19,9 +21,11 @@ var HeaderView = Backbone.View.extend({
         e.preventDefault();
 
         var url = e.currentTarget.getAttribute('href');
+        var newTab = (2 === e.which || e.metaKey || e.ctrlKey);
 
         ga('send', 'event', 'Find Showtimes', 'click', ipAddress, {
             hitCallback: function() {
+
                 document.location = url;
             }
         });
@@ -32,9 +36,11 @@ var HeaderView = Backbone.View.extend({
         e.preventDefault();
 
         var url = e.currentTarget.getAttribute('href');
+        var newTab = (2 === e.which || e.metaKey || e.ctrlKey);
 
         ga('send', 'event', 'View Trailer', 'click', ipAddress, {
             hitCallback: function() {
+
                 document.location = url;
             }
         });
