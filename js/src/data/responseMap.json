@@ -8,8 +8,9 @@
         "forestfires": "I can scoop water from lakes and dive into the forest to drop the water on wildfires. Speed counts when an air rescue is under way, so I'm always ready to fly into danger!",
         "firefighter": "Before joining the Air Attack Team, I was a world-famous air racer – I even raced around the world!  Now I race to put out fires.",
         "bestfriend": "It wasn't easy becoming a champion racer or a firefighter but I've had an amazing team of friends with me every step of the way!",
-        "favoriteplace": "I have been flying for as long as I can remember but my favorite place to fly is above my hometown, Pumpwash Junction. I do some fancy flying there!",
+        "favoriteplace": "I have been flying for as long as I can remember but my favorite place to fly is above my hometown, Propwash Junction. I do some fancy flying there!",
         "favorite-food": "%template% sounds delicious! I mean, anything's better to eat than Vitaminamulch.",
+        "favorite-food-plural": "%template% sound delicious! I mean, anything's better to eat than Vitaminamulch.",
         "favorite-color": "My favorite color is GREEN. Green means go! And I love to go fast.",
         "favorite-sport": "I was a champion racer not too long ago. Racing is definitely my favorite sport."
     },
@@ -24,6 +25,7 @@
         "bestfriend": "My best friend is champion racer Dusty Crophopper. I'm his biggest fan!",
         "favoriteplace": "My favorite place to fly is the Fusel Lodge, right here in Piston Peak. It's so beautiful. And where Dusty and I had our first date! It was a date, right? I'm pretty sure it was a date.",
         "favorite-food": "While %template% sounds really good, there's nothing better than a fresh can of oil!",
+        "favorite-food-plural": "While %template% sound really good, there's nothing better than a fresh can of oil!",
         "favorite-color": "What's my favorite color? YELLOW like the sunshine.. and like ME!",
         "favorite-sport": "Swimming/diving is my favorite sport! I love dipping in and out of the water."
     },
@@ -38,20 +40,22 @@
         "bestfriend": "I would like to be YOUR best friend.",
         "favoriteplace": "I like to fly many places and be one with the wind. The wind speaks, and I listen.",
         "favorite-food": "%template% sounds delicious! Have you tried it with a can of oil? That's my favorite food.",
+        "favorite-food-plural": "%template% sound delicious! Have you tried them with a can of oil? That's my favorite food.",
         "favorite-color": "My favorite color is BLUE like the water and the sky.",
-        "favorite-sport": "I don't play many sports, but I am an avid weight lifter. You'll often see me lifting heavy loads of logs in my off time"
+        "favorite-sport": "I don't play many sports, but I am an avid weight lifter. You'll often see me lifting heavy loads of logs in my off time."
     },
     "bladeranger": {
         "greeting": "Hi Champ!",
         "body1": "I'm Blade Ranger. But you can call me Blade.",
         "body2": "Remember, you can do anything!  You just have to train hard and have courage.  Thanks for your letter %template%.",
         "sincerely": "Your partner",
-        "job": "I'm a Fire and Rescue Helicopter, and the Cheif in Charge here at Piston Peak.",
+        "job": "I'm a Fire and Rescue Helicopter, and the Chief in Charge here at Piston Peak.",
         "forestfires": "When there's a fire, I give the orders for the Air Attack Team to spring into action!",
         "firefighter": "I've been the Chief for a long time, but I wasn't always a firefighter.  This is my second career, and my most rewarding.  Now I fly in when others fly out to help those who need it most.",
         "bestfriend": "My best friends are all the trailblazers here at Piston Peak. We like to think of ourselves as the heroes of the sky!",
         "favoriteplace": "I like to fly to many places, but my favorite place is above Piston Peak. I patrol the skies and make sure all the tourists are camping by the book. Remember, safety first!",
-        "favorite-food": "You say you like to eat %template%? I prefer a fresh can of oil. ",
+        "favorite-food": "You say you like to eat %template%? I prefer a fresh can of oil.",
+        "favorite-food-plural": "You say you like to eat %template%? I prefer a fresh can of oil.",
         "favorite-color": "My favorite color is RED, the color of Fire Safety.",
         "favorite-sport": "If I had to choose, football would be my favorite sport."
     },
@@ -66,6 +70,7 @@
         "bestfriend": "Who's my best friend? That's probably Top Secret but I can say the Smokejumpers are my closest recruits.",
         "favoriteplace": "I've flown over many places in my time. My favorite spot is Anchor Lake - a long body of water with an anchor-shaped island.",
         "favorite-food": "In the military, all food is rationed but I'll take as much fresh oil as I can get! ",
+        "favorite-food-plural": "In the military, all food is rationed but I'll take as much fresh oil as I can get! ",
         "favorite-color": "My favorite color is GREEN - it can help me hide above the pine trees.",
         "favorite-sport": "Baseball is my favorite sport. I always have five smokejumpers in my cargo - just enough to cover the bases."
     },
@@ -74,12 +79,13 @@
         "body1": "Thanks for writing to us.",
         "body2": "Time to get back to work!",
         "sincerely": "Let's make it count!",
-        "job": "The Piston Peak Air Attack Team is an elite group of firefighting aircrafts. ",
+        "job": "The Piston Peak Air Attack Team is an elite group of firefighting aircrafts.",
         "forestfires": "We fly in when others are flyin out. It takes a special kinda plane.",
         "firefighter": "Life doesn't always go the way you expect it. This is a second career for all of us. ",
-        "bestfriend": "It takes honor, trust and bravery to earn your wings. We don't have just one best friend because we need every plane we've got to help. ",
+        "bestfriend": "It takes honor, trust and bravery to earn your wings. We don't have just one best friend because we need every plane we've got to help.",
         "favoriteplace": "Piston Peak has some great places to fly. But our favorite spot is the wooden railway bridge - with the thundering Whitewall Falls behind it.",
         "favorite-food": "%template% sounds great but we'd rather slurp down fresh cans of oil. HOIST!",
+        "favorite-food-plural": "%template% sound great but we'd rather slurp down fresh cans of oil. HOIST!",
         "favorite-color": "We like all colors of the rainbow. But as a team, our favorite color is %template%, just like you!",
         "favorite-sport": "It's hard to pick a favorite sport - we're a fan of anything that let us work as a team!"
     }
