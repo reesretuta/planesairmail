@@ -26,9 +26,12 @@
             return this.model.get('text');
         },
         onRadioChange: function(e) {
+            e.preventDefault();
             QuestionView.prototype.onRadioChange.call(this, e);
 
-            var char = e.currentTarget.getAttribute('id');
+            var $input = $(e.currentTarget).siblings('input');
+
+            var char = $input.attr('id');
 
             createjs.Sound.play(characterAudioIds[char]);
 

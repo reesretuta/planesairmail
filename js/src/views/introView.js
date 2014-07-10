@@ -11,7 +11,8 @@
     var IntroView = Backbone.View.extend({
         el: '#intro-view',
         events: {
-            'click a.begin': 'onBeginClick'
+            'click a.begin': 'onBeginClick',
+            'touchend a.begin': 'onBeginClick'
         },
         // ============================================================ //
         /* ****************** Initialization Stuff ******************** */

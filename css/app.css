@@ -311,8 +311,9 @@ body {
           padding-bottom: 32%; }
       #content div.pages-ctn div.page-nav a.finish-send {
         background: url('../assets/img/icons/send-btn.png') center center no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
         width: 240px;
-        height: 53px;
         line-height: 43px; }
         #content div.pages-ctn div.page-nav a.finish-send > div.empty-space {
           padding-bottom: 22.08333%; }
@@ -542,6 +543,8 @@ div.question {
       box-shadow: 2px 2px 15px 0px rgba(255, 255, 255, 0.8), -2px -2px 15px 0px rgba(255, 255, 255, 0.8); }
 
 /* ************************ Canned Questions ************************* */
+div.question.canned > div.full-relative {
+  padding-top: 30%; }
 div.question.canned div.copy {
   margin-bottom: 70px; }
 div.question.canned div.option {
@@ -820,31 +823,40 @@ div.question.character-select div.option div.background, div.question.favorite-s
   /* **************************** Intro Stuff *************************** */
   /* *************************** Page Navigation ************************ */
   /* ************************ Enter Your Name Page ********************** */
-  /* *************************** Question Pages ************************* */ }
+  /* *************************** Question Pages ************************* */
+  /* *************************** Canned Question ************************ */
+  /* *************************** Page Navigation ************************ */ }
+  #content.mobile > div.empty-space {
+    padding-bottom: 177.5%; }
   #content.mobile div.mobile {
     display: block; }
   #content.mobile #header {
-    height: auto; }
+    height: auto;
+    -webkit-background-size: auto 100%;
+    background-size: auto 100%;
+    padding: 0; }
     #content.mobile #header > div.full-relative > div.empty-space {
-      padding-bottom: 32.09294%; }
+      padding-bottom: 29%; }
     #content.mobile #header .in-theaters {
       display: none; }
     #content.mobile #header div.social {
       width: 100%;
-      padding: 0 1.67286%; }
+      padding: 0 2.04461%; }
       #content.mobile #header div.social div.fb-like {
         display: none !important; }
       #content.mobile #header div.social > a {
         margin-right: 0;
-        font-size: 12px;
+        font-size: 11px;
         border-radius: 3px; }
         #content.mobile #header div.social > a.showtimes {
           float: left; }
         #content.mobile #header div.social > a.trailer {
-          float: right; }
+          float: right;
+          padding-left: 8px;
+          padding-right: 8px; }
     #content.mobile #header .logo {
-      width: 50%;
-      bottom: 26%;
+      width: 44%;
+      bottom: 25%;
       background-position: 76% 50%; }
   #content.mobile #footer a.volume {
     display: none; }
@@ -865,20 +877,27 @@ div.question.character-select div.option div.background, div.question.favorite-s
     width: 38%; }
   #content.mobile #intro-view div.begin-screen > div.line {
     display: none; }
-  #content.mobile div.pages-ctn div.page-nav a.next {
-    width: 135px;
-    font-size: 22px; }
-  #content.mobile div.pages-ctn div.page-nav div.skip {
-    width: 135px;
-    margin-top: 5px; }
-    #content.mobile div.pages-ctn div.page-nav div.skip a.skip {
+  #content.mobile div.pages-ctn div.page-nav {
+    width: 39.0625%; }
+    #content.mobile div.pages-ctn div.page-nav a.finish-send {
+      width: 137.14286%;
+      left: -18.57143%;
+      font-size: 22px; }
+    #content.mobile div.pages-ctn div.page-nav a.next {
       width: 100%;
-      height: 100%;
-      font-size: 14px;
-      line-height: 21px;
-      border-radius: 4px; }
+      font-size: 22px; }
+    #content.mobile div.pages-ctn div.page-nav div.skip {
+      width: 100%;
+      margin-top: 5px; }
+      #content.mobile div.pages-ctn div.page-nav div.skip a.skip {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        line-height: 21px;
+        border-radius: 4px; }
   #content.mobile div.page {
-    width: 100%; }
+    width: 90%;
+    padding-top: 23.125%; }
   #content.mobile div.page.name .input-wrapper {
     height: 45px; }
   #content.mobile div.page.name div.title {
@@ -898,7 +917,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
     margin-bottom: 6%; }
   #content.mobile div.question div.option {
     width: 50%;
-    padding: 5% 13%; }
+    padding: 7% 14.5%; }
     #content.mobile div.question div.option div.text {
       font-size: 14px;
       width: 200%;
@@ -906,5 +925,10 @@ div.question.character-select div.option div.background, div.question.favorite-s
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%); }
-  #content.mobile > div.empty-space {
-    padding-bottom: 177.5%; }
+  #content.mobile div.question.canned div.option {
+    padding: 0;
+    width: 90%; }
+    #content.mobile div.question.canned div.option div.text {
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }

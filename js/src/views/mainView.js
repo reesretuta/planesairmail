@@ -44,8 +44,11 @@
         el: '#content',
         events: {
             'click a.next': 'onNext',
+            'touchend a.next': 'onNext',
             'click a.finish-send': 'onFinish',
+            'touchend a.finish-send': 'onFinish',
             'click a.skip': 'onSkip',
+            'touchend a.skip': 'onSkip',
             'mousemove': 'onMouseMove'
         },
 
@@ -168,7 +171,8 @@
             this.$next = this.$pageNav.find('a.next');
             this.$finishSend = this.$pageNav.find('a.finish-send');
 
-            this.$skip = this.$pageNav.find('a.skip');
+            this.$skipCtr = this.$pageNav.find('div.skip');
+            this.$skip = this.$skipCtr.find('a.skip');
 
             this.$header = $('#header');
         },
@@ -293,7 +297,9 @@
             var percTop = 100 * topFrac + '%';
 
             if(!!animate) {
-                TweenLite.to(this.$pageNav, 0.2, {top: percTop, ease:'Quad.easeInOut'});
+                var animationTime = isMobile ? 0.1 : 0.2;
+
+                TweenLite.to(this.$pageNav, animationTime, {top: percTop, ease:'Quad.easeInOut'});
                 return;
             }
             this.$pageNav.css('top', percTop);
@@ -301,9 +307,17 @@
 
 
         hideSkip: function() {
+            if(isMobile) {
+                this.$skipCtr.css({height: 0});
+                return;
+            }
             TweenLite.to(this.$skip, 0.2, {bottom: '100%', opacity: 0});
         },
         showSkip: function() {
+            if(isMobile) {
+                this.$skipCtr.attr('style', '');
+                return;
+            }
             TweenLite.to(this.$skip, 0.2, {bottom: 0, opacity: 1});
         },
 

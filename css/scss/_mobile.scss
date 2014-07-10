@@ -53,6 +53,10 @@
 #content.mobile {
     height: auto;
 
+    > div.empty-space {
+        padding-bottom: percentage(1136/640);
+    }
+
     div.mobile {
         display: block;
     }
@@ -62,9 +66,11 @@
     // ==================================================================== //
     #header {
         height: auto;
+        background-size: auto 100%;
+        padding: 0;
 
         > div.full-relative > div.empty-space {
-            padding-bottom: 32.09294%;
+            padding-bottom: 29%;
         }
 
         .in-theaters {
@@ -73,7 +79,7 @@
 
         div.social {
             width: 100%;
-            padding: 0 percentage(9/538);
+            padding: 0 percentage(11/538);
 
             div.fb-like {
                 display: none !important;          //TODO REMOVE THIS
@@ -81,7 +87,7 @@
 
             > a {
                 margin-right: 0;
-                font-size: 12px;
+                font-size: 11px;
                 border-radius: 3px;
 
                 &.showtimes {
@@ -89,14 +95,16 @@
                 }
                 &.trailer {
                     float: right;
+                    padding-left: 8px;
+                    padding-right: 8px;
                 }
             }
 
         }
 
         .logo {
-            width: 50%;
-            bottom: 26%;
+            width: 44%;
+            bottom: 25%;
 
             background-position: 76% 50%;
         }
@@ -153,13 +161,22 @@
     // ==================================================================== //
 
     div.pages-ctn div.page-nav {
+        width: percentage(125/320);
+
+        a.finish-send {
+            width: percentage(240/175);
+            left: percentage(-(240/175 - 1)/2);
+
+            font-size: 22px;
+        }
+
         a.next {
-            width: 135px;
+            width: 100%;
             font-size: 22px;
         }
 
         div.skip {
-            width: 135px;
+            width: 100%;
             margin-top: 5px;
 
             a.skip {
@@ -174,7 +191,8 @@
     }
 
     div.page {
-        width: 100%;
+        width: 90%;
+        padding-top: percentage(74/320);
     }
 
     // ==================================================================== //
@@ -217,7 +235,7 @@
 
         div.option {
             width: 50%;
-            padding: 5% 13%;
+            padding: 7% 14.5%;
 
             div.text {
                 font-size: 14px;
@@ -229,9 +247,31 @@
         }
     }
 
+    // ==================================================================== //
+    /* *************************** Canned Question ************************ */
+    // ==================================================================== //
 
+    div.question.canned {
 
-    > div.empty-space {
-        padding-bottom: percentage(1136/640);
+        div.option {
+            padding: 0;
+            width: 90%;
+
+            div.text {
+                transform: translate(-50%, -50%);
+            }
+        }
     }
+
+    // ==================================================================== //
+    /* *************************** Page Navigation ************************ */
+    // ==================================================================== //
+
+    #response {
+
+    }
+
+
+
+
 }
