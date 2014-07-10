@@ -143,9 +143,6 @@
             var personalityModels = partitionedQuestionModels[0];
             var cannedModels = partitionedQuestionModels[1];
 
-
-
-
             var enterNameView = new EnterNameView();
             var selectCharView = new SelectCharacterView({model: charModel, parent: this.$pagesContainer});
 
@@ -224,6 +221,8 @@
             if(this.activePageIndex === 1) {
                 this.updateCannedCopy();
 
+                _gaq.push(['_trackEvent', 'Characters', this.selectCharacterView.model.get('text')]);
+
                 if(!isMobile) {
                     //animate in character
                     this.scene.animateInUserCharacter();
@@ -295,6 +294,8 @@
                 return page.model;
             });
             this.responseView.setResponse(pageModels);
+
+            _gaq.push(['_trackEvent', 'Letters Sent']);
 
             if(!isMobile) {
                 this.scene.onUserCharacterOut(_.bind(this.scene.playWipescreen, this.scene));
