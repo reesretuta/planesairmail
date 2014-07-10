@@ -47,8 +47,6 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
     });
 
     $passwordScreen.show();
-
-    console.log($passwordScreen);
 } else {
     $passwordScreen.remove();
 }
@@ -56,8 +54,6 @@ if(document.URL.indexOf('disney-planes2-airmail-staging.azurewebsites.net') !== 
 
 
 $(function() {
-    FastClick.attach(document.body);
-
     app.mainView = new MainView();
 
     app.mainView.start();

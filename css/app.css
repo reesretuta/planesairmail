@@ -697,9 +697,13 @@ div.question.character-select div.option div.background, div.question.favorite-s
       text-align: center;
       font-size: 35px;
       width: 248px;
-      height: 59px;
       text-indent: -9999em;
-      margin: 0 auto; }
+      margin: 0 auto;
+      background-position: center center;
+      -webkit-background-size: contain;
+      background-size: contain; }
+      #response #card-wrap #card-from > div.empty-space {
+        padding-bottom: 23.79032%; }
       #response #card-wrap #card-from.dusty {
         background-image: url('../assets/img/signatures/dusty.png'); }
       #response #card-wrap #card-from.cabbie {
@@ -730,7 +734,10 @@ div.question.character-select div.option div.background, div.question.favorite-s
       height: 51px;
       width: 300px;
       display: block;
-      bottom: -75px; }
+      bottom: -75px;
+      background-position: center center;
+      -webkit-background-size: contain;
+      background-size: contain; }
 
 #response-bg {
   position: absolute;
@@ -839,9 +846,18 @@ div.question.character-select div.option div.background, div.question.favorite-s
       display: none; }
     #content.mobile #header div.social {
       width: 100%;
-      padding: 0 2.04461%; }
+      padding: 0 2.04461%;
+      top: 46%; }
       #content.mobile #header div.social div.fb-like {
-        display: none !important; }
+        position: absolute;
+        left: 7px;
+        bottom: 142%;
+        -webkit-transform: scale(0.65);
+        -ms-transform: scale(0.65);
+        transform: scale(0.65);
+        -webkit-transform-origin: center left;
+        -ms-transform-origin: center left;
+        transform-origin: center left; }
       #content.mobile #header div.social > a {
         margin-right: 0;
         font-size: 11px;
@@ -909,46 +925,274 @@ div.question.character-select div.option div.background, div.question.favorite-s
     border-radius: 7px; }
   #content.mobile div.page.name div.placeholder {
     font-size: 22px; }
-  #content.mobile div.question div.copy {
-    font-size: 22px;
-    line-height: 22px;
-    margin-bottom: 6%; }
-  #content.mobile div.question div.option {
-    width: 50%;
-    padding: 7% 14.5%; }
-    #content.mobile div.question div.option div.text {
-      font-size: 14px;
-      width: 200%;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      transform: translateX(-50%); }
+  #content.mobile div.question {
+    width: 70%; }
+    #content.mobile div.question div.copy {
+      font-size: 22px;
+      line-height: 22px;
+      margin-bottom: 6%; }
+    #content.mobile div.question div.option {
+      width: 50%;
+      padding: 7% 11.5%; }
+      #content.mobile div.question div.option div.text {
+        font-size: 14px;
+        width: 200%;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%); }
+  #content.mobile div.question.character-select {
+    width: 90%; }
+    #content.mobile div.question.character-select div.option {
+      padding: 7% 14.5%; }
   #content.mobile div.question.canned > div.full-relative {
     padding-top: 30%; }
   #content.mobile div.question.canned div.option {
     padding: 0;
-    width: 90%; }
+    width: 119%;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-repeat: no-repeat; }
     #content.mobile div.question.canned div.option div.text {
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%); }
   #content.mobile #response {
-    padding-top: 37%;
+    padding-top: 31%;
     padding-left: 5.5%;
     padding-right: 5.5%; }
     #content.mobile #response #card-wrap {
-      position: initial;
+      position: relative;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: auto;
       padding: 5%;
       padding-top: 10%;
       -webkit-transform: none;
       -ms-transform: none;
-      transform: none;
-      background: url('../assets/img/response_letter_bg.jpg') no-repeat top center;
-      -webkit-background-size: 100% auto;
-      background-size: 100% auto; }
+      transform: none; }
       #content.mobile #response #card-wrap #card-greeting {
-        font-size: 21px; }
+        font-size: 21px;
+        margin-bottom: 2%; }
+      #content.mobile #response #card-wrap #card-body {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 2%;
+        letter-spacing: -0.1px; }
+      #content.mobile #response #card-wrap #card-sincerely {
+        font-size: 14px;
+        margin-bottom: 1%; }
+      #content.mobile #response #card-wrap #card-from {
+        width: 65%; }
+      #content.mobile #response #card-wrap #printversion {
+        display: none; }
+      #content.mobile #response #card-wrap #sendmore {
+        height: auto;
+        width: 72%;
+        bottom: initial;
+        top: 100%;
+        background-repeat: no-repeat; }
+        #content.mobile #response #card-wrap #sendmore > div.empty-space {
+          padding-bottom: 17%; }
+
+#letterbg-ctr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 31%;
+  padding-left: 5.5%;
+  padding-right: 5.5%;
+  z-index: 2; }
+  #letterbg-ctr.active div.background {
+    display: block; }
+  #letterbg-ctr div.background {
+    background: url('../assets/img/response_letter_bg.jpg') no-repeat top center;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    height: 100%;
+    display: none; }
+
+#mobile-characters {
+  top: 0;
+  left: 0;
+  z-index: 2; }
+  #mobile-characters div.character {
+    position: absolute;
+    display: none;
+    background-position: center center;
+    -webkit-background-size: contain;
+    background-size: contain; }
+    #mobile-characters div.character.front {
+      z-index: 3; }
+    #mobile-characters div.character.active {
+      display: block; }
+    #mobile-characters div.character.flip {
+      -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+      transform: scaleX(-1);
+      -webkit-filter: FlipH;
+      filter: FlipH;
+      -ms-filter: "FlipH"; }
+    #mobile-characters div.character.dipper {
+      background-image: url('../assets/spritesheets/dipper/Dipper_00000.png');
+      width: 85%;
+      top: 5.7%;
+      left: 38%; }
+      #mobile-characters div.character.dipper.selected {
+        top: 11.7%;
+        left: -26%; }
+        #mobile-characters div.character.dipper.selected.response {
+          left: 17%;
+          top: 9%;
+          -webkit-transform: rotate(15deg);
+          -ms-transform: rotate(15deg);
+          transform: rotate(15deg); }
+      #mobile-characters div.character.dipper.team {
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+        -webkit-filter: FlipH;
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        left: -8%;
+        width: 41%;
+        top: 24%; }
+        #mobile-characters div.character.dipper.team.response {
+          left: -6%;
+          width: 51%;
+          top: 8%; }
+      #mobile-characters div.character.dipper > div.empty-space {
+        padding-bottom: 53.125%; }
+    #mobile-characters div.character.bladeranger {
+      background-image: url('../assets/spritesheets/blade/Guide_BladeRanger_body_970x600_00000.png');
+      width: 85%;
+      top: 8.7%;
+      left: 48%; }
+      #mobile-characters div.character.bladeranger.response {
+        width: 91%;
+        top: 4%;
+        left: 23%; }
+      #mobile-characters div.character.bladeranger.team {
+        width: 79%;
+        top: 35.7%;
+        left: 48%; }
+        #mobile-characters div.character.bladeranger.team.response {
+          width: 62%;
+          top: 5%;
+          left: 62%; }
+      #mobile-characters div.character.bladeranger > div.empty-space {
+        padding-bottom: 61.83333%; }
+    #mobile-characters div.character.cabbie {
+      background-image: url('../assets/spritesheets/cabbie/Cabbie_00000.png');
+      width: 85%;
+      top: 23.7%;
+      left: -25%; }
+      #mobile-characters div.character.cabbie.response {
+        top: 10%;
+        left: 21%;
+        -webkit-transform: scaleX(-1) rotate(12deg);
+        -ms-transform: scaleX(-1) rotate(12deg);
+        transform: scaleX(-1) rotate(12deg);
+        -webkit-filter: FlipH;
+        filter: FlipH;
+        -ms-filter: "FlipH"; }
+      #mobile-characters div.character.cabbie > div.empty-space {
+        padding-bottom: 51.875%; }
+    #mobile-characters div.character.cabbie2 {
+      background-image: url('../assets/spritesheets/cabbie2/Cabbie_2_000000.png'); }
+      #mobile-characters div.character.cabbie2.team {
+        width: 23%;
+        left: 0;
+        top: 46%;
+        opacity: 0.8;
+        -webkit-transform: rotate(-8deg);
+        -ms-transform: rotate(-8deg);
+        transform: rotate(-8deg); }
+        #mobile-characters div.character.cabbie2.team.response {
+          width: 24%;
+          left: 46%;
+          top: 10%; }
+      #mobile-characters div.character.cabbie2 > div.empty-space {
+        padding-bottom: 50.66667%; }
+    #mobile-characters div.character.windlifter {
+      background-image: url('../assets/spritesheets/windlifter/Guide_Windlifter_body_970x600_00000.png');
+      width: 75%;
+      top: 19.7%;
+      left: -23%; }
+      #mobile-characters div.character.windlifter.team {
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+        -webkit-filter: FlipH;
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        left: 3%;
+        top: 16%;
+        width: 18%;
+        opacity: 0.75; }
+        #mobile-characters div.character.windlifter.team.response {
+          left: -7%;
+          top: 20%; }
+      #mobile-characters div.character.windlifter > div.empty-space {
+        padding-bottom: 61.83333%; }
+    #mobile-characters div.character.dusty {
+      background-image: url('../assets/spritesheets/dusty/Dusty_plane_00000.png');
+      top: 30%;
+      width: 51%;
+      left: -11.5%; }
+      #mobile-characters div.character.dusty > div.empty-space {
+        padding-bottom: 82%; }
+    #mobile-characters div.character.dusty2 {
+      background-image: url('../assets/spritesheets/dusty3/Dusty_plane5_000000.png'); }
+      #mobile-characters div.character.dusty2.team.response {
+        width: 43%;
+        top: 15%;
+        left: 41%; }
+      #mobile-characters div.character.dusty2.response {
+        width: 52%;
+        top: 13%;
+        left: 34%; }
+      #mobile-characters div.character.dusty2 > div.empty-space {
+        padding-bottom: 60%; }
+    #mobile-characters div.character.dusty3 {
+      background-image: url('../assets/spritesheets/dusty4/Dusty_angle1_noBlink_00000.png');
+      top: 19%;
+      left: -1%;
+      width: 44%;
+      -webkit-transform: rotate(32deg);
+      -ms-transform: rotate(32deg);
+      transform: rotate(32deg); }
+      #mobile-characters div.character.dusty3.team {
+        left: 61%;
+        top: 21%; }
+      #mobile-characters div.character.dusty3 > div.empty-space {
+        padding-bottom: 56.83333%; }
+    #mobile-characters div.character.parachuter1 {
+      background-image: url('../assets/img/drip.png');
+      width: 10%;
+      top: 60.5%;
+      left: 15%; }
+      #mobile-characters div.character.parachuter1 > div.empty-space {
+        padding-bottom: 154.09836%; }
+    #mobile-characters div.character.parachuter2 {
+      background-image: url('../assets/img/dynamite.png');
+      width: 10%;
+      top: 14%;
+      left: 45%;
+      opacity: 0.4; }
+      #mobile-characters div.character.parachuter2 > div.empty-space {
+        padding-bottom: 154.09836%; }
+    #mobile-characters div.character.parachuter3 {
+      background-image: url('../assets/img/blackout.png');
+      width: 10%;
+      top: 50%;
+      left: 75%;
+      opacity: 0.75; }
+      #mobile-characters div.character.parachuter3 > div.empty-space {
+        padding-bottom: 154.09836%; }

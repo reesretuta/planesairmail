@@ -165,19 +165,43 @@
             $('#card-greeting').html(greeting);
             $('#card-body').html(response);
             $('#card-sincerely').html(sincerely);
-            $('#card-from').html(character);
+//            $('#card-from').html(character);
         },
 
         show: function() {
             this.$el.show();
             this.$background.show();
 
+
             if(!isMobile) {
                 setTimeout(function() {
                     responseModule.animateIn(this.character);
                 }.bind(this), 400);
+            } else {
+                $('#letterbg-ctr').addClass('active');
+                this.showMobileCharacters();
             }
         },
+        showMobileCharacters: function() {
+            var $mobileCtr = $('#mobile-characters');
+
+            var $activeCharacters = $mobileCtr.find('div.character.active');
+
+            if(this.character === 'team') {
+                $activeCharacters.filter('.dusty3').removeClass('active team response');
+
+                $mobileCtr.find('div.character.dusty2').addClass('active team response front');
+            } else if (this.character === 'dusty') {
+                $activeCharacters.removeClass('active team response');
+
+                $mobileCtr.find('div.character.dusty2').addClass('active response front');
+            } else {
+                $activeCharacters.addClass('front');
+            }
+
+            $activeCharacters.addClass('response');
+        },
+
         hide: function() {
 
         },
@@ -189,8 +213,8 @@
             var g = $('#card-greeting').html();
             var b = $('#card-body').html();
             var s = $('#card-sincerely').html();
-            var f = $('#card-from').html();
-            window.open(window.location.href + 'print.php' + '?char=' + this.character + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + f);
+//            var f = $('#card-from').html();
+            window.open(window.location.href + 'print.php' + '?char=' + this.character + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + this.character);
             
         }
     });

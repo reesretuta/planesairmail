@@ -66,9 +66,15 @@
             text-align: center;
             font-size: 35px;
             width:248px;
-            height:59px;
             text-indent:-9999em;
             margin: 0 auto;
+
+            > div.empty-space {
+                padding-bottom: percentage(59/248);
+            }
+            background-position: center center;
+            background-size: contain;
+
             &.dusty {
                 background-image: url('../assets/img/signatures/dusty.png');
             }
@@ -109,6 +115,9 @@
             width: 300px;
             display: block;
             bottom: -75px;
+
+            background-position: center center;
+            background-size: contain;
         }
     }
 }

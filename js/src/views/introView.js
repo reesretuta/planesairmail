@@ -46,7 +46,30 @@
         showBeginScreen: function() {
             var timeline = this.timelineBeginScreenIn;
 
+            if(device.isMobile()) {
+                //show characters
+                this.showMobileCharacters();
+            }
+
             setTimeout(_.bind(timeline.play, timeline), 200);
+        },
+
+        showMobileCharacters: function() {
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            var $dusty = $mobileCharacters.filter('.dusty3');
+            var $dipper = $mobileCharacters.filter('.dipper');
+            var $parachuter1 = $mobileCharacters.filter('.parachuter1');
+            var $parachuter2 = $mobileCharacters.filter('.parachuter2');
+            var $parachuter3 = $mobileCharacters.filter('.parachuter3');
+
+
+            $dusty.addClass('active');
+            $dipper.addClass('active flip');
+            $parachuter1.addClass('active');
+            $parachuter2.addClass('active');
+            $parachuter3.addClass('active');
+
         },
 
 

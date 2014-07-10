@@ -225,6 +225,8 @@
                 if(!isMobile) {
                     //animate in character
                     this.scene.animateInUserCharacter();
+                } else {
+                    this.showMobileCharacter();
                 }
             }
 
@@ -236,6 +238,28 @@
 
             this.footer.setCounter(this.activePageIndex);
         },
+        showMobileCharacter: function() {
+            var character = this.selectCharacterView.model.get('value');
+
+            if(character === 'team') {
+                this.showMobileTeam();
+                return;
+            }
+
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            var $character = $mobileCharacters.filter('.'+character);
+
+            $character.addClass('active selected');
+        },
+        showMobileTeam: function() {
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            var $characters = $mobileCharacters.filter('.dusty3, .dipper, .cabbie2, .bladeranger, .windlifter');
+
+            $characters.addClass('active team');
+        },
+
         showPageAfterHide: function() {
             var lastPage = this.pages[this.activePageIndex-1];
             if(lastPage.isCanned()) {
