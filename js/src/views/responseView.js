@@ -182,7 +182,6 @@
                 var $cardWrap = $('#card-wrap');
 
                 var height = $cardWrap.outerHeight();
-                var posTop = $cardWrap.offset().top;
 
                 $letterBgCtr.height(height);
                 $letterBgCtr.addClass('active');
