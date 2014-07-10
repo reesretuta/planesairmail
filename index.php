@@ -118,6 +118,9 @@ $server = "http://$_SERVER[HTTP_HOST]/";
                         <div class="empty-space"></div>
                         <div class="footer-content">
                             <div class="copyright">&copy;2014 DISNEY</div>
+                            <div class="in-theaters mobile">
+                                <div class="empty-space"></div>
+                            </div>
                             <div class="counter clearfix">
                                 <div class="dot">
                                     <div class="empty-space"></div>
