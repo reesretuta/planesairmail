@@ -221,7 +221,9 @@
             if(this.activePageIndex === 1) {
                 this.updateCannedCopy();
 
-                _gaq.push(['_trackEvent', 'Characters', this.selectCharacterView.model.get('text')]);
+                var character = this.selectCharacterView.model.get('text');
+
+                ga('send', 'event', 'Character Select', character, ipAddress);
 
                 if(!isMobile) {
                     //animate in character
@@ -295,7 +297,7 @@
             });
             this.responseView.setResponse(pageModels);
 
-            _gaq.push(['_trackEvent', 'Letters Sent']);
+            ga('send', 'event', 'Finish and send letter', 'click', ipAddress);
 
             if(!isMobile) {
                 this.scene.onUserCharacterOut(_.bind(this.scene.playWipescreen, this.scene));

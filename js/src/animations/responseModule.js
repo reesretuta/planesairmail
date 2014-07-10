@@ -32,7 +32,7 @@ var animateIn = (function() {
             placeJustOffscreen(dusty);
 
             TweenLite.to(dusty, animationTime, {
-                windowX: 0.71,
+                windowX: 0.68,
                 windowY: 0.23,
                 ease: easing
             });

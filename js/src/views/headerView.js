@@ -14,15 +14,30 @@ var HeaderView = Backbone.View.extend({
 
     },
 
-    onShowtimesClick: function() {
+    onShowtimesClick: function(e) {
         "use strict";
+        e.preventDefault();
 
-        console.log('showtimes');
+        var url = e.currentTarget.getAttribute('href');
+
+        ga('send', 'event', 'Find Showtimes', 'click', ipAddress, {
+            hitCallback: function() {
+                document.location = url;
+            }
+        });
+
     },
-    onTrailerClick: function() {
+    onTrailerClick: function(e) {
         "use strict";
+        e.preventDefault();
 
-        console.log('trailer');
+        var url = e.currentTarget.getAttribute('href');
+
+        ga('send', 'event', 'View Trailer', 'click', ipAddress, {
+            hitCallback: function() {
+                document.location = url;
+            }
+        });
     }
 
 

@@ -63,7 +63,8 @@
         character: '',
         el: '#response',
         events: {
-            'click a#printversion': 'print'
+            'click a#printversion': 'print',
+            'click #sendmore': 'onSendMore'
         },
 
         initialize: function() {
@@ -238,6 +239,17 @@
 //            var f = $('#card-from').html();
             window.open(window.location.href + 'print.php' + '?char=' + this.character + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + this.character);
             
+        },
+        onSendMore: function(e) {
+            e.preventDefault();
+
+            var url = e.currentTarget.getAttribute('href');
+
+            ga('send', 'event', 'More airmail', 'click', ipAddress, {
+                hitCallback: function() {
+                    document.location = url;
+                }
+            });
         }
     });
 

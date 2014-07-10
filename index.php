@@ -1,7 +1,28 @@
 <?php
 
+// Function to get the client IP address
+function get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if(getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if(getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if(getenv('HTTP_FORWARDED'))
+        $ipaddress = getenv('HTTP_FORWARDED');
+    else if(getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
 
 $server = "http://$_SERVER[HTTP_HOST]/";
+
+$ip = get_client_ip();
 
 
 ?>
@@ -28,14 +49,20 @@ $server = "http://$_SERVER[HTTP_HOST]/";
 
     <link rel="stylesheet" type="text/css" href="css/app.css" />
 
-
+    <script>
+        var ipAddress = '<?= $ip; ?>';
+    </script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-52699659-1', 'auto');
+//        ga('create', 'UA-52699659-1', 'auto');
+        ga('create', 'UA-52699659-1', {
+            'cookieDomain': 'none'
+        });
+
         ga('send', 'pageview');
     </script>
 </head>
@@ -51,13 +78,13 @@ $server = "http://$_SERVER[HTTP_HOST]/";
     <script>
         window.fbAsyncInit = function() {
             FB.Event.subscribe('edge.create', function(targetUrl) {
-                _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+                ga('send', 'social', 'facebook', 'like', targetUrl);
             });
             FB.Event.subscribe('edge.remove', function(targetUrl) {
-                _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+                ga('send', 'social', 'facebook', 'unlike', targetUrl);
             });
             FB.Event.subscribe('message.send', function(targetUrl) {
-                _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+                ga('send', 'social', 'facebook', 'send', targetUrl);
             });
         };
     </script>
@@ -105,8 +132,8 @@ $server = "http://$_SERVER[HTTP_HOST]/";
                                 <div class="in-theaters"></div>
                                 <div class="social clearfix">
                                     <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                                    <a href="http://www.fandango.com/planes:fire26rescue_170063/movietimes" class="showtimes" onClick="_gaq.push(['_trackEvent', 'Clicks', 'Find Showtimes']);">Find showtimes</a>
-                                    <a href="https://www.youtube.com/watch?v=ibAxkCJfvC4" class="trailer" onClick="_gaq.push(['_trackEvent', 'Clicks', 'View Trailer']);">View Trailer</a>
+                                    <a href="http://www.fandango.com/planes:fire26rescue_170063/movietimes" class="showtimes">Find showtimes</a>
+                                    <a href="https://www.youtube.com/watch?v=ibAxkCJfvC4" class="trailer">View Trailer</a>
                                 </div>
                             </div>
                         </div>
@@ -179,8 +206,8 @@ $server = "http://$_SERVER[HTTP_HOST]/";
 
 
 <!----------------------------- Backbone Libraries ----------------------->
-<script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src="js/lib/jquery-1.11.1.min.js"></script>
+<script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>
 
@@ -194,7 +221,6 @@ $server = "http://$_SERVER[HTTP_HOST]/";
 
 <!----------------------------- Other Libraries ----------------------->
 <script src="http://code.createjs.com/soundjs-0.5.2.min.js"></script>
-<script src='js/lib/fastclick.js'></script>
 
 
 <!-------------------------------- App Javascript ------------------------>
