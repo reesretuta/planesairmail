@@ -202,7 +202,7 @@
             TweenLite.to(this.$pageNav, 0.3, {opacity: 1});
         },
 
-        nextPage: function() {
+        nextPage: _.throttle(function() {
             this.animating = true;
             //hide active page
             var activePage = this.pages[this.activePageIndex];
@@ -237,7 +237,8 @@
             this.repositionPageNav(true);
 
             this.footer.setCounter(this.activePageIndex);
-        },
+        }, 200, {trailing: false}),
+
         showMobileCharacter: function() {
             var character = this.selectCharacterView.model.get('value');
 
@@ -314,9 +315,9 @@
 
             var pixelPosition = (activePage.$el.offset().top + activePage.$el.outerHeight());
 
-            var windowHeight = this.$window.height();
+            var docHeight = $(document).height();
 
-            var topFrac = Math.min(pixelPosition/windowHeight, (windowHeight - this.footer.height() - this.$pageNav.outerHeight())/windowHeight);
+            var topFrac = Math.min(pixelPosition/docHeight, (docHeight - this.footer.height() - this.$pageNav.outerHeight())/docHeight);
 
             var percTop = 100 * topFrac + '%';
 

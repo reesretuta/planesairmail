@@ -125,6 +125,33 @@
             display: none;
         }
 
+        div.copyright {
+            height: auto;
+            background-size: auto 37%;
+            background-position: 0% 18%;
+            padding-left: 0;
+            padding-top: 17px;
+            font-size: 9px;
+        }
+
+        div.in-theaters {
+            background: url('../assets/img/in-theatres3D.png') no-repeat center center;
+            background-size: contain;
+
+            width: 43%;
+
+            position: absolute;
+            top: 43%;
+            left: 0;
+            right: 0;
+
+            margin: auto;
+
+            > div.empty-space {
+                padding-bottom: percentage(41/364);
+            }
+        }
+
         div.counter {
             width:100%;
             padding: 0 5.5%;
@@ -275,9 +302,15 @@
             padding-top: 30%;
         }
 
+        div.copy {
+            font-size: 18px;
+        }
+
         div.option {
             padding: 0;
             width: 119%;
+
+            margin-bottom: 7%;
 
             position: relative;
             left: 50%;
@@ -287,6 +320,8 @@
 
             div.text {
                 transform: translate(-50%, -50%);
+
+                font-size: 8px;
             }
         }
     }
