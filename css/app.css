@@ -981,8 +981,7 @@ div.question.character-select div.option div.background, div.question.favorite-s
     #content.mobile div.question.canned div.option div.text {
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      font-size: 8px; }
+      transform: translate(-50%, -50%); }
   #content.mobile #response {
     padding-top: 35%;
     padding-left: 5.5%;
@@ -1021,6 +1020,8 @@ div.question.character-select div.option div.background, div.question.favorite-s
         background-repeat: no-repeat; }
         #content.mobile #response #card-wrap #sendmore > div.empty-space {
           padding-bottom: 17%; }
+  #content.mobile.ios div.question.canned div.option div.text {
+    font-size: 8px; }
 
 #letterbg-ctr {
   position: absolute;

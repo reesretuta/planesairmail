@@ -4,7 +4,8 @@
     <div class="back"></div>
 </div>
 <div id="mobile-characters" class="mobile full-absolute">
-    <div class="full-relative">
+    <div class="empty-space"></div>
+    <div class="full-absolute">
         <div id="letterbg-ctr" class="mobile">
             <div class="background"></div>
         </div>

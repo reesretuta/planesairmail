@@ -320,11 +320,11 @@
 
             div.text {
                 transform: translate(-50%, -50%);
-
-                font-size: 8px;
             }
         }
     }
+
+
 
 
     #response {
@@ -381,6 +381,18 @@
 
                 > div.empty-space {
                     padding-bottom: percentage(51/300);
+                }
+            }
+        }
+    }
+
+
+
+    &.ios {
+        div.question.canned {
+            div.option {
+                div.text {
+                    font-size: 8px;
                 }
             }
         }

@@ -74,6 +74,8 @@
 
             if(isMobile) {
                 this.$el.addClass('mobile');
+
+                if(device.isIOS()) this.$el.addClass('ios');
             }
 
             $('#assetLoader').remove();
