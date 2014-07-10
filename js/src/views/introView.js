@@ -158,13 +158,15 @@
             var timeline = new TimelineMax({
                 paused: true,
                 onComplete: this.onAnimationFinished,
-                onCompleteScope: this
+                onCompleteScope: this,
+                onStart: function() {
+                    createjs.Sound.play('Siteopens', {delay: 0});
+                }
             });
             timeline.add(TweenLite.to(this.$beginScreen, animationTime/4, {
                 opacity: 0,
                 ease: easing
             }), 0);
-
 
             timeline.add(TweenLite.to(introFrames.top, animationTime, {
                 windowY: 0,

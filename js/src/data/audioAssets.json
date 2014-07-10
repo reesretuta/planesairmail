@@ -31,6 +31,14 @@
         {
             "id": "Wipescreen",
             "src": "assets/audio/wipescreen.ogg"
+        },
+        {
+            "id": "Logodrop",
+            "src": "assets/audio/logodrop.ogg"
+        },
+        {
+            "id": "Siteopens",
+            "src": "assets/audio/site_opens.ogg"
         }
 
     ],

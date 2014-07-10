@@ -192,6 +192,7 @@ function getLogoAnimationTimeline(logo) {
         onStart: function() {
             logo.visible = true;
             logo.tweenFrame = 0;
+            createjs.Sound.play('Logodrop', {delay: 0});
         },
         onComplete: function() {
 
