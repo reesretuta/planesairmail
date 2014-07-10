@@ -77,7 +77,9 @@
                     var template = responseMap[character][model.get('value')];
 
                     // ****** If statements & special cases go here *********
-                    
+                    console.log('1');
+                    console.log(model.get('value'));
+                    console.log(model.get('text'));
 
                     return template.replace('%template%', model.get('text'));
                 })
@@ -107,6 +109,11 @@
                       .filter(isTrueCanned)
                       .pluck('value')
                       .value();
+
+                      trueCannedValues.slice(0,4);
+                      console.log('sliced');
+                      console.log(trueCannedValues);
+
             } else {
               trueCannedValues = _.chain(cannedModels)
                       .filter(isTrueCanned)
@@ -134,7 +141,7 @@
             var sincerely = responseMap[character]['sincerely'] +", ";
 
 
-            var response = body1 + ' ' + cannedResponses.join(' ') + ' ' + personalityResponses.join(' ') + ' ' + body2;
+            var response = body1 + ' ' + cannedResponses.join(' ') + ' ............... ' + personalityResponses.join(' ') + ' ' + body2;
 
 
             $('#card-greeting').html(greeting);
