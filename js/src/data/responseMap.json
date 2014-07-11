@@ -1,6 +1,6 @@
 {
     "dusty" : {
-        "greeting": "Hi there!",
+        "greeting": "Hi there %template%!",
         "body1": "I was really excited to receive your airmail!",
         "body2": "I've gotta get back to fighting fires here, but you stay strong!",
         "sincerely": "Over and out",
@@ -15,7 +15,7 @@
         "favorite-sport": "I was a champion racer not too long ago. Racing is definitely my favorite sport."
     },
     "dipper": {
-        "greeting": "Hi there,",
+        "greeting": "Hi there %template%,",
         "body1": "I'm Dipper. That's what everyone calls me. So you can too!",
         "body2": "Thanks for writing to me %template%.",
         "sincerely": "Remember, the sky's the limit!",
@@ -30,7 +30,7 @@
         "favorite-sport": "Swimming/diving is my favorite sport! I love dipping in and out of the water."
     },
     "windlifter": {
-        "greeting": "Hello friend!",
+        "greeting": "Hello %template%!!",
         "body1": "I enjoyed reading your letter!",
         "body2": "Thanks for your letter %template%.",
         "sincerely": "Your new friend",
@@ -45,7 +45,7 @@
         "favorite-sport": "I don't play many sports, but I am an avid weight lifter. You'll often see me lifting heavy loads of logs in my off time."
     },
     "bladeranger": {
-        "greeting": "Hi Champ!",
+        "greeting": "Hi champ!",
         "body1": "I'm Blade Ranger. But you can call me Blade.",
         "body2": "Remember, you can do anything!  You just have to train hard and have courage.  Thanks for your letter %template%.",
         "sincerely": "Your partner",
@@ -75,7 +75,7 @@
         "favorite-sport": "Baseball is my favorite sport. I always have five smokejumpers in my cargo - just enough to cover the bases."
     },
     "team": {
-        "greeting": "Hey friend!",
+        "greeting": "Hey %template%!",
         "body1": "Thanks for writing to us.",
         "body2": "Time to get back to work!",
         "sincerely": "Let's make it count!",

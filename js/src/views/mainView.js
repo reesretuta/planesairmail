@@ -295,6 +295,7 @@
             var pageModels = _.map(this.pages, function(page) {
                 return page.model;
             });
+            console.log('pageModels', pageModels);
             this.responseView.setResponse(pageModels);
 
             ga('send', 'event', 'Finish and send letter', 'click', ipAddress);

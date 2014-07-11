@@ -77,6 +77,10 @@
         show: function () {
             this.$el.addClass('active');
 
+            if(this.$nameInput.val() !== '') {
+                this.$placeholder.hide();
+            }
+
             if(!device.isMobile()) {
                 setTimeout(this.startAnimation, 0);
             }
@@ -113,6 +117,7 @@
             if(val === '') {
                 this.$placeholder.show();
             }
+            this.model.set({value: val});
         },
 
         onNameChange: function(e) {

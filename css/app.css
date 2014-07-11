@@ -162,7 +162,10 @@ body {
       display: block;
       float: left;
       margin-top: 3px;
-      margin-right: 10px; }
+      margin-right: 10px;
+      min-width: 85px; }
+      #header div.social div.fb-like span {
+        overflow: visible !important; }
 
 #footer {
   width: 100%;

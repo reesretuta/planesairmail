@@ -94,6 +94,14 @@
             margin-top: 3px;
 
             margin-right: 10px;
+
+            min-width: 85px;
+
+            span {
+                overflow:visible !important;
+//                width:450px !important;
+//                margin-right:-375px;
+            }
         }
     }
 }

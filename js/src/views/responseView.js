@@ -73,6 +73,8 @@
         },
 
         getUsername: function(nameModel) {
+            console.log(nameModel, nameModel.get('value'));
+
             return nameModel.get('value') || 'Friend';
         },
 
@@ -117,6 +119,8 @@
             var userName = this.getUsername(nameModel);
             var character = characterModel.get('value');
             this.character = character;
+
+            console.log('username', userName);
 
             var answeredQuestions = _.filter(questionModels, isAnswered);
             

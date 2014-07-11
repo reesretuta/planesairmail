@@ -131,7 +131,7 @@ $ip = get_client_ip();
                                 </div>
                                 <div class="in-theaters"></div>
                                 <div class="social clearfix">
-                                    <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                                    <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-width="450" data-action="like" data-show-faces="false" data-share="false"></div>
                                     <a href="http://www.fandango.com/planes:fire26rescue_170063/movietimes" class="showtimes">Find showtimes</a>
                                     <a href="https://www.youtube.com/watch?v=ibAxkCJfvC4" class="trailer">View Trailer</a>
                                 </div>
