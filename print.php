@@ -84,6 +84,10 @@
             $char = '/assets/spritesheets/windlifter/Guide_Windlifter_body_970x600_00000.png';
             $signature = '/assets/img/signatures/windlifter.png';
         break;
+        case 'team':
+            $char = '/assets/spritesheets/dusty/Dusty_plane_00000.png';
+            $signature = '/assets/img/signatures/team.png';
+        break;
         default:
         die('invalid input');
         break;
