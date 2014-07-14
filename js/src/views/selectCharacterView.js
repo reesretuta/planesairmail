@@ -12,8 +12,10 @@
 
     var characterModule = require('../animations/characterModule');
 
-
     var characterAudioIds = audioAssets.characterAudioIds;
+
+    var device = require('../device');
+    var isMobile = device.isMobile();
 
     var SelectCharacterView = QuestionView.extend({
 
@@ -22,13 +24,30 @@
             QuestionView.prototype.initialize.call(this, options);
         },
 
+        show: function() {
+            if(isMobile) {
+                this.hideMobileCharacters();
+            }
+
+            QuestionView.prototype.show.call(this);
+        },
+
+        hideMobileCharacters: function() {
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            $mobileCharacters.removeClass('active intro flip');
+        },
+
         getSelectedCharacter: function() {
             return this.model.get('text');
         },
         onRadioChange: function(e) {
+            e.preventDefault();
             QuestionView.prototype.onRadioChange.call(this, e);
 
-            var char = e.currentTarget.getAttribute('id');
+            var $input = $(e.currentTarget).siblings('input');
+
+            var char = $input.attr('id');
 
             createjs.Sound.play(characterAudioIds[char]);
 

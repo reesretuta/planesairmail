@@ -11,7 +11,8 @@
     var IntroView = Backbone.View.extend({
         el: '#intro-view',
         events: {
-            'click a.begin': 'onBeginClick'
+            'click a.begin': 'onBeginClick',
+            'touchend a.begin': 'onBeginClick'
         },
         // ============================================================ //
         /* ****************** Initialization Stuff ******************** */
@@ -45,7 +46,30 @@
         showBeginScreen: function() {
             var timeline = this.timelineBeginScreenIn;
 
+            if(device.isMobile()) {
+                //show characters
+                this.showMobileCharacters();
+            }
+
             setTimeout(_.bind(timeline.play, timeline), 200);
+        },
+
+        showMobileCharacters: function() {
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            var $dusty = $mobileCharacters.filter('.dusty3');
+            var $dipper = $mobileCharacters.filter('.dipper');
+            var $parachuter1 = $mobileCharacters.filter('.parachuter1');
+            var $parachuter2 = $mobileCharacters.filter('.parachuter2');
+            var $parachuter3 = $mobileCharacters.filter('.parachuter3');
+
+
+            $dusty.addClass('active');
+            $dipper.addClass('active flip');
+            $parachuter1.addClass('active');
+            $parachuter2.addClass('active');
+            $parachuter3.addClass('active');
+
         },
 
 
@@ -134,13 +158,15 @@
             var timeline = new TimelineMax({
                 paused: true,
                 onComplete: this.onAnimationFinished,
-                onCompleteScope: this
+                onCompleteScope: this,
+                onStart: function() {
+                    createjs.Sound.play('Siteopens', {delay: 0});
+                }
             });
             timeline.add(TweenLite.to(this.$beginScreen, animationTime/4, {
                 opacity: 0,
                 ease: easing
             }), 0);
-
 
             timeline.add(TweenLite.to(introFrames.top, animationTime, {
                 windowY: 0,

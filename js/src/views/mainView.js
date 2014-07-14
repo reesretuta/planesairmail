@@ -44,8 +44,11 @@
         el: '#content',
         events: {
             'click a.next': 'onNext',
+            'touchend a.next': 'onNext',
             'click a.finish-send': 'onFinish',
+            'touchend a.finish-send': 'onFinish',
             'click a.skip': 'onSkip',
+            'touchend a.skip': 'onSkip',
             'mousemove': 'onMouseMove'
         },
 
@@ -71,6 +74,8 @@
 
             if(isMobile) {
                 this.$el.addClass('mobile');
+
+                if(device.isIOS()) this.$el.addClass('ios');
             }
 
             $('#assetLoader').remove();
@@ -138,9 +143,6 @@
             var personalityModels = partitionedQuestionModels[0];
             var cannedModels = partitionedQuestionModels[1];
 
-
-
-
             var enterNameView = new EnterNameView();
             var selectCharView = new SelectCharacterView({model: charModel, parent: this.$pagesContainer});
 
@@ -168,7 +170,8 @@
             this.$next = this.$pageNav.find('a.next');
             this.$finishSend = this.$pageNav.find('a.finish-send');
 
-            this.$skip = this.$pageNav.find('a.skip');
+            this.$skipCtr = this.$pageNav.find('div.skip');
+            this.$skip = this.$skipCtr.find('a.skip');
 
             this.$header = $('#header');
         },
@@ -198,7 +201,7 @@
             TweenLite.to(this.$pageNav, 0.3, {opacity: 1});
         },
 
-        nextPage: function() {
+        nextPage: _.throttle(function() {
             this.animating = true;
             //hide active page
             var activePage = this.pages[this.activePageIndex];
@@ -218,9 +221,15 @@
             if(this.activePageIndex === 1) {
                 this.updateCannedCopy();
 
+                var character = this.selectCharacterView.model.get('text');
+
+                ga('send', 'event', 'Character Select', character, ipAddress);
+
                 if(!isMobile) {
                     //animate in character
                     this.scene.animateInUserCharacter();
+                } else {
+                    this.showMobileCharacter();
                 }
             }
 
@@ -231,7 +240,30 @@
             this.repositionPageNav(true);
 
             this.footer.setCounter(this.activePageIndex);
+        }, 200, {trailing: false}),
+
+        showMobileCharacter: function() {
+            var character = this.selectCharacterView.model.get('value');
+
+            if(character === 'team') {
+                this.showMobileTeam();
+                return;
+            }
+
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            var $character = $mobileCharacters.filter('.'+character);
+
+            $character.addClass('active selected');
         },
+        showMobileTeam: function() {
+            var $mobileCharacters = $('#mobile-characters').find('div.character');
+
+            var $characters = $mobileCharacters.filter('.dusty3, .dipper, .cabbie2, .bladeranger, .windlifter');
+
+            $characters.addClass('active team');
+        },
+
         showPageAfterHide: function() {
             var lastPage = this.pages[this.activePageIndex-1];
             if(lastPage.isCanned()) {
@@ -263,7 +295,10 @@
             var pageModels = _.map(this.pages, function(page) {
                 return page.model;
             });
+
             this.responseView.setResponse(pageModels);
+
+            ga('send', 'event', 'Finish and send letter', 'click', ipAddress);
 
             if(!isMobile) {
                 this.scene.onUserCharacterOut(_.bind(this.scene.playWipescreen, this.scene));
@@ -286,14 +321,16 @@
 
             var pixelPosition = (activePage.$el.offset().top + activePage.$el.outerHeight());
 
-            var windowHeight = this.$window.height();
+            var docHeight = $(document).height();
 
-            var topFrac = Math.min(pixelPosition/windowHeight, (windowHeight - this.footer.height() - this.$pageNav.outerHeight())/windowHeight);
+            var topFrac = Math.min(pixelPosition/docHeight, (docHeight - this.footer.height() - this.$pageNav.outerHeight())/docHeight);
 
             var percTop = 100 * topFrac + '%';
 
             if(!!animate) {
-                TweenLite.to(this.$pageNav, 0.2, {top: percTop, ease:'Quad.easeInOut'});
+                var animationTime = isMobile ? 0.1 : 0.2;
+
+                TweenLite.to(this.$pageNav, animationTime, {top: percTop, ease:'Quad.easeInOut'});
                 return;
             }
             this.$pageNav.css('top', percTop);
@@ -301,9 +338,17 @@
 
 
         hideSkip: function() {
+            if(isMobile) {
+                this.$skipCtr.css({height: 0});
+                return;
+            }
             TweenLite.to(this.$skip, 0.2, {bottom: '100%', opacity: 0});
         },
         showSkip: function() {
+            if(isMobile) {
+                this.$skipCtr.attr('style', '');
+                return;
+            }
             TweenLite.to(this.$skip, 0.2, {bottom: 0, opacity: 1});
         },
 

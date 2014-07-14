@@ -1,7 +1,28 @@
 <?php
 
+// Function to get the client IP address
+function get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if(getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if(getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if(getenv('HTTP_FORWARDED'))
+        $ipaddress = getenv('HTTP_FORWARDED');
+    else if(getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
 
 $server = "http://$_SERVER[HTTP_HOST]/";
+
+$ip = get_client_ip();
 
 
 ?>
@@ -27,26 +48,58 @@ $server = "http://$_SERVER[HTTP_HOST]/";
     <meta property="og:description" content=""/>
 
     <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+    <script>
+        var ipAddress = '<?= $ip; ?>';
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+//        ga('create', 'UA-52699659-1', 'auto');
+        ga('create', 'UA-52699659-1', {
+            'cookieDomain': 'none'
+        });
+
+        ga('send', 'pageview');
+    </script>
 </head>
 <body>
-    <div id="fb-root"></div>
     <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.Event.subscribe('edge.create', function(targetUrl) {
+                ga('send', 'social', 'facebook', 'like', targetUrl);
+            });
+            FB.Event.subscribe('edge.remove', function(targetUrl) {
+                ga('send', 'social', 'facebook', 'unlike', targetUrl);
+            });
+            FB.Event.subscribe('message.send', function(targetUrl) {
+                ga('send', 'social', 'facebook', 'send', targetUrl);
+            });
+        };
+    </script>
+
+
+    <div id="fb-root"></div>
+
 
     <div id="content" class="full-relative">
         <div class="mobile empty-space"></div>
         <div class="full-absolute">
             <div class="full-relative">
-                <div id="mobile-backgrounds" class="mobile">
-                    <div class="front"></div>
-                    <div class="middle"></div>
-                    <div class="back"></div>
-                </div>
+
+                <?php include_once('includes/mobileExtraHtml.php'); ?>
+
                 <div id="response-bg"></div>
                 <div id="passwordScreen">
                     <div class="content">
@@ -78,9 +131,9 @@ $server = "http://$_SERVER[HTTP_HOST]/";
                                 </div>
                                 <div class="in-theaters"></div>
                                 <div class="social clearfix">
-                                    <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                                    <a href="http://www.disney.com" class="showtimes">Find showtimes</a>
-                                    <a href="http://www.disney.com" class="trailer">View Trailer</a>
+                                    <div class="fb-like" data-href="https://www.facebook.com/DisneyPlanes" data-layout="button_count" data-width="450" data-action="like" data-show-faces="false" data-share="false"></div>
+                                    <a href="http://www.fandango.com/planes:fire26rescue_170063/movietimes" class="showtimes">Find showtimes</a>
+                                    <a href="https://www.youtube.com/watch?v=ibAxkCJfvC4" class="trailer">View Trailer</a>
                                 </div>
                             </div>
                         </div>
@@ -120,6 +173,9 @@ $server = "http://$_SERVER[HTTP_HOST]/";
                         <div class="empty-space"></div>
                         <div class="footer-content">
                             <div class="copyright">&copy;2014 DISNEY</div>
+                            <div class="in-theaters mobile">
+                                <div class="empty-space"></div>
+                            </div>
                             <div class="counter clearfix">
                                 <div class="dot">
                                     <div class="empty-space"></div>
@@ -150,8 +206,8 @@ $server = "http://$_SERVER[HTTP_HOST]/";
 
 
 <!----------------------------- Backbone Libraries ----------------------->
-<script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src="js/lib/jquery-1.11.1.min.js"></script>
+<script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>
 
@@ -165,7 +221,6 @@ $server = "http://$_SERVER[HTTP_HOST]/";
 
 <!----------------------------- Other Libraries ----------------------->
 <script src="http://code.createjs.com/soundjs-0.5.2.min.js"></script>
-<script src='js/lib/fastclick.js'></script>
 
 
 <!-------------------------------- App Javascript ------------------------>

@@ -12,9 +12,13 @@
         <div id="card-sincerely">
 
         </div>
-        <div id="card-from"></div>
+        <div id="card-from">
+            <div class="empty-space"></div>
+        </div>
         <a href="#" id="printversion"></a>
-        <a href="/" id="sendmore"></a>
+        <a href="/" id="sendmore">
+            <div class="empty-space"></div>
+        </a>
     </div>
 </div>
 <!--<img id="letterbg" src="/assets/img/response_letter_bg.jpg" />-->

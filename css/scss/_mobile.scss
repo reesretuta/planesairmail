@@ -53,6 +53,10 @@
 #content.mobile {
     height: auto;
 
+    > div.empty-space {
+        padding-bottom: percentage(1136/640);
+    }
+
     div.mobile {
         display: block;
     }
@@ -62,9 +66,11 @@
     // ==================================================================== //
     #header {
         height: auto;
+        background-size: auto 100%;
+        padding: 0;
 
         > div.full-relative > div.empty-space {
-            padding-bottom: 32.09294%;
+            padding-bottom: 29%;
         }
 
         .in-theaters {
@@ -73,15 +79,22 @@
 
         div.social {
             width: 100%;
-            padding: 0 percentage(9/538);
+            padding: 0 percentage(11/538);
+            top: 46%;
 
             div.fb-like {
-                display: none !important;          //TODO REMOVE THIS
+                position: absolute;
+                left: 7px;
+                bottom: 142%;
+
+                transform: scale(0.65);
+                transform-origin: center left;
+
             }
 
             > a {
                 margin-right: 0;
-                font-size: 12px;
+                font-size: 11px;
                 border-radius: 3px;
 
                 &.showtimes {
@@ -89,14 +102,16 @@
                 }
                 &.trailer {
                     float: right;
+                    padding-left: 8px;
+                    padding-right: 8px;
                 }
             }
 
         }
 
         .logo {
-            width: 50%;
-            bottom: 26%;
+            width: 44%;
+            bottom: 25%;
 
             background-position: 76% 50%;
         }
@@ -108,6 +123,33 @@
     #footer {
         a.volume {
             display: none;
+        }
+
+        div.copyright {
+            height: auto;
+            background-size: auto 37%;
+            background-position: 0% 18%;
+            padding-left: 0;
+            padding-top: 17px;
+            font-size: 9px;
+        }
+
+        div.in-theaters {
+            background: url('../assets/img/in-theatres3D.png') no-repeat center center;
+            background-size: contain;
+
+            width: 43%;
+
+            position: absolute;
+            top: 43%;
+            left: 0;
+            right: 0;
+
+            margin: auto;
+
+            > div.empty-space {
+                padding-bottom: percentage(41/364);
+            }
         }
 
         div.counter {
@@ -153,13 +195,22 @@
     // ==================================================================== //
 
     div.pages-ctn div.page-nav {
+        width: percentage(125/320);
+
+        a.finish-send {
+            width: percentage(240/175);
+            left: percentage(-(240/175 - 1)/2);
+
+            font-size: 22px;
+        }
+
         a.next {
-            width: 135px;
+            width: 100%;
             font-size: 22px;
         }
 
         div.skip {
-            width: 135px;
+            width: 100%;
             margin-top: 5px;
 
             a.skip {
@@ -174,7 +225,8 @@
     }
 
     div.page {
-        width: 100%;
+        width: 90%;
+        padding-top: percentage(74/320);
     }
 
     // ==================================================================== //
@@ -208,6 +260,7 @@
     /* *************************** Question Pages ************************* */
     // ==================================================================== //
     div.question {
+        width: 70%;
 
         div.copy {
             font-size: 22px;
@@ -217,7 +270,10 @@
 
         div.option {
             width: 50%;
-            padding: 5% 13%;
+
+            padding: 7% 11.5%;
+
+
 
             div.text {
                 font-size: 14px;
@@ -229,9 +285,152 @@
         }
     }
 
+    div.question.character-select {
+        width: 90%;
+
+        div.option {
+            padding: 7% 14.5%;
+        }
+    }
+
+    // ==================================================================== //
+    /* *************************** Canned Question ************************ */
+    // ==================================================================== //
+
+    div.question.canned {
+        > div.full-relative {
+            padding-top: 30%;
+        }
+
+        div.copy {
+            font-size: 18px;
+        }
+
+        div.option {
+            padding: 0;
+            width: 119%;
+
+            margin-bottom: 7%;
+
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+            background-repeat: no-repeat;
+
+            div.text {
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
 
 
-    > div.empty-space {
-        padding-bottom: percentage(1136/640);
+
+
+    #response {
+        padding-top: 35%;
+        padding-left: 5.5%;
+        padding-right: 5.5%;
+
+        #card-wrap {
+            position: relative;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: auto;
+
+            padding: 5%;
+            padding-top: 10%;
+
+            transform: none;
+
+
+            #card-greeting {
+                font-size: 21px;
+                margin-bottom: 2%;
+            }
+
+            #card-body {
+                font-size: 12px;
+                line-height: 17px;
+                margin-bottom: 2%;
+                letter-spacing: -.1px;
+            }
+
+            #card-sincerely {
+                font-size: 14px;
+                margin-bottom: 1%;
+            }
+
+            #card-from {
+                width: 65%;
+            }
+
+            #printversion {
+                display: none;
+            }
+
+            #sendmore {
+                height: auto;
+                width: 72%;
+                bottom: initial;
+                top: 106%;
+
+                background-repeat: no-repeat;
+
+                > div.empty-space {
+                    padding-bottom: percentage(51/300);
+                }
+            }
+        }
+    }
+
+
+
+    &.ios {
+        div.question.canned {
+            div.option {
+                div.text {
+                    font-size: 8px;
+                }
+            }
+        }
     }
 }
+
+
+
+#letterbg-ctr {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding-top: 35%;
+    padding-left: 5.5%;
+    padding-right: 5.5%;
+
+    z-index: 2;
+
+    &.active {
+        div.background {
+            display: block;
+        }
+    }
+
+    div.background {
+        background: url('../assets/img/response_letter_bg_mobile.jpg') top center;
+        background-size: cover;
+
+        height: 100%;
+
+        display: none;
+    }
+}
+
+
+
+

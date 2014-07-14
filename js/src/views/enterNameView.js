@@ -25,7 +25,9 @@
             'change input.name': 'onNameChange',
             'keydown input.name': 'onNameChange',
             'keyup input.name': 'onNameChange',
-            'paste input.name': 'onNameChange'
+            'paste input.name': 'onNameChange',
+            'focusin input.name': 'onFocus',
+            'focusout input.name': 'onFocusOut'
         },
         // ============================================================ //
         /* ********************** Initialization ********************** */
@@ -75,6 +77,10 @@
         show: function () {
             this.$el.addClass('active');
 
+            if(this.$nameInput.val() !== '') {
+                this.$placeholder.hide();
+            }
+
             if(!device.isMobile()) {
                 setTimeout(this.startAnimation, 0);
             }
@@ -102,6 +108,17 @@
         onHideComplete: function(callback) {
             this.hideCallback = callback;
         },
+        onFocus: function(e) {
+            this.$placeholder.hide();
+        },
+        onFocusOut: function(e) {
+            var val = this.$nameInput.val();
+
+            if(val === '') {
+                this.$placeholder.show();
+            }
+            this.model.set({value: val});
+        },
 
         onNameChange: function(e) {
             if(e.which === 32) return false;
@@ -115,13 +132,11 @@
 
                 this.$nameInput.val(val);
 
-                this.$placeholder.toggle(val === '');
                 this.model.set({value: val});
 
                 return false;
             }
 
-            this.$placeholder.toggle(val === '');
             this.model.set({value: val});
         }
     });

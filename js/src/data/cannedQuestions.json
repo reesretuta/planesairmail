@@ -1,6 +1,6 @@
 {
     "class": "canned",
-    "copy": "Now that we know more about you, it's your turn to ask blade ranger some questions",
+    "copy": "Now that we know more about you, it's your turn to ask %character% some questions",
     "options": [
         {
             "text": "What is your job at Piston Peak?",
@@ -33,6 +33,6 @@
         {
             "text": "What is your favorite sport?",
             "value": "favorite-sport"
-        },
+        }
     ]
 }

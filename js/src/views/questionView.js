@@ -15,7 +15,8 @@ var QuestionView = Backbone.View.extend({
     template: template,
 
     events: {
-        'click input[type=radio]': 'onRadioChange'
+        'click label': 'onRadioChange',
+        'touchend label': 'onRadioChange'
     },
     // Functions
     initialize: function(options) {
@@ -27,6 +28,7 @@ var QuestionView = Backbone.View.extend({
 
         this.$copy = this.$el.find('div.copy');
         this.$options = this.$el.find('div.option');
+        this.$inputs = this.$el.find('input[type=radio]');
 
         if(this.$options.length !== 0 && !isMobile)
             this.initAnimations();
@@ -105,10 +107,19 @@ var QuestionView = Backbone.View.extend({
     // ============================================================ //
     onRadioChange: function(e) {
         "use strict";
+        e.preventDefault();
 
-        var text = $(e.currentTarget).siblings('div.text').html();
+        var $activeInput = this.$inputs.filter('[checked]');
+        var $input = $(e.currentTarget).siblings('input');
 
-        this.model.set({value: e.currentTarget.getAttribute('value'), text: text});
+        if($activeInput !== $input) {
+            $activeInput.prop('checked', false);
+            $input.prop('checked', true);
+        }
+
+        var text = $input.siblings('div.text').html();
+
+        this.model.set({value: $input.attr('value'), text: text});
     }
 });
 

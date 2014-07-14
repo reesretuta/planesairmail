@@ -31,8 +31,10 @@ var animateIn = (function() {
             dusty.windowX = 0.2;
             placeJustOffscreen(dusty);
 
+            scenesManager.onWindowResize();
+
             TweenLite.to(dusty, animationTime, {
-                windowX: 0.71,
+                windowX: 0.68,
                 windowY: 0.23,
                 ease: easing
             });
@@ -44,6 +46,8 @@ var animateIn = (function() {
             blade.idle.windowScale = 0.5;
             blade.windowX = 0.3;
             placeJustOffscreen(blade);
+
+            scenesManager.onWindowResize();
 
             TweenLite.to(blade, animationTime, {
                 windowX: 0.74,
@@ -60,6 +64,8 @@ var animateIn = (function() {
             cabbie.windowX = 0.35;
             cabbie.rotation = 0;
             cabbie.filters[0].blur = 0;
+
+            scenesManager.onWindowResize();
 
             TweenLite.to(cabbie, animationTime, {
                 windowX: 0.18,
@@ -78,6 +84,8 @@ var animateIn = (function() {
             dipper.rotation = 0;
             dipper.filters[0].blur = 0;
 
+            scenesManager.onWindowResize();
+
            TweenLite.to(dipper, animationTime, {
                windowX: 0.65,
                windowY: 0.29,
@@ -91,6 +99,8 @@ var animateIn = (function() {
             windlifter.idle.windowScale = 0.45;
             placeJustOffscreen(windlifter);
             windlifter.windowX = 0.5;
+
+            scenesManager.onWindowResize();
 
             TweenLite.to(windlifter, animationTime, {
                 windowX: 0.17,
@@ -109,6 +119,7 @@ var animateIn = (function() {
 
             preTeamAnimationSetup(dusty, blade, cabbie, dipper, windlifter);
 
+            scenesManager.onWindowResize();
 
             var timeline = new TimelineMax({
                 paused: true

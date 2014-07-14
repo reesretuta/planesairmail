@@ -162,7 +162,10 @@ body {
       display: block;
       float: left;
       margin-top: 3px;
-      margin-right: 10px; }
+      margin-right: 10px;
+      min-width: 85px; }
+      #header div.social div.fb-like span {
+        overflow: visible !important; }
 
 #footer {
   width: 100%;
@@ -311,8 +314,9 @@ body {
           padding-bottom: 32%; }
       #content div.pages-ctn div.page-nav a.finish-send {
         background: url('../assets/img/icons/send-btn.png') center center no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
         width: 240px;
-        height: 53px;
         line-height: 43px; }
         #content div.pages-ctn div.page-nav a.finish-send > div.empty-space {
           padding-bottom: 22.08333%; }
@@ -696,9 +700,13 @@ div.question.character-select div.option div.background, div.question.favorite-s
       text-align: center;
       font-size: 35px;
       width: 248px;
-      height: 59px;
       text-indent: -9999em;
-      margin: 0 auto; }
+      margin: 0 auto;
+      background-position: center center;
+      -webkit-background-size: contain;
+      background-size: contain; }
+      #response #card-wrap #card-from > div.empty-space {
+        padding-bottom: 23.79032%; }
       #response #card-wrap #card-from.dusty {
         background-image: url('../assets/img/signatures/dusty.png'); }
       #response #card-wrap #card-from.cabbie {
@@ -729,7 +737,10 @@ div.question.character-select div.option div.background, div.question.favorite-s
       height: 51px;
       width: 300px;
       display: block;
-      bottom: -75px; }
+      bottom: -75px;
+      background-position: center center;
+      -webkit-background-size: contain;
+      background-size: contain; }
 
 #response-bg {
   position: absolute;
@@ -820,34 +831,71 @@ div.question.character-select div.option div.background, div.question.favorite-s
   /* **************************** Intro Stuff *************************** */
   /* *************************** Page Navigation ************************ */
   /* ************************ Enter Your Name Page ********************** */
-  /* *************************** Question Pages ************************* */ }
+  /* *************************** Question Pages ************************* */
+  /* *************************** Canned Question ************************ */ }
+  #content.mobile > div.empty-space {
+    padding-bottom: 177.5%; }
   #content.mobile div.mobile {
     display: block; }
   #content.mobile #header {
-    height: auto; }
+    height: auto;
+    -webkit-background-size: auto 100%;
+    background-size: auto 100%;
+    padding: 0; }
     #content.mobile #header > div.full-relative > div.empty-space {
-      padding-bottom: 32.09294%; }
+      padding-bottom: 29%; }
     #content.mobile #header .in-theaters {
       display: none; }
     #content.mobile #header div.social {
       width: 100%;
-      padding: 0 1.67286%; }
+      padding: 0 2.04461%;
+      top: 46%; }
       #content.mobile #header div.social div.fb-like {
-        display: none !important; }
+        position: absolute;
+        left: 7px;
+        bottom: 142%;
+        -webkit-transform: scale(0.65);
+        -ms-transform: scale(0.65);
+        transform: scale(0.65);
+        -webkit-transform-origin: center left;
+        -ms-transform-origin: center left;
+        transform-origin: center left; }
       #content.mobile #header div.social > a {
         margin-right: 0;
-        font-size: 12px;
+        font-size: 11px;
         border-radius: 3px; }
         #content.mobile #header div.social > a.showtimes {
           float: left; }
         #content.mobile #header div.social > a.trailer {
-          float: right; }
+          float: right;
+          padding-left: 8px;
+          padding-right: 8px; }
     #content.mobile #header .logo {
-      width: 50%;
-      bottom: 26%;
+      width: 44%;
+      bottom: 25%;
       background-position: 76% 50%; }
   #content.mobile #footer a.volume {
     display: none; }
+  #content.mobile #footer div.copyright {
+    height: auto;
+    -webkit-background-size: auto 37%;
+    background-size: auto 37%;
+    background-position: 0% 18%;
+    padding-left: 0;
+    padding-top: 17px;
+    font-size: 9px; }
+  #content.mobile #footer div.in-theaters {
+    background: url('../assets/img/in-theatres3D.png') no-repeat center center;
+    -webkit-background-size: contain;
+    background-size: contain;
+    width: 43%;
+    position: absolute;
+    top: 43%;
+    left: 0;
+    right: 0;
+    margin: auto; }
+    #content.mobile #footer div.in-theaters > div.empty-space {
+      padding-bottom: 11.26374%; }
   #content.mobile #footer div.counter {
     width: 100%;
     padding: 0 5.5%;
@@ -865,20 +913,27 @@ div.question.character-select div.option div.background, div.question.favorite-s
     width: 38%; }
   #content.mobile #intro-view div.begin-screen > div.line {
     display: none; }
-  #content.mobile div.pages-ctn div.page-nav a.next {
-    width: 135px;
-    font-size: 22px; }
-  #content.mobile div.pages-ctn div.page-nav div.skip {
-    width: 135px;
-    margin-top: 5px; }
-    #content.mobile div.pages-ctn div.page-nav div.skip a.skip {
+  #content.mobile div.pages-ctn div.page-nav {
+    width: 39.0625%; }
+    #content.mobile div.pages-ctn div.page-nav a.finish-send {
+      width: 137.14286%;
+      left: -18.57143%;
+      font-size: 22px; }
+    #content.mobile div.pages-ctn div.page-nav a.next {
       width: 100%;
-      height: 100%;
-      font-size: 14px;
-      line-height: 21px;
-      border-radius: 4px; }
+      font-size: 22px; }
+    #content.mobile div.pages-ctn div.page-nav div.skip {
+      width: 100%;
+      margin-top: 5px; }
+      #content.mobile div.pages-ctn div.page-nav div.skip a.skip {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+        line-height: 21px;
+        border-radius: 4px; }
   #content.mobile div.page {
-    width: 100%; }
+    width: 90%;
+    padding-top: 23.125%; }
   #content.mobile div.page.name .input-wrapper {
     height: 45px; }
   #content.mobile div.page.name div.title {
@@ -892,19 +947,296 @@ div.question.character-select div.option div.background, div.question.favorite-s
     border-radius: 7px; }
   #content.mobile div.page.name div.placeholder {
     font-size: 22px; }
-  #content.mobile div.question div.copy {
-    font-size: 22px;
-    line-height: 22px;
-    margin-bottom: 6%; }
-  #content.mobile div.question div.option {
-    width: 50%;
-    padding: 5% 13%; }
-    #content.mobile div.question div.option div.text {
-      font-size: 14px;
-      width: 200%;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      transform: translateX(-50%); }
-  #content.mobile > div.empty-space {
+  #content.mobile div.question {
+    width: 70%; }
+    #content.mobile div.question div.copy {
+      font-size: 22px;
+      line-height: 22px;
+      margin-bottom: 6%; }
+    #content.mobile div.question div.option {
+      width: 50%;
+      padding: 7% 11.5%; }
+      #content.mobile div.question div.option div.text {
+        font-size: 14px;
+        width: 200%;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%); }
+  #content.mobile div.question.character-select {
+    width: 90%; }
+    #content.mobile div.question.character-select div.option {
+      padding: 7% 14.5%; }
+  #content.mobile div.question.canned > div.full-relative {
+    padding-top: 30%; }
+  #content.mobile div.question.canned div.copy {
+    font-size: 18px; }
+  #content.mobile div.question.canned div.option {
+    padding: 0;
+    width: 119%;
+    margin-bottom: 7%;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-repeat: no-repeat; }
+    #content.mobile div.question.canned div.option div.text {
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+  #content.mobile #response {
+    padding-top: 35%;
+    padding-left: 5.5%;
+    padding-right: 5.5%; }
+    #content.mobile #response #card-wrap {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 5%;
+      padding-top: 10%;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none; }
+      #content.mobile #response #card-wrap #card-greeting {
+        font-size: 21px;
+        margin-bottom: 2%; }
+      #content.mobile #response #card-wrap #card-body {
+        font-size: 12px;
+        line-height: 17px;
+        margin-bottom: 2%;
+        letter-spacing: -0.1px; }
+      #content.mobile #response #card-wrap #card-sincerely {
+        font-size: 14px;
+        margin-bottom: 1%; }
+      #content.mobile #response #card-wrap #card-from {
+        width: 65%; }
+      #content.mobile #response #card-wrap #printversion {
+        display: none; }
+      #content.mobile #response #card-wrap #sendmore {
+        height: auto;
+        width: 72%;
+        bottom: initial;
+        top: 106%;
+        background-repeat: no-repeat; }
+        #content.mobile #response #card-wrap #sendmore > div.empty-space {
+          padding-bottom: 17%; }
+  #content.mobile.ios div.question.canned div.option div.text {
+    font-size: 8px; }
+
+#letterbg-ctr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 35%;
+  padding-left: 5.5%;
+  padding-right: 5.5%;
+  z-index: 2; }
+  #letterbg-ctr.active div.background {
+    display: block; }
+  #letterbg-ctr div.background {
+    background: url('../assets/img/response_letter_bg_mobile.jpg') top center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    display: none; }
+
+#mobile-characters {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: auto; }
+  #mobile-characters > div.empty-space {
     padding-bottom: 177.5%; }
+  #mobile-characters > div.full-absolute {
+    top: 0;
+    left: 0; }
+  #mobile-characters div.character {
+    position: absolute;
+    display: none;
+    background-position: center center;
+    -webkit-background-size: contain;
+    background-size: contain;
+    /* ******************************** Dipper **************************** */
+    /* ***************************** BladeRanger ************************** */
+    /* ******************************** Cabbie **************************** */
+    /* ****************************** Windlifter ************************** */
+    /* ******************************** Dusty ***************************** */
+    /* ****************************** Parachuters ************************* */ }
+    #mobile-characters div.character.front {
+      z-index: 3; }
+    #mobile-characters div.character.active {
+      display: block; }
+    #mobile-characters div.character.flip {
+      -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+      transform: scaleX(-1);
+      -webkit-filter: FlipH;
+      filter: FlipH;
+      -ms-filter: "FlipH"; }
+    #mobile-characters div.character.dipper {
+      background-image: url('../assets/spritesheets/dipper/Dipper_00000.png');
+      width: 85%;
+      top: 5.7%;
+      left: 38%; }
+      #mobile-characters div.character.dipper.selected {
+        top: 11.7%;
+        left: -26%; }
+        #mobile-characters div.character.dipper.selected.response {
+          left: 17%;
+          top: 9%;
+          -webkit-transform: rotate(15deg);
+          -ms-transform: rotate(15deg);
+          transform: rotate(15deg); }
+      #mobile-characters div.character.dipper.team {
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+        -webkit-filter: FlipH;
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        left: -8%;
+        width: 41%;
+        top: 24%; }
+        #mobile-characters div.character.dipper.team.response {
+          left: 3%;
+          width: 40%;
+          top: 9%; }
+      #mobile-characters div.character.dipper > div.empty-space {
+        padding-bottom: 53.125%; }
+    #mobile-characters div.character.bladeranger {
+      background-image: url('../assets/spritesheets/blade/Guide_BladeRanger_body_970x600_00000.png');
+      width: 85%;
+      top: 8.7%;
+      left: 48%; }
+      #mobile-characters div.character.bladeranger.response {
+        width: 91%;
+        top: 4%;
+        left: 23%; }
+      #mobile-characters div.character.bladeranger.team {
+        width: 79%;
+        top: 35.7%;
+        left: 48%; }
+        #mobile-characters div.character.bladeranger.team.response {
+          width: 39%;
+          top: 9%;
+          left: 74%; }
+      #mobile-characters div.character.bladeranger > div.empty-space {
+        padding-bottom: 61.83333%; }
+    #mobile-characters div.character.cabbie {
+      background-image: url('../assets/spritesheets/cabbie/Cabbie_00000.png');
+      width: 85%;
+      top: 23.7%;
+      left: -25%; }
+      #mobile-characters div.character.cabbie.response {
+        top: 10%;
+        left: 21%;
+        -webkit-transform: scaleX(-1) rotate(12deg);
+        -ms-transform: scaleX(-1) rotate(12deg);
+        transform: scaleX(-1) rotate(12deg);
+        -webkit-filter: FlipH;
+        filter: FlipH;
+        -ms-filter: "FlipH"; }
+      #mobile-characters div.character.cabbie > div.empty-space {
+        padding-bottom: 51.875%; }
+    #mobile-characters div.character.cabbie2 {
+      background-image: url('../assets/spritesheets/cabbie2/Cabbie_2_000000.png'); }
+      #mobile-characters div.character.cabbie2.team {
+        width: 23%;
+        left: 0;
+        top: 46%;
+        opacity: 0.8;
+        -webkit-transform: rotate(-8deg);
+        -ms-transform: rotate(-8deg);
+        transform: rotate(-8deg); }
+        #mobile-characters div.character.cabbie2.team.response {
+          width: 24%;
+          left: 46%;
+          top: 10%; }
+      #mobile-characters div.character.cabbie2 > div.empty-space {
+        padding-bottom: 50.66667%; }
+    #mobile-characters div.character.windlifter {
+      background-image: url('../assets/spritesheets/windlifter/Guide_Windlifter_body_970x600_00000.png');
+      width: 75%;
+      top: 19.7%;
+      left: -23%; }
+      #mobile-characters div.character.windlifter.team {
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+        transform: scaleX(-1);
+        -webkit-filter: FlipH;
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        left: 3%;
+        top: 16%;
+        width: 18%;
+        opacity: 0.75; }
+        #mobile-characters div.character.windlifter.team.response {
+          left: -1%;
+          top: 13%;
+          width: 16%; }
+      #mobile-characters div.character.windlifter.response {
+        width: 71%;
+        top: 3.2%;
+        left: 26%; }
+      #mobile-characters div.character.windlifter > div.empty-space {
+        padding-bottom: 61.83333%; }
+    #mobile-characters div.character.dusty {
+      background-image: url('../assets/spritesheets/dusty/Dusty_plane_00000.png');
+      top: 30%;
+      width: 51%;
+      left: -11.5%; }
+      #mobile-characters div.character.dusty > div.empty-space {
+        padding-bottom: 82%; }
+    #mobile-characters div.character.dusty2 {
+      background-image: url('../assets/spritesheets/dusty3/Dusty_plane5_000000.png'); }
+      #mobile-characters div.character.dusty2.team.response {
+        width: 45%;
+        top: 15%;
+        left: 39%; }
+      #mobile-characters div.character.dusty2.response {
+        width: 52%;
+        top: 13%;
+        left: 34%; }
+      #mobile-characters div.character.dusty2 > div.empty-space {
+        padding-bottom: 60%; }
+    #mobile-characters div.character.dusty3 {
+      background-image: url('../assets/spritesheets/dusty4/Dusty_angle1_noBlink_00000.png');
+      top: 19%;
+      left: -1%;
+      width: 44%;
+      -webkit-transform: rotate(32deg);
+      -ms-transform: rotate(32deg);
+      transform: rotate(32deg); }
+      #mobile-characters div.character.dusty3.team {
+        left: 61%;
+        top: 21%; }
+      #mobile-characters div.character.dusty3 > div.empty-space {
+        padding-bottom: 56.83333%; }
+    #mobile-characters div.character.parachuter1 {
+      background-image: url('../assets/img/drip.png');
+      width: 10%;
+      top: 60.5%;
+      left: 15%; }
+      #mobile-characters div.character.parachuter1 > div.empty-space {
+        padding-bottom: 154.09836%; }
+    #mobile-characters div.character.parachuter2 {
+      background-image: url('../assets/img/dynamite.png');
+      width: 10%;
+      top: 14%;
+      left: 45%;
+      opacity: 0.4; }
+      #mobile-characters div.character.parachuter2 > div.empty-space {
+        padding-bottom: 154.09836%; }
+    #mobile-characters div.character.parachuter3 {
+      background-image: url('../assets/img/blackout.png');
+      width: 10%;
+      top: 50%;
+      left: 75%;
+      opacity: 0.75; }
+      #mobile-characters div.character.parachuter3 > div.empty-space {
+        padding-bottom: 154.09836%; }

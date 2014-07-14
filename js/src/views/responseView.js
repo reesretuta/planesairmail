@@ -63,7 +63,8 @@
         character: '',
         el: '#response',
         events: {
-            'click a#printversion': 'print'
+            'click a#printversion': 'print',
+            'click #sendmore': 'onSendMore'
         },
 
         initialize: function() {
@@ -72,6 +73,7 @@
         },
 
         getUsername: function(nameModel) {
+
             return nameModel.get('value') || 'Friend';
         },
 
@@ -117,6 +119,7 @@
             var character = characterModel.get('value');
             this.character = character;
 
+
             var answeredQuestions = _.filter(questionModels, isAnswered);
             
             var cannedModels = _.filter(answeredQuestions, function(model) { return model.get('class') === 'canned'; });
@@ -137,7 +140,8 @@
             }
 
 
-            var personalityCannedModels = _.reject(cannedModels, isTrueCanned);
+            var personalityCannedModels = _.filter(cannedModels, function(model) {return !isTrueCanned(model.get('value')); });
+
             
             var cannedResponses = this.getCannedResponses(trueCannedValues, character);
             var personalityResponses = this.getPersonalityResponses(personalityCannedModels, personalityModels, character);
@@ -164,19 +168,65 @@
             $('#card-greeting').html(greeting);
             $('#card-body').html(response);
             $('#card-sincerely').html(sincerely);
-            $('#card-from').html(character);
+//            $('#card-from').html(character);
         },
 
         show: function() {
             this.$el.show();
             this.$background.show();
 
+
             if(!isMobile) {
                 setTimeout(function() {
                     responseModule.animateIn(this.character);
                 }.bind(this), 400);
+            } else {
+                var $letterBgCtr = $('#letterbg-ctr');
+                var $cardWrap = $('#card-wrap');
+
+                var height = $cardWrap.outerHeight();
+
+                $letterBgCtr.height(height);
+                $letterBgCtr.addClass('active');
+
+                this.setMobileContentHeight();
+
+                this.showMobileCharacters();
             }
         },
+
+        setMobileContentHeight: function() {
+            var $sendMore = $('#sendmore');
+            var $footer = $('#footer');
+            var $content = $('#content');
+
+            var offsetTop = $sendMore.offset().top;
+            var height = $sendMore.height();
+            var footerHeight = $footer.height();
+
+            $content.css('min-height', offsetTop*1.04 + height + footerHeight);
+        },
+
+        showMobileCharacters: function() {
+            var $mobileCtr = $('#mobile-characters');
+
+            var $activeCharacters = $mobileCtr.find('div.character.active');
+
+            if(this.character === 'team') {
+                $activeCharacters.filter('.dusty3').removeClass('active team response');
+
+                $mobileCtr.find('div.character.dusty2').addClass('active team response front');
+            } else if (this.character === 'dusty') {
+                $activeCharacters.removeClass('active team response');
+
+                $mobileCtr.find('div.character.dusty2').addClass('active response front');
+            } else {
+                $activeCharacters.addClass('front');
+            }
+
+            $activeCharacters.addClass('response');
+        },
+
         hide: function() {
 
         },
@@ -188,9 +238,21 @@
             var g = $('#card-greeting').html();
             var b = $('#card-body').html();
             var s = $('#card-sincerely').html();
-            var f = $('#card-from').html();
-            window.open(window.location.href + 'print.php' + '?char=' + this.character + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + f);
+//            var f = $('#card-from').html();
+            window.open(window.location.href + 'print.php' + '?char=' + this.character + '&greeting='+ g + '&body=' + b + '&sincerely=' + s + '&from=' + this.character);
             
+        },
+        onSendMore: function(e) {
+            e.preventDefault();
+
+            var url = e.currentTarget.getAttribute('href');
+            var newTab = (2 === e.which || e.metaKey || e.ctrlKey);
+
+            ga('send', 'event', 'More airmail', 'click', ipAddress, {
+                hitCallback: function() {
+                    document.location = url;
+                }
+            });
         }
     });
 
