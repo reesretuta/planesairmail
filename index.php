@@ -41,11 +41,11 @@ $ip = get_client_ip();
     <meta property="og:title" content="Planes Airmail"/>
     <meta property="og:type" content="video.movie"/>
     <meta property="og:url" content="<?= $server; ?>"/>
-    <meta property="og:image" content="<?= $server; ?>favicon.ico" name="thumb" />
+    <meta property="og:image" content="<?= $server; ?>assets/img/facebookLogo.png" name="thumb" />
     <link rel="shortcut icon" href="<?= $server; ?>favicon.ico" type="image/icon">
     <link rel="icon" href="<?= $server; ?>favicon.ico" type="image/icon">
     <meta property="og:site_name" content="Planes Airmail"/>
-    <meta property="og:description" content=""/>
+    <meta property="og:description" content="Help your kids send a letter to Dusty, Dipper, and the rest of the team!"/>
 
     <link rel="stylesheet" type="text/css" href="css/app.css" />
 
