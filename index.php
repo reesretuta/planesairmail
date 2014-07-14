@@ -206,7 +206,8 @@ $ip = get_client_ip();
 
 
 <!----------------------------- Backbone Libraries ----------------------->
-<script src="js/lib/jquery-1.11.1.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <script src="js/lib/handlebars-v1.3.0.js"></script>
 <script src="js/lib/underscore-min.js"></script>
 <script src="js/lib/backbone-min.js"></script>

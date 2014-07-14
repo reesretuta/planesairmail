@@ -101,7 +101,6 @@
                         template = responseMap[character][model.get('value')];
                     }
 
-
                     return template.replace('%template%', personalityModel.get('text'));
                 })
                 .value();       // exit chain
