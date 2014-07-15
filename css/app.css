@@ -545,7 +545,8 @@ div.question {
 
 /* ************************ Canned Questions ************************* */
 div.question.canned div.copy {
-  margin-bottom: 70px; }
+  margin-bottom: 70px;
+  white-space: normal; }
 div.question.canned div.option {
   width: 73.6377%;
   padding: 0;

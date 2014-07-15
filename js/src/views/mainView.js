@@ -404,9 +404,12 @@
 
         },
         repositionQuestions: function(animate) {
-            var windowHeight = this.$window.height();
+            if(this.activePageIndex === 0) return;
 
             var activePage = this.pages[this.activePageIndex];
+
+            var windowHeight = this.$window.height();
+
             var pageHeight = activePage.$el.outerHeight();
             var pageWidth = activePage.$el.outerWidth();
             var maxPageWidth = parseInt(activePage.$el.css('max-width'));
@@ -419,7 +422,7 @@
 
                 if(newPageWidth > maxPageWidth || newPageWidth > 0.8*this.$window.width()) {
                     activePage.$el.css('width', '');
-                } else {
+                } else if(!activePage.isCanned()) {
                     activePage.$el.css('width', newPageWidth);
 
                     pageHeight = verticalSpaceAvailable;
@@ -434,7 +437,6 @@
 
 
             var pageNavPixelPosition = top * windowHeight/100 + pageHeight;
-
             var percTop = (100 * pageNavPixelPosition/$(document).height()) + '%';
 
             if(animate) {
@@ -445,25 +447,6 @@
             }
             this.$pageNav.css('top', percTop);
 
-        },
-        repositionPageNav: function(pageHeight, animate) {
-            var activePage = this.pages[this.activePageIndex];
-
-            var pixelPosition = (activePage.$el.offset().top + activePage.$el.outerHeight());
-
-            var docHeight = $(document).height();
-
-            var topFrac = Math.min(pixelPosition/docHeight, (docHeight - this.footer.height() - this.$pageNav.outerHeight())/docHeight);
-
-            var percTop = 100 * topFrac + '%';
-
-            if(animate) {
-                var animationTime = isMobile ? 0.1 : 0.2;
-
-                TweenLite.to(this.$pageNav, animationTime, {top: percTop, ease:'Quad.easeInOut'});
-                return;
-            }
-            this.$pageNav.css('top', percTop);
         }
     });
 
