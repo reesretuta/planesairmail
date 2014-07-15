@@ -100,7 +100,7 @@
         },
 
         initWindowEvents: function() {
-            this.$window.on('resize', _.bind(this.repositionPageNav, this));
+            this.$window.on('resize', _.bind(this.onWindowResize, this));
 
 //            if (window.DeviceOrientationEvent) {
 //                console.log('deviceorientation');
@@ -174,6 +174,8 @@
             this.$skip = this.$skipCtr.find('a.skip');
 
             this.$header = $('#header');
+
+            this.$questionViews = this.$pagesContainer.find('div.page.question');
         },
 
         // ==================================================================== //
@@ -196,7 +198,7 @@
             this.$next.addClass('active');
             this.$skip.addClass('active');
 
-            this.repositionPageNav(false);
+            this.repositionQuestions(false);
 
             TweenLite.to(this.$pageNav, 0.3, {opacity: 1});
         },
@@ -237,7 +239,7 @@
 
             this.activePageIndex++;
             activePage.hide();
-            this.repositionPageNav(true);
+            this.repositionQuestions(true);
 
             this.footer.setCounter(this.activePageIndex);
         }, 200, {trailing: false}),
@@ -316,25 +318,7 @@
                 this.responseView.show();
             }
         },
-        repositionPageNav: function(animate) {
-            var activePage = this.pages[this.activePageIndex];
 
-            var pixelPosition = (activePage.$el.offset().top + activePage.$el.outerHeight());
-
-            var docHeight = $(document).height();
-
-            var topFrac = Math.min(pixelPosition/docHeight, (docHeight - this.footer.height() - this.$pageNav.outerHeight())/docHeight);
-
-            var percTop = 100 * topFrac + '%';
-
-            if(!!animate) {
-                var animationTime = isMobile ? 0.1 : 0.2;
-
-                TweenLite.to(this.$pageNav, animationTime, {top: percTop, ease:'Quad.easeInOut'});
-                return;
-            }
-            this.$pageNav.css('top', percTop);
-        },
 
 
         hideSkip: function() {
@@ -412,6 +396,74 @@
             if(this.animating || this.activePageIndex >= (this.pages.length - 1)) return;
 
             this.nextPage();
+        },
+
+
+        onWindowResize: function() {
+            this.repositionQuestions(false);
+
+        },
+        repositionQuestions: function(animate) {
+            var windowHeight = this.$window.height();
+
+            var activePage = this.pages[this.activePageIndex];
+            var pageHeight = activePage.$el.outerHeight();
+            var pageWidth = activePage.$el.outerWidth();
+            var maxPageWidth = parseInt(activePage.$el.css('max-width'));
+
+            if(!isMobile) {
+                //space available for the page
+                var verticalSpaceAvailable = windowHeight - this.footer.height() - this.$header.outerHeight() - this.$pageNav.outerHeight();
+
+                var newPageWidth = verticalSpaceAvailable * pageWidth/pageHeight;
+
+                if(newPageWidth > maxPageWidth || newPageWidth > 0.8*this.$window.width()) {
+                    activePage.$el.css('width', '');
+                } else {
+                    activePage.$el.css('width', newPageWidth);
+
+                    pageHeight = verticalSpaceAvailable;
+                }
+
+                var contentHeight = pageHeight + this.$pageNav.outerHeight();
+
+                var top = 100 * (windowHeight - contentHeight)/(2*windowHeight);
+                activePage.$el.css('top',top + '%');
+            }
+
+
+
+            var pageNavPixelPosition = top * windowHeight/100 + pageHeight;
+
+            var percTop = (100 * pageNavPixelPosition/$(document).height()) + '%';
+
+            if(animate) {
+                var animationTime = isMobile ? 0.1 : 0.2;
+
+                TweenLite.to(this.$pageNav, animationTime, {top: percTop, ease:'Quad.easeInOut'});
+                return;
+            }
+            this.$pageNav.css('top', percTop);
+
+        },
+        repositionPageNav: function(pageHeight, animate) {
+            var activePage = this.pages[this.activePageIndex];
+
+            var pixelPosition = (activePage.$el.offset().top + activePage.$el.outerHeight());
+
+            var docHeight = $(document).height();
+
+            var topFrac = Math.min(pixelPosition/docHeight, (docHeight - this.footer.height() - this.$pageNav.outerHeight())/docHeight);
+
+            var percTop = 100 * topFrac + '%';
+
+            if(animate) {
+                var animationTime = isMobile ? 0.1 : 0.2;
+
+                TweenLite.to(this.$pageNav, animationTime, {top: percTop, ease:'Quad.easeInOut'});
+                return;
+            }
+            this.$pageNav.css('top', percTop);
         }
     });
 

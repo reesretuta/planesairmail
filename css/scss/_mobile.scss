@@ -266,6 +266,8 @@
             font-size: 22px;
             line-height: 22px;
             margin-bottom: 6%;
+
+            white-space: normal;
         }
 
         div.option {
@@ -281,6 +283,8 @@
 
                 left: 50%;
                 transform: translateX(-50%);
+
+                white-space: normal;
             }
         }
     }

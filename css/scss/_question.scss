@@ -10,6 +10,8 @@ div.question {
         font-size: 35px;
         margin-bottom: 35px;
         line-height: 36px;
+
+        white-space: nowrap;
     }
 
     div.options {
@@ -82,6 +84,8 @@ div.question {
             font-size: 18px;
 
             padding-bottom: 4px;
+
+            white-space: nowrap;
         }
 
         div.box-shadow {
