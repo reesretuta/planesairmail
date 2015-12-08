@@ -13,7 +13,7 @@
     <meta property="og:title" content="Planes Airmail"/>
     <meta property="og:type" content="video.movie"/>
     <meta property="og:url" content="http://planesairmail.com"/>
-    <meta property="og:image" content="<?= $server; ?>assets/img/facebookLogo.png" name="thumb" />
+    <!-- <meta property="og:image" content="assets/img/facebookLogo.png" name="thumb" /> -->
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/icon"> -->
     <!-- <link rel="icon" href="favicon.ico" type="image/icon"> -->
     <meta property="og:site_name" content="Planes Airmail"/>
@@ -213,7 +213,7 @@
                     </div>
 
 
-                    
+
                 </div>
 
 
