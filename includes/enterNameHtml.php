@@ -1,7 +1,3 @@
-
-
-
-
 <div class="name page">
     <div class="full-relative">
         <div class="input-wrapper">

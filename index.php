@@ -1,31 +1,3 @@
-<?php
-
-// Function to get the client IP address
-function get_client_ip() {
-    $ipaddress = '';
-    if (getenv('HTTP_CLIENT_IP'))
-        $ipaddress = getenv('HTTP_CLIENT_IP');
-    else if(getenv('HTTP_X_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-    else if(getenv('HTTP_X_FORWARDED'))
-        $ipaddress = getenv('HTTP_X_FORWARDED');
-    else if(getenv('HTTP_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_FORWARDED_FOR');
-    else if(getenv('HTTP_FORWARDED'))
-        $ipaddress = getenv('HTTP_FORWARDED');
-    else if(getenv('REMOTE_ADDR'))
-        $ipaddress = getenv('REMOTE_ADDR');
-    else
-        $ipaddress = 'UNKNOWN';
-    return $ipaddress;
-}
-
-$server = "http://$_SERVER[HTTP_HOST]/";
-
-$ip = get_client_ip();
-
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,17 +12,17 @@ $ip = get_client_ip();
     <!-- OG TAGS-->
     <meta property="og:title" content="Planes Airmail"/>
     <meta property="og:type" content="video.movie"/>
-    <meta property="og:url" content="<?= $server; ?>"/>
+    <meta property="og:url" content="http://planesairmail.com"/>
     <meta property="og:image" content="<?= $server; ?>assets/img/facebookLogo.png" name="thumb" />
-    <link rel="shortcut icon" href="<?= $server; ?>favicon.ico" type="image/icon">
-    <link rel="icon" href="<?= $server; ?>favicon.ico" type="image/icon">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/icon"> -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/icon"> -->
     <meta property="og:site_name" content="Planes Airmail"/>
     <meta property="og:description" content="Help your kids send a letter to Dusty, Dipper, and the rest of the team!"/>
 
     <link rel="stylesheet" type="text/css" href="css/app.css" />
 
     <script>
-        var ipAddress = '<?= $ip; ?>';
+        var ipAddress = '0.0.0.0.0';
     </script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -59,11 +31,11 @@ $ip = get_client_ip();
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 //        ga('create', 'UA-52699659-1', 'auto');
-        ga('create', 'UA-52699659-1', {
-            'cookieDomain': 'none'
-        });
+        // ga('create', 'UA-52699659-1', {
+        //     'cookieDomain': 'none'
+        // });
 
-        ga('send', 'pageview');
+        // ga('send', 'pageview');
     </script>
 </head>
 <body>
@@ -98,7 +70,56 @@ $ip = get_client_ip();
         <div class="full-absolute">
             <div class="full-relative">
 
-                <?php include_once('includes/mobileExtraHtml.php'); ?>
+                <div id="mobile-backgrounds" class="mobile">
+                    <div class="front"></div>
+                    <div class="middle"></div>
+                    <div class="back"></div>
+                </div>
+                <div id="mobile-characters" class="mobile full-absolute">
+                    <div class="empty-space"></div>
+                    <div class="full-absolute">
+                        <div id="letterbg-ctr" class="mobile">
+                            <div class="background"></div>
+                        </div>
+
+                        <div class="character dusty">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character dusty2">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character dusty3">
+                            <div class="empty-space"></div>
+                        </div>
+
+                        <div class="character dipper">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character bladeranger">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character cabbie">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character cabbie2">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character windlifter">
+                            <div class="empty-space"></div>
+                        </div>
+
+
+                        <div class="character parachuter1">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character parachuter2">
+                            <div class="empty-space"></div>
+                        </div>
+                        <div class="character parachuter3">
+                            <div class="empty-space"></div>
+                        </div>
+                    </div>
+                </div>
 
                 <div id="response-bg"></div>
                 <div id="passwordScreen">
@@ -140,7 +161,21 @@ $ip = get_client_ip();
                     </div>
                 </div>
 
-                <?php include_once('includes/introHtml.php'); ?>
+                
+                <div id="intro-view">
+                    <div class="full-relative">
+                        <div class="begin-screen">
+                            <div class="line">Send a message to your favorite member</div>
+                            <div class="line">of the piston peak air attack team and</div>
+                            <div class="line">they'll send you back some airmail!</div>
+                            <div class="all-text mobile">Send a message to your favorite member of the piston peak air attack team and they'll send you back some airmail!</div>
+                            <a href="#" class="begin">
+                                <div class="empty-space"></div>
+                                <div class="text">Begin</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="pages-ctn full-relative">
@@ -161,11 +196,48 @@ $ip = get_client_ip();
                         </div>
                     </div>
 
-                    <?php include_once('includes/enterNameHtml.php'); ?>
+                    <div class="name page">
+                        <div class="full-relative">
+                            <div class="input-wrapper">
+                                <div class="full-relative">
+                                    <div class="title">
+                                        <div class="line">LET'S DIVE IN!<br/>TELL US YOUR FIRST NAME!</div>
+                                    </div>
+                                    <input type="text" name="name" class="name"/>
+                                    <div class="placeholder">
+                                        <div>My name is</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
                 </div>
 
 
-                <?php include_once('includes/responseHtml.php'); ?>
+                <div id="response" class="full-absolute">
+                    <div id="card-wrap">
+                        
+                        <div id="card-greeting"></div>
+                        <div id="card-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                        <div id="card-sincerely">
+
+                        </div>
+                        <div id="card-from">
+                            <div class="empty-space"></div>
+                        </div>
+                        <a href="#" id="printversion"></a>
+                        <a href="/" id="sendmore">
+                            <div class="empty-space"></div>
+                        </a>
+                    </div>
+                </div>
+
 
 
                 <div id="footer">
